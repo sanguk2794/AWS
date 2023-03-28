@@ -17,23 +17,23 @@
 - Users don’t have to belong to a group, and user can belong to multiple groups
 → 그룹에 포함되지 않는 유저를 생성할 수 있다. 단, 이는 별로 추천하지 않는다. 이와 반대로 한 사용자를 여러 그룹에 포함시킬 수도 있다.
 
-![groupAndUsers.png](../../img/iam/Group and user.png)
+![Group and user](https://user-images.githubusercontent.com/97398071/228144081-a46cf07b-47d2-4019-a7a9-2065a8a8364b.png)
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 #### 1. Create Users and Groups
 - `Access management` -> `Users` -> `Add users` 버튼을 클릭한다.
 
-![Add users.png](../../img/iam/Add users.png)
+![Add users](https://user-images.githubusercontent.com/97398071/228142985-dc012d60-9730-4da3-8c48-5da10ee22b25.png)
 
 - `Set user details`
 → 유저명과 패스워드를 설정한다.
 
-![Set user details.png](../../img/iam/Set user details.png)
+![image](https://user-images.githubusercontent.com/97398071/228145516-7a267064-c6c6-4325-88d9-64122230a15a.png)
 
 - `Set permission`
 → 권한을 설정한다. 유저를 그룹에 포함시킬 수 있다.
 
-![Set permission.pn.png](../../img/iam/Set permission.png)
+![Set permission](https://user-images.githubusercontent.com/97398071/228145474-d34fabc5-be79-44cc-a982-14fa698c3618.png)
 
 - 이를 위해 그룹을 생성한다. 만약 그룹을 먼저 생성했다면 유저를 해당 그룹에 포함시킬 수 있다.
 
@@ -49,7 +49,7 @@
 - `Register account alias`
 → 대시보드에서 AWS 계정 별칭을 변경한다. 이후 유저 로그인을 위한 로그인 `URL`을 복사할 수 있다.
 
-![Register account alias.png](../../img/iam/Register account alias.png)
+![Register account alias](https://user-images.githubusercontent.com/97398071/228144957-38df41f5-9dbd-4d47-bc2b-f4f22350aec3.png)
 
 ### 3. IAM: Permissions
 `User`와 `Group`을 생성하는 이유는 다른 인원들이 허가받은 범위 내의 `AWS` 서비스를 이용할 수 있도록 허용하기 위해서이다.
@@ -94,7 +94,7 @@
 ~~~
 
 #### 2. IAM Policies inheritance
-![IAM Policies inheritance.png](../../img/iam/IAM Policies inheritance.png)
+![IAM Policies inheritance](https://user-images.githubusercontent.com/97398071/228144281-e39737c0-54d4-4538-b92d-34bd81f4019c.png)
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - 유저 개개인에게 권한을 적용하기 위해 사용되는 정책을 `Inline Policy`라고 한다. 
@@ -135,16 +135,16 @@
 - `Users` → `Permissions` → `Permissions policies`
 → 권한을 부여할 수 있다.
 
-![Permissions policies.png](../../img/iam/Permissions policies.png)
+![Permissions policies](https://user-images.githubusercontent.com/97398071/228144568-73179fcb-caf7-4616-ad0c-bac70254dda1.png)
 
 - `Policies`
 → `AWS`의 모든 정책이 있다. 권한의 상세 정보를 확인할 수 있으며, `Create policy` 버튼을 눌러 새로운 정책을 생성할 수 있다.
 
-![Policies.png](../../img/iam/Policies.png)
+![Policies](https://user-images.githubusercontent.com/97398071/228144650-c22ae1b6-33a5-45e0-8876-104e56f92768.png)
 
 - 관리자 계정 권한으로 설정한 `AdministratorAccess`는 모든 작업과 리소스가 허용된 상태임을 `JSON` 설정을 통해 확인할 수 있다.
 
-![Policies details.png](../../img/iam/Policies details.png)
+![Policies details](https://user-images.githubusercontent.com/97398071/228144725-228ecb56-bc16-4300-8b11-a229dfd251ff.png)
 
 ### 5. IAM – Account protection 
 #### 1. Password Policy
@@ -176,7 +176,7 @@
 - `Account settings` → `Change password policy`
 → 패스워드 정책 변경이 가능하다.
 
-![Set password policy button.png](../../img/iam/Set password policy button.png)
+![Set password policy button](https://user-images.githubusercontent.com/97398071/228145152-83c4ce02-3d23-4989-b451-e20c17b1a681.png)
 
 #### 2. Multi-Factor Authentication - MFA
 다요소 인증 또한 `AWS`가 제공하는 계정 보호를 위한 방어 메커니즘 중 하나이다. `AWS`에서는 `MFA`를 필수적으로 사용할 것을 권장한다.
@@ -201,7 +201,7 @@
 → Support for multiple root and IAM users  using a single security key
 → 하나의 보안 키로 여러 루트 계정과 IAM 유저 계정을 지원하기 때문에 하나의 키로 충분하다.
 ~~~
-![MFA device_1.png](../../img/iam/MFA device_1.png)
+![MFA device_1](https://user-images.githubusercontent.com/97398071/228144495-46f70ffd-491f-4cea-9c44-e03ef21fec08.png)
 
 ~~~
 3. Hardware Key Fob MFA Device 
@@ -212,7 +212,7 @@
 → Provided by SurePassID (3rd party)
 → 물리적인 키이다. 만약 미국 정부의 클라우드인 AWS GovCloud를 사용하는 경우 필요한 특수한 키 팝이다.
 ~~~
-![MFA device_2.png](../../img/iam/MFA device_2.png)
+![MFA device_2](https://user-images.githubusercontent.com/97398071/228144542-506029f5-6893-49bb-9d08-2d31662a8623.png)
 
 ###### 1. Set MFA 
 - `My Security Cridential` → `Multi-factor authentification (MFA)` → `Activate MFA`
@@ -231,14 +231,16 @@
 
 #### 1. Create Role
 - `IAM` → `Role` → `Create role`
-![Create role button.png](../../img/iam/Create role button.png)
+
+![Create role button](https://user-images.githubusercontent.com/97398071/228143895-7717112c-cc55-48ee-b05c-c3f9b23edf33.png)
 
 - `Select trusted entity` → `Use case`
 → 신뢰할 수 있는 객체 유형을 선택한다. 여러 유형이 있는데, 대표적으로 `AWS Service`, `AWS Account`, `Web identity` 등이 있다.
 이 중 가장 중요한 것은 `AWS Service Role`을 생성할 수 있다는 것이다. 
 `AWS Service Role` 생성의 가장 흔한 활용 사례는 `EC2 instance` 또는 `Lambda function`에 대한 `Role`을 생성하는 것이다.
-![AWS Service Role.png](../../img/iam/AWS service role.png)
- 
+
+![AWS service role](https://user-images.githubusercontent.com/97398071/228143072-888db893-22a5-4ede-909a-65b01778c218.png)
+
 - `Role details`
 `Role name`, `Description`
   
@@ -260,15 +262,35 @@
 마지막으로 언제 변경되었는지, 비밀번호 변경 주기를 활성화한 경우 다음 주기는 언제인지, `MFA`가 활성화되었는지, 
 액세스 키가 설정되었는지 등을 확인할 수 있으므로 보안 측면에서 어떤 사용자를 주목해야 할지 파악이 가능하다.
 
-![Download credential report.png](../../img/iam/Download credential report.png)
+![Download credential report](https://user-images.githubusercontent.com/97398071/228143971-cdc3bf09-aa88-418f-81ed-51731bb1ed9b.png)
 
 #### 2. Get Access Advisor Information
 - `IAM` → `Users` → `Detail` → `Access Advisor`
 
-![Access Advisor.png](../../img/iam/Access Advisor.png)
- 
+![Access Advisor](https://user-images.githubusercontent.com/97398071/228142600-048fe641-cc00-4d8c-b479-764b94ed6749.png) 
+
 - `AWS Health APIs and Notifications`
 → 개인화된 헬스 대시보드는 계정이 어떤 알림이 있는지 확인하는 서비스이며 로그인시 자동으로 호출된다. 
+
+### 8. IAM Guidelines & Best Practices
+- Don’t use the root account except for AWS account setup
+- One physical user = One AWS user
+- Assign users to groups and assign permissions to groups
+- Create a strong password policy
+- Use and enforce the use of Multi Factor Authentication (MFA)
+- Create and use Roles for giving permissions to AWS services
+- Use Access Keys for Programmatic Access (CLI / SDK)
+- Audit permissions of your account with the IAM Credentials Report
+- Never share IAM users & Access Keys
+
+### 9. IAM Section – Summary
+- Users → mapped to a physical user, has a password for AWS Console
+- Groups → contains users only 
+- Policies → JSON document that outlines permissions for users or groups
+- Roles → for EC2 instances or AWS services
+- Security → MFA + Password Policy
+- Access Keys → access AWS using the CLI or SDK
+- Audit → IAM Credential Reports & IAM Access Advisor
 
 ---
 #### ▶ Reference
