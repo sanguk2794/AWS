@@ -31,7 +31,9 @@ Remember: don’t share your access keys
 #### 2. Create access key
 - `IAM` → `Users` → 유저 선택 → `Security credential` → `Access keys` → `Create access key`
 → `Access key`는 오직 생성시에만 표시 및 다운로드가 가능하며, 나중에 복구할 수도 없다. 단 나중에 원하는 새로운 키를 생성할수는 있다.
+
 ![Create access key button](https://user-images.githubusercontent.com/97398071/228143836-0581b180-2ed8-4bbe-bbbb-c3379d649efc.png)
+
 - `Access key ID`와 `Secret access key`의 짝으로 이루어져 있다.
 
 ![AccessKey](https://user-images.githubusercontent.com/97398071/228142684-eb22853c-3dce-46ec-8b72-b28e93ba8924.png)

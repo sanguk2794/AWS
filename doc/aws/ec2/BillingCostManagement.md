@@ -14,13 +14,19 @@ IAM 관리자로 설정했다고 하더라도, `Billing & Cost Management Dashbo
 → 무료 등급을 넘어갔을 때 추가되는 항목, 여기로 이동하면 모든 서비스의 무료 등급 사용량을 확인할 수 있으며, 현재 사용량도 확인할 수 있다.
 그래서 무료 등급이 `100%`에 도달한 경우, 곧 `100%`에 도달할 경우 등을 즉각적으로 알 수 있다.
 
+![free tier](https://user-images.githubusercontent.com/97398071/229365447-739e7675-1eeb-400a-9372-74046e747741.png)
+
 ### 2. Budget
-- `Budget` 
+- `Budgets` 
 → 예산을 생성해서 비용을 추적하고 한도에 도달하기 직전에 알람을 받을 수 있다.
+
+![create budgets](https://user-images.githubusercontent.com/97398071/229365446-f3e8e285-86c4-4c26-9f0d-20291a02da73.png)
 
 - `Templates - new` → `Zero spend budget`
 → `AWS` 무료 등급 한도를 초과하면 알려주는 예산을 생성할 때 사용한다. 
 이렇게 설정해 두면 비용이 유발되자마자 이메일로 알람을 받을 수 있다.
+
+![budgets](https://user-images.githubusercontent.com/97398071/229365445-635c77d0-01db-44cc-ba5a-ca11271c22ea.png)
 
 - `Templates - new` → `Monthly cost budget`
 → 클라우드 예산 금액을 설정하면 실제 지출액의 `85%` 또는 `100%`에 도달하거나 예상되는 지출액이 `100%`에 도달할 것으로 예상될 때 알림을 받을 수 있다.

@@ -75,16 +75,18 @@ Anything you can think of
 → `EC2` 사용자 데이터 스크립트는 루트 계정에서 실행된다. 또, 시작 패스는 `root` 패스이다. 
 즉, 시작 스크립트는 `root 폴더`, `sudo`를 기준으로 작성해야한다.
 
-TODO 이미지
 ### 4. Create EC2 Instance 
 - `EC2` → `Instance` → `Launch an instance`
 → 인스턴스 생성을 위한 버튼이다.
 
+![Create instance button](https://user-images.githubusercontent.com/97398071/229365921-a4eda42b-2682-4006-909d-954faf6c7510.png)
 - Set name and tag
 → 인스턴스명과 태그를 작성한다.
 
 - `Application and Os Images (Amazon Machine Image)`
 → `EC2` 인스턴스에 사용할 기본 이미지를 선택한다.
+
+![Set name, tag, AMI](https://user-images.githubusercontent.com/97398071/229365918-745e675d-e506-40b8-82c8-6e9dba2e8021.png)
 
 - `Instance type`
 → `CPU` 개수, 메모리 용량, 비용에 따라 달라진다. `Compare instance types` 버튼을 클릭하면 모든 타입의 인스턴스를 확인할 수 있다.
@@ -92,7 +94,11 @@ TODO 이미지
 - `Key pair (login)`
 → `SSH` 유틸리티를 이용해 인스턴스에 접근할 때 사용된다. 키 페어 없이도 인스턴스의 생성은 가능하다.
 
+![Set instanceType, Keypair](https://user-images.githubusercontent.com/97398071/229365919-d96cb2da-ae60-45a3-880a-083485b6ceb7.png)
+
 - `Create Key Pair` → `Set Key pair type` → `Set Private key file format`
+
+![Create keypair](https://user-images.githubusercontent.com/97398071/229365920-da11d8ef-84fe-4769-afbd-a1612976c74c.png)
 
 - `Network settings`
 → 인스턴스에 보안 그룹이 첨부되어 있으며, 이를 통해 트래픽 허용 규칙을 설정할 수 있다. 중복 체크가 가능하다.
@@ -113,9 +119,10 @@ TODO 이미지
 `無料利用枠の対象のお客様は、最大 30 GB の EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できます。`
 ~~~
 
+![Set network, storage](https://user-images.githubusercontent.com/97398071/229365917-55574eef-17c9-42f3-b610-926988bf2afc.png)
+
 - `Advanced details`
 → `User data`는 인스턴스가 처음으로 실행될 때, 즉 인스턴스의 전체 수명주기 중에 단 한 번만 실행된다. 
-TODO 코드 확인
 
 - `Launch Instance`
 
@@ -199,7 +206,9 @@ m → instance class
 2xlarge → size within the instance class
 → 인스턴스 클래스 내의 크기, 크기가 클 수록 더 많은 메모리와 `CPU`를 가진다.
 ~~~
-TODO 스크린샷
+![Instance Types](https://user-images.githubusercontent.com/97398071/229366224-3b89e0e1-acc2-4e7a-80de-0efc74013529.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 #### 1. EC2 Instance Types – General Purpose
 - Great for a diversity of workloads such as web servers or code repositories 
@@ -255,8 +264,8 @@ Applications performing real-time processing of big unstructured data
 거기다 속도 때문에 쓰는 것이기에 압축 따윈 쓰지 않으며, 데이터에 비해 `RAM` 용량이 넉넉하지 않을 경우 가상메모리를 쓰게 되어 역효과가 일어나기도 한다.
 
 ###### 2. Business intelligence
-비즈니스 인텔리전스(BI)는 조직이 더 나은 의사결정을 내리고, 
-정보를 기반으로 행동을 취하고, 보다 효율적인 비즈니스 프로세스를 구현할 수 있게 해주는 역량을 의미한다. BI 역량을 갖추면 다음과 같은 일들이 가능하다.
+비즈니스 인텔리전스(BI)는 조직이 더 나은 의사결정을 내리고 정보를 기반으로 행동을 취하고 보다 효율적인 비즈니스 프로세스를 구현할 수 있게 해주는 역량을 의미한다. 
+BI 역량을 갖추면 다음과 같은 일들이 가능하다.
 ~~~
 조직 전반의 최신 데이터 수집
 이해하기 쉬운 양식으로 데이터 표시(표, 그래프 등)

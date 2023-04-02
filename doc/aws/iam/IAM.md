@@ -203,6 +203,8 @@
 ~~~
 ![MFA device_1](https://user-images.githubusercontent.com/97398071/228144495-46f70ffd-491f-4cea-9c44-e03ef21fec08.png)
 
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
 ~~~
 3. Hardware Key Fob MFA Device 
 → Provided by Gemalto (3rd party)
@@ -213,6 +215,8 @@
 → 물리적인 키이다. 만약 미국 정부의 클라우드인 AWS GovCloud를 사용하는 경우 필요한 특수한 키 팝이다.
 ~~~
 ![MFA device_2](https://user-images.githubusercontent.com/97398071/228144542-506029f5-6893-49bb-9d08-2d31662a8623.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ###### 1. Set MFA 
 - `My Security Cridential` → `Multi-factor authentification (MFA)` → `Activate MFA`
