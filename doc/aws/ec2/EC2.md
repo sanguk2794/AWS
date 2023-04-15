@@ -185,9 +185,13 @@ Scientific modeling & machine learning → 머신 러닝
 Dedicated gaming servers → 전용 게임 서버 
 ~~~
 
-###### 1. workloads
 ###### 1. Media transcoding
+가장 간단한 용어로 트랜스코딩은 이미 압축된 파일(일반적으로 오디오 또는 비디오)을 다른 파일 형식으로 변환하는 프로세스를 말한다.
+일반적으로 대상 장치가 포맷을 지원하지 않거나 기억 공간이 충분치 않은 경우 또는 비호환 또는 구식 데이터를 현대의 더 양호한 지원을 제공하는 포맷으로 변환하는 경우 사용할 수 있다.
+
 ###### 2. HPC
+`HPC, High Performance Computing`는 동시에 작동하는 강력한 프로세서 클러스터를 사용하여 방대한 다차원 데이터 세트(빅데이터)를 처리하고 복잡한 문제를 초고속으로 해결하는 기술이다.
+HPC 시스템은 일반적으로 가장 빠른 상용 데스크탑, 노트북 또는 서버 시스템보다 백만 배 이상 빠른 속도로 작동한다.
 
 #### 3. EC2 Instance Types – Memory Optimized
 - Fast performance for workloads that process large data sets in memory
