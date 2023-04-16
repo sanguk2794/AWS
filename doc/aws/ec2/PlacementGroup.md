@@ -105,7 +105,7 @@ Scales to 100s of EC2 instances per group (Hadoop, Cassandra, Kafka)
 ![image](https://user-images.githubusercontent.com/97398071/232229116-c20f7369-56ca-4c76-810f-ccfb520e2408.png)
 
 ### 6. Set Placement group of Instance
-- `EC2` → `Instance` → `Launch an instance` → `Details` → `Placement group name`
+- `EC2` → `Instances` → `Launch an instance` → `Details` → `Placement group name`
 → 미리 생성해 둔 배치 그룹 전략 중 하나를 선택할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232228899-71a604b5-a0dc-4aac-b99f-246bda9d8fad.png)

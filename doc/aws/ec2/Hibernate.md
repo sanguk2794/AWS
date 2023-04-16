@@ -33,10 +33,10 @@ The in-memory (RAM) state is preserved → The instance boot is much faster! (th
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 절전 모드를 실행시키면 실행 중인 인스턴스는 중지 상태로 전환되고 `RAM`의 내용은 `EBS Volumn`에 덤프된다.
+- 절전 모드를 실행시키면 실행 중인 인스턴스는 중지 상태로 전환되고 `RAM`의 내용은 `EBS Volume`에 덤프된다.
 그리고 `RAM`은 사라진다. 
 
-- 재기동시 `EBS Volumn`에 덤프했던 `RAM` 정보를 그대로 가져와 인스턴스 메모리로 가져간다.
+- 재기동시 `EBS Volume`에 덤프했던 `RAM` 정보를 그대로 가져와 인스턴스 메모리로 가져간다.
 이렇게 하면 `EC2` 인스턴스를 중지한 적 없는 것 처럼 사용이 가능하다.
 
 - Use cases:
@@ -68,13 +68,13 @@ C3, C4, C5, I3, M3, M4, R3, R4, T2, T3, ...
 - An instance can NOT be hibernated more than 60 day
 → 절전 모드는 최대 60일까지 사용할 수 있다. 이 기간은 이후 정책 변경에 따라 달라질 수 있다.
 
-- `EC2` → `Instance` → `Launch an instance` → `details` → `Stop - Hibernate behavior`
+- `EC2` → `Instances` → `Launch an instance` → `details` → `Stop - Hibernate behavior`
 → 이 설정을 활성화하면 `EC2` 인스턴스를 절전모드로 둘 수 있게 된다. 밑의 경고 문구는 절전 모드를 활성화하는 경우 루트 볼륨에 `RAM`을 저장할 수
 있는 공간이 충분한지, 그리고 루트 `EBS` 볼륨이 암호화되었는지 확인하라고 되어 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232238334-13d347ff-42e0-4363-ac08-57aca50fe81a.png)
 
-- 암호화 설정은 `EC2` → `Instance` → `Launch an instance` → `Configure storage` → `Advanced` → `EBS Volumns` → `Encrypted`에서 가능하다. 
+- 암호화 설정은 `EC2` → `Instances` → `Launch an instance` → `Configure storage` → `Advanced` → `EBS Volume` → `Encrypted`에서 가능하다. 
 
 - 메모리는 스토리지 용량과 메모리 용량을 비교하면 된다.
 

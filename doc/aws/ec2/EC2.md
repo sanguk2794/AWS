@@ -53,7 +53,7 @@ hardware (EC2 Instance Store)
 - Bootstrap script (configure at first launch): EC2 User Data
 
 ### 3. Create EC2 Instance 
-- `EC2` → `Instance` → `Launch an instance`
+- `EC2` → `Instances` → `Launch an instance`
 → 인스턴스 생성을 위한 버튼이다.
 
 ![Create instance button](https://user-images.githubusercontent.com/97398071/229365921-a4eda42b-2682-4006-909d-954faf6c7510.png)
@@ -552,7 +552,7 @@ capacityOptimized: pool with the optimal capacity for the number of instances
 - `EC2` → `Spot Request` → `Request Spot Instance`
 → 스팟 리퀘스트를 생성할 수 있다. 조건에 맞다면 스팟 인스턴스가 생성된다.
 
-- 그냥 스팟 인스턴스를 생성하고자 한다면 `EC2` → `Instance` → `Launch an instance` → `Details`에서 스팟 인스턴스 요청을 체크하고 상세 설정하는 것만으로 충분하다.
+- 그냥 스팟 인스턴스를 생성하고자 한다면 `EC2` → `Instances` → `Launch an instance` → `Details`에서 스팟 인스턴스 요청을 체크하고 상세 설정하는 것만으로 충분하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232196821-a243c105-e43d-4292-9acf-27e3f9198158.png)
 
