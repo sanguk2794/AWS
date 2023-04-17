@@ -33,9 +33,9 @@
 - Support Plan
 → 지원 플랜을 설정한다.
 ~~~
-`Basic Support`
-`Developer Support`
-`Business Support`
+Basic Support
+Developer Support
+Business Support
 ~~~
 
 - 입력이 끝나면 계정의 활성화를 기다린다. 활성화가 처리가 끝나면 이메일이 도착하고, 
