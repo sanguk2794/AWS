@@ -153,7 +153,7 @@
 
 - EC2 Instance Store lose their storage if they’re stopped (ephemeral)
 → `EC2` 인스턴스 스토어를 중지 또는 종료하면 해당 스토리지 또한 손실되어 장기적으로 데이터를 보관할만한 장소가 될 수 없다.
- 이와 같은 이유로 인해 인스턴스 스토어는 임시 스토리지라고도 불린다. 장기 스토리지의 경우에는 `EBS`가 적합하다.
+이와 같은 이유로 인해 인스턴스 스토어는 임시 스토리지라고도 불린다. 장기 스토리지의 경우에는 `EBS`가 적합하다.
 
 - Good for buffer / cache / scratch data / temporary content
 → 버퍼나 캐시, 스크래치 데이터, 임시 컨텐츠 데이터를 보관할 좋은 장소가 될 수는 있다.
@@ -254,6 +254,88 @@ Max throughput 250 MiB/s – max IOPS 250
 ![image](https://user-images.githubusercontent.com/97398071/232329028-f57caa96-21d1-4bc9-b8e9-1d70480e8f49.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+#### 4. EBS Multi-Attach – io1/io2 family
+- Attach the same EBS volume to multiple EC2 instances in the same AZ
+→ `AWS`는 `EBS Volume`의 다중 연결 기능을 제공한다. 하나의 `EBS` 볼륨을 같은 가용 영역에 있는 여러 `EC2` 인스턴스에 연결할 수 있음을 의미한다.
+하지만, 이는 `io1`과 `io2` 제품군에서만 사용할 수 있다.
+
+![image](https://user-images.githubusercontent.com/97398071/232489574-c34fa3c1-ab2a-462b-96d7-aec98015a202.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+- Each instance has full read & write permissions to the high-performance volume
+→ 각 인스턴스는 고성능 볼륨에 대한 읽기 및 쓰기 권한을 전부 가진다.
+
+- Use case:
+~~~
+- Achieve higher application availability in clustered Linux applications (ex: Teradata)
+→ 애플리케이션의 가용성을 높이기 위해 클러스터링된 Linux 애플리케이션에 사용
+
+- Applications must manage concurrent write operations
+→ 애플리케이션이 동시 쓰기 작업을 관리해야 할 때 사용한다. 다중 연결 또한 해당 AZ 내에서만 사용할 수 있다.
+
+- Up to 16 EC2 Instances at a time
+→ 한 번에 16개의 EC2 인스턴스만 같은 볼륨에 연결할 수 있다. 중요하다.
+
+- Must use a file system that’s cluster-aware (not XFS, EX4, etc…)
+→ 다중 연결을 실행하려면 반드시 클러스터 인식 파일 시스템을 사용해야 한다.
+~~~
+
+### 7. EBS Encryption
+- When you create an encrypted EBS volume, you get the following:
+→ `EBS` 볼륨을 생성하면 암호화가 동시다발적으로 일어난다.
+~~~
+- Data at rest is encrypted inside the volume
+→ 저장 데이터가 볼륨 내부에 암호화된다.
+
+- All the data in flight moving between the instance and the volume is encrypted
+→ 인스턴스와 볼륨 간의 전송 데이터 역시 암호화된다.
+
+- All snapshots are encrypted
+→ 스냅샷 또한 암호화된다.
+ 
+- All volumes created from the snapshot
+→ 스냅샷으로 생성한 볼륨 역시 모두 암호화된다.
+~~~
+
+- Encryption and decryption are handled transparently (you have nothing to do)
+→ 이 때의 암호화 및 복호화 매커니즘은 보이지 않게 처리되기에 아무 것도 하지 않아도 괜찮다.
+
+- Encryption has a minimal impact on latency
+→ 암호화는 지연 시간에는 영향이 거의 없다.
+
+- EBS Encryption leverages keys from KMS (AES-256)
+→ `KMS`에서 암호화 키를 생성하며, `AES-256` 암호화 표준을 사용한다.
+
+#### 1. Encryption: encrypt an unencrypted EBS volume
+- `EBS Volume`을 암호화하거나 암호화를 푸는 방법에 대한 내용이다.
+
+- Create an EBS snapshot of the volume
+→ 우선 볼륨의 `EBS` 스냅샷을 생성해야 한다. 암호화되지 않은 `EBS` 볼륨에서 생성한 스냅샷은 암호화되지 않기 때문에 이 스냅샷은 암호화되어 있지 않다.
+
+![image](https://user-images.githubusercontent.com/97398071/232492753-a1137eef-b8b1-428e-8d5b-f544a8fd058e.png)
+
+- Encrypt the EBS snapshot ( using copy )
+→ 복사 기능을 통해 `EBS` 스냅샷을 암호화한다.
+ 
+- Create new ebs volume from the snapshot ( the volume will also be encrypted )
+→ `Snapshots` → `Actions` → `Create volume from snapshot`을 선택하면 암호화된 스냅샷을 이용해 새 `EBS` 볼륨을 생성할 수 있다.
+암호화된 스냅샷을 이용하면 해당 볼륨 또한 암호화된다.
+
+- 그렇다고, 비암호화 스냅샷으로부터 암호화 `EBS` 볼륨을 생성할 수 없는 것은 아니다. 
+- `Snapshots` → `Actions` → `Create volume from snapshot`에서 `Encryption` → `Encrypt this volume`을 체크한 상태로 `EBS` 볼륨을 생성하면
+비암호화 스냅샷으로부터 암호화 `EBS` 볼륨을 생성할 수 있다.
+  
+- Now you can attach the encrypted volume to the original instance
+→ 이 암호화된 볼륨을 인스턴스의 원본에 연결할 수 있다.
+
+
+
+
+
+
+
 
 ---
 #### ▶ Reference

@@ -94,7 +94,7 @@ hardware (EC2 Instance Store)
 - `Storage (volumes)`
 → `Advanced` → `Delete on termination`의 기본값은 `Yes`이다. `EC2` 인스턴스를 종료하면 그 볼륨도 삭제될 것이라는 것을 의미한다.
 ~~~
-`無料利用枠の対象のお客様は、最大 30 GB の EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できます。`
+無料利用枠の対象のお客様は、最大 30 GB の EBS 汎用 (SSD) ストレージまたはマグネティックストレージを取得できます。
 ~~~
 
 ![Set network, storage](https://user-images.githubusercontent.com/97398071/229365917-55574eef-17c9-42f3-b610-926988bf2afc.png)
