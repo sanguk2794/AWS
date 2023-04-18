@@ -1,24 +1,22 @@
 ## AWS
-### What’s AWS?
-- AWS (Amazon Web Service) is a Cloud Provider 
+### 1. What’s AWS?
+- AWS (Amazon Web Service) is a Cloud Provider
 → `AWS`는 클라우드 공급자이다.
 
-- They provide you with servers and services that you can use on demand and scale easily 
+- They provide you with servers and services that you can use on demand and scale easily
 → `AWS`는 쉽게 확장 가능한 서버와 서비스를 제공한다.
 
-- AWS powers some of the biggest websites in the world 
-→ amazon.com, Netflix
+- AWS powers some of the biggest websites in the world → amazon.com, Netflix
 
 - `AWS`는 모든 서비스가 상호 연결되어 있다. (Interconnection)
 
 #### 1. 온디맨드, 온프레미스
 `on-demand`는 「요구가 있을 때 언제든지」라는 의미이며 수요가 있을 경우 즉시 서버와 서비스를 제공하는 방식을 말한다.
 
-이와 반대되는 개념인 `on-premise`는 자체적으로 보유하고 있는 서버에 직접 설치해 운영하는 방식을 말한다.
-클라우드 이전에 가장 일반적으로 사용되던 방식이다.
+이와 반대되는 개념인 `on-premise`는 자체적으로 보유하고 있는 서버에 직접 설치해 운영하는 방식을 말한다. 클라우드 이전에 가장 일반적으로 사용되던 방식이다.
 
 ### 2. User Registration
-- Set Root user email address, Account name
+- Set Root user email address and account name
 → `Root user email address`에는 기본 이메일 주소를, `account name`에는 계정 이름을 입력한다.
 
 - Set Root user password
@@ -38,8 +36,7 @@ Developer Support
 Business Support
 ~~~
 
-- 입력이 끝나면 계정의 활성화를 기다린다. 활성화가 처리가 끝나면 이메일이 도착하고, 
-이후부터 `AWS` 계정을 본격적으로 사용할 수 있게 된다.
+- 입력이 끝나면 계정의 활성화를 기다린다. 활성화 성이메일이 도착하면 `AWS` 계정을 본격적으로 사용할 수 있게 된다.
 
 ### 3. AWS Cloud History
 - Internally launched, 2002
@@ -57,8 +54,7 @@ Business Support
 - Launched in Europe → 2007
 → 유럽에서 서비스를 시작했다.
 
-- 이런 식으로 확장을 거듭해 지금의 `AWS`가 되었다. 
-`AWS`는 `IaaS`의 개척자였으며, 10년 동안 선두를 지키고 있다. 
+- 이런 식으로 확장을 거듭해 지금의 `AWS`가 되었다. `AWS`는 `IaaS`의 개척자였으며, 10년 동안 선두를 지키고 있다. 
 
 ### 4. AWS Cloud Number Facts
 - AWS accounts for 47% of the market in 2019 (Microsoft is 2nd with 22%)
@@ -68,13 +64,11 @@ Business Support
 → `AWS`는 클라우드 시장의 개척자였고 9년동안 선두를 지키고 있다. 
 
 ### 5. AWS Cloud Use Cases
-`AWS`는 거의 모든 경우에 사용이 가능하다.
-
 - AWS enables you to build sophisticated, scalable application
 → 복잡하고 확장 가능한 `Application`을 만드는 데 사용할 수 있다.
 
 - Applicable to a diverse set of industries
-→ 다양한 산업 분야에 적용할 수 있다.
+→ 다양한 산업 분야에 적용할 수 있다. `AWS`는 거의 모든 경우에 사용이 가능하다.
 
 - Use cases include
 ~~~
@@ -107,17 +101,15 @@ Gaming
 - A region is a cluster of data centers
 → 하나의 리전은 데이터센터의 집합이다.
 
-3. Most AWS services are region-scoped
-→ 대부분의 `AWS` 서비스들은 특정 리전에 국한된다. 
-한 리전에서 사용하던 어떤 서비스를 다른 리전에서 사용할 경우 서비스를 처음 사용하는 셈이 된다.
+- Most AWS services are region-scoped
+→ 대부분의 `AWS` 서비스들은 특정 리전에 국한된다. 한 리전에서 사용하던 어떤 서비스를 다른 리전에서 사용할 경우 서비스를 처음 사용하는 셈이 된다.
 
 #### 2. How to choose an AWS Region?
 > If you need to launch a new application, where should you do it?
-
-답은 당연히 상황에 따라 다르다는 것이다. 하지만, 이 선택에 영향을 미칠 수 있는 요소는 역시 존재한다.
+- 답은 당연히 상황에 따라 다르다는 것이다. 하지만, 이 선택에 영향을 미칠 수 있는 요소는 역시 존재한다.
 
 - Compliance with data governance and legal requirements: data never leaves a region without your explicit permission
-→ 서비스를 제공하는 해당 국가의 법률을 준수해야 한다는 것이다. 예를 들어 프랑스 정보는 프랑스 자국 내에 있어야 한다는 제약이 존재할 수 있다.
+→ 서비스를 제공하는 해당 국가의 법률을 준수해야 한다. 예를 들어 프랑스 정보는 프랑스 자국 내에 있어야 한다는 제약이 존재할 수 있다.
 
 - Proximity to customers: reduced latency
 → 사용자와 지리적으로 근접하는지 여부는 지연시간에 큰 영향을 미친다. 대부분의 사용자가 있는 곳과 가까운 리전을 선택하는 것이 좋다.
@@ -130,8 +122,8 @@ Gaming
 
 #### 3. AWS Availability Zones
 - Each region has many availability zones (usually 3, min is 3, max is 6)
-→ 각각의 리전은 최소 3개, 최대 6개의 가용영역을 포함한다. 
-가용영역 또한 각각의 가용영역별로 `ap-southeast-2a`, `ap-southeast-2b`, `ap-southeast-2c`와 같은 고유한 아이디를 가진다.
+→ 각각의 리전은 최소 3개, 최대 6개의 `가용영역, AZ`를 포함한다. 
+`AZ`은 각각의 `AZ`별로 `ap-southeast-2a`, `ap-southeast-2b`, `ap-southeast-2c`와 같은 고유한 아이디를 가진다.
 
 - Each availability zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity.
 → 각각의 가용영역은 여분의 전원 네트워킹, 그리고 통신 기능을 갖춘 하나 또는 그 이상의 데이터센터로 이루어져 있다.
@@ -147,8 +139,7 @@ Gaming
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ###### 1. 대역폭
-대역폭은 일반적으로는 정보를 전송할 수 있는 능력, 즉 주어진 시간에 한 지점에서 다른 지점으로 얼마나 많은 양의 정보를 
-전송할 수 있는지를 뜻한다.
+대역폭은 일반적으로는 정보를 전송할 수 있는 능력, 즉 주어진 시간에 한 지점에서 다른 지점으로 얼마나 많은 양의 정보를 전송할 수 있는지를 뜻한다.
 
 #### 4. AWS Points of Presence (Edge Locations)
 - Amazon has 216 Points of Presence (205 Edge Locations & 11 Regional Caches) in 84 cities across 42 countries

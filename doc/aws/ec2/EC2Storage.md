@@ -330,13 +330,6 @@ Max throughput 250 MiB/s – max IOPS 250
 - Now you can attach the encrypted volume to the original instance
 → 이 암호화된 볼륨을 인스턴스의 원본에 연결할 수 있다.
 
-
-
-
-
-
-
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
