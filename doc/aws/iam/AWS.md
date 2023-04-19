@@ -36,7 +36,7 @@ Developer Support
 Business Support
 ~~~
 
-- 입력이 끝나면 계정의 활성화를 기다린다. 활성화 성이메일이 도착하면 `AWS` 계정을 본격적으로 사용할 수 있게 된다.
+- 입력이 끝나면 계정의 활성화를 기다린다. 활성 이메일이 도착하면 `AWS` 계정을 본격적으로 사용할 수 있게 된다.
 
 ### 3. AWS Cloud History
 - Internally launched, 2002
