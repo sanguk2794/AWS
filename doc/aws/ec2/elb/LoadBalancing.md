@@ -15,13 +15,13 @@
 → 외부에 애플리케이션의 단일 액세스 지점, `DNS`만을 노출하게 된다.
 
 - Do regular health checks to your instances  
-→ 인스턴스의 상태를 확인할 수 있다.
+→ 인스턴스의 상태를 확인한다.
 
 - Seamlessly handle failures of downstream instances  
 → 로드 밸런서를 통해 인스턴스의 장애를 원활하게 처리할 수 있다. 상태 확인 매커니즘을 통해 트래픽을 보낼 수 없는 인스턴스를 확인하고 그쪽으로 트래픽을 보내지 않는 것이다.
 
 - Provide SSL termination (HTTPS) for your websites  
-→ `SSL`의 종료가 가능하므로, 웹 사이트에 암호화된 `HTTPS` 트래픽을 가질 수 있다.
+→ `SSL`의 종료가 가능하므로 웹 사이트에 암호화된 `HTTPS` 트래픽을 가질 수 있다.
 
 - Enforce stickiness with cookies  
 → 쿠키 고정도를 강화할 수 있다. 쿠키 고정도를 강화하면 고정 세션값을 부여함으로써 사용자 경험을 개선하고 네트워크 리소스 사용을 최적화할 수 있다.
@@ -66,16 +66,18 @@
 
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests
 
-- The health check is done on a port and a route (/health is common)  
-→ `Health check`는 포트와 라우트에서 이루어진다.
-
 - If the response is not 200 (OK), then the instance is unhealthy  
 → 로드 밸런서는 `EC2` 인스턴스가 괜찮다는 신호, 즉 `HTTP` 상태 코드가 200이 아니라면 인스턴스의 상태를 `unhealthy`로 기록하고 그쪽으로 트래픽을 보내지 않는다.
 
 ### 5. Types of load balancer on AWS
 - AWS has 4 kinds of managed Load Balancers  
 → `AWS`에는 네 종류의 관리형 로드 밸런서가 있다.
- 
+
+- Overall, it is recommended to use the newer generation load balancers as they provide more features  
+→ 결론부터 보면 더 많은 기능을 가지고 있는 신형 로드 밸런서를 사용하는 것이 권장된다.
+
+- Some load balancers can be setup as internal (private) or external (public) ELBs
+
 #### 1. Classic Load Balancer (v1 - old generation)
 - 2009년에 출시된 로드 밸런서로 `CLB`라고 불린다.
 - `HTTP`, `HTTPS`, `TCP`, `SSL, secure TCP`를 지원한다.
@@ -88,7 +90,7 @@
 → 왜냐하면 포트 매핑 기능이 있어서 `EC2` 인스턴스의 동적 포트로의 리다이렉션이 가능하기 때문이다.
 
 - Application load balancers is Layer 7 (HTTP)  
-→ 7계층, 즉 `HTTP` 전용 로드 밸런서로 `HTTP`, `HTTPS`, `WebSocket` 프로토콜을 지원한다.
+→ 7계층, `HTTP` 전용 로드 밸런서로 `HTTP`, `HTTPS`, `WebSocket` 프로토콜을 지원한다.
 
 - Load balancing to multiple HTTP applications across machines (target groups)  
 → 머신 간 다수 `HTTP` 애플리케이션의 라우팅에 사용된다. 머신들은 `target group`이라는 그룹으로 묶이게 된다.
@@ -130,7 +132,7 @@
 - Lambda functions – HTTP request is translated into a JSON event
 - IP Addresses – must be private IPs
 - ALB can route to multiple target groups
-- Health checks are at the target group level
+- Health checks are at the target group level  
 → 상태 확인은 대상 그룹 레벨에서 이루어진다.
 
 ###### 3. Application Load Balancer (v2) Good to Know
@@ -149,7 +151,7 @@
 - 즉 `ALB`를 사용할 때, `EC2` 인스턴스가 클라이언트의 `IP`를 알기 위해서는 `X-Forwarded-Port`와 `X-Forwarded-Proto`를 확인해야 한다.
 
 ###### 4. Create Application Load Balancer
-- `EC2` → `Load Balancing` → `Load Balancers` → `Create load balancer`로 이동하면 로드 밸런서를 만들 수 있다.
+- `EC2` → `Load Balancing` → `Load Balancers` → `Create load balancer`로 이동하면 로드 밸런서를 생성할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233112486-8363ecc5-b010-45ce-a33a-5e8309c3950e.png)
 
@@ -177,24 +179,79 @@
 ![image](https://user-images.githubusercontent.com/97398071/233117177-cf7db438-2e7d-40a3-9915-cfd70c4f4f15.png)
 
 ###### 5. Port mapping
-포트 포워딩(port forwarding) 또는 포트 매핑(port mapping)은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 네트워크 게이트웨이를 가로지르는 동안 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환(NAT)의 응용이다.
+`port forwarding`이라고도 불리는 `port mapping`은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 
+네트워크 게이트웨이를 가로지르는 동안 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환(NAT)의 응용이다.
 
-이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
+이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 
+통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
 
 #### 3. Network Load Balancer (v2 - new generation)
-- 2017년도에 출시된 로드 밸런서로 `NLB`라고 불린다.
-- `TCP`, `TLS, secure TCP`, `UDP` 프로토콜을 지원한다.
+- 2017년도에 출시된 로드 밸런서로 `NLB`라고 불린다. `L4` 로드 밸런서이므로 `TCP`와 `UDP` 트래픽을 다룬다.
+`TCP`와 `UDP`, `TLS, secure TCP` 프로토콜을 지원한다.
+
 - 초고성능 환경을 구성할 때 사용한다. 지연 시간을 최소로 유지하면서 초당 수백만 건의 요청을 처리하는 것이다.
+
+- NLB has one static IP per AZ, and supports assigning Elastic IP (helpful for whitelisting specific IP)  
+→ `AZ`별로 하나의 고정 `IP`를 가진다. 탄력적 `IP` 주소를 각 `AZ`에 할당할 수 있으며, 여러 개의 고정 `IP`를 가진 애플리케이션을 노출할 때 유리하다.
+1 ~ 3개의 `IP`로만 액세스할 수 있는 애플리케이션을 만드는 경우 네트워크 로드 밸런서를 옵션으로 고려하는게 좋다.
+
+![image](https://user-images.githubusercontent.com/97398071/233411894-ca5da75b-f2e5-4451-ad34-ba66d51996ef.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+- NLB are used for extreme performance, TCP or UDP traffic  
+→ 고성능, `TCP`, `UDP`, `정적 IP`가 나오면 네트워크 로드 밸런스를 고려하는 것이 좋다.
+
+- Not included in the AWS free tier  
+→ 네트워크 로드 밸런서는 `AWS`의 프리티어에 포함되지 않는다.
+
+###### 1. Network Load Balancer – Target Groups
+- EC2 instances
+- IP Addresses – must be private IPs  
+→ `IP Adress`는 하드코딩되어야 하며, `private IP`만 허용된다.
+
+- Application Load Balancer  
+→ `Application Load Balancer` 앞에서 사용할 수 있다. 
+
+- `NLB`, `ALB`를 함께 사용한다면 `NLB`를 통해 고정 `IP` 주소를 얻을 수 있고 `ALB`를 통해 `HTTP` 유형의 트래픽을 처리하는 규칙을 얻을 수 있다.
+
+- Health Checks support the TCP, HTTP and HTTPS Protocols  
+→ 대상 그룹이 수행하는 상태 확인시 `TCP`, `HTTP`, `HTTPS`의 세 가지 프로토콜을 지원한다.
+  
+- 네트워크 로드 밸런서에서는 밸런서의 보안 그룹을 정의하지 않는다. 네트워크 로드 밸런서로 들어온 모든 트래픽이 곧장 `EC2` 인스턴스로 들어간다.
+들어온 트래픽을 허용할 것인지 아닌지는 `EC2` 인스턴스의 보안 그룹을 통해 결정된다.
 
 #### 4. Gateway Load Balancer
 - 2020년도에 출시된 로드 밸런서로 `GWLB`라고 불린다. 보안, 침입 방지, 방화벽 등에 특화되어 있다.
-- Operates at layer 3 (Network layer) – IP Protocol
-→ 3계층과 `IP` 프로토콜에서 작동한다.
 
-- Overall, it is recommended to use the newer generation load balancers as they provide more features  
-→ 결론적으로, 더 많은 기능을 가지고 있는 신형 로드 밸런서를 사용하는 것이 권장된다.
+- Deploy, scale, and manage a fleet of 3rd party network virtual appliances in AWS  
+→ 배포 및 확장과 `AWS`의 타사 네트워크 가상 어플라이언스의 플릿 관리에 사용된다.
 
-- Some load balancers can be setup as internal (private) or external (public) ELBs
+![image](https://user-images.githubusercontent.com/97398071/233411690-07fc2535-cadd-4a65-a81a-03d8bd173e8c.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+- Operates at layer 3 (Network layer) – IP Protocol  
+→ 3계층인 `IP` 프로토콜에서 작동한다.
+
+- Combines the following functions:
+~~~
+- Transparent Network Gateway – single entry/exit for all traffic
+→ 네트워크 게이트웨이 역할을 수행한다. VCP의 모든 트래픽이 GWLB가 되는 단일 엔트리와 출구를 통과하기 때문이다.
+
+- Load Balancer – distributes traffic to your virtual
+→ 대상 그룹의 가상 어플라이언스 집합에 그 트래픽을 분산하는 로드 밸런서 역할을 수행한다.
+~~~
+
+- Uses the GENEVE protocol on port 6081  
+→ `GWLB`는 6081번 포트의 `GENEVE` 프로토콜을 사용한다.
+
+###### 1. Gateway Load Balancer – Target Groups
+- EC2 instances
+- IP Addresses – must be private IPs
+
+###### 2. 어플라이언스
+`Appliance`는 기기, 장치등의 의미이다. 하지만, 이 단어를 `IT` 용어로 사용할 때에는 기능이나 용도에 특화된 기기나 장치를 가리킵니다.
 
 ### 7. Load Balancer Security Groups
 - 유저는 `HTTP` 또는 `HTTPS`를 사용해 어디서든 로드 밸런서에 접근이 가능하다. 따라서 로드밸런서는 다음과 같은 보안 그룹 규칙을 가진다.
@@ -204,8 +261,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - 여기에서 `EC2` 인스턴스는 로드 밸런서를 통해 들어오는 트래픽만을 허용해야 하기 때문에 인스턴스는 다음과 같은 보안 규칙을 가진다.  
-→ 소스가 `IP` 범위가 아닌 로드 밸런서의 보안 그룹이 된다는 것이 중요하다. 
-이렇게 함으로써 `EC2` 인스턴스는 로드 밸런서에서 온 트래픽만을 허용하는 강화된 보안 매커니즘을 실현할 수 있게 된다.
+→ 소스가 `IP` 범위가 아닌 로드 밸런서의 보안 그룹이 된다는 것이 중요하다. 이렇게 함으로써 `EC2` 인스턴스는 로드 밸런서에서 온 트래픽만을 허용하는 강화된 보안 매커니즘을 실현할 수 있게 된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233097202-fe1b0364-b493-45bc-b0f3-bf325cd10ebd.png)
 
