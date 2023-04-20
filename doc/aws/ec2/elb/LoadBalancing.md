@@ -1,58 +1,57 @@
 ## load balancing
 ### 1. What is load balancing?
-- Load Balances are servers that forward traffic to multiple servers (e.g., EC2 instances) downstream
-→ 서버 또는 서버셋으로 트래픽을 백엔드나 다운스트림 `EC2` 인스턴스 또는 서버들로 전달하는 역할을 한다.
-로드 밸런서를 통해 `EC2` 인스턴스로 가는 부하를 분산시킬 수 있다.
+- Load Balances are servers that forward traffic to multiple servers (e.g., EC2 instances) downstream  
+→ 서버 또는 서버셋으로 트래픽을 백엔드나 다운스트림 `EC2` 인스턴스 또는 서버들로 전달하는 역할을 한다. 로드 밸런서를 통해 `EC2` 인스턴스로 가는 부하를 분산시킬 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233083545-0eafa2b5-5773-446e-b42d-d37a8211b47d.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 2.Why use a load balancer? 
-- Spread load across multiple downstream instances
+- Spread load across multiple downstream instances  
 → 부하를 다수의 다운스트림 인스턴스로 분산할 수 있다.
 
-- Expose a single point of access (DNS) to your application
-→ 애플리케이션에 단일 액세스 지점, `DNS`만을 노출하게 된다.
+- Expose a single point of access (DNS) to your application  
+→ 외부에 애플리케이션의 단일 액세스 지점, `DNS`만을 노출하게 된다.
 
-- Seamlessly handle failures of downstream instances
-→ 다운스트림 인스턴스의 장애를 원활하게 처리할 수 있다.
-로드 밸런서가 상태 확인 매커니즘으로 어떤 인스턴스로 트래픽을 보낼 수 없는지 확인해 주기 때문이다.
-
-- Do regular health checks to your instances
+- Do regular health checks to your instances  
 → 인스턴스의 상태를 확인할 수 있다.
 
-- Provide SSL termination (HTTPS) for your websites
-→ `SSL` 종료가 가능하므로, 웹 사이트에 암호화된 `HTTPS` 트래픽을 가질 수 있따.
+- Seamlessly handle failures of downstream instances  
+→ 로드 밸런서를 통해 인스턴스의 장애를 원활하게 처리할 수 있다. 상태 확인 매커니즘을 통해 트래픽을 보낼 수 없는 인스턴스를 확인하고 그쪽으로 트래픽을 보내지 않는 것이다.
 
-- Enforce stickiness with cookies
-→ 쿠키로 고정도를 강화할 수 있다.
+- Provide SSL termination (HTTPS) for your websites  
+→ `SSL`의 종료가 가능하므로, 웹 사이트에 암호화된 `HTTPS` 트래픽을 가질 수 있다.
 
-- High availability across zones
+- Enforce stickiness with cookies  
+→ 쿠키 고정도를 강화할 수 있다. 쿠키 고정도를 강화하면 고정 세션값을 부여함으로써 사용자 경험을 개선하고 네트워크 리소스 사용을 최적화할 수 있다.
+`HTTP/S`는 세션 지속성을 염두에 두고 고안되지 않은 상태 비저장 프로토콜이므로 이는 매우 유용하게 사용된다.
+
+- High availability across zones  
 → 고가용성을 지닌다.
 
-- Separate public traffic from private traffic
-→ 클라우드 내에서 개인 트래픽과 공공 트래픽을 분리할 수 있다.
+- Separate public traffic from private traffic  
+→ 클라우드 내의 개인 트래픽과 공공 트래픽을 분리할 수 있다.
 
 ### 3. Why use an Elastic Load Balancer?
-- An Elastic Load Balancer is a managed load balancer
+- An Elastic Load Balancer is a managed load balancer  
 → 엘라스틱 로드 밸런서는 관리형 로드 밸런서이다. 
 ~~~
-- AWS guarantees that it will be working
+- AWS guarantees that it will be working  
 → AWS가 관리하며 어떤 경우에도 작동할 것을 보장하며
 
-- AWS takes care of upgrades, maintenance, high availability
+- AWS takes care of upgrades, maintenance, high availability  
 → AWS가 업그레이드 유지 관리 및 고가용성을 책임지고
 
-- AWS provides only a few configuration knobs
+- AWS provides only a few configuration knobs  
 → AWS가 로드 밸런서의 작동 방식을 수정할 수 있게끔 구성 놉을 제공해 준다.
 ~~~
 
-- It costs less to setup your own load balancer but it will be a lot more effort on your end
-→ 엘라스틱 로드 밸런서는 무조건 쓰는 편이 좋다. 자체 로드 밸런서를 마련하는 것보다 저렴하고, 자체 로드 밸런서를 직접
-관리하려면 확장성 측면에서 굉장히 번거롭기 때문이다.
+- It costs less to setup your own load balancer but it will be a lot more effort on your end  
+→ 엘라스틱 로드 밸런서는 무조건 사용하는 것이 추전된다. 
+자체 로드 밸런서를 마련하는 것보다 저렴하며, 굉장히 번거로운 확장성 측면에서의 로드 밸런서 관리를 `AWS`가 보장해주기 때문이다.
 
-- It is integrated with many AWS offerings / services
+- It is integrated with many AWS offerings / services  
 → 로드 밸런서는 다수의 `AWS` 서비스들과 통합되어 있다.
 ~~~
 - EC2, EC2 Auto Scaling Groups, Amazon ECS
@@ -61,22 +60,20 @@
 ~~~
 
 ### 4. Health Checks
-- Health Checks are crucial for Load Balancers
-→ `Health check`는 엘라스틱 로드 밸런서가 `EC2` 인스턴스의 작동이 올바르게 되고 있는지 확인할 때 사용되며,
-이 `Health check`는 로드 밸런스의 작동에 매우 중요한 역할을 한다.
-만약 제대로 작동하는 중이 아니라면 해당 인스턴스로는 트래픽을 보낼 수 없기 때문이다.
+- Health Checks are crucial for Load Balancers  
+→ `Health check`는 엘라스틱 로드 밸런서가 `EC2` 인스턴스의 작동이 올바르게 되고 있는지 확인할 때 사용되며, 이 `Health check`는 로드 밸런스의 작동에 매우 중요한 역할을 한다.
+인스턴스가 제대로 작동하는 중이 아니라면 해당 인스턴스로는 트래픽을 보낼 수 없기 때문이다.
 
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests
 
-- The health check is done on a port and a route (/health is common)
+- The health check is done on a port and a route (/health is common)  
 → `Health check`는 포트와 라우트에서 이루어진다.
 
-- If the response is not 200 (OK), then the instance is unhealthy
-→ `EC2` 인스턴스가 괜찮다는 신호, 즉 `HTTP` 상태 코드가 200이 아니라면 인스턴스의 상태를 `unhealthy`로 기록하고
-그쪽으로 트래픽을 보내지 않게 된다.
+- If the response is not 200 (OK), then the instance is unhealthy  
+→ 로드 밸런서는 `EC2` 인스턴스가 괜찮다는 신호, 즉 `HTTP` 상태 코드가 200이 아니라면 인스턴스의 상태를 `unhealthy`로 기록하고 그쪽으로 트래픽을 보내지 않는다.
 
 ### 5. Types of load balancer on AWS
-- AWS has 4 kinds of managed Load Balancers
+- AWS has 4 kinds of managed Load Balancers  
 → `AWS`에는 네 종류의 관리형 로드 밸런서가 있다.
  
 #### 1. Classic Load Balancer (v1 - old generation)
@@ -87,22 +84,22 @@
 #### 2. Application Load Balancer (v2 - new generation)
 - 2016년도에 출시된 로드 밸런서로 `ALB`라고 불린다. 마이크로 서비스나 컨테이너 기반 애플리케이션에 가장 좋은 로드 밸런서로 도커와 `Amazon ECS`에 가장 적합하다.
 
-- Has a port mapping feature to redirect to a dynamic port in ECS
+- Has a port mapping feature to redirect to a dynamic port in ECS  
 → 왜냐하면 포트 매핑 기능이 있어서 `EC2` 인스턴스의 동적 포트로의 리다이렉션이 가능하기 때문이다.
 
-- Application load balancers is Layer 7 (HTTP)
+- Application load balancers is Layer 7 (HTTP)  
 → 7계층, 즉 `HTTP` 전용 로드 밸런서로 `HTTP`, `HTTPS`, `WebSocket` 프로토콜을 지원한다.
 
-- Load balancing to multiple HTTP applications across machines (target groups)
+- Load balancing to multiple HTTP applications across machines (target groups)  
 → 머신 간 다수 `HTTP` 애플리케이션의 라우팅에 사용된다. 머신들은 `target group`이라는 그룹으로 묶이게 된다.
 
-- Load balancing to multiple applications on the same machine (ex: containers)
+- Load balancing to multiple applications on the same machine (ex: containers)  
 → 동일 `EC2` 인스턴스 상의 여러 애플리케이션에 부하를 분산한다. 이를 위해 컨테이너와 `ECS`를 사용한다.
 
-- Support redirects (from HTTP to HTTPS for example)
+- Support redirects (from HTTP to HTTPS for example)  
 → 리다이렉트를 지원한다. `HTTP`에서 `HTTPS`로 트래픽을 자동 리다이렉트할 때 로드 밸런서 레벨에서 가능하다.
 
-- Routing tables to different target groups:
+- Routing tables to different target groups:  
 → 경로 라우팅을 지원한다.
 ~~~
 - Routing based on path in URL (example.com/users & example.com/posts)
@@ -137,16 +134,16 @@
 → 상태 확인은 대상 그룹 레벨에서 이루어진다.
 
 ###### 3. Application Load Balancer (v2) Good to Know
-- Fixed hostname (XXX.region.elb.amazonaws.com)
+- Fixed hostname (XXX.region.elb.amazonaws.com)  
 → `ALB`를 사용할 경우 고정 호스트 이름이 부여된다.
 
-- The application servers don’t see the IP of the client directly
+- The application servers don’t see the IP of the client directly  
 → 애플리케이션 서버는 클라이언트의 `IP`를 직접 보는 것이 불가능하다.
 
-- The true IP of the client is inserted in the header X-Forwarded-For
+- The true IP of the client is inserted in the header X-Forwarded-For  
 → 클라이언트의 실제 `IP`는 `X-Forwarded-For`라고 불리는 헤더에 삽입된다.
 
-- We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)
+- We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)  
 → 클라이언트의 실제 `Port`는 `X-Forwarded-Port`라고 불리는 헤더에 삽입되며, 프로토콜은 `X-Forwarded-Proto`라고 불리는 헤더에 삽입된다.
 
 - 즉 `ALB`를 사용할 때, `EC2` 인스턴스가 클라이언트의 `IP`를 알기 위해서는 `X-Forwarded-Port`와 `X-Forwarded-Proto`를 확인해야 한다.
@@ -179,6 +176,11 @@
 - `Target group`을 생성할 때, 인스턴스 뿐만 아니라 `IP addresses`, `Lambda function` 등을 선택하는 것도 가능하다.
 ![image](https://user-images.githubusercontent.com/97398071/233117177-cf7db438-2e7d-40a3-9915-cfd70c4f4f15.png)
 
+###### 5. Port mapping
+포트 포워딩(port forwarding) 또는 포트 매핑(port mapping)은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 네트워크 게이트웨이를 가로지르는 동안 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환(NAT)의 응용이다.
+
+이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
+
 #### 3. Network Load Balancer (v2 - new generation)
 - 2017년도에 출시된 로드 밸런서로 `NLB`라고 불린다.
 - `TCP`, `TLS, secure TCP`, `UDP` 프로토콜을 지원한다.
@@ -189,14 +191,10 @@
 - Operates at layer 3 (Network layer) – IP Protocol
 → 3계층과 `IP` 프로토콜에서 작동한다.
 
-- Overall, it is recommended to use the newer generation load balancers as they provide more features
+- Overall, it is recommended to use the newer generation load balancers as they provide more features  
 → 결론적으로, 더 많은 기능을 가지고 있는 신형 로드 밸런서를 사용하는 것이 권장된다.
 
 - Some load balancers can be setup as internal (private) or external (public) ELBs
-
-
-
-
 
 ### 7. Load Balancer Security Groups
 - 유저는 `HTTP` 또는 `HTTPS`를 사용해 어디서든 로드 밸런서에 접근이 가능하다. 따라서 로드밸런서는 다음과 같은 보안 그룹 규칙을 가진다.
@@ -205,7 +203,7 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 여기에서 `EC2` 인스턴스는 로드 밸런서를 통해 들어오는 트래픽만을 허용해야 하기 때문에 다음과 같은 보안 규칙을 가진다.
+- 여기에서 `EC2` 인스턴스는 로드 밸런서를 통해 들어오는 트래픽만을 허용해야 하기 때문에 인스턴스는 다음과 같은 보안 규칙을 가진다.  
 → 소스가 `IP` 범위가 아닌 로드 밸런서의 보안 그룹이 된다는 것이 중요하다. 
 이렇게 함으로써 `EC2` 인스턴스는 로드 밸런서에서 온 트래픽만을 허용하는 강화된 보안 매커니즘을 실현할 수 있게 된다.
 
@@ -213,9 +211,9 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-
 ---
 #### ▶ Reference
+- [Sticky Session](https://www.imperva.com/learn/availability/sticky-session-persistence-and-cookies/)
 - [라우팅이란 무엇입니까?](https://aws.amazon.com/ko/what-is/routing/)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---
