@@ -12,10 +12,11 @@
 → 부하를 다수의 다운스트림 인스턴스로 분산할 수 있다.
 
 - Expose a single point of access (DNS) to your application  
-→ 외부에 애플리케이션의 단일 액세스 지점, `DNS`만을 노출하게 된다.
+→ 외부에 애플리케이션의 단일 액세스 지점, `DNS`만을 노출하게 된다. 
+- `AWS`에서 관리하는 기반 인프라가 변경되더라도 별도의 설정 변경 없이 로드밸런서를 통해 접속 가능하다.
 
 - Do regular health checks to your instances  
-→ 인스턴스의 상태를 확인한다.
+→ 인스턴스의 상태를 확인한다. EC2 인스턴스가 `ALB`의 상태 확인에 실패할 경우, 이는 비정상인 것으로 표시되어 종료되며 `ASG`는 새로운 `EC2` 인스턴스를 생성한다.
 
 - Seamlessly handle failures of downstream instances  
 → 로드 밸런서를 통해 인스턴스의 장애를 원활하게 처리할 수 있다. 상태 확인 매커니즘을 통해 트래픽을 보낼 수 없는 인스턴스를 확인하고 그쪽으로 트래픽을 보내지 않는 것이다.
@@ -101,8 +102,13 @@
 - Support redirects (from HTTP to HTTPS for example)  
 → 리다이렉트를 지원한다. `HTTP`에서 `HTTPS`로 트래픽을 자동 리다이렉트할 때 로드 밸런서 레벨에서 가능하다.
 
+- 한 웹 사이트가 애플리케이션 로드 밸런서 뒤에 있는 오토 스케일링 그룹의 EC2 인스턴스에서 호스팅되고 있습니다.
+현재 `HTTP`로 서비스 중인 웹 사이트를 `HTTPS`로 바꾸는 작업을 진행하고 있습니다. `ACM` 인증서를 발급받아 애플리케이션 로드 밸런서에 적용한 상태입니다.
+사용자들이 `HTTP`가 아닌 `HTTPS`를 사용해 웹 사이트에 접속하게 하려면 어떻게 해야 합니까?  
+→ 애플리케이션 로드 밸런서가 `HTTP`를 `HTTPS`로 리디렉션하도록 설정한다.
+
 - Routing tables to different target groups:  
-→ 경로 라우팅을 지원한다.
+→ 경로 라우팅을 지원한다. 이를 통해 트래픽을 다른 대상 그룹으로 라우팅할 수 있다.
 ~~~
 - Routing based on path in URL (example.com/users & example.com/posts)
 → URL 대상 경로에 기반한 라우팅이 가능하다.
@@ -134,6 +140,8 @@
 - ALB can route to multiple target groups
 - Health checks are at the target group level  
 → 상태 확인은 대상 그룹 레벨에서 이루어진다.
+
+- `ELB`는 포함되지 않는다.
 
 ###### 3. Application Load Balancer (v2) Good to Know
 - Fixed hostname (XXX.region.elb.amazonaws.com)  
@@ -200,7 +208,11 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - NLB are used for extreme performance, TCP or UDP traffic  
-→ 고성능, `TCP`, `UDP`, `정적 IP`가 나오면 네트워크 로드 밸런스를 고려하는 것이 좋다.
+→ 고성능, `TCP`, `UDP`, `정적 IP`가 나오면 네트워크 로드 밸런스를 고려하는 것이 좋다. 
+
+- 규정 준수를 위해, `고정된 정적 IP 주소`를 최종 사용자에게 노출하여 사용자들이 안정적이고, 규제 기관의 승인을 받은 방화벽 규칙을 작성할 수 있도록 하려 합니다.
+이런 경우, 다음 중 어떤 종류의 `Elastic Load Balancer`를 사용해야 할까요?  
+→ `NLB`
 
 - Not included in the AWS free tier  
 → 네트워크 로드 밸런서는 `AWS`의 프리티어에 포함되지 않는다.
@@ -216,7 +228,7 @@
 - `NLB`, `ALB`를 함께 사용한다면 `NLB`를 통해 고정 `IP` 주소를 얻을 수 있고 `ALB`를 통해 `HTTP` 유형의 트래픽을 처리하는 규칙을 얻을 수 있다.
 
 - Health Checks support the TCP, HTTP and HTTPS Protocols  
-→ 대상 그룹이 수행하는 상태 확인시 `TCP`, `HTTP`, `HTTPS`의 세 가지 프로토콜을 지원한다.
+→ 대상 그룹이 수행하는 상태 확인시 `TCP`뿐만 아니라 `HTTP`, `HTTPS`를 포함한 세 가지 프로토콜을 지원한다.
   
 - 네트워크 로드 밸런서에서는 밸런서의 보안 그룹을 정의하지 않는다. 네트워크 로드 밸런서로 들어온 모든 트래픽이 곧장 `EC2` 인스턴스로 들어간다.
 들어온 트래픽을 허용할 것인지 아닌지는 `EC2` 인스턴스의 보안 그룹을 통해 결정된다.
