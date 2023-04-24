@@ -21,7 +21,9 @@
 - Network Load Balancer & Gateway Load Balancer - Disabled by default, You pay charges ($) for inter AZ data if enabled  
 → `NLB`, `GWLB`는 교차 영역 로드 밸런싱이 기본적으로 비활성화되어 있으며, 활성화하려면 비용을 지불해야 한다.
 
-• Classic Load Balancer • Disabled by default • No charges for inter AZ data if enabled  
+- Classic Load Balancer 
+- Disabled by default 
+- No charges for inter AZ data if enabled  
 → `CLB`는 교차 영역 로드 밸런싱이 기본적으로 비활성화되어 있으나, 활성화 시 비용이 들지 않는다.
 
 - `EC2` → `Elastic Block Store` → `Load Balancer` → 대상 로드 밸런서를 클릭 → `Attributes`에서 `Cross-zone load balancing` 활성 여부를 확인할 수 있다.

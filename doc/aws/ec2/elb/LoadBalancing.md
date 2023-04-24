@@ -36,7 +36,7 @@
 
 ### 3. Why use an Elastic Load Balancer?
 - An Elastic Load Balancer is a managed load balancer  
-→ 엘라스틱 로드 밸런서는 관리형 로드 밸런서이다. 
+→ 일래스틱 로드 밸런서는 관리형 로드 밸런서이다. 
 ~~~
 - AWS guarantees that it will be working  
 → AWS가 관리하며 어떤 경우에도 작동할 것을 보장하며
@@ -49,7 +49,7 @@
 ~~~
 
 - It costs less to setup your own load balancer but it will be a lot more effort on your end  
-→ 엘라스틱 로드 밸런서는 무조건 사용하는 것이 추전된다. 
+→ 일래스틱 로드 밸런서는 무조건 사용하는 것이 추전된다. 
 자체 로드 밸런서를 마련하는 것보다 저렴하며, 굉장히 번거로운 확장성 측면에서의 로드 밸런서 관리를 `AWS`가 보장해주기 때문이다.
 
 - It is integrated with many AWS offerings / services  
@@ -62,7 +62,7 @@
 
 ### 4. Health Checks
 - Health Checks are crucial for Load Balancers  
-→ `Health check`는 엘라스틱 로드 밸런서가 `EC2` 인스턴스의 작동이 올바르게 되고 있는지 확인할 때 사용되며, 이 `Health check`는 로드 밸런스의 작동에 매우 중요한 역할을 한다.
+→ `Health check`는 일래스틱 로드 밸런서가 `EC2` 인스턴스의 작동이 올바르게 되고 있는지 확인할 때 사용되며, 이 `Health check`는 로드 밸런스의 작동에 매우 중요한 역할을 한다.
 인스턴스가 제대로 작동하는 중이 아니라면 해당 인스턴스로는 트래픽을 보낼 수 없기 때문이다.
 
 - They enable the load balancer to know if instances it forwards traffic to are available to reply to requests
