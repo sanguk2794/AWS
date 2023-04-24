@@ -1,7 +1,7 @@
 ## EFS
 ### 1. Amazon EFS – Elastic File System
 - Managed NFS (network file system) that can be mounted on many EC2
-→ 엘라스틱 파일 시스템은 관리형 `NFS`이다. 즉, 네트워크 파일 시스템이다. 네트워크 파일 시스템이므로 여러 `EC2` 인스턴스에 마운트될 수 있다.
+→ 일래스틱 파일 시스템은 관리형 `NFS`이다. 즉, 네트워크 파일 시스템이다. 네트워크 파일 시스템이므로 여러 `EC2` 인스턴스에 마운트될 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232503495-111c69e3-65a0-4258-8625-e2f8508b8636.png)
 
