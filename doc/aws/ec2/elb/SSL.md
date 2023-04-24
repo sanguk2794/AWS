@@ -43,18 +43,18 @@
 → 원할 경우 가지고 있는 인증서를 `ACM`에 업로드할 수 있다.
 
 - HTTPS listener:
-→ `HTTP` 리스너를 구성할 때 반드시 `HTTPS` 리스너로 해야 한다.
+→ `HTTP` 리스너를 구성할 때에는 반드시 `HTTPS` 리스너를 설정해야 한다.
 ~~~
-- You must specify a default certificate
+- You must specify a default certificate  
 → 기본 인증서를 지정해주어야 한다. 
 
-- You can add an optional list of certs to support multiple domains
+- You can add an optional list of certs to support multiple domains  
 → 다중 도메인을 지원하기 위해 다른 인증서를 추가할 수도 있다.
 
-- Clients can use SNI (Server Name Indication) to specify the hostname they reach
+- Clients can use SNI (Server Name Indication) to specify the hostname they reach  
 → 클라이언트는 `SNI, Server Name Indication`라는 것을 사용해 접속할 호스트의 이름을 알릴 수 있다.
 
-- Ability to specify a security policy to support older versions of SSL / TLS (legacy clients)
+- Ability to specify a security policy to support older versions of SSL / TLS (legacy clients)  
 → 원하는 대로 보안 정책을 지정할 수 있다. 구 버전의 `SSL`과 `TLS`, 즉 레거시 클라이언트를 지원할 수도 있다.
 ~~~
  
@@ -63,25 +63,25 @@
 → `SNI`는 여러 개의 `SSL` 인증서를 하나의 웹 서버에 로드해 하나의 웹 서버가 여러 개의 웹 사이트를 지원할 수 있게 해 준다.
 
 - It’s a “newer” protocol, and requires the client to indicate the hostname of the target server in the initial SSL handshake  
-→ `SNI`는 확장된 프로토콜로, 클라이언트가 대상 서버의 호스트 이름을 지정하도록 한다. 이는 최초의 `SSL handshake` 단계이다.
+→ `SNI`는 확장된 프로토콜로 클라이언트가 대상 서버의 호스트 이름을 지정하도록 한다. 이는 최초의 `SSL handshake` 단계이다.
 
 - The server will then find the correct certificate, or return the default one  
 → 확장된 프로토콜로 새로 추가된 기능이기 때문에 모든 클라이언트가 지원하지는 않는다.
  
 - Only works for ALB & NLB (newer generation), CloudFront, Does not work for CLB (older gen)  
-→ 오직 `ALB`, `NLB`, `CloudFront`에서만 동작한다. `CLB`에서는 동작하지 않는다. 
-그렇기에 어떤 로드 밸런서에 `SSL` 인증서가 여러개라면 `ALB`와 `NLB`, 둘 중 하나이다.
+→ `ALB`, `NLB`, `CloudFront`에서만 동작한다. `CLB`에서는 동작하지 않는다. 
+그렇기에 어떤 로드 밸런서에 `SSL` 인증서가 여러개라면 `ALB`와 `NLB` 중 하나이다.
 
 #### 4. Elastic Load Balancers – SSL Certificates
 - `ELB`의 종류별로 `SSL` 지원이 다르다.
-- Classic Load Balancer (v1)
+- Classic Load Balancer (v1)  
 → 지원하기는 하지만, `SSL` 인증서를 하나만 둘 수 있다.
 ~~~
 - Support only one SSL certificate
 - Must use multiple CLB for multiple hostname with multiple SSL certificates
 ~~~
 
-- Application Load Balancer, Network Load Balancer (v2)
+- Application Load Balancer, Network Load Balancer (v2)  
 → 여러 개의 `SSL` 인증서를 두고 리스너를 여러 개 지원할 수 있다. 인증서를 여러 개 지원하기 위해서는 `SNI`를 사용해야 한다.
 ~~~
 - Supports multiple listeners with multiple SSL certificates
