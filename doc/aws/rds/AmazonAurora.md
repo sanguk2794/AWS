@@ -1,5 +1,5 @@
 ## Amazon Aurora
-### 1. Amazon Aurora = 자주 출제
+### 1. Amazon Aurora = 자주 출제된다.
 - Aurora is a proprietary technology from AWS (not open sourced)  
 → `AWS` 고유의 기술이다. 오픈 소스는 아니지만 `postgres` 및 `MySQL`과 호환되도록 만들어졌다. `postgres Edition`과 `MySQL Edition`, 두 가지 에디션이 존재한다.
 
@@ -7,7 +7,7 @@
 → `Aurora` 데이터베이스에 호환 가능한 드라이버가 있는데 `Postgres` 및 `MySQL` 데이터베이스에 연결하면 작동함을 의미한다.
 
 - Aurora is “AWS cloud optimized” and claims 5x performance improvement over MySQL on RDS, over 3x the performance of Postgres on RDS  
-→ 클라우드에 최적화되어 있고 여러 가지 똑똑한 최적화를 통해 `RDS`의 `MySQL`보다 5배, `Postgres`보다 3배 높은 성능을 보여준다.
+→ 클라우드에 최적화되어 있다. 이외에도 여러 최적화를 통해 `RDS`의 `MySQL`보다 5배, `Postgres`보다 3배 높은 성능을 보여준다.
 단순 성능 뿐 아니라 다양한 개선점들이 존재한다.
 
 - Aurora storage automatically grows in increments of 10GB, up to 128 TB.  
@@ -17,18 +17,18 @@
 → 읽기 전용 복제본의 경우 15개까지 만들 수 있다. `MySQL`에서는 5개만 가능했었다. 복제 속도도 훨씬 빠르다.
 
 - Failover in Aurora is instantaneous. It’s HA (High Availability) native.  
-→ `Aurora`의 장애 조치는 즉각적이다. 따라서 다중 `AZ`보다 훨씬 빠르다. 그리고 기본적으로 클라우드 네이티브이므로 가용성이 높다.
+→ `Aurora`의 장애 조치는 즉각적이기에 다중 `AZ`보다 훨씬 빠르다. 그리고 기본적으로 클라우드 네이티브이므로 가용성이 높다.
  
 - Aurora costs more than RDS (20% more) – but is more efficient  
-→ 비용은 `RDS`에 비해 약 20% 정도 높지만 스케일링 측면에서는 훨씬 더 효율적이다. 따라서 오히려 비용을 절감할 수 있다.
+→ 비용은 `RDS`에 비해 약 20% 정도 높지만 스케일링 측면에서는 훨씬 더 효율적이다. 어떤 상황에서는 오히려 비용을 절감할 수도 있다.
 
-- `Aurora` 인스턴스를 삭제할 때는 `Reader` 인스턴스 → `Writer` 인스턴스 → 클러스터 전체 순으로 삭제를 진행해야 한다.
+- `Aurora` 인스턴스를 삭제할 때는 `Reader` 인스턴스 → `Writer` 인스턴스 → 클러스터 인스턴스의 순으로 삭제를 진행해야 한다.
 
 ### 2. Aurora High Availability and Read Scaling
 - `Aurora`의 가장 중요한 특징은 높은 가용성과 읽기 스케일링이다. 
 
 - 6 copies of your data across 3 AZ:  
-→ `Aurora`는 세 `AZ`에 걸쳐 무언가를 기록할 때마다 6개의 사본을 저장한다. 따라서 `Aurora`는 가용성이 높다.
+→ `Aurora`는 3개의 `AZ`에 걸쳐 있으며 무언가를 기록할 때마다 6개의 사본을 저장한다. 따라서 `Aurora`는 가용성이 높다.
 ~~~
 - 4 copies out of 6 needed for writes
 → 쓰기에는 6개의 사본 중 4개만 있으면 된다. 이는 `AZ` 하나가 작동하지 않아도 괜찮음을 뜻한다.
@@ -40,7 +40,7 @@
 → 자가 복구 과정이 있다. 일부 데이터가 손상되거나 문제가 있으면 백엔드에서 P2P 복제를 통한 자가 복구가 진행된다.
 
 - Storage is striped across 100s of volumes
-→ 단일 볼륨에 의존하지 않고 수 백 개의 볼륨을 사용한다. 백엔드에서 진행되는 과정이며 리스크를 크게 감소시켜 준다.
+→ 단일 볼륨에 의존하지 않고 수백 개의 볼륨을 사용한다. 백엔드에서 진행되는 과정이며 리스크를 크게 감소시켜 준다.
 ~~~ 
 
 ![image](https://user-images.githubusercontent.com/97398071/233848289-b779f8ec-9027-4a11-b66e-649526216b96.png)
@@ -48,7 +48,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - One Aurora Instance takes writes (master)  
-→ `RDS`의 다중 `AZ`와 유사하게 쓰기를 받는 인스턴스는 하나뿐이다. 따라서, `Aurora`에도 마스터가 존재한다.
+→ `RDS`의 다중 `AZ`와 유사하게 쓰기 인스턴스는 하나뿐이다. 따라서, `Aurora`에도 마스터가 존재한다.
 
 - Automated failover for master in less than 30 seconds  
 → 마스터가 작동하지 않으면 평균 30초 이내로 장애 조치가 시작된다. 마스터에 문제가 생기면 읽기 전용 복제본 중 하나가 마스터가 되어 대체한다.
@@ -59,11 +59,11 @@
 - Support for Cross Region Replication  
 → 이 복제본들은 리전 간 복제를 지원한다. 데이터베이스 클러스터에 다른 리전을 추가할 수 있다. 글로벌 기능을 갖추고 있는 것이다.
 
-- `Aurora`는 언제나 마스터가 바뀔 수 있으므로 `Writer EndPoint`를 제공한다. 이 `Writer EndPoint`는 `DNS` 이름으로 항상 마스터를 가리킨다.
-따라서, 장애 조치 후에도 클라이언트는 `Writer EndPoint`와 상호작용하게 되며 올바른 인스턴스로 자동으로 리다이렉트된다. 
+- `Aurora`는 언제나 마스터가 바뀔 수 있으므로 `Writer endpoint`를 제공한다. 이 `Writer endpoint`는 `DNS` 이름으로 항상 마스터를 가리킨다.
+따라서, 장애 조치 후에도 클라이언트는 `Writer endpoint`와 상호작용하게 되며 올바른 인스턴스로 자동으로 리다이렉트된다. 
 
-- 또, 복제본을 자동 스케일링해 항상 적절한 수의 읽기 전용 복제본이 존재하도록 할 수 있다. 그렇기에 애플리케이션이 복제본의 위치를 찾기 어려울 수 있다.
-이를 위해 제공되는 기능이 `Reader Endpoint`이다. `Writer EndPoint`와 같이 연결 로드 밸런싱에 도움을 준다. 
+- 또, 복제본을 자동 스케일링해 항상 적절한 수의 읽기 전용 복제본이 존재하도록 할 수 있다. 그렇기에 애플리케이션이 복제본의 위치를 찾기 어려울 수 있는데
+이를 위해 제공되는 기능이 `Reader endpoint`이다. `Writer endpoint`와 같이 연결 로드 밸런싱에 도움을 준다. 
 로드 밸런싱이 문장 레벨이 아닌 연결 레벨에서 일어난다는 사실은 중요하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233848330-2e345b42-3dc4-490f-a476-96fb84e5714b.png)
@@ -100,7 +100,7 @@
 
 #### 1. Aurora Replicas - Auto Scaling
 - 복제본의 오토스케일링이 일어나면 자동으로 리더 엔드포인트가 연장 혹은 단축된다. 그 중 스케일 아웃이 일어날 경우 읽기가 좀 더 분산된 형태로 이루어진다.
-이를 통해 전반적인 `CPU` 사용량 감소를 기대할 수 있는 것이다.
+이를 통해 전반적인 `CPU` 사용량 감소를 기대할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233849527-d5f817e7-5796-4ef4-af68-832252442972.png)
 
@@ -121,7 +121,7 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 실제 프로젝트에서는 다양한 종류의 워크로드에 대해 사용자 지정 엔드포인트를 여러 개 만들 수 있으며, 그렇게 해서 쿼리가 `Aurora` 복제본의 서브셋으로만 향하게 할 수 있다.
+- 실제 프로젝트에서는 다양한 종류의 워크로드에 대해 사용자 지정 엔드포인트를 여러 개 만들 수 있다.
 
 #### 3. Aurora Serverless
 - Automated database instantiation and auto-scaling based on actual usage  
@@ -131,7 +131,7 @@
 → 이는 비정기적, 간헐적, 또는 예측 불허한 워크로드에 유용하다.
 
 - No capacity planning needed  
-→ 용량 계획을 새울 필요가 전혀 없으며 각 `Aurora` 인스턴스에 대해 매 초당 비용을 지불하게 된다.
+→ 용량 계획을 세울 필요가 전혀 없으며 각 `Aurora` 인스턴스에 대해 매 초당 비용을 지불하게 된다.
 
 - Pay per second, can be more cost-effective  
 → 비용 면에서 훨씬 효율적이다. 
@@ -174,16 +174,17 @@
 ~~~
 
 #### 6. Aurora Machine Learning
-- `Aurora`는 `AWS` 내의 머신 러닝 서비스와으 통합을 지원한다.
+- `Aurora`는 `AWS` 내의 머신 러닝 서비스와의 통합을 지원한다.
 
-• Enables you to add ML-based predictions to your applications via SQL
+- Enables you to add ML-based predictions to your applications via SQL  
 → `Aurora` 머신 러닝의 개념은 `ML` 기반 예측을 `SQL` 인터페이스로 애플리케이션에 적용하는 것이다.
 
-• Simple, optimized, and secure integration between Aurora and AWS ML services
+- Simple, optimized, and secure integration between Aurora and AWS ML services  
 → `Aurora`와 다양한 `AWS` 머신 러닝 서비스를 쉽고 최적화된 방식으로 안전하게 통합할 수 있다.
 
-• Supported services
-→ 지원하는 두 서비스가 있는데 백엔드에서 어떤 머신 러닝 모델이라도 사용할 수 있게 해주는 `SagaMaker`와 감정 분석에 사용하는 `Amazon Comprehend`이 그것이다.
+- Supported services  
+→ `SagaMaker`와 `Amazon Comprehend` 서비스를 지원한다. 
+`SagaMaker`는 백엔드에서 어떤 머신 러닝 모델이라도 사용할 수 있도록 지원해주며, `Amazon Comprehend`는 감정 분석을 지원해 준다.
 ~~~
 • Amazon SageMaker (use with any ML model)
 • Amazon Comprehend (for sentiment analysis)
@@ -195,7 +196,7 @@
 • Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
 → 활용 예시로 감지, 맞춤 광고, 감정 분석, 제품 추천등이 있으며 모두 `Aurora` 내에서 가능하다. 
 
-- `Application`이 `Aurora`에 아주 간단한 쿼리(예를 들어 추천 상품은?)를 조회하면 `Aurora`가 머신 러닝 서비스로 데이터를 전송하고, 
+- `Application`이 `Aurora`에 아주 간단한 쿼리 (예를 들어 추천 상품은?) 를 조회하면 `Aurora`가 머신 러닝 서비스로 데이터를 전송하고, 
 머신 러닝 서비스는 `Aurora`로 직접 예측을 반환해 준다. 그리고 `Aurora`는 쿼리의 결과를 애플리케이션에 반환한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233850883-5884b322-6962-4dcd-b2c2-097fd8d20d30.png)
