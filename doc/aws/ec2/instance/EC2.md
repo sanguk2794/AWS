@@ -16,7 +16,7 @@ Storing data on virtual drives (EBS)
 → 데이터를 가상 드라이브 또는 EBS 볼륨에 저장할 수 있다.
 
 Distributing load across machines (ELB)
-→ 엘라스틱 로드 밸런서로 로드를 분산시킬 수 있다.
+→ 일래스틱 로드 밸런서로 로드를 분산시킬 수 있다.
 
 Scaling the services using an auto-scaling group (ASG)
 → 오토 스케일링 그룹을 통해 서비스를 확장할 수 있다.

@@ -83,7 +83,7 @@ They often reflect poor architectural decisions
 Instead, use a random public IP and register a DNS name to it
 → 대신 임의의 Public IP를 써서 DNS 이름을 할당하는 것이 좋다. DNS는 Route 53을 통해 설정 가능하다.
 
-• Or, as we’ll see later, use a Load Balancer and don’t use a public IP
+- Or, as we’ll see later, use a Load Balancer and don’t use a public IP
 → 로드 밸런서를 사용하면 Public IP를 전혀 사용하지 않을수도 있다. 이 것이 AWS에서 선택할 수 있는 최상의 패턴이다.
 ~~~
 
