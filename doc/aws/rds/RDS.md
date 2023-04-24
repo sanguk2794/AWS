@@ -129,6 +129,14 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+- RDS PostgreSQL 데이터베이스의 특정 리전에서 정전이 발생했을 때 데이터베이스가 신속하게 다른 AWS 리전에서 읽고 쓰는 작업을 할 수 있도록 재해 복구 전략을 수립하려고 합니다. DR 데이터베이스는 가용성이 매우 높아야 합니다. 가장 적합한 방식은 무엇입니까?  
+→ 다른 리전에 읽기 전용 복제본을 만들고 해당 읽기 전용 복제본에서 다중 `AZ`를 활성화한다.
+
+- 읽기 전용 복제본은 `DNS` 이름을 갖는 새로운 엔드 포인트를 추가한다. 읽기 로드를 밸런싱하기 위해서는 애플리케이션이 개별적으로 참조를 하게끔 변경해야 한다.
+
+- `RDS` 데이터베이스에 읽기 전용 복제본을 설정해 두었지만, 소셜 미디어 포스트를 업데이트할 시 업데이트가 바로 이루어지지 않는다는 점에 대해 사용자들이 불만을 토로하고 있습니다. 이 경우, 가능성이 있는 원인은 무엇일까요?  
+→ 읽기 전용 복제본은 비동기 복제를 지니므로, 사용자들은 최종 일관성만을 읽게 된다.
+
 ### 5. RDS Multi AZ (Disaster Recovery)
 - `RDS Multi AZ`는 주로 재해 복구에 사용된다. 읽기 전용 복제본과의 차이를 제대로 이해해야 한다. 
 - SYNC replication  
@@ -151,6 +159,12 @@
 
 - Note:The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)  
 → 원하는 경우에는 읽기 전용 복제본을 다중 `AZ`로 설정할 수 있다. 흔히 나오는 문제이다 
+
+- 다음 `RDS` (`Aurora` 아님) 기능들 중, 사용 시 `SQL` 연결 문자열을 변경하지 않아도 되는 것은 무엇인가요?  
+→ 다중 `AZ`
+
+- 다음 중 RDS 읽기 전용 복제본과 다중 `AZ`로의 복제 작업을 적절하게 묘사한 설명은 무엇인가요?  
+→ 읽기 전용 복제본은 비동기 복제를 사용하고, 다중 `AZ`는 동기 복제를 사용함
 
 ### 6. RDS – From Single-AZ to Multi-AZ
 - `RDS`를 단일 `AZ`에서 다중 `AZ`로 전환할 수 있다.
@@ -251,6 +265,14 @@
 - RDS: entire database and the OS to be managed by AWS
 - RDS Custom: full admin access to the underlying OS and the database
 ~~~
+
+### 9. RDS Database Port
+- PostgreSQL: 5432
+- MySQL: 3306
+- Oracle RDS: 1521
+- MSSQL Server: 1433
+- MariaDB: 3306 (MySQL과 같음)
+- Aurora: 5432 (PostgreSQL와 호환될 경우) 또는 3306 (MySQL과 호환될 경우)
 
 ---
 #### ▶ Reference
