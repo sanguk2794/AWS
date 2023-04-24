@@ -186,14 +186,14 @@
 → `SagaMaker`와 `Amazon Comprehend` 서비스를 지원한다. 
 `SagaMaker`는 백엔드에서 어떤 머신 러닝 모델이라도 사용할 수 있도록 지원해주며, `Amazon Comprehend`는 감정 분석을 지원해 준다.
 ~~~
-• Amazon SageMaker (use with any ML model)
-• Amazon Comprehend (for sentiment analysis)
+- Amazon SageMaker (use with any ML model)
+- Amazon Comprehend (for sentiment analysis)
 ~~~
 
-• You don’t need to have ML experience
+- You don’t need to have ML experience
 → `Aurora` 머신 러닝을 사용하기 위해 머신 러닝 경험은 필요하지 않다.
  
-• Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
+- Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
 → 활용 예시로 감지, 맞춤 광고, 감정 분석, 제품 추천등이 있으며 모두 `Aurora` 내에서 가능하다. 
 
 - `Application`이 `Aurora`에 아주 간단한 쿼리 (예를 들어 추천 상품은?) 를 조회하면 `Aurora`가 머신 러닝 서비스로 데이터를 전송하고, 
