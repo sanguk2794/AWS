@@ -94,7 +94,7 @@
 → 7계층, `HTTP` 전용 로드 밸런서로 `HTTP`, `HTTPS`, `WebSocket` 프로토콜을 지원한다.
 
 - Load balancing to multiple HTTP applications across machines (target groups)  
-→ 머신 간 다수 `HTTP` 애플리케이션의 라우팅에 사용된다. 머신들은 `target group`이라는 그룹으로 묶이게 된다.
+→ 머신 간 다수 `HTTP` 애플리케이션의 라우팅에 사용된다. 머신들은 `target group`이라는 그룹으로 묶이게 된다. `target group`는 여러 리전의 인스턴스를 묶을 수 있다.
 
 - Load balancing to multiple applications on the same machine (ex: containers)  
 → 동일 `EC2` 인스턴스 상의 여러 애플리케이션에 부하를 분산한다. 이를 위해 컨테이너와 `ECS`를 사용한다.
