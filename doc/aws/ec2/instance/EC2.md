@@ -145,7 +145,7 @@ m → instance class
 → 인스턴스의 세대
 
 2xlarge → size within the instance class
-→ 인스턴스 클래스 내의 크기, 크기가 클 수록 더 많은 메모리와 `CPU`를 가진다.
+→ 인스턴스 클래스 내의 크기, 크기가 클수록 더 많은 메모리와 `CPU`를 가진다.
 ~~~
 ![Instance Types](https://user-images.githubusercontent.com/97398071/229366224-3b89e0e1-acc2-4e7a-80de-0efc74013529.png)
 
