@@ -10,7 +10,7 @@ AWS Software Developer Kit (SDK) - for code: protected by access keys
 - Access Keys are generated through the AWS Console
 → 액세스 키는 관리 콘솔을 사용해서 생성할 수 있으며, 사용자들이 자신들의 액세스 키를 직접 관리한다.
 
-- Users manage their own access keys
+- Users manage their own access keys  
 → Access Keys are secret, just like a password. Don’t share them
 ~~~
 Access Key ID ~= username
