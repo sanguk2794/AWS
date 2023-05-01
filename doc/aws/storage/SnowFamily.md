@@ -3,10 +3,11 @@
 - Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS  
 → 이 제품은 보안성이 뛰어난 휴대용 장치 모음으로 아래의 두 가지 경우에 사용된다.
 ~~~
-- Data migration: `Snowcone`, `Snowball Edge`, `Snowmobile`
-→ `AWS` 안팎으로 데이터 마이그레이션할 때 사용된다. 
-- Edge computing: `Snowcone`, `Snowball Edge`,
-→  엣지에서 데이터를 수집하거나 처리할 때 사용된다.
+- Data migration: Snowcone, Snowball Edge, Snowmobile
+→ AWS 안팎으로 데이터 마이그레이션할 때 사용된다. 
+
+- Edge computing: Snowcone, Snowball Edge,
+→ 엣지에서 데이터를 수집하거나 처리할 때 사용된다.
 ~~~
 
 ### 2. Data Migrations with AWS Snow Family
@@ -144,10 +145,10 @@
 
 ### 3. Edge Computing
 #### 1. What is Edge Computing?
-- 엣지 컴퓨팅은 `Snow` 제품군의 두 번째 사용 사례이다. 데이터를 전송하지 않고 로컬 컴퓨팅 및 스토리지 워크로드를 수행하기 위해 사용된다.
+- 엣지 컴퓨팅은 `Snow` 제품군의 두 번째 사용 사례이다. 로컬 컴퓨팅 및 스토리지 워크로드를 수행하기 위해 사용된다.
 
 - Process data while it’s being created on an edge location  
-→ 엣지 컴퓨팅은 사용자 또는 데이터 소스의 물리적인 위치나 그 근처에서 컴퓨팅을 수행하는 것을 말한다. 실시간에 가까운 빠른 분석과 응답이 가능해진다.
+→ 엣지 컴퓨팅은 사용자 또는 데이터 소스의 물리적인 위치 근처에서 컴퓨팅을 수행하는 것을 말한다. 실시간에 가까운 빠른 분석과 응답이 가능해진다.
 ~~~
 - A truck on the road, a ship on the sea, a mining station underground...
 → 도로 위의 트럭이나 바다 위의 배, 지하의 광산 등 인터넷이 연결되어 있지 않거나 클라우드에서 멀리 있는 곳에서 자주 사용된다.
@@ -163,7 +164,7 @@
 ~~~
 
 - We setup a Snowball Edge / Snowcone device to do edge computing  
-→ 이런 장소에서 컴퓨팅이나 데이터 처리를 해야 할 경우에 필요한 것이 엣지 컴퓨팅이다. `Snowball Edge`나 `Snowcone`을 주문해서 엣지 로케이션에 장착시키면 엣지 컴퓨팅을 시작할 수 있다. 
+→ 이런 장소에서 컴퓨팅이나 데이터 처리를 해야 할 경우에 필요한 것이 엣지 컴퓨팅이다. `Snowball Edge`나 `Snowcone`을 주문해서 엣지 컴퓨팅을 시작할 수 있다. 
 
 - Use cases of Edge Computing:
 ~~~
@@ -184,19 +185,19 @@
 - Snowcone (smaller)
 ~~~
 - 2 CPUs, 4 GB of memory, wired or wireless access
-→ 4GB 메모리, Wifi를 가지고 있다.
+→ 4GB 메모리와 Wifi를 가지고 있다.
 
 - USB-C power using a cord or the optional battery
-→ 선택적 배터리로 작동된다.
+→ USB-C 전원을 사용할 수 있다.
 ~~~
 
 - Snowball Edge – Compute Optimized
 ~~~
 - 52 vCPUs, 208 GiB of RAM
-→ Compute Optimized는 52개의 CPU를 가진다. 200GB의 램과 더불어 GPU를 선택할 수 있다.
+→ Compute Optimized는 52개의 CPU와 200GB의 램으로 이루어진다. GPU를 선택할 수 있다.
 
 - Optional GPU (useful for video processing or machine learning)
-→ 영상 처리나 머신 러닝시 사용된다.
+→ 영상 처리나 머신 러닝에 사용된다.
 
 - 42 TB usable storage
 → 사용 가능한 스토리지의 크기는 42TB이다.
@@ -205,10 +206,10 @@
 - Snowball Edge – Storage Optimized
 ~~~
 - Up to 40 vCPUs, 80 GiB of RAM
-→ 40개의 CPU와 80GB 램을 가진다.
+→ 40개의 CPU와 80GB 램으로 이루어진다.
 
 - Object storage clustering available
-→ 여기서는 객체 스토리지 클러스터링이 가능하다. 
+→ 객체 스토리지 클러스터링이 가능하다. 
 ~~~
 
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)  
@@ -224,13 +225,13 @@
 → 예전에는 `Snow`와 같은 장치를 사용하는 방법이 굉장히 복잡했다.
 
 - Today, you can use AWS OpsHub (a software you install on your computer / laptop) to manage your Snow Family Device  
-→ `AWS`에서는 이걸 깨닫고 `OpsHub`를 만들었다. 컴퓨터나 노트북에 설치하는 소프트웨어이다. 
+→ `AWS`에서는 사용시의 복잡성을 줄이기 위해 `OpsHub`를 만들었다. `OpsHub`는 컴퓨터나 노트북에 설치하는 소프트웨어이다. 
 
 - Unlocking and configuring single or clustered devices  
 → 단일 장치와 클러스터 장치를 잠금 해제하거나 설정할 수 있다. 
 
 - Transferring files  
-→ 파일 전송이 가능해진다.
+→ 파일 전송이 가능하다.
 
 - Launching and managing instances running on Snow Family Devices  
 → `Snow` 장치에서 실행되는 `EC2` 인스턴스를 시작하거나 관리할 수 있다.
@@ -243,10 +244,10 @@
 
 ### 5. Solution Architecture: Snowball into Glacier
 - Snowball cannot import to Glacier directly  
-→ `Snowball`을 통해 `Glacier`에 직접 데이터를 `Import` 할 수는 없다. 
+→ `Snowball`을 통해 `Glacier`에 직접 데이터를 `Import`하는 것은 불가능하다.
 
 - You must use Amazon S3 first, in combination with an S3 lifecycle policy  
-→ 그렇게 하려면 먼저 `Amazon S3`를 사용해서 수명 주기 정책을 생성하여 `Amazon Glacier`로 객체를 전환해야 한다. 중요하다.
+→ `Glacier`로 데이터를 이동시키려면 `Amazon S3` 수명 주기 정책을 생성하여 `Amazon Glacier`로 객체를 전환하는 방법을 사용해야 한다. 중요하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235312665-c9f2a586-dcbe-4ef9-a261-0f9c049da6a9.png)
 
