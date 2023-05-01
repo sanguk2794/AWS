@@ -1,10 +1,10 @@
 ## Amazon S3 Security
 ### 1. Object Encryption
 • You can encrypt objects in S3 buckets using one of 4 methods  
-→ `S3` 버킷 내 객체를 암호화하는 방법에는 네 가지가 있다.
+→ `S3` 버킷 내의 객체를 암호화하는 유형에는 네 가지가 있다.
 
 • Server-Side Encryption (SSE)  
-→ 서버 측 암호화에는 3가지 유형이 존재한다.
+→ 객체를 암호화하는 유형 4가지 중 3가지 유형은 서버 측에서 암호화를 수행한다. 이를 서버측 암호화라고 한다.
 ~~~
 • Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Enabled by Default
 → SSE-S3는 Amazon S3 키를 사용해서 암호화 키를 관리하는 서비스 암호화 유형이다.
