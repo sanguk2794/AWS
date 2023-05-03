@@ -66,7 +66,7 @@
 
 - Max I/O – higher latency, throughput, highly parallel (big data, media processing)
 → I/O를 최대화하고 싶다면 Max I/O를 사용해야 한다. 지연 시간과 처리량, 병렬 처리 성능이 향상된다.
-파일 시스템에 빅 데이터나 미디어 처리 작업이 있을 때 유용하다.
+파일 시스템에 빅데이터나 미디어 처리 작업이 있을 때 유용하다.
 ~~~
 
 - Throughput mode

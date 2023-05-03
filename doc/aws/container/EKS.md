@@ -3,7 +3,7 @@
 - `Amazon EKS`를 이용해서 `AWS`에 컨테이너를 실행할 수 있다.
 
 - Amazon EKS = Amazon Elastic Kubernetes Service  
-→ `Amazon EKS`는 `Amazon Elastic Kubernetes Service`의 약어이다.
+→ `Amazon EKS`는 `Amazon Elastic Kubernetes Service`의 약자이다.
 
 - It is a way to launch managed Kubernetes clusters on AWS  
 → `AWS`에 관리형 `Kubernetes` 클러스터를 실행할 수 있도록 해주는 서비스이다.

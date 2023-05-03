@@ -357,7 +357,7 @@
 
 ### 11. Amazon QLDB
 - QLDB stands for ”Quantum Ledger Database”  
-→ `QLDB`는 `Quantum Ledger Database`의 약어이다.
+→ `QLDB`는 `Quantum Ledger Database`의 약자이다.
 
 - A ledger is a book recording financial transactions  
 → `ledger, 원장`은 금융 트랜잭션을 기록하는 장부이다. 따라서 `QLDB`는 금융 트랜잭션 원장을 갖게 된다.

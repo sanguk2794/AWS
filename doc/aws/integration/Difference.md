@@ -58,7 +58,7 @@
 → 데이터가 지속되기 때문에 데이터를 다시 재생할 수 있다.
 
 - Meant for real-time big data, analytics and ETL  
-→ 그렇기에 실시간 빅 데이터 분석, `ETL`등에 활용된다.
+→ 그렇기에 실시간 빅데이터 분석, `ETL`등에 활용된다.
 
 - Ordering at the shard level  
 → 스트림마다 원하는 샤드 양을 지정해야 한다.

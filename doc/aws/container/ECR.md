@@ -1,7 +1,7 @@
 ## Amazon ECR
 ### 1. Amazon ECR
 - ECR = Elastic Container Registry  
-→ `ECR`은 `Elastic Container Registry`의 약어이다.
+→ `ECR`은 `Elastic Container Registry`의 약자이다.
 
 - Store and manage Docker images on AWS  
 → `AWS`에 도커 이미지를 저장하고 관리하는 데 사용된다.
