@@ -6,7 +6,7 @@
 → `Kinesis`를 활용하면 실시간 스트리밍 데이터를 손쉽게 수집하고 처리하여 분석할 수 있다.
 
 - Ingest real-time data such as: Application logs, Metrics, Website clickstreams, IoT telemetry data…  
-→ 실시간 데이터에는 애필르키에션 로그, 계측, 웹 사이트 클릭 스트림, `Iot` 원격 측정 데이터 등 어떤 것도 포함될 수 있다.
+→ 실시간 데이터에는 애필르키에션 로그, 계측, 웹 사이트 클릭 스트림, `IoT` 원격 측정 데이터 등 어떤 것도 포함될 수 있다.
 
 - 키네시스는 4가지 서비스로 구성되어 있다.
 ~~~
