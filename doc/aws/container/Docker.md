@@ -4,7 +4,7 @@
 → 도커는 앱 배포를 위한 소프트웨어 개발 플랫폼이다. 컨테이너 기술이다.
 
 - Apps are packaged in containers that can be run on any OS  
-→ 컨테이너에 앱이 패키징되는데, 컨테이너느 표준화되어 있어서 어떤 운영체제에서든 실행시킬 수 있다.
+→ 컨테이너에 앱이 패키징되며, 이 때 컨테이너는 표준화되어 있어서 어떤 운영체제에서든 실행시킬 수 있다.
 
 - Apps run the same, regardless of where they’re run  
 → 다시 말해, 앱이 컨테이너에 패키징되면 어느 운영체제에서든 같은 방식으로 실행이 가능하다.

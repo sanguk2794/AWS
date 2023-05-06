@@ -153,7 +153,7 @@
 - Use cases:
 ~~~
 - React to changes in real-time (welcome email to users)
-→ 사용자 테이블에 새로운 사용자가 등록됐을 때 환영 이메일을 보낼 수 있다. 테이블의 변경 사항에 실시간으로 반응하는 데 활용할 수 있는 것이다.
+→ 테이블의 변경 사항에 대해 실시간으로 반응할 수 있다. 사용자 테이블에 새로운 사용자가 등록됐을 때 환영 이메일을 보낼 수 있다. 
 
 - Real-time usage analytics
 → 실시간으로 자동 분석을 수행할 수 있다.
@@ -165,10 +165,10 @@
 → 리전 간 복제를 실행할 수 있다.
 
 - Invoke AWS Lambda on changes to your DynamoDB table
-→ DynamoDB 테이블의 변경 사항에 대해 Lambda 함수를 실행할 수도 있다.
+→ DynamoDB 테이블의 변경 사항에 대해 Lambda 함수를 실행할 수 있다.
 ~~~
 
-- `DynamoDB`에는 `DynamoDB Streams`, `Kinesis Data Streams`, 두 종류의 스트림 처리 방식이 있다.
+- `DynamoDB`에는 `DynamoDB Streams`와 `Kinesis Data Streams`, 두 종류의 스트림 처리 방식이 있다.
 - DynamoDB Streams
 ~~~
 - 24 hours retention
@@ -178,28 +178,29 @@
 → 소비자 수가 제한된다.
 
 - Process using AWS Lambda Triggers, or DynamoDB Stream Kinesis adapter
-→ 람다 트리거와 함께 사용하면 좋고, 자체적으로 읽기를 실행하려면 DynamoDB Stream Kinesis adapter를 사용한다.
+→ 람다 트리거와 함께 사용하면 좋다. 자체적으로 읽기를 실행하려면 DynamoDB Stream Kinesis adapter를 사용한다.
 ~~~
 
 - Kinesis Data Streams (newer)
 ~~~
-- `Kinesis Data Streams`에 변경 사항을 바로 보내는 방법이다.
+- Kinesis Data Streams에 변경 사항을 바로 보내는 방법이다.
+
 - 1 year retention
-→ 이 스트림은 보존 기간이 1년이다.
+→ 보존 기간이 1년이다.
 
 - High # of consumers
 → 더 많은 수의 소비자 수를 갖는다.
 
 - Process using AWS Lambda, Kinesis Data Analytics, Kinesis Data Firehose, AWS Glue Streaming ETL…
-→ 람다, Kinesis Data Analytics, Kinesis Data Firehose, AWS Glue Streaming ETL 등 데이터를 처리하는 방법이 훨씬 많다.
+→ 데이터 처리를 위해 선택 가능한 서비스의 폭이 상대적으로 더 넓다. 람다, Kinesis Data Analytics, Kinesis Data Firehose, AWS Glue Streaming ETL 등을 사용할 수 있다.
 ~~~
 
 - 애플리케이션에 쿼리를 수행하면 이 결과가 `DynamoDB Streams` 또는 `Kinesis Data Streams`에 전송된다.
 - `Kinesis Data Streams`를 사용하면 `Kinesis Data Firehose`를 사용할 수 있다.
-- 분석 목적으로 데이터를 `Amazon Redshift`로 전송하고, 데이터를 아카이빙하려면 `S3`로 전송한다. `Amazon OpenSearch`로 보내면 인덱싱이나 검색이 가능하다. 
+- 분석 목적이라면 데이터를 `Amazon Redshift`로 전송하고, 데이터를 아카이빙하려면 `S3`로 전송한다. `Amazon OpenSearch`로 보내면 인덱싱이나 검색이 가능하다. 
 - `DynamoDB` 스트림을 사용하면 처리 계층을 둘 수 있다.
-- `EC2` 인스턴스에서 애플리케이션을 실행하려면 `KCL Adapter`나 람다 함수를 사용한다.
-- 처리 계층에서 `SNS`로 알림을 보내거나 `DynamoDB` 테이블을 필터링하거나 변환할 수 있다. `Amazon OpenSearch`로 보내어 처리 계층의 데이터를 전송할 수도 있다.
+- `KCL Adapter`나 람다 함수를 사용해 `EC2` 인스턴스에서 애플리케이션을 실행할 수 있다.
+- 처리 계층에서 `SNS`로 알림을 보내거나 `DynamoDB` 테이블을 필터링하거나 변환할 수 있다. `Amazon OpenSearch`로 보내 처리 계층의 데이터를 전송할 수도 있다.
 - 이외에도 여러 변형이 가능하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235819238-ab12bbf2-8a7b-49cf-b11b-3ed08dbdacca.png)
