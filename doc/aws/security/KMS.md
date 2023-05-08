@@ -1,6 +1,7 @@
 ## KMS
 ### 1. AWS KMS (Key Management Service)
 - `KMS`는 `AWS`의 키 관리 서비스이다.
+
 - Anytime you hear “encryption” for an AWS service, it’s most likely KMS  
 → `AWS` 서비스로 암호화한다고 하면 `KMS` 암호화일 확률이 크다.
 
@@ -24,7 +25,7 @@
 - 암호 데이터는 절대로 평문으로 저장해서는 안된다. 
 
 - KMS Key Encryption also available through API calls (SDK, CLI)
-→ `KMS`를 사용할 때에는 API를 호출하거나 CLI, SDK를 사용한다.
+→ KMS를 사용할 때에는 API를 호출하거나 CLI, SDK를 사용한다.
 
 - Encrypted secrets can be stored in the code / environment variables
 → 암호화된 파일은 코드나 환경변수에 저장된다.
@@ -155,7 +156,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-### 8. KMS Multi-Region Keys
 - Identical KMS keys in different AWS Regions that can be used interchangeably  
 → 다른 AWS 리전에서 사용할 수 있는 `KMS` 키 세트를 서로 교차해서 사용할 수 있다. 한 리전에서 암호화한 다음 다른 리전에서 복호화할 수 있다는 의미이다.
 
@@ -174,7 +174,7 @@
 - Use cases: global client-side encryption, encryption on Global DynamoDB, Global Aurora  
 → 전역 클라이언트 측 암호화에 사용한다. 한 리전에서 클라이언트 측 암호화를 하고 다른 리전에서 클라이언트 측 복호화를 하는 것이다.
 
-### 9. DynamoDB Global Tables and KMS Multi-Region Keys Client-Side encryption
+### 8. DynamoDB Global Tables and KMS Multi-Region Keys Client-Side encryption
 • We can encrypt specific attributes client-side in our DynamoDB table using the Amazon DynamoDB Encryption Client  
 → 중요한 것은 전체 테이블을 암호화하는 것이 아니라는 점이다. 저장 데이터 암호화이므로 테이블의 속성을 암호화하여 특정 클라이언트만 사용할 수 있게 된다.
 
@@ -194,7 +194,7 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-### 10. Global Aurora and KMS Multi-Region Keys Client-Side encryption
+### 9. Global Aurora and KMS Multi-Region Keys Client-Side encryption
 • We can encrypt specific attributes client-side in our Aurora table using the AWS Encryption SDK  
 → `AWS Encryption SDK`를 사용하여 `Aurora` 테이블의 클라이언트 측 특정 속성을 암호화할 수 있다.
 

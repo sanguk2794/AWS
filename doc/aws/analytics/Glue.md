@@ -49,8 +49,6 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 4. Glue – things to know at a high-level
-- 
-
 - Glue Job Bookmarks: prevent re-processing old data  
 → `Glue` 작업 중 알아야 할 첫 번째 기능은 `Glue` 작업 북마크이다. `Glue` 작업 북마크는 새 `ETL` 작업을 실행할 때 이전 데이터의 재처리를 방지한다. 매우 중요하다.
 

@@ -18,7 +18,7 @@
 → 시각화된 정보를 통한 임시 분석
 
 - Get business insights using data
-→ 데이터를 활용한 비즈니스 인샅이트 획득
+→ 데이터를 활용한 비즈니스 인사이트 획득
 ~~~
 
 - Integrated with RDS, Aurora, Athena, Redshift, S3…  
