@@ -28,7 +28,7 @@
 → 데이터 키라고 불리는 키 덕분에 데이터는 암호화된 형태로 저장된다.
 
 - The encryption / decryption keys must be managed somewhere and the server must have access to it  
-→ 암호 키와 해독 키는 주로 `KMS Key Management Service` 같은 곳에 따로 관리된다.
+→ 암호 키와 해독 키는 주로 `KMS, Key Management Service` 같은 곳에 따로 관리된다.
 
 - 서비스의 서버 자체가 암호화와 복호화를 관리한다. 사용자는 사용할 암호화 키를 지정할 뿐이다.
 
