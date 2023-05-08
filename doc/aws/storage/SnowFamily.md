@@ -14,7 +14,6 @@
 - 네트워크를 통해 많은 데이터를 전송하려면 아주 오랜 시간이 걸린다. 
 ~~~
 - Limited connectivity
-→ 제한되는 연결
 
 - Limited bandwidth
 → 제한되는 대역폭
@@ -81,8 +80,6 @@
 
 - 암호화를 지원한다.
 
-- 데이터 마이그레이션이 `Snowball` 장치의 유일한 사용 사례이다.
-
 - 수백 `TB`의 데이터를 `Amazon S3`로 이전한 후, `EC2` 인스턴스 플릿을 사용해 처리해야 합니다. 광대역은 `1Gbit/초`입니다. 여러분은 데이터를 더 빠르게 이전하고, 가능하면 전송 중에 데이터를 처리했으면 합니다. 어떤 방법을 추천할 수 있을까요?  
 → `Snowball Edge` 사용하기
 
@@ -106,7 +103,7 @@
 → 배터리와 케이블은 직접 준비해야 한다.
 
 - Can be sent back to AWS offline, or connect it to internet and use AWS DataSync to send data  
-→ `AWS` 오프라인으로 다시 전송될 수 있다. 아니면 `AWS DataSync`를 사용해 네트워크 상에서 데이터를 전송하는 것도 가능하다.
+→ 오프라인으로 데이터를 전송할 수 있다. `AWS DataSync`를 사용하면 네트워크 상에서도 데이터를 전송할 수도 있다.
 
 #### 3. AWS Snowmobile
 - Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)  
@@ -244,7 +241,7 @@
 
 ### 5. Solution Architecture: Snowball into Glacier
 - Snowball cannot import to Glacier directly  
-→ `Snowball`을 통해 `Glacier`에 직접 데이터를 `Import`하는 것은 불가능하다.
+→ `Snowball`을 통해 `Glacier`에 직접 데이터를 임포트하는 것은 불가능하다.
 
 - You must use Amazon S3 first, in combination with an S3 lifecycle policy  
 → `Glacier`로 데이터를 이동시키려면 `Amazon S3` 수명 주기 정책을 생성하여 `Amazon Glacier`로 객체를 전환하는 방법을 사용해야 한다. 중요하다.
