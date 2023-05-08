@@ -14,7 +14,7 @@
 → 그룹에는 오직 유저만 배치할 수 있다. 서브 그룹의 설정이 불가능하다.
 
 - Users don’t have to belong to a group, and user can belong to multiple groups  
-→ 그룹에 포함되지 않은 유저를 생성할 수 있다. 단, 이는 별로 추천하지 않는다. 이와 반대로 한 사용자를 여러 그룹에 포함시키는 것은 가능하다.
+→ 그룹에 포함되지 않은 유저를 생성할 수 있다. 단, 이는 별로 추천되지 않는다. 이와 반대로 한 사용자를 여러 그룹에 포함시키는 것은 가능하다.
 
 ![Group and user](https://user-images.githubusercontent.com/97398071/228144081-a46cf07b-47d2-4019-a7a9-2065a8a8364b.png)
 
@@ -39,7 +39,7 @@
 
 - `Add tags(optional)`  
 → `AWS`에서는 어디에서도 태그를 사용할 수 있는데, 유저의 접근을 추적, 제어할 수 있도록 도와주는 정보이다.
-`Key`와 `Value`의 쌍으로 되어 있으며 `Department:Engineering`과 같은 형식으로 부서를 기입해 둔다거나 필요한 다른 정보를 기입하는 데 사용한다.
+`Key`와 `Value`의 쌍으로 이루어져 있으며 `Department:Engineering`과 같은 형식으로 부서를 기입해 둔다거나 필요한 다른 정보를 기입하는 데 사용한다.
 그룹, 계정 말고도 태그를 기입할 수 있는 곳은 많기 때문에 그냥 추가적인 정보를 기입하는 곳이라고 생각하면 된다.
 
 - `[userName]_credentials.csv` 다운로드  
@@ -72,13 +72,13 @@
 - 정책의 구조와 정책 명명법에 대해서는 잘 익혀둬야 한다. `AWS`에서 자주보게 되는 형식이기 때문이다. `JSON` 형식으로 이루어져 있다.
 ~~~
 1. Version : policy language version, always include "2012-10-17"
-→ 정책 언어의 버전을 표현하기 위해 사용한다. 보통은 `2012-10-17`이다.
+→ 정책 언어의 버전이다. 보통은 `2012-10-17`이다.
 
 2. Id : an identifier for the policy (optional)
-→ 정책을 식별하기 위한 식별자로 사용한다. 선택 사항이다.
+→ 정책을 식별하기 위한 식별자이다. 선택 사항이다.
 
 3. Statement : one or more individual statements (required)
-→ Statement (문장)는 하나일 수도 있고 여러개일 수도 있다. 이 문장에는 아주 중요한 부분들이 있다.
+→ Statement(문장)는 하나일 수도 있고 여러개일 수도 있다. 이 문장에는 아주 중요한 부분들이 있다.
 
 3-1. Sid : an identifier for the statement (optional)
 → 문장 ID이다. 문장의 식별자로 사용되며, 선택 사항이다.
@@ -90,7 +90,7 @@
 → 특정 정책이 적용될 유저, 계정 또는 역할로 구성된다.
 
 3-4. Action : list of actions the policy allows or denies
-→ `Effect`에 기반해 허용 및 거부되는 API 호출 목록이다.
+→ Effect에 기반해 허용 및 거부할 API 목록을 설정한다.
 
 3-5. Resource : list of resources to witch the actions applied to
 → 적용될 Action의 리소스 목록이다.
@@ -144,7 +144,7 @@
 
 ### 5. IAM – Account protection 
 #### 1. Password Policy
-- `AWS`는 유저의 정보가 침해당하지 않도록 보호하기 위한 방어 메커니즘들이 있으며, 그 중 하나는 비밀번호 정책을 사용하는 것이다. 비밀번호 정책을 이용하면 계정에 대한 치명적인 공격을 막아내는데 큰 도움이 된다.
+- `AWS`에는 유저의 정보가 침해당하지 않도록 보호하기 위한 여러 방어 메커니즘들이 있으며, 그 중 하나는 비밀번호 정책을 사용하는 것이다. 비밀번호 정책을 이용하면 계정에 대한 치명적인 공격을 막아내는데 큰 도움이 된다.
 
 - Strong passwords = higher security for your account  
 → 비밀번호가 강력해질수록 계정의 보안이 철저해진다. 
@@ -161,7 +161,7 @@
 → 사용자들의 비밀번호 변경을 허용 또는 금지할 수 있다.
 
 - Require users to change their password after some time (password expiration)
-→ 일정 시간이 지나면 비밀번호를 만료시켜 새로운 비밀번호 설정을 요구할 수 있다.
+→ 일정 시간이 지나면 비밀번호를 만료시켜 새로운 비밀번호를 설정할 것을 요구할 수 있다.
 
 - Prevent password re-use
 → 이전에 사용했던 비밀번호의 재사용을 불가능하게 설정할 수 있다.
@@ -240,13 +240,13 @@
 - IAM Credentials Report (account-level) 
 ~~~
 - a report that lists all your account's users and the status of their various credentials
-→ `IAM` 자격 증명 보고서를 생성할 수 있다. 보고서는 계정에 있는 유저와 다양한 자격 증명의 상태를 포함한다.
+→ IAM 자격 증명 보고서를 생성할 수 있다. 보고서는 계정에 있는 유저와 다양한 자격 증명의 상태를 포함한다.
 ~~~
 
 - IAM Access Advisor (user-level)
 ~~~
 - Access advisor shows the service permissions granted to a user and when those services were last accessed.
-→ `IAM 액세스 관리자` 설정이 가능하다. 엑세스 관리자를 통해 유저에게 부여된 서비스 권한과 해당 서비스에 마지막으로 액세스한 시간을 확인할 수 있다.
+→ IAM 엑세스 관리자를 통해 유저에게 부여된 서비스 권한과 해당 서비스에 마지막으로 액세스한 시간을 확인할 수 있다.
 
 - You can use this information to revise your policies.
 → 해당 기능을 통해 어떤 권한을 사용하지 않는지 알 수 있다. 액세스 관리자를 확인해 권한을 조정하면 최소 권한의 원칙을 지킬 수 있다.
