@@ -24,7 +24,7 @@
 - 암호 데이터는 절대로 평문으로 저장해서는 안된다. 
 
 - KMS Key Encryption also available through API calls (SDK, CLI)
-→ `KMS`를 사용할 때에는 API를 호출하거나, CLI, SDK를 사용한다.
+→ `KMS`를 사용할 때에는 API를 호출하거나 CLI, SDK를 사용한다.
 
 - Encrypted secrets can be stored in the code / environment variables
 → 암호화된 파일은 코드나 환경변수에 저장된다.
@@ -36,25 +36,25 @@
 - Symmetric (AES-256 keys)
 ~~~
 - Single encryption key that is used to Encrypt and Decrypt
-→ 대칭 KMS 키에는 데이터 암호화와 복호화에 사용하는 단일 암호화 키만 존재한다.
+→ 대칭 KMS 키에는 데이터의 암호화와 복호화에 단일 암호화 키를 사용한다.
 
 - AWS services that are integrated with KMS use Symmetric CMKs
 → KMS와 통합된 모든 AWS 서비스는 대칭 키를 사용한다.
 
 - You never get access to the KMS Key unencrypted (must call KMS API to use)
-→ KMS 대칭키를 생성하거나 사용하면 키 자체에는 절대로 액세스할 수 없다. 키를 활용하려면 KMS API를 호출해야 한다.
+→ KMS 대칭키를 생성, 사용할 때 키에 대한 직접적 액세스는 불가능하다. 키를 활용하려면 KMS API를 호출해야 한다.
 ~~~
 
 - Asymmetric (RSA & ECC key pairs)
 ~~~
 - Public (Encrypt) and Private Key (Decrypt) pair
-→ 데이터 암호화에 사용하는 퍼블릭 키와 데이터 복호화에 사용하는 프라이빗 키로 나뉜다.
+→ 데이터 암호화에 사용하는 퍼블릭 키와 데이터 복호화에 사용하는 프라이빗 키, 두 종류의 키가 존재한다. 
 
 - Used for Encrypt/Decrypt, or Sign/Verify operations
-→ 암호화, 복호화와 작업 할당 및 검증에 사용된다.
+→ 암호화 및 복호화, 작업 할당 및 검증에 사용된다.
 
 - The public key is downloadable, but you can’t access the Private Key unencrypted
-→ 이 경우에는 KMS에서 퍼블릭 키를 다운로드할 수 있다. 하지만, 프라이빗 키에는 액세스가 불가능하다. 프라이빗 키를 활용하려면 KMS API를 호출해야 한다.
+→ 이 경우에는 KMS에서 퍼블릭 키를 다운로드할 수 있다. 하지만 프라이빗 키에는 액세스가 불가능하다. 프라이빗 키를 활용하려면 KMS API를 호출해야 한다.
 
 - Use case: encryption outside of AWS by users who can’t call the KMS API
 → KMS API 키에 액세스할 수 없는 사용자가 AWS 클라우드 외부에서 암호화를 수행할 때 사용한다.
@@ -64,7 +64,7 @@
 - Three types of KMS Keys:
 ~~~
 - AWS Managed Key: free (aws/service-name, example: aws/rds or aws/ebs)
-→ AWS 관리형 키는 aws/rds나 aws/ebs와 같은 이름이 지정된다. 무료로 사용할 수 있으며, 특정 서비스에 관련한 저장 데이터 암호화에 사용할 수 있다.
+→ AWS 관리형 키는 aws/rds나 aws/ebs와 같은 이름이 지정된다. 무료로 사용할 수 있으며 특정 서비스에 관련한 저장 데이터 암호화에 사용할 수 있다.
 
 - Customer Managed Keys (CMK) created in KMS: $1 / month
 → 고객 관리형 키는 KMS를 사용해 생성 가능하고 키 하나에 매달 1달러의 비용이 청구된다.
@@ -74,25 +74,26 @@
 ~~~
 
 - + pay for API call to KMS ($0.03 / 10000 calls)  
-→ 더불어, `KMS`로 호출하는 모든 `API` 요청에 대해 비용을 지불해야 한다.
+→ 더불어, `KMS`로 호출하는 모든 `API` 요청에 대해서는 비용을 지불해야 한다.
 
 - Automatic Key rotation:
 ~~~
 - AWS-managed KMS Key: automatic every 1 year
-→ AWS 자동 관리형 키를 사용하면 자동으로 1년에 한 번씩 교체된다.
+→ AWS 자동 관리형 키를 사용하면 키가 자동으로 교체되며 그 주기는 1년이다.
 
 - Customer-managed KMS Key: (must be enabled) automatic every 1 year
-→ 고객 관리형 KMS 키를 사용하면 반드시 교체되도록 활성화해야 한다. 활성화한 후에는 자동으로 1년에 한 번씩 교체되며 교체 빈도를 변경할 수는 없다.
+→ 고객 관리형 KMS 키를 사용하는 경우에는 반드시 자동 교체를 활성화해야 한다. 자동 교체를 활성화하면 고객 관리형 키가 자동으로 교체되며 그 주기는 1년이다. 이 교체 빈도를 변경할 수는 없다.
 
 - Imported KMS Key: only manual rotation possible using alia
-→ 자체 키 구성 요소를 KMS로 보내려면 수동으로만 키를 교체할 수 있고 올바르게 키를 교체하려면 반드시 KMS 키 별칭을 사용해야 한다.
+→ 자체 키를 KMS에 임포트한다면 수동으로 키를 교체해야 한다. 이 키를 올바르게 교체하려면 반드시 KMS 키 별칭을 사용해야 한다.
 ~~~
 
 ### 4. Copying Snapshots across regions
-- `KMS` 키로 암호화된 `EBS` 볼륨이 있고 리전은 `eu-west-2`라고 가정한다. 이 때, 다른 리전으로 복사하려면 몇 가지 단계를 거쳐야 한다.
+- 스냅샷을 교차 리전에 복제할 수 있다.
 ~~~
+- `KMS` 키로 암호화된 `EBS` 볼륨이 있고 리전은 `eu-west-2`라고 가정한다. 이 `EBS` 볼륨을 다른 리전으로 복제하기 위한 시나리오이다.
 - EBS 볼륨의 스냅샷을 생성한다. 암호화된 스냅샷에서 스냅샷을 생성하면 생성된 스냅샷 또한 동일한 KMS 키로 암호화된다.
-- 다른 리전으로 스냅샷을 복사하려면 다른 KMS 키를 사용해서 스냅샷을 다시 암호화해야 하는데, 이 부분은 AWS가 자동으로 처리해준다. 다만, 동일한 KMS 키가 서로 다른 리전에 있을수는 없다.
+- 다른 리전으로 스냅샷을 복사하려면 다른 KMS 키를 사용해서 스냅샷을 다시 암호화해야 하는데 이 부분은 AWS가 자동으로 처리해준다. 다만, 동일한 KMS 키가 서로 다른 리전에 있을수는 없다.
 - 스냅샷을 ap-southeast-2 리전의 자체 EBS 볼륨으로 복원한다. 
 ~~~
 
@@ -105,17 +106,17 @@
 → `KMS` 키에 관한 액세스를 제어한다. `S3` 버킷 정책과 비슷하다.
 
 - Difference: you cannot control access without them  
-→ 하지만, `S3` 버킷 정책과 차이점이 있는데 `KMS` 키에 `KMS` 키 정책이 없으면 누구도 액세스할 수 없다는 것이다.
+→ 하지만 `S3` 버킷 정책과 차이점이 있는데 `KMS` 키에 `KMS` 키 정책이 없으면 누구도 액세스할 수 없다는 것이다.
 
 - 이와 관련해 2가지 유형의 `KMS` 키 정책이 있다.
 
 - Default KMS Key Policy:
 ~~~
 - Created if you don’t provide a specific KMS Key Policy
-→ 기본 정책은 사용자 지정 키 정책을 제공하지 않으면 생성된다. 
+→ 기본 정책은 사용자 지정 키 정책을 제공하지 않는 경우에 생성된다.
 
 - Complete access to the key to the root user = entire AWS account
-→ 기본적으로 계정의 모든 사람이 키에 액세스하도록 허용한다.
+→ 기본 정책은 계정의 모든 사람이 키에 액세스할 수 있도록 허용한다.
 ~~~
 
 - Custom KMS Key Policy:
@@ -156,7 +157,7 @@
 
 ### 8. KMS Multi-Region Keys
 - Identical KMS keys in different AWS Regions that can be used interchangeably  
-→ 다른 AWS 리전에서 사용할 수 있는 `KMS` 키 세트로 서로 교차해서 사용할 수 있다. 한 리전에서 암호화한 다음 다른 리전에서 복호화할 수 있다는 의미이다.
+→ 다른 AWS 리전에서 사용할 수 있는 `KMS` 키 세트를 서로 교차해서 사용할 수 있다. 한 리전에서 암호화한 다음 다른 리전에서 복호화할 수 있다는 의미이다.
 
 - Multi-Region keys have the same key ID, key material, automatic rotation…  
 → 다중 리전 키는 동일한 키 `ID`와 동일한 키 구성 요소를 가진다.
@@ -175,11 +176,11 @@
 
 ### 9. DynamoDB Global Tables and KMS Multi-Region Keys Client-Side encryption
 • We can encrypt specific attributes client-side in our DynamoDB table using the Amazon DynamoDB Encryption Client  
-→ 중요한 것은 전체 테이블만 암호화하는 것이 아니라는 점이다. 저장 데이터 암호화이므로 테이블의 속성을 암호화하여 특정 클라이언트만 사용할 수 있게 된다.
+→ 중요한 것은 전체 테이블을 암호화하는 것이 아니라는 점이다. 저장 데이터 암호화이므로 테이블의 속성을 암호화하여 특정 클라이언트만 사용할 수 있게 된다.
 
 • `DynamoDB` 전역 테이블과 `KMS` 다중 리전 키를 이용해 클라이언트 측 암호화하는 시나리오는 다음과 같다.
 ~~~
-• us-east-1과 ap-southeast-2에 멀티 리전 키가 있다고 가정한다. us-east-1의 KMS 다중 리전 키의 복제본이 ap-southeast-2 리전에 저장되었다. 
+• us-east-1과 ap-southeast-2에 멀티 리전 키가 있다고 가정한다. us-east-1의 KMS 다중 리전 키의 복제본이 ap-southeast-2 리전에 저장되었다.
 • 클라이언트 애플리케이션에서 DynamoDB에 데이터를 삽입할 때 다중 리전 키를 이용해 사회 보장 번호 등 중요한 일부 속성을 암호화한다.
 • DynamoDB 테이블에 액세스할 수 있는 데이터베이스 관리자조차 사회 보장 번호 속성을 암호화하는 데 사용한 KMS 키에 액세스할 수 있는 권한이 없다면 해당 데이터에 대한 접근이 불가능하다.
 • DynamoDB 테이블이 전역 테이블인 경우 해당 테이블의 데이터는 다른 리전으로 복제된다.
