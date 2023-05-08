@@ -50,6 +50,51 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+### 4. S3 Replication Encryption Considerations
+- Unencrypted objects and objects encrypted with SSE-S3 are replicated by default  
+→ 한 버킷에서 다른 버킷으로의 `S3` 복제를 활성화하면 암호화되지 않은 객체와 `SSE-S3`로 암호화된 객체가 복제된다.
+
+- Objects encrypted with SSE-C (customer provided key) are never replicated  
+→ `SSE-C`로 암호화된 객체는 복제되지 않는다. 그 이유는 항상 키를 제공할 수 없기 때문이다.
+
+- For objects encrypted with SSE-KMS, you need to enable the option  
+→ `SSE-KMS`로 암호화된 객체는 기본적으로 복제되지 않지만, 옵션을 활성화해 복제 대상에 포함시킬 수 있다.
+~~~
+- Specify which KMS Key to encrypt the objects within the target bucket
+→ 이 때에는 어떤 KMS 키로 대상 버킷 내 객체를 암호화하는지 지정해야 한다.
+
+- Adapt the KMS Key Policy for the target key
+→ KMS 정책을 대상 키에 적용해야 한다.
+
+- An IAM Role with kms:Decrypt for the source KMS Key and kms:Encrypt for the target KMS Key
+→ S3 복제 서비스를 허용하는 IAM 역할을 생성해서 소스 버킷의 데이터를 먼저 복호화하도록 한 뒤 대상 KMS 키로 대상 버킷의 데이터를 다시 암호화한다.
+
+- You might get KMS throttling errors, in which case you can ask for a Service Quotas increase
+→ 이 때, KMS 스로틀링 오류가 발생할 수 있다. 이러한 경우 서비스 할당량 증가를 요청해야 한다. 스로틀링 오류가 발생하는 이유는 수많은 암호화와 복호화가 발생하기 때문이다.
+~~~
+
+- You can use multi-region AWS KMS Keys, but they are currently treated as independent keys by Amazon S3 (the object will still be decrypted and then encrypted)  
+→ 공식 문서에 따르면 `S3` 복제에 다중 리전 키를 사용할 수 있으나 `Amazon S3` 서비스에서 독립 키로 취급되므로 복호화와 암호화는 그대로 수행된다.
+
+### 5. AMI Sharing Process Encrypted via KMS
+- `AMI`를 다른 계정과 공유할 수 있다. 시험에 출제되는 중요한 부분이다.
+
+- AMI in Source Account is encrypted with KMS Key from Source Account  
+→ `AMI`는 `KMS` 키로 암호화 되어 있다.
+
+- A 계정의 `AMI`로 B 계정의 `EC2` 인스턴스를 기동할 수 있다. 그 방법은 다음과 같다.
+~~~
+- 먼저, 시작 권한으로 AMI 속성을 수정해야한다. 이 시작 권한은 B 계정에서 AMI를 시작하도록 허용한다.
+- KMS 키를 공유해야 해야 하며, 일반적으로 키 정책으로 설정한다. B 계정에서 KMS 키를 사용할 수 있도록 허용한다.
+- B 계정에서 KMS 키와 AMI를 모두 사용할 수 있는 충분한 권한을 가진 IAM 역할이나 IAM 사용자를 생성한다.
+- 모두 완료된 후에는 AMI를 통해 EC2 인스턴스를 기동하면 된다.
+- 인스턴스 기동시의 선택 사항으로 대상 계정에서 자체 계정의 볼륨을 재암호화하는 KMS 키를 이용해 전체를 재암호화할 수 있다.
+~~~
+
+![image](https://user-images.githubusercontent.com/97398071/236843927-34ff78f8-4bb5-4d0b-bf91-4082881ec16b.png)
+
+출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
