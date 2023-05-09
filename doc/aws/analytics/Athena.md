@@ -43,7 +43,7 @@
 → 이 형식들을 사용하면 성능이 크게 향상된다.
 
 - Use Glue to convert your data your Parquet or ORC
-→ 파일을 Apache Parquet나 ORC 형식으로 가져오려면 Glue 등 서비스를 사용해야 한다. Glue는 CSV와 Parquet간의 데이터를 변환하는데 매우 유용하다.
+→ 파일을 Apache Parquet나 ORC 형식으로 가져오려면 Glue 등 ETL 서비스를 사용해야 한다. Glue는 CSV와 Parquet간의 데이터를 변환하는데 매우 유용하다.
 ~~~
 
 - Compress data for smaller retrievals (bzip2, gzip, lz4, snappy, zlip, zstd…)  
@@ -73,7 +73,7 @@
 → `Athena`는 `S3` 뿐만 아니라 어떤 곳의 데이터도 쿼리할 수 있다. 관계형 데이터베이스나 비관계형 데이터베이스, 객체, 사용자 지정 데이터 원본이 이에 포함된다.
 
 - Uses Data Source Connectors that run on AWS Lambda to run Federated Queries (e.g., CloudWatch Logs, DynamoDB, RDS, …)  
-→ `Data Source Connectors`는 `S3` 이외의 데이터를 조회할 때 사용된다. 이 데이터 원본 커넥터는 람다 함수이며 다른 서비스에서 연합 쿼리를 실행한다. `CloudWatch Logs`, `DynamoDB`, `RDS` 등에서 실행하며 매우 강력하다.
+→ `Data Source Connectors`는 `S3` 이외의 데이터 소스에서 데이터를 조회할 때 사용된다. 이 데이터의 원본 커넥터는 람다 함수이며 다른 서비스에서 연합 쿼리를 실행한다. `CloudWatch Logs`, `DynamoDB`, `RDS` 등 서비스에서 지원되며 매우 강력하다.
 
 - Store the results back in Amazon S3  
 → 쿼리 결과는 사후 분석을 위해 `Amazon S3` 버킷에 저장할 수 있다.
