@@ -1,7 +1,7 @@
 ## WAF
 ### 1. AWS WAF – Web Application Firewall
 - Protects your web applications from common web exploits (Layer 7)  
-→ `AWS WAF`는 7계층에서 일어나는 일반적인 웹 취약점 공격으로부터 웹 애플리케이션을 보호한다.
+→ `AWS WAF`는 7계층에서 일어나는 일반적인 웹 취약점 공격으로부터 웹 애플리케이션을 보호한다. `Amazon API Gateway`, `CloudFront`, `ALB`를 위한 서비스이다.
 
 - Layer 7 is HTTP (vs Layer 4 is TCP/UDP)  
 → 7계층은 `HTTP`이므로, `HTTP`의 취약점 공격을 막아주는 것이다.
@@ -34,7 +34,7 @@
 ~~~
 
 - Web ACL are Regional except for CloudFront  
-→ 웹 `ACL`은 리전에만 적용되며 `CloudFront`는 글로벌로 정의됩니다
+→ 웹 `ACL`은 기본적으로 리전 단위로 적용된다. 단, `CloudFront`는 글로벌로 정의된다.
 
 - A rule group is a reusable set of rules that you can add to a web ACL  
 → 규칙 그룹이 존재한다. 이는 여러 웹 `ACL`에 추가할 수 있는 재사용 가능한 규칙 모음이다.
