@@ -37,7 +37,7 @@
 → 서버리스이다. 서버리스는 서버를 관리하지 않는다는 의미이지 서버가 없다는 의미는 아니다.
 
 - You just create task definitions  
-→ 태스트 정의만 생성하는 것으로 충분하다. 새 도커 컨테이너를 실행하면 어디서 실행되는지 알리지 않고 그냥 실행된다.
+→ 태스크 정의를 생성하는 것만으로 충분하다. 새 도커 컨테이너를 실행하면 어디서 실행되는지 알리지 않고 그냥 실행된다.
 
 - To scale, just increase the number of tasks. Simple - no more EC2 instances  
 → 태스크 수를 늘리는 것 만으로 확장이 가능하다. 시험에서는 `EC2` 시작 유형보다 서버 관리가 쉽기 때문에 서버리스인 `Fargate`를 사용하라는 문제가 자주 등장한다.
@@ -96,7 +96,7 @@
 → 처리량이 매우 많거나 높은 성능이 요구될 때 권장된다. 추후에 언급될 `AWS Private Link`와 사용할 때도 권장된다.
 
 - Elastic Load Balancer supported but not recommended (no advanced features – no Fargate)  
-→ 구새대의 `ELB`는 사용할 수는 있지만 권장하지 않는다. 고급 기능들을 지원하지 않으며 `Fargate`에 연결할 수도 없기 때문이다.
+→ 구세대의 `ELB`는 사용할 수는 있지만 권장하지 않는다. 고급 기능들을 지원하지 않으며 `Fargate`에 연결할 수도 없기 때문이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235696796-a0a93eff-15d7-467d-9a8b-3cc3cf6fa6c6.png)
 
@@ -190,7 +190,7 @@
 #### 1. ECS tasks invoked by Event Bridge
 - 이 아키텍처는 도커 컨테이너를 이용해 `S3` 버킷으로부터 이미지나 객체를 처리하는 서버리스 아키텍처이다.
 ~~~
-- 사용자가 S3 버켓에 이미지를 업로드한다. 이 때 `S3`와 통합되어 있는 Amazon EventBridge를 통해 ECS 태스크를 실행한다. 
+- 사용자가 S3 버켓에 이미지를 업로드한다. 이 때 S3와 통합되어 있는 Amazon EventBridge를 통해 ECS 태스크를 실행한다. 
 Amazon EventBridge는 ECS 태스크를 실행하는 규칙을 생성할 수 있다.
 
 - ECS 태스크가 생성되고 ECS의 태스크 역할이 주어진다. 이 태스크는 객체를 받아 처리하고 Amazon DynamoDB에 결과를 보내게 된다.
