@@ -126,7 +126,7 @@
 또, 기존 리전에 문제가 발생하면 보조 리전을 새 기본 리전으로 승격시킬 수 있다.
 
 - Aurora Machine Learning: perform ML using SageMaker & Comprehend on Aurora  
-→ `Aurora Machine Learning`을 사용하면 `SageMaker`와 `Comprehend on Aurora`를 사용해 머신 러닝을 수행할 수 있따.
+→ `Aurora Machine Learning`을 사용하면 `SageMaker`와 `Comprehend on Aurora`를 사용해 머신 러닝을 수행할 수 있다.
 
 - Aurora Database Cloning: new cluster from existing one, faster than restoring a snapshot  
 → 프로덕션 데이터베이스로부터 테스트 데이터베이스나 스테이징 데이터베이스를 만들려면 `Aurora Database Cloning` 기능을 사용해 기존 클러스터에서 새 `Aurora` 클러스터를 만들면 된다. 이는 스냅샷을 사용해 복구하는 것보다 훨씬 빠르다.

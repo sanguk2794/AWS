@@ -260,7 +260,7 @@
 → 온디맨드 백업은 DynamoDB의 성능이나 지연 시간에 영향을 주지 않는다.
 
 - Can be configured and managed in AWS Backup (enables cross-region copy)
-→ 백업을 좀 더 제대로 관리할 수 있는 방법 중 하나로 AWS Backup 서비스가 있다. 백업에 수명 주기 정책을 활성화할 수 있고, 재해 복구 목적으로 리전 간 백업을 복사할 수 있따.
+→ 백업을 좀 더 제대로 관리할 수 있는 방법 중 하나로 AWS Backup 서비스가 있다. 백업에 수명 주기 정책을 활성화할 수 있고, 재해 복구 목적으로 리전 간 백업을 복사할 수 있다.
 
 - The recovery process creates a new table
 → 복구를 진행할 경우 새로운 테이블을 생성한다.

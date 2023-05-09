@@ -175,19 +175,19 @@
 → 전역 클라이언트 측 암호화에 사용한다. 한 리전에서 클라이언트 측 암호화를 하고 다른 리전에서 클라이언트 측 복호화를 하는 것이다.
 
 ### 8. DynamoDB Global Tables and KMS Multi-Region Keys Client-Side encryption
-• We can encrypt specific attributes client-side in our DynamoDB table using the Amazon DynamoDB Encryption Client  
+- We can encrypt specific attributes client-side in our DynamoDB table using the Amazon DynamoDB Encryption Client  
 → 중요한 것은 전체 테이블을 암호화하는 것이 아니라는 점이다. 저장 데이터 암호화이므로 테이블의 속성을 암호화하여 특정 클라이언트만 사용할 수 있게 된다.
 
-• `DynamoDB` 전역 테이블과 `KMS` 다중 리전 키를 이용해 클라이언트 측 암호화하는 시나리오는 다음과 같다.
+- `DynamoDB` 전역 테이블과 `KMS` 다중 리전 키를 이용해 클라이언트 측 암호화하는 시나리오는 다음과 같다.
 ~~~
-• us-east-1과 ap-southeast-2에 멀티 리전 키가 있다고 가정한다. us-east-1의 KMS 다중 리전 키의 복제본이 ap-southeast-2 리전에 저장되었다.
-• 클라이언트 애플리케이션에서 DynamoDB에 데이터를 삽입할 때 다중 리전 키를 이용해 사회 보장 번호 등 중요한 일부 속성을 암호화한다.
-• DynamoDB 테이블에 액세스할 수 있는 데이터베이스 관리자조차 사회 보장 번호 속성을 암호화하는 데 사용한 KMS 키에 액세스할 수 있는 권한이 없다면 해당 데이터에 대한 접근이 불가능하다.
-• DynamoDB 테이블이 전역 테이블인 경우 해당 테이블의 데이터는 다른 리전으로 복제된다.
-• 복제된 리전의 DynamoDB 데이터는 ap-southeast-2에 존재하는 다중 리전 키의 복제본을 통해 복호화가 가능하다.
+- us-east-1과 ap-southeast-2에 멀티 리전 키가 있다고 가정한다. us-east-1의 KMS 다중 리전 키의 복제본이 ap-southeast-2 리전에 저장되었다.
+- 클라이언트 애플리케이션에서 DynamoDB에 데이터를 삽입할 때 다중 리전 키를 이용해 사회 보장 번호 등 중요한 일부 속성을 암호화한다.
+- DynamoDB 테이블에 액세스할 수 있는 데이터베이스 관리자조차 사회 보장 번호 속성을 암호화하는 데 사용한 KMS 키에 액세스할 수 있는 권한이 없다면 해당 데이터에 대한 접근이 불가능하다.
+- DynamoDB 테이블이 전역 테이블인 경우 해당 테이블의 데이터는 다른 리전으로 복제된다.
+- 복제된 리전의 DynamoDB 데이터는 ap-southeast-2에 존재하는 다중 리전 키의 복제본을 통해 복호화가 가능하다.
 ~~~
 
-• Using client-side encryption we can protect specific fields and guarantee only decryption if the client has access to an API key  
+- Using client-side encryption we can protect specific fields and guarantee only decryption if the client has access to an API key  
 → 클라이언트 측 암호화 기술을 사용하면 데이터의 특정 필드나 속성을 보호할 수 있다. 또, 전역 테이블 덕분에 데이터 뿐만 아니라 암호화 키도 같이 복제할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236688852-88f6620e-296c-44f8-8b1c-e4969220c7c5.png)
@@ -195,16 +195,16 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 9. Global Aurora and KMS Multi-Region Keys Client-Side encryption
-• We can encrypt specific attributes client-side in our Aurora table using the AWS Encryption SDK  
+- We can encrypt specific attributes client-side in our Aurora table using the AWS Encryption SDK  
 → `AWS Encryption SDK`를 사용하여 `Aurora` 테이블의 클라이언트 측 특정 속성을 암호화할 수 있다.
 
-• Combined with Aurora Global Tables, the client-side encrypted data is replicated to other regions  
+- Combined with Aurora Global Tables, the client-side encrypted data is replicated to other regions  
 → `Aurora`는 전역 데이터베이스이므로 테이블이 전역으로 복제된다.
 
-• If we use a multi-region key, replicated in the same region as the Global Aurora DB, then clients in these regions can use low-latency API calls to KMS in their region to decrypt the data client-side  
+- If we use a multi-region key, replicated in the same region as the Global Aurora DB, then clients in these regions can use low-latency API calls to KMS in their region to decrypt the data client-side  
 → `Global Aurora DB`와 동일한 지역에서 복제된 다중 지역 키를 사용하는 경우, 로컬 `KMS API`를 호출해 데이터 클라이언트 측의 암호를 해독한다. 따라서, 지연 시간이 단축된다.
 
-• Using client-side encryption we can protect specific fields and guarantee only decryption if the client has access to an API key, we can protect specific fields even from database admins  
+- Using client-side encryption we can protect specific fields and guarantee only decryption if the client has access to an API key, we can protect specific fields even from database admins  
 → `DB` 관리자로부터 데이터를 보호할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236689588-f655e923-07e6-45c1-ba8d-e9aa6f872d5d.png)

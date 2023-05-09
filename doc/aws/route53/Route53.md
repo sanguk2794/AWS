@@ -156,7 +156,7 @@ $ dig [url]
 
 ### 2. CNAME vs Alias
 - AWS Resources (Load Balancer, CloudFront...) expose an AWS hostname: lb1-1234.us-east-2.elb.amazonaws.com and you want myapp.mydomain.com  
-→ 로드 밸런서나 클라우드프론트 등 `AWS`의 리소스를 사용하는 경우 호스트 이름이 노출된다. 그리고 보유한 도메인에 호스트 이름을 매핑하고자 할 수 있따.
+→ 로드 밸런서나 클라우드프론트 등 `AWS`의 리소스를 사용하는 경우 호스트 이름이 노출된다. 그리고 보유한 도메인에 호스트 이름을 매핑하고자 할 수 있다.
 
 - CNAME:
 ~~~

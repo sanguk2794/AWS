@@ -4,13 +4,13 @@
 → `CloudWatch`는 `AWS`의 모든 서비스에 대한 지표를 제공한다. 따라서 계정에서 일어나는 모든 일을 모니터링할 수 있다.
 
 - Metric is a variable to monitor (CPUUtilization, NetworkIn…)  
-→ 지표는 모니터링할 변수이다. 이에는 `CPU` 사용률, 네트워크 사용량, `S3` 버킷 사이즈 등이 포함된다.
+→ 지표는 모니터링할 변수이다. `CPU` 사용률, 네트워크 사용량, `S3` 버킷 사이즈 등이 포함된다.
 
 - Metrics belong to namespaces  
 → 지표는 각각 다른 네임스페이스에 저장되며 서비스당 이름 공간은 하나이다.
 
 - Dimension is an attribute of a metric (instance id, environment, etc…)  
-→ 지표의 속성으로 측정 기준이 있는데, `CPU` 사용률에 대한 지표는 특정 인스턴스나 특정 환경등과 관련이 있을 것이다.
+→ 지표의 속성으로 측정 기준이 있는데 `CPU` 사용률에 대한 지표는 특정 인스턴스나 특정 환경등과 관련이 있을 것이다.
 
 - Up to 10 dimensions per metric  
 → 지표 당 최대 측정 기준은 10개이다.
@@ -19,7 +19,7 @@
 → 지표는 시간을 기반으로 하므로 타임스탬프가 꼭 있어야 한다.
 
 - Can create CloudWatch dashboards of metrics  
-→ 지표가 많아지만 `CloudWatch` 대시보드에 추가해 모든 지표를 한 번에 볼 수 있다.
+→ 지표를 통해 `CloudWatch` 대시보드를 생성할 수 있다.
 
 - Can create CloudWatch Custom Metrics (for the RAM for example)  
 → `CloudWatch`에 커스텀 지표를 만들 수 있다. 예를 들면 `EC2` 인스턴스로부터 메모리 사용량을 추출할 수 있다. 이는 굉장히 전형적인 사례이다.
@@ -29,7 +29,7 @@
 → `CloudWatch` 지표는 `CloudWatch` 외부로 스트리밍할 수 있다. `CloudWatch` 지표를 원하는 대상으로 지속적으로 스트리밍하면 거의 실시간으로 전송되고 지연 시간도 짧아진다.
 
 - Amazon Kinesis Data Firehose (and then its destinations)  
-→ `CloudWatch` 지표는 `Amazon Kinesis Data Firehose`로 거의 실시간으로 스트리밍된다. 여기서 원하는 곳으로 다시 전송할 수 있다.
+→ `CloudWatch` 지표는 `Amazon Kinesis Data Firehose`로 거의 실시간으로 스트리밍된다. `Amazon Kinesis Data Firehose`에서 원하는 곳으로 지표 데이터를 전송할 수 있다.
 
 - 3rd party service provider: Datadog, Dynatrace, New Relic, Splunk, Sumo Logic…  
 → 타사 서비스에도 `CloudWatch` 지표를 전송할 수 있다.
@@ -37,9 +37,10 @@
 - Option to filter metrics to only stream a subset of them  
 → 모든 이름공간에 속한 지표를 스트림할 수 있으며, 몇몇 이름공간의 지표로 필터링도 가능하다.
 
-- `CloudWatch` 지표는 `Amazon Kinesis Data Firehose`로 거의 실시간으로 스트리밍된다.
 - `Amazon Kinesis Data Firehose`에서 `S3` 버킷으로 지표를 보내 `Athena`를 사용하면 지표를 분석할 수 있다.
+
 - `Amazon Kinesis Data Firehose`에서 `Redshift`를 사용해 지표로 데이터 웨어하우스를 만들 수 있다.
+
 - `Amazon Kinesis Data Firehose`에서 `Amazon OpenSearch`를 사용해 대시보드를 생성할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236108668-c9071109-adc5-48d4-9239-7d3b2e6871b5.png)
@@ -58,7 +59,7 @@
 
 - CloudWatch Logs can send logs to:
 ~~~
-- 로그를 아래 서비스로 내보낼 수 있다.
+- 로그를 아래 서비스들로 내보낼 수 있다.
 - Amazon S3 (exports)
 - Kinesis Data Streams
 - Kinesis Data Firehose
@@ -68,7 +69,7 @@
 
 #### 1. CloudWatch Logs - Sources
 - SDK, CloudWatch Logs Agent, CloudWatch Unified Agent  
-→ `SDK`, `CloudWatch Logs Agent`, `CloudWatch Unified Agent`의 로그를 전송할 수 있다. 통합 CloudWatch 에이전트를 통한 로그 전송 방식은 사장되는 추세이다.
+→ `SDK`, `CloudWatch Logs Agent`, `CloudWatch Unified Agent`의 로그를 전송할 수 있다.
 
 - Elastic Beanstalk: collection of logs from application  
 → `Elastic Beanstalk`를 통해 실행되는 애플리케이션의 로그를 전송할 수 있다.
@@ -77,7 +78,7 @@
 → `ECS` 컨테이너의 로그를 전송할 수 있다.
 
 - AWS Lambda: collection from function logs  
-→ 함수 자체 로그를 전송할 수 있다.
+→ 람다 함수의 로그를 전송할 수 있다.
 
 - VPC Flow Logs: VPC specific logs  
 → `VPC` 메타데이터 또는 네트워크 트래픽 로드를 전송할 수 있다.
@@ -89,7 +90,7 @@
 → 필터링한 로그를 전송할 수 있다.
 
 - Route53: Log DNS queries  
-→ 모든 `DNS` 쿼리를 로그로 전송할 수 있따.
+→ 모든 `DNS` 쿼리를 로그로 전송할 수 있다.
 
 #### 2. CloudWatch Logs Metric Filter & Insights
 - CloudWatch Logs can use filter expressions
@@ -97,21 +98,21 @@
 - CloudWatch Logs에서 필터 표현식을 사용할 수 있다.
 
 - For example, find a specific IP inside of a log
-→ 예를 들어 로그 내 특정 IP를 찾을 수 있다.
+→ 로그 내 특정 IP를 찾을 수 있다.
 
 - Or count occurrences of “ERROR” in your logs
 → ERROR 문구를 포함하는 로그를 찾을 수 있다.
 ~~~
 
 - Metric filters can be used to trigger CloudWatch alarms  
-→ 지표 필터를 통해 출현 빈도를 계산하는 지표를 생성한 후 이 지표를 기반으로 `CloudWatch alarms`를 생성할 수 있따.
+→ 지표 필터를 통해 출현 빈도를 계산하는 지표를 생성한 후 이 지표를 기반으로 `CloudWatch alarms`를 생성할 수 있다.
 
 - CloudWatch Logs Insights can be used to query logs and add queries to CloudWatch Dashboards  
 → `CloudWatch Logs Insights` 기능을 통해 로그를 쿼리하고 이 쿼리를 대시보드에 바로 추가할 수 있다.
 
 ### 4. CloudWatch Logs – S3 Export
 - Log data can take up to 12 hours to become available for export  
-→ `CloudWatch`에서 `S3`로의 내보내기가 가능해지기 위해 최대 12시간이 걸릴 수 있다.
+→ `CloudWatch`에서 `S3`로 로그 데이터를 내보내는 데 최대 12시간이 소요될 수 있다.
 
 - The API call is CreateExportTask  
 → `API` 호출은 `CreateExportTask`이다.
@@ -129,7 +130,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 6. CloudWatch Logs Aggregation Multi-Account & Multi Region
-- `CloudWatch Logs`로 여러 계정과 리전간의 로그를 집계할 수 있다. 이 때에도 `Subscription Filter`를 사용한다.
+- `CloudWatch Logs`로 여러 계정과 리전의 로그를 집계할 수 있다. 이 때에도 `Subscription Filter`를 사용한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236109001-680a7c8e-480b-46a9-b104-106e576a9424.png)
 
@@ -182,15 +183,15 @@
 
 #### 1. CloudWatch Unified Agent – Metrics
 - Collected directly on your Linux server / EC2 instance  
-→ `EC2` 인스턴스 또는 온프레미스 리눅스 서버에 설치하면 로그와 더불어 지표를 수집할 수 있다. 
-
+~~~
+- EC2 인스턴스 또는 온프레미스 리눅스 서버에 설치하면 로그와 더불어 지표를 수집할 수 있다. 
 - CPU (active, guest, idle, system, user, steal)
 - Disk metrics (free, used, total), Disk IO (writes, reads, bytes, iops)
 - RAM (free, inactive, used, total, cached)
 - Netstat (number of TCP and UDP connections, net packets, bytes)
 - Processes (total, dead, bloqued, idle, running, sleep)
-- Swap Space (free, used, used %)
-→ 스와핑 공간은 메모리처럼 사용된다.
+- Swap Space (free, used, used %) → 스와핑 공간은 메모리처럼 사용된다.
+~~~
 
 - 핵심은 기본 `EC2` 인스턴스 모니터링보다 `CloudWatch Unified Agent`가 더 세부적이고 많은 지표를 수집한다는 것이다.
 

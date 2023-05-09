@@ -240,13 +240,13 @@
 - IAM Credentials Report (account-level) 
 ~~~
 - a report that lists all your account's users and the status of their various credentials
-→ IAM 자격 증명 보고서를 생성할 수 있다. 보고서는 계정에 있는 유저와 다양한 자격 증명의 상태를 포함한다.
+→ IAM 자격 증명 보고서를 생성할 수 있다. 보고서는 계정에 있는 유저와 다양한 자격 증명의 상태 정보를 포함한다.
 ~~~
 
 - IAM Access Advisor (user-level)
 ~~~
 - Access advisor shows the service permissions granted to a user and when those services were last accessed.
-→ IAM 엑세스 관리자를 통해 유저에게 부여된 서비스 권한과 해당 서비스에 마지막으로 액세스한 시간을 확인할 수 있다.
+→ IAM 액세스 관리자를 통해 유저에게 부여된 서비스 권한과 해당 서비스에 마지막으로 액세스한 시간을 확인할 수 있다.
 
 - You can use this information to revise your policies.
 → 해당 기능을 통해 어떤 권한을 사용하지 않는지 알 수 있다. 액세스 관리자를 확인해 권한을 조정하면 최소 권한의 원칙을 지킬 수 있다.

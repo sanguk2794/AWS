@@ -1,14 +1,16 @@
 ## Amazon Cognito
 ### 1. Amazon Cognito
+- Cognito = 인식
+
 - Give users an identity to interact with our web or mobile application  
-→ `Cognito`는 사용자에게 웹 및 모바일 앱과 상호 작용할 수 있는 자격 증명을 부여한다. 일반적으로 이 사용자들은 `AWS` 계정 외부에 존재한다. 모르는 사용자들에게 자격 증명을 부여해 사용자를 인식(Cognito)할 수 있다.
+→ `Cognito`는 사용자에게 웹 및 모바일 앱과 상호 작용할 수 있는 자격 증명을 부여한다. 일반적으로 이 사용자들은 `AWS` 계정 외부에 존재한다. 모르는 사용자들에게 자격 증명을 부여해 사용자를 인식할 수 있다.
 
 - `Cognito User Pools`, `Cognito Identity Pools` 두 종류의 하위 서비스가 있다.
 
 - Cognito User Pools:
 ~~~
 - Sign in functionality for app users
-→  앱 사용자에게 가입 기능을 제공하는 기능이다.
+→ 앱 사용자에게 가입 기능을 제공하는 기능이다.
 
 - Integrate with API Gateway & Application Load Balancer
 → API Gateway 및 애플리케이션 로드 밸런서와 원활히 통합된다.
@@ -24,17 +26,17 @@
 ~~~
 
 - Cognito vs IAM: “hundreds of users”, ”mobile users”, “authenticate with SAML”  
-→ `Cognito`의 사용자는 `AWS` 외부의 웹가 모바일 앱을 대상으로 한다. `수백 명의 사용자`, `모바일 사용자`, `SAML을 통한 인증`같은 키워드가 나오면 `Cognito`를 설명하는 것이다.
+→ `Cognito`의 사용자는 `AWS` 외부의 웹과 모바일 앱을 대상으로 한다. `수백 명의 사용자`, `모바일 사용자`, `SAML을 통한 인증`같은 키워드가 나오면 `Cognito`를 설명하는 것이다.
 
 ### 2. Cognito User Pools (CUP) – User Features
 - Create a serverless database of user for your web & mobile apps  
 → 웹 및 모바일 앱을 대상으로 하는 서버리스 사용자 데이터베이스이다.
 
 - Simple login: Username (or email) / password combination  
-→ 사용자 이름 또는 이메일, 비밀번호의 조합으로 간단한 로그인 절차를 정의할 수 있다.
+→ 사용자 이름 또는 이메일과 비밀번호의 조합으로 간단한 로그인 절차를 정의할 수 있다.
 
 - Password reset  
-→ 비밀번호 재설정 기능이 있다.
+→ 비밀번호 재설정이 가능하다.
 
 - Email & Phone Number Verification  
 → 이메일 및 전화번호 검증이 가능하다.
