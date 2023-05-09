@@ -1,7 +1,7 @@
 ## Docker
 ### 1. What is Docker?
 - Docker is a software development platform to deploy apps  
-→ 도커는 앱 배포를 위한 소프트웨어 개발 플랫폼이다. 컨테이너 기술이다.
+→ 도커는 앱 배포를 위한 소프트웨어 개발 플랫폼이며, 컨테이너 기술이다.
 
 - Apps are packaged in containers that can be run on any OS  
 → 컨테이너에 앱이 패키징되며, 이 때 컨테이너는 표준화되어 있어서 어떤 운영체제에서든 실행시킬 수 있다.
@@ -30,7 +30,7 @@
 
 - 도커 에이전트를 실행하면 도커 컨테이너를 시작할 수 있다. 내부 실행 프로그램은 다르지만 서버 관점에서 보면 모두 도커 컨테이너이다.
 
-- 도커 내에서 애플리케이션 뿐만 아니라 `MySQL` 등 데이터베이스도 실행 가능하다. 또, 하나의 운영 체제에서 여러 개의 도커 컨테이너를 실행할 수 있다.
+- 도커 내에서 애플리케이션 뿐만 아니라 `MySQL` 등 데이터베이스도 실행 가능하다. 또, 하나의 운영 체제에서 여러 개의 도커 컨테이너를 실행할 수도 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235595756-24883bf5-779c-4063-9313-f591d036032c.png)
 
