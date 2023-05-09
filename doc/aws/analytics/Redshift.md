@@ -7,7 +7,7 @@
 → 온라인 분석 처리를 의미하는 `OLAP` 유형의 데이터베이스이며 분석과 데이터 웨어하우징에 사용한다.
 
 - 10x better performance than other data warehouses, scale to PBs of data  
-→ 다른 어떤 데이터 웨어하우징보다 성능이 10배 이상 좋고 데이터가 `PB` 규모로 확장되므로 모든 데이터를 `Redshift`에 로드하면 빠르게 분석할 수 있다.
+→ 다른 데이터 웨어하우징들과 비교했을 때 성능이 10배 이상 뛰어나다. 데이터가 `PB` 규모로 확장되므로 모든 데이터를 `Redshift`에 로드하면 빠르게 분석할 수 있다.
 
 - Columnar storage of data (instead of row based) & parallel query engine  
 → `Redshift`의 성능 향상이 가능한데, 이는 열 기반 데이터 스토리지를 사용하기 때문이다. 행 기반이 아니라 병렬 쿼리 엔진이 있는 것이다.
@@ -22,7 +22,7 @@
 → `Amazon Quicksight`같은 `BI` 도구나 `Tableau`를 `Redshift`에 통합할 수 있다.
 
 - vs Athena: faster queries / joins / aggregations thanks to indexes  
-→ `Redshift`는 먼저 모든 데이터를 `Redshift`에 로드해야 한다. 데이터를 로드한 이후는 `Redshift`의 쿼리가 더 빠르고 조인과 통합을 훨씬 더 빠르게 수행할 수 있다. 이는 `Athena`에는 없는 인덱스가 있기 때문이다.
+→ `Redshift`는 먼저 모든 데이터를 `Redshift`에 로드해야 한다. `Redshift`의 쿼리가 더 빠르고 조인과 통합을 훨씬 더 빠르게 수행할 수 있는 이유는 `Athena`에는 없는 인덱스가 있기 때문이다.
 
 - `S3`의 임시 쿼리라면 `Athena`가 좋은 사용 사례가 되지만 쿼리가 많고 복잡하며 조인하거나 집계하는 등 집중적인 데이터 웨어하우스라면 `Redshift`가 더 뛰어난 성능을 보여준다.
 
