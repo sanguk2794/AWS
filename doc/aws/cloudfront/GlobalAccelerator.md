@@ -64,10 +64,10 @@
 - Health Checks
 ~~~
 - Global Accelerator performs a health check of your applications
-→ `Global Accelerator`는 애플리케이션에 대해 상태 확인을 실행한다.
+→ Global Accelerator는 애플리케이션에 대해 상태 확인을 실행한다.
 
 - Helps make your application global (failover less than 1 minute for unhealthy)
-→ 한 리전에 있는 한 `ALB`에 대해 상태확인에 실패하면 자동화된 장애 조치가 1분 안에 정상 엔드 포인트로 실행된다.
+→ 한 리전에 있는 한 ALB에 대해 상태확인에 실패하면 자동화된 장애 조치가 1분 안에 정상 엔드 포인트로 실행된다.
 
 - Great for disaster recovery (thanks to the health checks)
 → 상태 확인을 통한 재해 복구에 특히 뛰어나다.
@@ -79,7 +79,7 @@
 → 클라이언트가 화이트리스트여야 하는 단 두 개의 외부 IP만 존재하기 때문에 보안 측면에서도 매우 안전하다.
 
 - DDoS protection thanks to AWS Shield
-→ 자동적으로 DDos의 방어도 가능하다. AWS Shield를 활용하기 때문이다.
+→ 자동적으로 DDoS의 방어도 가능하다. AWS Shield를 활용하기 때문이다.
 ~~~
 
 - 한 기업에서 웹 애플리케이션을 `AWS` 클라우드로 이전해 `EC2` 오토 스케일링 그룹에 있는 `EC2` 인스턴스 세트를 사용하려고 합니다. 웹 애플리케이션은 여러 개의 컴포넌트로 구성되어 있기 때문에 특정 웹 애플리케이션 컴포넌트로 라우팅하려면 호스트 기반 라우팅 기능이 필요합니다. 이 웹 애플리케이션은 이용객이 아주 많기 때문에 고객들의 방화벽 화이트리스트에 등록될 수 있도록 정적 IP 주소를 사용해야 합니다. 또한 이 애플리케이션을 이용하는 고객들이 전 세계에 흩어져 있으므로 짧은 지연 시간으로 서비스를 제공해야 합니다. 다음 중 정적 `IP` 주소를 할당하고 전 세계에 짧은 지연 시간으로 서비스를 제공하는 데 도움이 될 만한 `AWS` 서비스는 무엇입니까?  
@@ -87,7 +87,7 @@
 
 ### 4. AWS Global Accelerator vs CloudFront
 - They both use the AWS global network and its edge locations around the world  
-→ 둘 서비스 모두 `AWS`의 글로벌 네트워크와 엣지 로케이션 기반으로 동작한다.
+→ 두 서비스 모두 `AWS`의 글로벌 네트워크와 엣지 로케이션 기반으로 동작한다.
 
 - Both services integrate with AWS Shield for DDoS protection.  
 → 두 서비스 모두 `AWS Shield`와 통합 가능하다. 이를 통해 `DDoS`로부터 보호받는다.
