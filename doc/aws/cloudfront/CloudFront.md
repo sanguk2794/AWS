@@ -15,7 +15,7 @@
 → 컨텐츠가 캐싱되므로 전세계의 사용자들이 낮은 레이턴시로 접근할 수 있어서 사용자 경험을 향상시킬 수 있다.
 
 - 216 Point of Presence globally (edge locations)  
-→ 현재 `CloudFront`는 전 세계 총 216개의 엣지 로케이션을 통해 구성이 되어 있다. 그리고 `AWS`는 지속적으로 엣지 로케이션을 추가하고 있다.
+→ 현재 `CloudFront`는 전 세계 총 216개의 엣지 로케이션을 통해 구성된다. 그리고 `AWS`는 지속적으로 엣지 로케이션을 추가하고 있다.
 
 - DDoS protection (because worldwide), integration with Shield, AWS Web Application Firewall  
 → 컨텐츠가 전체적으로 분산되어 있으므로 `DDoS, Distributed Denial of Service` 공격으로부터 상대적으로 자유롭다. 
