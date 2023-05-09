@@ -19,20 +19,20 @@
 
 - Identity providers
 ~~~
-- 싱글 사인온을 위한 사용자는 두 위치에 저장될 수 있다.
+- 싱글 사인온을 위한 사용자 정보는 두 위치에 저장될 수 있다.
 
 - Built-in identity store in IAM Identity Center
 → IAM 자격 증명 센터에 내장된 ID 저장소
 
 - 3rd party: Active Directory (AD), OneLogin, Okta…
-→ 서드파티 ID 공급자
+→ Active Directory (AD), OneLogin, Okta 등 서드파티 ID 공급자
 ~~~
 
 ### 2. AWS IAM Identity Center
 - `AWS IAM` 자격 증명 센터의 로그인 페이지에 접속하고 로그인을 수행한다.  
 → 이 때 `ID` 센터는 `AWS` 조직이나 `Windows EC2` 인스턴스, 비즈니스 클라우드 애플리케이션, 사용자 정의 `SAML2.0` 지원 애플리케이션 등과 통합된 상태여야 한다.
 
-- 물론 로그인했다고 해서 모든 항목에 액세스할 수 있는 건 아니다. 자격 증명 센터에서 권한 셋을 정의해서 어떤 사용자가 무엇에 액세스할 수 있는지 정의할 수 있다.
+- 로그인을 하는 것으로 모든 항목에 액세스가 가능해지는 것은 아니다. 자격 증명 센터에서 권한 셋을 정의해서 어떤 사용자가 무엇에 액세스할 수 있는지 정의할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236677616-7978e0c6-b523-4ae4-88e4-7f0364b99228.png)
 
@@ -74,6 +74,9 @@
 - Use case: Define permissions once, then modify AWS access by changing the attributes
 → 사용 사례는 IAM 권한 셋을 한 번만 정의하고 이 속성을 활용하여 사용자 또는 그룹의 AWS 액세스만 수정하는 것이다.
 ~~~
+
+#### 1. 권한 세트
+권한 집합은 하나 이상의 `IAM` 정책 컬렉션을 정의하는 사용자가 만들고 유지 관리하는 템플릿이다. 권한 집합을 사용하면 조직 내 사용자 및 그룹에 대한 `AWS` 계정 액세스 권한을 간단하게 할당할 수 있다. 예를 들어 `AWS RDS`, `DynamoDB` 및 `Aurora` 서비스를 관리하기 위한 정책이 포함된 `Database Admin` 권한 집합을 생성하고 이 단일 권한 집합을 사용하여 데이터베이스 관리자에게 `AWS` 조직 내 대상 `AWS` 계정 목록에 대한 액세스 권한을 부여할 수 있다.
 
 ---
 #### ▶ Reference
