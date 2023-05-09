@@ -1,7 +1,7 @@
 ## Big Data Ingestion Pipeline
 ### 1. Big Data Ingestion Pipeline
 - We want the ingestion pipeline to be fully serverless  
-→ 애플리케이션 수집 파이프라인이 완전히 서버리스이면서 `AWS`가 관리해주는 것을 원한다.
+→ 사용자는 애플리케이션의 수집 파이프라인을 완전한 서버리스로써 `AWS`가 관리해 줄 것을 원한다.
 
 - We want to collect data in real time  
 → 실시간으로 데이터를 수집하기를 원한다.
@@ -29,7 +29,7 @@
 - Amazon QuickSight를 사용하면 레포트 버킷에 저장된 결과를 직접 시각화할 수 있다. 또는 Redshift같은 데이터 웨어하우스에 데이터를 입력해 분석하기도 한다. Redshift는 서버리스가 아니다.
 ~~~
 
-- 빅데이터 수집 파이프라인의 핵심은 실시간 데이터 수집과 변형, 서버리스 람다와 `Redshift`를 이용한 데이터 웨어하우스, `QuickSight` 활용 시각화를 꼽을 수 있다.
+- 빅데이터 수집 파이프라인의 핵심은 실시간 데이터 수집과 변형, 람다와 `Redshift`를 이용한 데이터 웨어하우징, `QuickSight`를 활용한 시각화를 꼽을 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235985486-d9dc4ac3-a3a1-42ca-b9f9-3ebf1834449b.png) 
 
@@ -58,7 +58,7 @@
 → `Athena`의 실행 결과는 `S3`에 저장된다.
 
 - The reporting bucket contains analyzed data and can be used by reporting tool such as AWS QuickSight, Redshift, etc…  
-→ 보고 버킷은 분석된 데이터를 보관한다 추가적인 시각화가 필요하다면 `QuickSight` 혹은 `Redshift` 등의 보고 도구를 사용하면 된다.
+→ 보고 버킷은 분석된 데이터를 보관하기 위해 사용한다. 추가적인 시각화가 필요하다면 `QuickSight` 혹은 `Redshift` 등의 보고 도구를 사용하면 된다.
 
 ---
 #### ▶ Reference
