@@ -26,7 +26,7 @@
 → `S3`는 독점 스토리지 기술로 `NFS` 규정을 준수하는 파일 시스템인 `EFS`와는 다르다. 
 
 - So how do you expose the S3 data on-premises? AWS Storage Gateway!  
-→ `S3` 데이터를 온프레미스로 옮기기 위한 방법이 `AWS Storage Gateway` 서비스이다.
+→ 독점 기술인 `S3`의 데이터를 온프레미스로 옮기기 위한 방법이 `AWS Storage Gateway` 서비스이다.
 
 - `AWS`의 스토리지 클라우드 네이티브 옵션에는 다음의 종류가 포함된다.
 ~~~
@@ -48,10 +48,9 @@
 
 - Use cases:
 ~~~
-- disaster recovery
-→ 재해 복구 목적으로 온프레미스 데이터를 클라우드에 백업할 수 있다.
+- backup & restore → disaster recovery
+→ 재해 복구를 목적으로 온프레미스 데이터를 클라우드에 백업할 수 있다.
 
-- backup & restore
 - tiered storage
 → 클라우드에는 콜드 데이터를 두고 온프레미스에는 웜 데이터를 두는 등의 활용이 가능하다.
 
@@ -73,7 +72,7 @@
 
 #### 1. Amazon S3 File Gateway
 - Configured S3 buckets are accessible using the NFS and SMB protocol  
-→ `S3` 파일 게이트웨이로 구성한 모든 버킷을 `NFS`와 `SMB` 프로토콜을 이용해 접근할 수 있다.
+→ `S3` 파일 게이트웨이로 구성한 모든 버킷을 `NFS`와 `SMB, Server Message Block` 프로토콜을 이용해 접근할 수 있다.
 
 - Most recently used data is cached in the file gateway  
 → 최근에 사용된 데이터는 파일 게이트웨이에 캐시로 저장된다.
@@ -82,10 +81,10 @@
 → 여러 스토리지 클래스를 지원한다.
 
 - Transition to S3 Glacier using a Lifecycle Policy  
-→ 수명 주기 정책을 사용하면 `Glacier`로도 옮길 수 있다.
+→ 수명 주기 정책을 사용하면 `Glacier` 아카이브로 데이터를 옮길 수 있다.
 
 - Bucket access using IAM roles for each File Gateway  
-→ 버킷에 액세스를 위해 각 파일 게이트웨이마다 `IAM` 역할을 생성해야 한다.
+→ 버킷 액세스를 위해서는 각각의 `File Gateway`마다 `IAM` 역할을 생성해야 한다.
 
 - SMB Protocol has integration with Active Directory (AD) for user authentication  
 → `Windows` 파일 시스템 네이티브인 `SMB` 프로토콜을 사용하는 경우에는 사용자 인증을 위해 `Active Directory`와 통합해야 한다.
@@ -125,7 +124,7 @@
 → 블록 스토리지로 `Amazon S3`가 백업하는 `iSCSI` 프로토콜을 사용한다.
 
 - Backed by EBS snapshots which can help restore on-premises volumes!  
-→ 볼륨이 `EBS` 스냅샷으로 저장되어 필요에 따라 온프레미스 볼륨을 복구할 수 있다. 
+→ 볼륨이 `EBS` 스냅샷으로 저장되며 필요에 따라 온프레미스 볼륨을 복구할 수 있다. 
 
 - 볼륨 게이트웨이에는 두 가지 유형이 존재한다. 두 유형의 차이점은 중요하다.
 ~~~
