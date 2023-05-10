@@ -1,13 +1,13 @@
 ## AWS Snow Family
 ### 1. AWS Snow Family
 - Highly-secure, portable devices to collect and process data at the edge, and migrate data into and out of AWS  
-→ 이 제품은 보안성이 뛰어난 휴대용 장치 모음으로 아래의 두 가지 경우에 사용된다.
+→ `Snow Family`는 보안성이 뛰어난 휴대용 장치의 모음으로 아래의 두 가지 경우에 사용된다.
 ~~~
 - Data migration: Snowcone, Snowball Edge, Snowmobile
 → AWS 안팎으로 데이터 마이그레이션할 때 사용된다. 
 
 - Edge computing: Snowcone, Snowball Edge,
-→ 엣지에서 데이터를 수집하거나 처리할 때 사용된다.
+→ 엣지 컴퓨팅에 사용된다.
 ~~~
 
 ### 2. Data Migrations with AWS Snow Family
@@ -25,23 +25,21 @@
 → 대역폭 공유
 
 - Connection stability
-→ 연결이 안정적이지 않을 경우 재시도가 필요할 수 있음.
+→ 연결이 안정적이지 않을 경우 재시도가 필요할 수 있음
 ~~~
 
 - AWS Snow Family: offline devices to perform data migrations If it takes more than a week to transfer over the network, use Snowball devices!  
-→ `AWS Snow` 제품군은 위와 같은 문제를 해결하기 위해 사용되는 오프라인에서 데이터 마이그레이션을 실행하는 장치이다. 
-`AWS`가 우편으로 물리적 장치를 보내주면 거기에 데이터를 끌어오고 다시 `AWS`로 전송한다. 일반적인 네트워크 전송시 일주일이 넘게 걸린다면 `Snowball` 장치를 활용해야 한다. 
+→ `AWS Snow` 제품군은 위와 같은 문제를 해결하기 위해 사용되는 오프라인에서 데이터 마이그레이션을 실행하는 장치이다. 네트워크를 통한 전송에 일주일이 넘게 걸린다면 `Snowball` 장치를 활용하는 것을 고려하는 것이 좋다.
 
+- `AWS`가 우편으로 물리적 장치를 보내주면 거기에 데이터를 저장해 다시 `AWS`로 배송한다. `AWS` 측에서 물리적 장치를 자체적인 인프라에 연결하여 `import`를 수행한다.
+ 
 - `Amazon S3`로 직접 업로드하기 위해서는 클라이언트가 `Amazon S3`로 데이터를 전송해야 한다.
-
-- 만약 `Snow` 제품군의 `Snowball`이 있다면 클라이언트가 `Snowball`을 요청하고 우편으로 받는다. 
-옮기고자 하는 파일을 `Snowball`로 옮기고 다시 `AWS`로 배송하면 `AWS` 측에서 자체적인 인프라에 연결하여 `import`를 수행한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235310304-9bfbaa03-60c1-4bcb-ab1c-e23bd68f6e0e.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- `S3` 버킷에서 데이터를 선택하여 `Snow` 제품군을 받는 `export` 또한 가능하다.
+- `S3` 버킷 데이터를 저장한 `Snow` 제품군을 배송받는 `export` 또한 가능하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235312330-39af99be-fd05-4e6e-af44-cebeff3ddd69.png)
 
@@ -61,22 +59,19 @@
 - Pay per data transfer job  
 → 데이터 전송 건수마다 비용이 청구된다.
 
-- Provide block storage and Amazon S3-compatible object storage  
-→ `Snowball Edge`는 블록 스토리지를 제공하거나 `Amazon S3` 호환 객체 스토리지를 제공한다. 
-
 - `Snowball Edge`에는 두 가지 옵션이 있다.
 ~~~
 - Snowball Edge Storage Optimized - 80 TB of HDD capacity for block volume and S3 compatible object storage
-→ 블록 볼륨으로 사용할 수 있도록 80TB 하드웨어 디스크 용량을 제공하거나 S3 호환 객체 스토리지를 제공한다. 더 큰 스토리지가 필요할 때 사용해야 할 옵션이다.
+→ 블록 볼륨으로 사용할 수 있도록 80TB 하드웨어 디스크 용량을 제공하거나 S3 호환 객체 스토리지를 제공한다. 데이터 마이그레이션에 사용되는 경우가 많다.
 
 - Snowball Edge Compute Optimized - 42 TB of HDD capacity for block volume and S3 compatible object storage
-→ Snowball Edge Compute Optimized는 42TB의 HDD 공간을 제공한다. 
+→ Snowball Edge Compute Optimized는 42TB의 HDD 공간을 제공한다. 엣지 컴퓨팅에 사용되는 경우가 .
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/235312411-29b69e38-1d5c-46ae-8e70-49e3c60028a7.png)
 
 - Use cases: large data cloud migrations, DC decommission, disaster recovery  
-→ `Snowball Edge`는 데이터 센터 폐쇄를 위한 대량의 데이터 클라우드 마이그레이션하거나 또는 `AWS`에 데이터를 백업함으로써 재해 복구에 활용하기 위해 사용된다.
+→ `Snowball Edge`는 데이터 센터 폐쇄 또는 데이터 백업을 통한 재해 복구를 위해 대량의 데이터를 클라우드에 마이그레이션하는 경우에 주로 사용된다. 
 
 - 암호화를 지원한다.
 
@@ -88,13 +83,13 @@
 
 #### 2. AWS Snowcone
 - Small, portable computing, anywhere, rugged & secure, withstands harsh environments  
-→ `Snowball Edge`보다 훨씬 작다. 어디서나 컴퓨팅 가능한 작은 휴대용 장치이다. 견고하고 안전하다. 사막, 물 속 등 가혹한 환경을 버틸 수 있다.
+→ `Snowball Edge`보다 훨씬 작은 어디서나 컴퓨팅 가능한 작은 휴대용 장치이다. 견고하고 안전하다. 심지어 사막, 물 속 등 가혹한 환경을 버틸 수 있다.
 
 - Light (4.5 pounds, 2.1 kg) - Device used for edge computing, storage, and data transfer  
-→ 엣지 컴퓨팅, 스토리지 및 데이터 전송에 사용된다.
+→ 데이터 전송과 엣지 컴퓨팅에 사용된다.
 
 - 8 TBs of usable storage  
-→ `8TB`를 저장할 수 있으며, `Snowball Edge Storage Optimized`와 비교하면 10배 적은 용량이다.
+→ `8TB`를 저장할 수 있다. `Snowball Edge Storage Optimized`와 비교하면 10배 적은 용량이다.
 
 - Use Snowcone where Snowball does not fit (space-constrained environment)  
 → `Snowball Edge`의 사용이 불가능할 때 사용할 수 있다. 예를 들면 공간을 제약받는 환경이다. 심지어 드론 위에 설치할 수도 있다.
@@ -210,14 +205,12 @@
 ~~~
 
 - All: Can run EC2 Instances & AWS Lambda functions (using AWS IoT Greengrass)  
-→ 모든 장치들은 내부 `EC2` 인스턴스나 람다 함수를 실행할 수 있다. 람다 함수는 `AWS IoT Greengrass` 서비스를 통해서만 사용 가능하다.
+→ 모든 장치들은 내부 `EC2` 인스턴스를 기동시키거나 람다 함수를 실행할 수 있다. 람다 함수는 `AWS IoT Greengrass` 서비스를 통해서만 사용 가능하다.
 
 - Long-term deployment options: 1 and 3 years discounted pricing  
 → 장기 배포 옵션을 선택할 수 있다. 장치를 장기간 빌리면 가격 할인을 받을 수 있다.
 
 ### 4. AWS OpsHub
-- `Snow` 제품군과 관련된 마지막 장치로 `OpsHub`가 있다.
-
 - Historically, to use Snow Family devices, you needed a CLI (Command Line Interface tool)  
 → 예전에는 `Snow`와 같은 장치를 사용하는 방법이 굉장히 복잡했다.
 
