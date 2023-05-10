@@ -5,7 +5,7 @@
 - BP1 – CloudFront
 ~~~
 - Web Application delivery at the edge
-→ 웹 애플리케이션 전송이 엣지에서 일어난다.
+→ 웹 애플리케이션에 대한 트래픽이 엣지에서 처리된다.
 
 - Protect from DDoS Common Attacks (SYN floods, UDP reflection…)
 → SYN Flood나 UDP 반사 공격과 같은 DDoS 일반 공격은 Shield 설정으로 막을 수 있다.
@@ -113,8 +113,6 @@
 - Protecting API endpoints (BP4)
 ~~~
 - Hide EC2, Lambda, elsewhere
-→
-
 - Edge-optimized mode, or CloudFront + regional mode (more control for DDoS)
 → 엣지 최적화 모드를 사용할 경우 기본적으로 글로벌로 설정된다. CloudFront에 리전 모드를 더해 사용한다면 DDoS 보호에 관한 제어 기능이 더 강화된다.
 
