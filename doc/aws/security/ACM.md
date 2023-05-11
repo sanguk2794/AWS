@@ -30,7 +30,7 @@
 ~~~
 
 - Cannot use ACM with EC2 (can’t be extracted)  
-→ 단, `EC2` 인스턴스는 `ACM`를 사용할 수 없다. 퍼블릭 인증서일 경우 추출이 불가능하기 때문이다.
+→ 단 `EC2` 인스턴스는 `ACM`를 사용할 수 없다. 퍼블릭 인증서일 경우 추출이 불가능하기 때문이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236859215-cb34b8c0-17a9-428d-9a6b-b9a88976dfdf.png)
 
@@ -88,7 +88,7 @@
 → `ACM` 서비스는 인증서 만료 45일 전부터 매일 만료 이벤트를 `EventBridge` 서비스에 전송한다.
 
 - The # of days can be configured  
-→ 며칠 전부터 알려줄지에 대해서는 설정으로 변경이 가능하다.
+→ 며칠 전부터 만료 이벤트를 `EventBridge` 서비스에 전송할 것인지 설정이 가능하다.
 
 - Events are appearing in EventBridge  
 → `EventBridge`를 통해 매일 인증서 만료 이벤트가 발생한다고도 할 수 있다.
@@ -113,43 +113,11 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-### 5. API Gateway - Endpoint Types
-- 엔드 포인트 유형에는 3가지가 존재한다.
-
-- Edge-Optimized (default): For global clients
-~~~
-- 엣지 최적화는 글로벌 클라이언트를 위한 유형이다.
-
-- Requests are routed through the CloudFront Edge locations (improves latency)
-→ 먼저 CloudFront 엣지 로케이션으로 요청을 라우팅하여 지연을 줄이는 방법이다.
-
-- The API Gateway still lives in only one region
-→ API 게이트웨이는 여전히 한 지역에만 존재한다.
-~~~
-
-- Regional:
-~~~
-- For clients within the same region
-→ 리전 엔드 포인트 유형은 클라이언트가 API Gateway와 같은 리전에 있을 때에 쓰인다.
-
-- Could manually combine with CloudFront (more control over the caching strategies and the distribution)
-→ 이 경우 CloudFront는 사용할 수 없지만 자체 CloudFront 배포를 생성하여 캐싱 및 배포 전략을 제어할 수는 있다.
-~~~
-
-- Private:
-~~~
-- Can only be accessed from your VPC using an interface VPC endpoint (ENI)
-→ 프라이빗 API Gateway 엔드포인트는 인터페이스 VPC 엔드 포인트(ENI)를 통해 VPC 내부에만 액세스할 수 있다.
-
-- Use a resource policy to define access
-→ API Gateway에 대한 액세스를 정의하는 리소스 정책이 필요하다.
-~~~
-
-### 6. ACM – Integration with API Gateway
-- `ACM`은 엣지 최적화 및 리전 엔드포인트에 적합하다.
+### 5. ACM – Integration with API Gateway
+- `ACM`은 `API Gateway`의 엔드 포인트 중 엣지 최적화와 리전 엔드포인트에 적합하다.
 
 - Create a Custom Domain Name in API Gateway  
-→ `ACM`을 `API Gateway`와 통합하려면 우선 API `Gateway`에 사용자 지정 도메인 이름이라는 리소스를 생성, 설정해야 한다.
+→ `ACM`을 `API Gateway`와 통합하려면 우선 `API Gateway`에 사용자 지정 도메인 이름이라는 리소스를 생성, 설정해야 한다.
 
 - Edge-Optimized (default): For global clients
 ~~~~

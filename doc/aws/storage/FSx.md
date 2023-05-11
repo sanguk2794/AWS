@@ -43,7 +43,7 @@
 ~~~
 
 - Can be accessed from your on-premises infrastructure (VPN or Direct Connect)  
-→ 프라이빗 연결을 사용하면 온프레미스 인프라에서도 엑세스가 가능하다.
+→ 프라이빗 연결을 사용하면 온프레미스 인프라에서도 액세스가 가능하다.
 
 - Can be configured to be Multi-AZ (high availability)  
 → 다중 `AZ`에 구성할 수 있다.

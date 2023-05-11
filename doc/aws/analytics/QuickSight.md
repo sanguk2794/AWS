@@ -28,7 +28,7 @@
 → 인 메모리 연산 엔진인 `SPICE` 엔진을 사용한다. 이 엔진은 `Amazon QuickSight`로 데이터를 직접 가져올 때 사용되며 `Amazon QuickSight`가 다른 `DB`에 연결되어 있을때는 작동하지 않는다.
 
 - Enterprise edition: Possibility to setup Column-Level security (CLS)  
-→ `Amazon QuickSight`는 훌륭한 사용자 수준 기능을 제공한다. `Amazon QuickSight`의 엔터프라이즈 에디션에는 엑세스 권한이 없는 사용자에게 일부 열이 표시되지 않도록 열 수준 보안을 설정할 수 있다.
+→ `Amazon QuickSight`는 훌륭한 사용자 수준 기능을 제공한다. `Amazon QuickSight`의 엔터프라이즈 에디션에는 액세스 권한이 없는 사용자에게 일부 열이 표시되지 않도록 열 수준 보안을 설정할 수 있다.
 
 - 한 전자 상거래 기업은 주문 내역, 고객 정보, 이익, 전년도 매출과 같은 모든 과거 데이터를 `Redshift` 클러스터에 호스팅하고 있습니다. 전년도 이익과 총매출액을 표시하는 대시보드 및 보고서를 생성해야 한다는 요구 사항이 있었기 때문에, 내년에도 같은 요구 사항이 있을 것으로 보입니다. `DevOps` 팀은 이와 같은 대시보드를 정의할 수 있고 기본적으로 `Redshift`와 통합이 가능한 AWS 서비스를 찾는 업무를 맡았습니다. 가장 적합한 `AWS` 서비스는 무엇입니까?  
 → `Amazon QuickSight`

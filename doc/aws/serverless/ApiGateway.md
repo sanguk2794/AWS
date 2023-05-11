@@ -1,9 +1,9 @@
 ## API Gateway
 ### 1. Example: Building a Serverless API
-- 람다 함수에서 `API`의 데이터베이스로 `DynamoDB`를 사용할 수 있다. 테이블 생성, 수정, 삭제가 가능하다.
+- 람다 함수에서 `API`의 데이터베이스로 `DynamoDB`를 사용할 수 있다. 테이블의 생성, 수정, 삭제가 가능하다.
 - 클라이언트도 이 람다 함수를 지연 호출하게 하고 싶다. 클라이언트가 직접 람다 함수를 지연 호출할 수 있게 하려면 클라이언트에게 `IAM` 권한이 있어야 한다.
-- `API Gateway`를 사용하면 `AWS`의 서버리스 서비스로 `REST API`를 생성할 수 있으므로 람다에의 퍼블릭 엑세스가 가능해진다.
-- `API Gateway`를 사용하는 이유는 `HTTP` 엔드포인트 뿐만 아니라 인증, 사용량 계획, 개발 단계 등의 기능을 제공하기 때문이다.
+- `API Gateway`를 사용하면 `AWS`의 서버리스 서비스로 `REST API`를 생성할 수 있으므로 람다에의 퍼블릭 액세스가 가능해진다.
+- `API Gateway`를 사용하는 이유는 `HTTP` 엔드포인트와 함께 인증, 사용량 계획, 개발 단계 등의 기능을 제공하기 때문이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235819471-ac69d4c9-559f-4ed8-94f6-d543bee49fc8.png)
 
@@ -20,13 +20,13 @@
 → `API`의 버저닝을 핸들링한다.
 
 - Handle different environments (dev, test, prod…)  
-→ `dev`, `test`, `prod` 등 여러 환경을 핸들링한다.
+→ `Dev`, `Test`, `Prod` 등 여러 환경을 핸들링한다.
 
 - Handle security (Authentication and Authorization)  
 → 보안에도 활용할 수 있다. 인증, 권한 부여 등 수많은 보안 기능을 `API Gateway`에 활성화할 수 있다.
 
 - Create API keys, handle request throttling  
-→ `API` 키를 생성할 수 있고, 클라이언트 요청이 과도할 때 요청을 스로틀링할 수 있다.
+→ `API` 키를 생성할 수 있고, 클라이언트 요청이 과도할 때 요청을 스로틀링할 수 있다. 과도한 요청이 있을 때, 요청을 잠시 억제하거나 무시하는 것이다.
 
 - Swagger / Open API import to quickly define APIs  
 → 스웨거나 `Open API`와 같은 공통 표준을 사용하여 신속히 `API`를 정의하여 가져올 수 있다.
@@ -47,7 +47,6 @@
 - 서버리스 `API`를 생성하기 위해서는 `Amazon API Gateway`를 ......................와(과) 통합해야 합니다.  
 → `AWS` 람다
 
-
 ### 3. API Gateway – Integrations High Level
 - Lambda Function
 ~~~
@@ -55,7 +54,7 @@
 → 람다 함수를 실행시킬 수 있다.
 
 - Easy way to expose REST API backed by AWS Lambda
-→ 람다 함수를 사용하는 `REST API`를 완전 서버리스 애플리케이션에 노출시키는게 가장 일반적이고 간단한 방법이다.
+→ 람다 함수를 사용하는 REST API를 완전 서버리스 애플리케이션에 노출시키는게 가장 일반적이고 간단한 방법이다.
 ~~~
 
 - HTTP
@@ -76,7 +75,7 @@
 → 단계 함수 워크플로우를 시작할 수 있고, API Gateway에서 직접 SQS에 메세지를 게시할 수도 있다.
 
 - Why? Add authentication, deploy publicly, rate control…
-→ 인증을 추가하거나 API를 퍼블릭으로 배포하거나 특정 AWS 서비스에 속도 제한을 추가하기 위해 통합하는 것이다.
+→ 인증을 추가하거나 API를 퍼블릭으로 배포하거나 특정 AWS 서비스에 속도 제한을 추가하기 위해 API Gateway를 통합해서 사용한다.
 ~~~
 
 - Kinesis Data Streams example
@@ -98,6 +97,7 @@
 - Edge-Optimized (default): For global clients
 ~~~
 - 기본 유형인 엣지 최적화 유형은 글로벌 클라이언트용이다. 전 세계 누구나 API Gateway에 액세스할 수 있다.
+
 - Requests are routed through the CloudFront Edge locations (improves latency)
 → 모든 요청이 CloudFront 엣지 로케이션을 통해 라우팅되므로 지연 시간이 개선된다.
 
