@@ -9,7 +9,7 @@
 → 그렇기에 메모리와 CPU 크기가 제한된다.
 
 - Continuously running
-→ 지속적으로 실행되어야 하고, 최적화를 하려면 인스턴스를 효율적으로 시작하고 중단해야할 필요가 있다.
+→ 지속적으로 실행되어야 한다. 비용 최적화를 위해서는 인스턴스를 효율적으로 관리해야 한다.
 
 - Scaling means intervention to add / remove servers
 → ASG로 스케일링이 가능하다. 이는 서버를 늘리고 줄이는 작업이 필요하다는 의미도 된다.
@@ -18,16 +18,16 @@
 - Amazon Lambda
 ~~~
 - Virtual functions – no servers to manage!
-→ 람다는 가상의 함수이다. 관리할 서버 없이 코드를 프로비저닝하면 함수가 실행된다.
+→ 람다는 서버 관리가 필요없는 가상의 함수이다. 소스 코드를 프로비저닝하면 함수가 실행된다.
 
 - Limited by time - short executions
-→ 제한 시간이 있어서 실행 시간이 짧다. 
+→ 실행 시간에 제한이 있다.
 
 - Run on-demand
 → 온디맨드로 실행된다. 람다 함수가 실행중이 아니면 비용 또한 청구되지 않는다.
 
 - Scaling is automated!
-→ 스케일링이 자동화된다. 더 많은 람다 함수가 동시에 필요한 경우 AWS가 자동으로 프로비저닝해서 람다 함수를 늘려준다.
+→ 스케일링이 자동화된다. 더 많은 람다 함수가 동시에 필요한 경우 AWS가 자동으로 프로비저닝해서 람다 함수를 실행시킨다.
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/235742473-3199432b-fc22-4bfa-a5fb-dc068abf47c2.png)
@@ -50,7 +50,7 @@
 → `Lambda`에 여러가지의 프로그래밍 언어를 사용할 수 있어서 상당히 자유로운 편이다.
 
 - Easy monitoring through AWS CloudWatch  
-→ `CloudWatch`와의 모니터링 통합이 쉽다.
+→ `CloudWatch`와의 통합을 위한 쉬운 모니터링이 가능하다.
 
 - Easy to get more resources per functions (up to 10GB of RAM!)  
 → 함수당 최대 `10GB`의 램을 프로비저닝 할 수 있다.
@@ -59,7 +59,7 @@
 → 함수의 램을 증가시키면 `CPU` 및 네트워크 품질과 성능도 함께 향상된다.
 
 - 프로그래머의 관점에서 보면 코드 몇 가지를 람다에 업로드하는 것만으로도 아주 빠른 실행이 가능하기에 굉장히 유용한 기능이다.  
-→ 람다는 코드를 배포하고 작동시키는데 아주 매끄럽게 실행될 뿐만 아니라 자동으로 스케일링되며 완전한 서버리스이다.
+→ 람다는 코드를 배포하고 작동시키는데 아주 매끄럽게 실행될 뿐만 아니라 자동으로 스케일링되는 완전한 서버리스이다.
 
 ### 3. AWS Lambda language support
 - Node.js (JavaScript) 
@@ -114,13 +114,9 @@
 ### 5. Use case
 #### 1. Serverless Thumbnail creation
 - `S3` 버킷이 있고 섬네일을 생성하고 싶은 상황이다.
-
 - `Amazon S3`에 새 이미지가 업로드되는 이벤트가 생기고 `S3` 이벤트 알림을 통해 람다 함수가 작동된다.
-
 - 이 람다 펑션에는 섬네일을 생성하는 코드가 있다. 해당 섬네일은 다른 `S3` 버킷이나 같은 `S3` 버킷으로 푸시 및 업로드된다.
-
 - 또 람다 함수는 몇몇 데이터를 `DynamoDB`에 삽입할 수 있다. 이미지 이름, 크기, 생성 날짜 등 이미지의 메타데이터가 삽입된다.
-
 - 람다를 사용해 기능을 자동화하고, `S3`에 새 이미지와 앱이 생성되는 이벤트에 대한 반응형 아키텍처를 얻을 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235739087-34ad33f5-7787-40e8-b520-1ca1f6072633.png)
@@ -128,7 +124,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 #### 2. Serverless CRON Job
-- `CRON`이란 `EC2` 인스턴스에서 작업을 생성하는 방법이며, 5분마다 또는 월요일 10시마다 등등 설정을 지정할 수 있다.
+- `CRON`이란 `EC2` 인스턴스에서 작업을 생성하는 방법이며, 5분마다 또는 월요일 10시마다 등등 실행 시간을 지정할 수 있다.
 - 이 `CRON`은 가상 서버에 실행해야 한다. `EC2` 인스턴스 등이다.
 - `CloudWatch` 이벤트 규칙 또는 `EventBridge` 규칙을 만들고 1시간마다 작동되게 설정해서 1시간마다 람다 함수와 통합하면 태스크를 수행할 수 있게 된다.
 - `Rambda` 뿐만 아니라 `CloudWatch` 서비스도 역시 서버리스이다.
@@ -139,21 +135,21 @@
 
 ### 6. AWS Lambda Pricing: example
 - You can find overall pricing information here: https://aws.amazon.com/lambda/pricing/  
-→ 최신 가격 책정 예시는 [AWS Lambda 요금](https://aws.amazon.com/lambda/pricing/)에서 확인할 수 있다.
+→ 가격 정보는 [AWS Lambda 요금](https://aws.amazon.com/lambda/pricing/)에서 확인할 수 있다.
 
 - Pay per calls
 ~~~
 - First 1,000,000 requests are free 
-→ 호출당 청구는 처음 백만 건은 무료이다.
+→ 처음 백만 건의 호출은 무료이다.
 
 - $0.20 per 1 million requests thereafter ($0.0000002 per request)
-→ 이후 백만 건 요청마다 20센트가 과금된다.
+→ 이후에는 백만 건 요청마다 20센트가 청구된다.
 ~~~
 
 - Pay per duration: (in increment of 1 ms)
 ~~~
 - 400,000 GB-seconds of compute time per month for FREE
-→ 한달에 400,000 GB-초의 컴퓨팅 시간은 무료로 사용할 수 있다. 여기서의 GB-초는 함수가 1GB RAM을 가질 때 실행시간이 40만 초이다.
+→ 한달에 400,000 GB/초의 컴퓨팅 시간은 무료로 사용할 수 있다. 여기서의 1 GB/초는 함수가 1GB RAM을 가질 때의 실행시간 1초를 의미한다.
 
 - == 400,000 seconds if function is 1GB RAM 
 → 1GB RAM을 사용했을 때 무료 시간이 40만 초이다.
@@ -162,14 +158,17 @@
 → 만약 128MB RAM을 사용한다면 무료로 사용 가능한 실행시간이 약 8배 늘어난다.
 
 - After that $1.00 for 600,000 GB-seconds
-→ 이후에는 600,000 GB-초당 1달러가 과금된다.
+→ 이후에는 600,000 GB/초당 1달러가 과금된다.
 ~~~
 
 - It is usually very cheap to run AWS Lambda so it’s very popular  
 → 람다로 코드를 실행하면 매우 저렴하다. 그래서 애플리케이션을 만들 때 널리 사용된다.
 
 ### 7. AWS Lambda Limits to Know - per region
-- 시험에 자주 나오는 내용이며 이 한도는 리전 스코프이다. 한도에는 실행 한도와 배포 한도가 있다. 람다가 적합 여부를 판단할 수 있는 중요한 정보이므로 외우는 것이 좋다.
+- 시험에 자주 나오는 내용이다. 람다 스코프 한도, 실행 한도, 배포 한도가 있다. 람다가 적합 여부를 판단할 수 있는 중요한 정보이다.
+
+- Scope
+→ 람다의 스코프 한도는 리전이다.
 
 - Execution:
 ~~~
@@ -180,13 +179,13 @@
 → 최대 실행 시간은 900초, 즉 15분이다. 이를 초과하면 람다 실행에 바람직하지 않다.
 
 - Environment variables (4 KB)
-→ 환경변수는 4KB까지 가질 수 있다. 
+→ 환경변수는 4KB까지 가질 수 있다.
 
 - Disk capacity in the “function container” (in /tmp): 512 MB to 10GB
-→ 람다 함수를 생성하는 동안 큰 파일을 가져올 때 사용할 수 있는 임시공간이 있으며, 최대 크기는 10GB이다.
+→ 람다 함수 실행을 위해 큰 파일을 가져와야 할 때 사용할 수 있는 임시공간인 Function container가 있으며, 최대 크기는 10GB이다.
 
 - Concurrency executions: 1000 (can be increased)
-→ 람다 함수는 최대 1000개까지 동시 실행이 가능하다. 
+→ 람다 함수는 최대 1000개까지 동시 실행이 가능하다.
 ~~~
 
 - Deployment:
@@ -198,7 +197,7 @@
 → 압축하지 않았을 때의 최대 크기는 250MB이다.
 
 - Can use the /tmp directory to load other files at startup
-→ 이 용량이 넘는 파일의 경우에는 /tmp 공간을 사용해야 한다.
+→ 이 용량이 넘는 파일일 경우 /tmp 공간을 사용해야 한다.
 
 - Size of environment variables: 4 KB
 → 환경변수는 4KB까지 가질 수 있다. 
@@ -208,7 +207,7 @@
 → 코드를 다른 곳(예: `EC2` 인스턴스)에서 실행
 
 ### 8. Customization At The Edge
-- 보통 함수와 애플리케이션을 특정 리전에서 배포하지만, `CloudFront`를 사용할 때에는 엣지 로케이션을 통해 콘텐츠를 배포한다.
+- 보통 함수와 애플리케이션은 특정 리전에서 배포된다. 하지만, `CloudFront`를 사용하면 전 세계에 분포되어 있는 엣지을 통해 콘텐츠를 배포할 수 있다.
 
 - Many modern applications execute some form of the logic at the edge  
 → 많은 모던 애플리케이션은 애플리케이션에 도달하기 전에 엣지에게 로직을 실행할 수 있도록 요구한다. 이를 엣지 함수라고 한다.
@@ -216,7 +215,7 @@
 - Edge Function:
 ~~~
 - A code that you write and attach to CloudFront distributions
-→ CloudFront 배포에 연결하는 코드이다.
+→ CloudFront 배포판에 작성하여 첨부하는 코드이다.
 
 - Runs close to your users to minimize latency
 → 이 함수는 로직을 사용자 근처에서 실행하여 지연시간을 최소화하는 것이 목적이다.
@@ -326,7 +325,7 @@
 ~~~
 
 - Author your functions in one AWS Region (us-east-1), then CloudFront replicates to its locations  
-→ 함수는 `us-east-1` 리전에만 작성할 수 있다. `CloudFront`의 배포를 관리하는 리전과 같은 리전이다. 함수를 작성하면 `CloudFront`가 모든 로케이션에 해당 함수를 복제한다.
+→ Lambda@Edge 함수는 `us-east-1` 리전에만 작성할 수 있다. `CloudFront`의 배포를 관리하는 리전과 같은 리전이다. 함수를 작성하면 `CloudFront`가 모든 로케이션에 해당 함수를 복제한다.
 
 #### 4. CloudFront Functions vs. Lambda@Edge
 - 가장 눈에 띄는 차이는 런타임 지원 언어이다. `CloudFront Functions`는 `Javascript`지만 `Lambda@Edge`는 `Node.js`나 `Python`를 지원한다.
@@ -342,7 +341,7 @@
 → CloudFront Functions는 캐시 키를 정규화한다. 요청 속성을 변환하여 최적의 캐시 키를 생성한다.
 
 - Header manipulation : Insert/modify/delete HTTP headers in the request or response
-→ 요청이나 응답에 `HTTP` 헤더를 삽입, 수정, 삭제하도록 헤더를 조작할 수 있다.
+→ 요청이나 응답에 HTTP 헤더를 삽입, 수정, 삭제하도록 헤더를 조작할 수 있다.
 
 - URL rewrites or redirects
 → URL을 다시 쓰거나 리디렉션할 수 있다.
