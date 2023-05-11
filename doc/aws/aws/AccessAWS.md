@@ -106,7 +106,7 @@ $ aws iam list-users
 ~~~
 
 - Example: AWS CLI is built on AWS SDK for Python  
-→ 실제로는 `AWS CLI`조차 `Python`용 `AWS SDK`를 통해 구현되어 있다._
+→ 실제로는 `AWS CLI`조차 `Python`용 `AWS SDK`를 통해 구현되어 있다.
 
 ---
 #### ▶ Reference
