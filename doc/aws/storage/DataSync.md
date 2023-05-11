@@ -1,10 +1,10 @@
 ## AWS DataSync
 ### 1. AWS DataSync
 - Move large amount of data to and from  
-→ 이 서비스는 데이터를 동기화하며 이를 통해 대용량의 데이터를 한 곳에서 다른 곳으로 옮길 수 있다.
 ~~~
+- DataSync는 데이터를 동기화하며 이를 통해 대용량의 데이터를 한 곳에서 다른 곳으로 옮기기 위해 사용된다.
 - On-premises / other cloud to AWS (NFS, SMB, HDFS, S3 API…) – needs agent
-→ 온프레미스나 AWS의 다른 클라우드로 데이터를 옮길 수 있다. 이 때 서버를 NFS, SMB, HDFS, S3 API 등을 통해 연결해야 하며, 에이전트가 있어야 한다. 
+→ 온프레미스나 AWS의 다른 클라우드로 데이터를 옮길 수 있다. 이 때 서버를 NFS, SMB, HDFS, S3 API 등을 통해 연결해야 하며 에이전트가 있어야 한다. 
 
 - AWS to AWS (different storage services) – no agent needed
 → AWS 서비스에서 다른 AWS 서비스로 데이터를 옮길 수 있다. 이 경우에는 에이전트가 필요 없다.
@@ -14,16 +14,14 @@
 ~~~
 - Amazon S3 (any storage classes – including Glacier)
 → Glacier를 포함한 모든 스토리지 클래스에 동기화할 수 있다.
-
 - Amazon EFS
 - Amazon FSx (Windows, Lustre, NetApp, OpenZFS...)
-→
 ~~~
 - Replication tasks can be scheduled hourly, daily, weekly  
-→ 복제 작업 스케줄을 지정할 수 있다. 지연이 발생할 수 있기는 하지만 일정에 맞춰서 데이터가 동기화되는 것이다.
+→ 복제 작업 스케줄을 지정하면 일정에 맞춰서 데이터가 자동으로 동기화된다. 단, 지연이 발생할 수 있다.
 
 - File permissions and metadata are preserved (NFS POSIX, SMB…)  
-→ 파일 권한과 메타데이터의 저장 기능이 있다. 이 때 `NFS POSIX` 파일 시스템과 `SMB` 권한을 준수한다. 중요하다.
+→ 파일 권한과 메타데이터의 저장 기능이 있다. `NFS POSIX` 파일 시스템, `SMB` 권한 을 준수한다. 중요하다.
 
 - 서버 메시지 블록(Server Message Block, SMB)은 도스나 윈도우에서 파일이나 디렉터리 및 주변 장치들을 공유하는데 사용되는 메시지 형식이다.
 
