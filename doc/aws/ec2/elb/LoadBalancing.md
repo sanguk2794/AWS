@@ -1,7 +1,7 @@
 ## load balancing
 ### 1. What is load balancing?
 - Load Balances are servers that forward traffic to multiple servers (e.g., EC2 instances) downstream  
-→ 서버 또는 서버셋으로 트래픽을 백엔드나 다운스트림 `EC2` 인스턴스 또는 서버들로 전달하는 역할을 한다. 로드 밸런서를 통해 `EC2` 인스턴스로 가는 부하를 분산시킬 수 있다.
+→ 서버 또는 서버셋으로의 트래픽을 백엔드나 다운스트림 `EC2` 인스턴스 또는 서버들로 전달하는 역할을 한다. 로드 밸런서를 통해 `EC2` 인스턴스로 가는 부하를 분산시킬 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233083545-0eafa2b5-5773-446e-b42d-d37a8211b47d.png)
 
@@ -263,7 +263,7 @@
 - IP Addresses – must be private IPs
 
 ###### 2. 어플라이언스
-`Appliance`는 기기, 장치등의 의미이다. 하지만, 이 단어를 `IT` 용어로 사용할 때에는 기능이나 용도에 특화된 기기나 장치를 가리킵니다.
+`Appliance`는 기기, 장치등의 의미이다. 하지만, 이 단어를 `IT` 용어로 사용할 때에는 기능이나 용도에 특화된 기기나 장치를 가리킨다.
 
 ### 7. Load Balancer Security Groups
 - 유저는 `HTTP` 또는 `HTTPS`를 사용해 어디서든 로드 밸런서에 접근이 가능하다. 따라서 로드밸런서는 다음과 같은 보안 그룹 규칙을 가진다.
