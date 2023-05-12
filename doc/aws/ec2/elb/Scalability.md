@@ -38,10 +38,10 @@
 → 웹이나 현대적 애플리케이션은 대부분 이 분배 시스템으로 이루어져 있다.
 
 #### 3. High Availability 
-- High availability means running your application / system in at least 2 data centers (== Availability Zones)
+- High availability means running your application / system in at least 2 data centers (== Availability Zones)  
 → 고가용성은 애플리케이션 시스템을 적어도 둘 이상의 `AZ`나 데이터 센터에서 가동 중이라는 것을 의미한다.
 
-- The goal of high availability is to survive a data center loss
+- The goal of high availability is to survive a data center loss  
 → 고가용성의 목적은 일부 데이터 센터의 손실이 발생하더라도 계속 작동이 가능하도록 하는 것에 있다.
 
 #### 4. High Availability & Scalability For EC2
