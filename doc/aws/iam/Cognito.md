@@ -10,10 +10,10 @@
 - Cognito User Pools:
 ~~~
 - Sign in functionality for app users
-→ 앱 사용자에게 가입 기능을 제공하는 기능이다.
+→ 앱 사용자에게 가입 기능을 제공한다.
 
 - Integrate with API Gateway & Application Load Balancer
-→ API Gateway 및 애플리케이션 로드 밸런서와 원활히 통합된다.
+→ API Gateway 및 애플리케이션 로드 밸런서와 통합된다.
 ~~~
 
 - Cognito Identity Pools (Federated Identity):
@@ -22,7 +22,7 @@
 → 앱에 등록된 사용자에게 임시 AWS 자격 증명을 제공해서 일부 AWS 리소스에 직접 액세스할 수 있도록 한다.
 
 - Integrate with Cognito User Pools as an identity provider
-→ Cognito 사용자 풀과 원활히 통합된다.
+→ Cognito 사용자 풀과 통합된다.
 ~~~
 
 - Cognito vs IAM: “hundreds of users”, ”mobile users”, “authenticate with SAML”  
