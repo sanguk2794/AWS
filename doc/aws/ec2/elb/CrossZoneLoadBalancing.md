@@ -15,15 +15,13 @@
 - 정답은 없으며, 쓰임새에 따라 선택하면 된다.
 
 - Application Load Balance - Enabled by default (can be disabled at the Target Group level), No charges for inter AZ data  
-→　교차 영역 로드 밸런싱이 기본적으로 활성화되어 있으며, `target group` 설정에서 이 설정을 비활성화할 수 있다.
+→　`ALB`는 교차 영역 로드 밸런싱이 기본적으로 활성화되어 있으며, `target group` 설정에서 이 설정을 비활성화할 수 있다.
 그리고 데이터를 다른 `AZ`로 옮기는 데 비용이 들지 않는다. 일반적으로 `AWS`에서는 데이터를 다른 `AZ`로 옮길 때 비용을 지불해야 한다.
 
 - Network Load Balancer & Gateway Load Balancer - Disabled by default, You pay charges ($) for inter AZ data if enabled  
 → `NLB`, `GWLB`는 교차 영역 로드 밸런싱이 기본적으로 비활성화되어 있으며, 활성화하려면 비용을 지불해야 한다.
 
-- Classic Load Balancer 
-- Disabled by default 
-- No charges for inter AZ data if enabled  
+- Classic Load Balancer - Disabled by default, No charges for inter AZ data if enabled  
 → `CLB`는 교차 영역 로드 밸런싱이 기본적으로 비활성화되어 있으나, 활성화 시 비용이 들지 않는다.
 
 - `EC2` → `Elastic Block Store` → `Load Balancer` → 대상 로드 밸런서를 클릭 → `Attributes`에서 `Cross-zone load balancing` 활성 여부를 확인할 수 있다.
