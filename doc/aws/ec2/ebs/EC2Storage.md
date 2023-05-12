@@ -40,7 +40,7 @@
 ![image](https://user-images.githubusercontent.com/97398071/232322884-c6ffbe30-947f-4915-85fb-83d7f0c20098.png)
 
 ### 2. EBS – Delete on Termination attribute
-- `EC2` 인스턴스를 통해 `EBS Volume`을 생성하는 경우 `Delete on Terminaton` 속성을 지정할 수 있다.
+- `EC2` 인스턴스를 통해 `EBS Volume`을 생성하는 경우 `Delete on Terminaton` 속성을 지정할 수 있다.  
 → 루트 볼륨은 인스턴스 종료와 함께 삭제가 기본값이며, 다른 `EBS` 볼륨은 삭제하지 않는 것이 기본값이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232322678-3d5f6df8-0c54-42b5-99ed-964059f365e8.png)
@@ -64,15 +64,13 @@
 
 #### 1. EBS Snapshots Features
 - EBS Snapshot Archive  
-→ 최대 75%까지 저렴하며, 아카이브 티어로 스냅샷을 옮길 수 있는 기능이다. 스냅샷을 아카이브 티어로 옮기면 스냅샷을 복원하는 데 24시간에서 72시간이 걸린다.
+→ 아카이브 티어로 스냅샷을 옮길 수 있다. 최대 75%까지 저렴하지만 스냅샷을 아카이브 티어로 옮기면 스냅샷을 복원하는 데 24시간에서 72시간이 걸린다.
 
 - Recycle Bin for EBS Snapshots  
-→ 스냅샷 휴지통은 `EBS` 스냅샷을 삭제할 때 영구 삭제하는 대신에 휴지통에 넣을 수 있다. 실수로 삭제하더라도 휴지통에서 복원 가능한 것이다.
-복원 가능 기간은 1일에서 1년 사이로 설정할 수 있다.
+→ `EBS` 스냅샷을 삭제할 때 영구 삭제하는 대신에 휴지통에 넣을 수 있다. 실수로 삭제하더라도 휴지통에서 복원 가능한 것이다. 복원 가능 기간은 1일에서 1년 사이로 설정할 수 있다.
 
 - Fast Snapshot Restore (FSR)  
-→ 빠른 스냅샷 복원은 스냅샷의 완전 초기화를 통해 첫 사용에서의 지연 시간을 없애는 기능이다.
-스냅샷이 아주 크고 `EBS` 볼륨 또는 `EC2` 인스턴스를 빠르게 초기화해야 할 때 특히 유용하다. 하지만 비용이 많이 들기 때문에 주의가 필요하다.
+→ 빠른 스냅샷 복원은 스냅샷의 완전 초기화를 통해 첫 사용에서의 지연 시간을 없애는 기능이다. 스냅샷이 아주 크고 `EBS` 볼륨 또는 `EC2` 인스턴스를 빠르게 초기화해야 할 때 특히 유용하다. 하지만 비용이 많이 들기 때문에 주의가 필요하다.
 
 - `EC2` → `Elsatic Block Store` → `Volumes`에서 `EBS`의 스냅샷을 생성할 수 있다.
 
@@ -96,7 +94,7 @@
 - AMI are a customization of an EC2 instance
 ~~~
 - You add your own software, configuration, operating system, monitoring…
-→ `AMI`에 원하는 소프트웨어 설정 파일을 추가하거나, 별도의 운영 체제를 설치하거나, 모니터링 툴을 추가할 수 있다.
+→ AMI에 원하는 소프트웨어 설정 파일을 추가하거나 별도의 운영 체제를 설치하거나 모니터링 툴을 추가할 수 있다.
 
 - Faster boot / configuration time because all your software is pre-packaged
 → 부팅 및 설정에 드는 시간을 줄일 수 있다. EC2 인스턴스에 설치하고자 하는 모든 소프트웨어를 AMI에 패키징해 둘 수 있기 때문이다.
@@ -129,7 +127,7 @@
 → 이 인스턴스를 바탕으로 `AMI`를 구축한다. 이 과정에서 `EBS` 스냅샷이 생성된다.
 
 - Launch instances from other AMIs  
-→ 이후 다른 `AMI`에서 인스턴스를 실행할 수 있다.
+→ 구축한 `AMI`로 인스턴스를 실행할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232325616-e8ec78d0-a6b2-4cf2-86e7-fa383a77e55c.png)
 
@@ -165,16 +163,16 @@
 → `EBS` 볼륨에는 총 6개 유형이 있다.
 ~~~
 - gp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for a wide variety of workloads
-→ 범용 `SSD` 볼륨으로 다양한 워크로드에 대해 가격과 성능의 절충안이 되어준다.
+→ 범용 SSD 볼륨으로 다양한 워크로드에 대해 가격과 성능의 절충안이 되어준다.
 
 - io1 / io2 (SSD): Highest-performance SSD volume for mission-critical low-latency or high-throughput workloads
-→ 최고 성능을 자랑하는 `SSD` 볼륨으로 미션 크리티컬하며 낮은 지연 시간이 필요한 대용량의 워크로드에 사용된다.
+→ 최고 성능을 자랑하는 SSD 볼륨으로 미션 크리티컬하며 낮은 지연 시간이 필요한 대용량의 워크로드에 사용된다.
 
 - st1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-intensive workloads
-→ 저비용의 `HDD` 볼륨으로 접근이 잦고 처리량이 많은 워크로드에 사용된다.
+→ 저비용의 HDD 볼륨으로 접근이 잦고 처리량이 많은 워크로드에 사용된다.
 
 - sc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads
-→ 가장 비용이 적게 드는 `HDD` 볼륨으로 접근 빈도가 낮은 워크로드에 사용된다.
+→ 가장 비용이 적게 드는 HDD 볼륨으로 접근 빈도가 낮은 워크로드에 사용된다.
 ~~~
 
 - EBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec)  
@@ -212,7 +210,7 @@ Size of the volume and IOPS are linked, max IOPS is 16,000
 - Great for databases workloads (sensitive to storage perf and consistency)  
 → 일반적으로 데이터베이스 워크로드에 알맞다.
 
-- `io1`과 `io2`중에서는 최신 세대를 고르는 것이 좋다. 동일한 비용으로 더 높은 내구성과 기가 당 `IOPS`를 얻을 수 있다.
+- `io1`과 `io2`중에서는 최신 세대를 고르는 것이 좋다. 동일한 비용일 경우 `io2`가 더 높은 내구성과 기가 당 `IOPS`를 제공한다.
 ~~~
 - io1/io2 (4 GiB - 16 TiB):
 Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other
@@ -220,13 +218,13 @@ Can increase PIOPS independently from storage size
 → gp3와 동일하게 IOPS, 처리량을 독자적으로 설정할 수 있다.
 
 io2 have more durability and more IOPS per GiB (at the same price as io1)
-→ 보다 최신 버전인 io2는 io1과 동일한 비용으로 내구성과 기가 당 IOPS 수가 더 높다.
+→ 보다 최신 버전인 io2는 io1과 동일한 비용으로 더 높은 내구성과 기가 당 `IOPS`를 제공한다.
 
 - io2 Block Express (4 GiB – 64 TiB):
 → 이 외에도 io2 블록 익스프레스가 존재한다. 좀 더 고성능 유형의 볼륨이다. 지연 시간이 밀리초 미만이며, 엄청난 IOPS를 자랑한다.
-Sub-millisecond latency
-Max PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1
-Supports EBS Multi-attach
+
+- Supports EBS Multi-attach
+→ io1과 io2 모두 EBS Volume의 Multi-attach를 제공한다. 하나의 EBS 볼륨을 같은 가용 영역에 있는 여러 EC2 인스턴스에 연결할 수 있다.
 ~~~
 
 #### 3. EBS Volume Types Use cases Hard Disk Drives (HDD)
@@ -243,10 +241,6 @@ Max throughput 500 MiB/s – max IOPS 500
 
 - sc1
 → 콜드 HDD이다. 아카이브 데이터용으로 접근 빈도가 낮은 데이터에 적합하다. 최저 비용으로 데이터를 저장할 때 사용하는 것이다.
-Cold HDD
-For data that is infrequently accessed
-Scenarios where lowest cost is important
-Max throughput 250 MiB/s – max IOPS 250
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/232329028-f57caa96-21d1-4bc9-b8e9-1d70480e8f49.png)
