@@ -4,18 +4,18 @@
 → 웹사이트나 애플리케이션을 배포한 후 웹사이트 방문자 수의 증감에 따라 로드가 달라질 수 있다.
 
 - In the cloud, you can create and get rid of servers very quickly  
-→ 그리고, 클라우드에서는 `EC2` 인스턴스 생성 `API` 호출을 통해 서버를 빠르게 생성하고 종료할 수 있다. 이를 자동화하고 싶을 때 생성하는 것이 바로 `ASG`이다.
+→ 클라우드에서는 `EC2` 인스턴스 생성 `API` 호출을 통해 서버를 빠르게 생성하고 종료할 수 있다. 이를 자동화하고 싶을 때 생성하는 것이 바로 `ASG`이다.
 
 - The goal of an Auto Scaling Group (ASG) is to:
 ~~~
 - Scale out (add EC2 instances) to match an increased load
-→ 증가한 로드에 맞춰 인스턴스의 개수를 추가하는 스케일 아웃
+→ 증가한 로드에 맞춰 인스턴스의 개수를 추가하는 스케일 아웃을 수행한다.
 
 - Scale in (remove EC2 instances) to match a decreased load
-→ 감소한 로드에 맞춰 인스턴스를 감소시키는 스케일 인
+→ 감소한 로드에 맞춰 인스턴스를 감소시키는 스케일 인을 수행한다.
 
 - Ensure we have a minimum and a maximum number of EC2 instances running
-→ 인스턴스의 최대 및 최소 개수를 보장하기 위해 사용하는 매개변수를 전반적으로 정의할 수도 있다.
+→ 인스턴스의 최대 및 최소 개수를 보장하기 위해 사용하는 매개변수를 설정할 수 있다.
 
 - Automatically register new instances to a load balancer
 → 로드 밸런서와 페어링하는 경우 ASG에 속한 모든 인스턴스가 로드 밸런서에 연결된다.
@@ -25,7 +25,7 @@
 ~~~
 
 - ASG are free (you only pay for the underlying EC2 instances)  
-→ `ASG`는 무료이며, `EC2` 인스턴스와 같은, 생성된 하위 리소스에 대한 비용만 지불하면 된다.
+→ `ASG`는 무료이며, `EC2` 인스턴스와 같은 생성된 하위 리소스에 대한 비용만 지불하면 된다.
 
 - 아래 예제의 경우의 인스턴스 최소 용량은 2, 희망 용량은 4, 최대 용량은 7이다.
 
@@ -67,7 +67,7 @@
 → `CloudWatch` 경보를 통한 스케일 인 및 스케일 아웃이 가능하다. 
 
 - An alarm monitors a metric (such as Average CPU, or a custom metric)  
-→ 경보를 위한 지표로써, 평균 `CPU` 등 원하는 사용자 지정 지표를 지정할 수 있다. 이 경보가 울리는 것이 트리거가 되어 `ASG`의 스케일링 활동을 유발하는 것이다.
+→ 경보를 위한 지표로써 평균 `CPU` 등 원하는 사용자 지정 지표를 지정할 수 있다. 이 경보가 울리는 것이 트리거가 되어 `ASG`의 스케일링 활동을 유발하는 것이다.
 경보에 의해 내부적으로 자동적인 스케일링이 이루어지기 때문에 `ASG`라는 이름이 붙었다.
 
 - Based on the alarm:
@@ -94,7 +94,7 @@
 → Instance Type에는 Spot, reservation, on-demand 등이 포함된다.
 
 - Load balancing
-→ 로드 밸런싱은 기본적으로 선택이지만, ASG에 로드 밸런서를 설정하지 않는 경우는 거의 없다.
+→ 로드 밸런싱은 기본적으로 선택이지만 ASG에 로드 밸런서를 설정하지 않는 경우는 거의 없다.
 
 - Health check
 → ASG에서 인스턴스를 자동으로 제거할 수 있다.
@@ -130,7 +130,7 @@
 → Target Tracking Scaling
 
 - Simple / Step Scaling  
-→ 단순과 단계 스케일링은 조금 더 복잡하다. `CloudWatch` 경보를 설정하고 전체 `ASG`에 대한 `CPU` 사용률이 70%를 초과하는 경우 용량을 두 유닛 추가하거나,
+→ 단순과 단계 스케일링은 조금 더 복잡하다. `CloudWatch` 경보를 설정하고 전체 `ASG`에 대한 `CPU` 사용률이 70%를 초과하는 경우 용량을 두 유닛 추가하거나
 `CPU` 사용량이 30% 이하로 떨어지는 경우 유닛 하나를 제거한다는 등의 설정을 추가해야 한다.
 즉, 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 필요가 있다.
 ~~~
@@ -142,8 +142,7 @@
 → 백엔드-데이터베이스 연결에는 ‘분당 요청'에 해당하는 `CloudWatch` 지표가 존재하지 않는다. `CloudWatch` 경보를 생성하려면 `CloudWatch` 사용자 지정 지표를 먼저 생성해야 한다.
 
 - Scheduled Actions Scaling  
-→ 예약된 작업은 예정된 사용 패턴을 바탕으로 스케일링을 수행할 때 사용한다.
-예를 들어 금요일 오후 5시에 큰 이벤트가 예정되어 있다면 여러 사람들이 애플리케이션을 사용하는데 대비해 `ASG` 최소 용량을 금요일마다 자동으로 스케일 아웃을 수행한다.
+→ 예약된 작업은 예정된 사용 패턴을 바탕으로 스케일링을 수행할 때 사용한다. 예를 들어 금요일 오후 5시에 큰 이벤트가 예정되어 있다면 여러 사람들이 애플리케이션을 사용하는데 대비해 `ASG` 최소 용량을 금요일마다 자동으로 스케일 아웃을 수행한다.
 ~~~
 - Anticipate a scaling based on known usage patterns
 - Example: increase the min capacity to 10 at 5 pm on Fridays
@@ -158,8 +157,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 #### 3. Good metrics to scale on
-- 따라서 `Predictive Scaling`을 위해서는 스케일링의 기반이 될 훌륭한 지표가 필요하다.
-물론 이는 애플리케이션의 목적과 작동 방식에 달라진다. 하지만, 대표적인 것들은 역시 존재하며 다음과 같다.
+- 따라서 `Predictive Scaling`을 위해서는 스케일링의 기반이 될 훌륭한 지표가 필요하다. 물론 이는 애플리케이션의 목적과 작동 방식에 달라진다. 하지만, 대표적인 것들은 역시 존재하며 다음과 같다.
 ~~~
 - CPUUtilization: Average CPU utilization across your instances
 → 일반적으로 인스턴스에 요청이 갈 때마다 일종의 연산이 수행되어야 한다. CPU 사용률이 높을수록 인스턴스가 잘 사용되고 있다는 의미이다.
@@ -174,7 +172,7 @@
 → 물론 다른 지표를 기준으로 사용하는 것도 가능하다.
 ~~~
 
-- `EC2` → `Auto Scaling` → `Auto scaling group` → click auto scaling → `Automatic scaling`  
+- `EC2` → `Auto Scaling` → `Auto scaling group` → auto scaling 대상 클릭 → `Automatic scaling`  
 → 스케일링 정책을 확인할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233830457-01eb44de-0b88-41e0-8cc7-9193e9cd918d.png)
