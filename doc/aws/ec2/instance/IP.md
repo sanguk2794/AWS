@@ -1,10 +1,10 @@
 ## IP
-### 1. Private vs Public IP (IPv4)
-- Networking has two sorts of IPs. IPv4 and IPv6  
-→ 네트워크에는 두 종류의 `IP`가 있는데 그게 바로 `IPv4`와 `IPv6`이다.
+### 1. Private vs Public IP
+- Networking has two sorts of IPs. IPv4 and IPv6
 ~~~
-IPv4: 1.160.10.240
-IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf
+- 네트워크에는 두 종류의 `IPv4`와 `IPv6`, 두 종류의 IP가 있다.
+- IPv4: 1.160.10.240
+- IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf
 ~~~
 
 - IPv4 is still the most common format used online.  
@@ -14,12 +14,10 @@ IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf
 → `IPv6`는 `사물인터넷, IoT`에 주로 사용된다.
 
 #### 1. IPv4
-`IPv4`는 인터넷 프로토콜의 4번째 판이며 전 세계적으로 사용된 첫 번째 인터넷 프로토콜이다.
-`IPv4`는 인터넷에 연결된 각 장치 간 정보를 주고받을 수 있는 주소를 나타낸다. 이 인터넷 프로토콜은 약 43억 개의 고유한 IP 주소를 가질 수 있는 32비트 숫자의 형태이다.
+`IPv4`는 인터넷 프로토콜의 4번째 판이며 전 세계적으로 사용된 첫 번째 인터넷 프로토콜이다. `IPv4`는 인터넷에 연결된 각 장치 간 정보를 주고받을 수 있는 주소를 나타낸다. 이 인터넷 프로토콜은 약 43억 개의 고유한 `IP` 주소를 가질 수 있는 32비트 숫자의 형태이다.
 
 #### 2. IPv6
-인터넷은 `IPv4` 프로토콜로 구축되어 왔으나 32비트라는 제한된 주소 공간으로 인해 국가별로 할당된 주소가 거의 소진되고 있다는 문제점에 부딛혔다. 이에 대한 대안이 `IPv6` 프로토콜이다.
-이 프로토콜은 `RFC`를 통해서 국제 표준으로써 확정되었고, 현재 휴대폰 및 컴퓨터에 할당되어 적용되고 있다.
+인터넷은 `IPv4` 프로토콜로 구축되어 왔으나 32비트라는 제한된 주소 공간으로 인해 국가별로 할당된 주소가 거의 소진되고 있다는 문제점에 부딛혔다. 이에 대한 대안이 `IPv6` 프로토콜이다. 이 프로토콜은 `RFC`를 통해서 국제 표준으로써 확정되었고, 현재 휴대폰 및 컴퓨터에 할당되어 적용되고 있다.
 
 ### 2.Private vs Public IP (IPv4)
 - `Public IP`가 있으면 인터넷 전역에 대한 액세스가 가능하고 `Private IP`만 있다면 사설 네트워크 내에서만 액세스가 가능하다.
@@ -93,6 +91,32 @@ Instead, use a random public IP and register a DNS name to it
 ![image](https://user-images.githubusercontent.com/97398071/232225087-0eb045e9-411d-4a22-9bb9-c9044b122c27.png)
 
 - `Associate Elastic IP address`를 통해 어떤 `Instance` 또는 `Network interface`에 `Elastic IP`를 지정할 것인지 선택할 수 있다. 
+
+### 3. What is IPv6?
+- IPv4 designed to provide 4.3 Billion addresses (they’ll be exhausted soon)  
+→ `IPv4`가 처음 만들어질 당시 주소 43억 개를 제공하도록 설계되었다. 그리고 이 주소는 머지않아 소진되었다.
+
+- IPv6 is the successor of IPv4  
+→ `IPv6` 프로토콜은 32비트라는 제한된 주소 공간으로 인해 국가별로 할당된 주소가 거의 소진되고 있다는 문제점에 부딛힌 `IPv4`에 대한 대안으로 등장했다.
+
+- IPv6 is designed to provide 3.4 × 10<sup>38</sup> unique IP addresses  
+→ 3.4 × 10<sup>38</sup>의 고유 `IP` 주소를 제공한다.
+
+- Every IPv6 address is public and Internet-routable (no private range)  
+→ 모든 `IPv6` 주소는 공용이고 인터넷 라우팅이 가능하다. `IPv6`에는 사설 범위가 없다.
+
+- Format → x.x.x.x.x.x.x.x (x is hexadecimal, range can be from 0000 to ffff)  
+→ 형식은 16진수 8자리이다.
+
+- Examples:
+~~~
+- 2001:db8:3333:4444:5555:6666:7777:8888
+- 2001:db8:3333:4444:cccc:dddd:eeee:ffff
+- :: → all 8 segments are zero
+- 2001:db8:: → the last 6 segments are zero
+- ::1234:5678 → the first 6 segments are zero
+- 2001:db8::1234:5678 → the middle 4 segments are zero
+~~~
 
 ---
 #### ▶ Reference

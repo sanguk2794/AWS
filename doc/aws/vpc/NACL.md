@@ -3,11 +3,11 @@
 - NACL = Network Access Control List  
 → 내클이라 발음한다.
 
-- `NACL`은 서브넷 단위이고, `Security Group`은 인스턴스 단위이다. 따라서 외부 통신의 경우 `NACL`과 `Security Group`을 모두 거쳐야 하고, 내부 통신의 경우 `Security Group`만 거친다.
+- `NACL`은 서브넷 단위이고, `Security Group`은 인스턴스 단위이다. 따라서 외부 통신의 경우 `NACL`과 `Security Group`을 모두 거쳐야 하고 내부 통신의 경우 `Security Group`만 거친다.
 
-- `NACL`은 요청 정보를 따로 저장하지 않아 응답하는 트래픽도 제어를 해줘야 한다. 이를 `Stateless`라고 한다.
+- `NACL`은 요청 정보를 따로 저장하지 않아 응답 트래픽도 제어를 해야한다. 이를 `Stateless`라고 한다.
 
-- `Security Group`은 요청 정보를 저장하여 응답하는 트래픽 제어를 하지 않는다. 이를 `Stateful`이라고 한다.
+- `Security Group`은 요청 정보를 저장하여 응답하므로 응답 트래픽 제어를 하지 않는다. 이를 `Stateful`이라고 한다.
 
 - NACL are like a firewall which control traffic from and to subnets  
 → `NACL`은 서브넷을 오가는 트래픽을 제어하는 방화벽과 비슷한 역할을 한다.
