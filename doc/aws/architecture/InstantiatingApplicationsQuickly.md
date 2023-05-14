@@ -34,6 +34,7 @@ Elastic Beanstalk는 AMI에 User Data를 추가하는 하이브리드와 동일�
 
 - 솔루션 아키텍트로서, 여러분은 복잡한 `ERP` 소프트웨어 스위트를 `AWS Cloud`로 이전하려 합니다. 오토 스케일링 그룹이 관리하는 한 세트의 `Linux EC2` 인스턴스에 소프트웨어를 호스팅할 계획입니다. 소프트웨어가 `Linux` 기기를 준비하는 데에는 보통 한 시간 이상이 걸립니다. 스케일 아웃이 발생할 경우, 설치 과정을 빠르게 만들기 위해서는 어떤 방법을 추천할 수 있을까요?  
 → `Golden AMI` 사용
+
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---
