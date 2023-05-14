@@ -48,6 +48,9 @@
 - This can be controlled by the AWS console / AWS CLI  
 → 이 설정은 `AWS` 콘솔뿐만 아니라 `CLI`에서도 수정 가능하다.
 
+- 회사에서 `EC2` 인스턴스와 별도의 영구 스토리지를 제공하는 `EBS` 볼륨에 비즈니스 크리티컬 데이터를 저장하려고 합니다. 개발 팀에서 테스트를 진행하던 중에 `EC2` 인스턴스를 종료하면 연결된 `EBS` 볼륨 또한 소실된다는 것을 발견했고, 이는 예상과 상반된 결과였습니다. 솔루션 아키텍트의 관점에서 이 문제를 어떻게 설명할 수 있습니까?
+→ `EBS` 볼륨이 `Amazon EC2` 인스턴스의 루트 볼륨으로 설정되었다. 인스턴스를 종료하면 기본 동작에 의해 연결된 루트 볼륨도 함께 종료된다.
+
 ### 3. EBS Snapshots
 - Make a backup (snapshot) of your EBS volume at a point in time  
 → `EBS Snapshot`은 `EBS Volume`의 특정 시점에 대한 백업이다.
@@ -87,78 +90,7 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/232324437-ebd35737-180d-4144-bb26-8a24216fa28e.png)
 
-### 4. AMI
-- AMI = Amazon Machine Image  
-→ `AMI`는 아마존 머신 이미지를 뜻하는 말로 `EC2`의 인스턴스를 통해 만든 이미지를 총칭한다.
-
-- AMI are a customization of an EC2 instance
-~~~
-- You add your own software, configuration, operating system, monitoring…
-→ AMI에 원하는 소프트웨어 설정 파일을 추가하거나 별도의 운영 체제를 설치하거나 모니터링 툴을 추가할 수 있다.
-
-- Faster boot / configuration time because all your software is pre-packaged
-→ 부팅 및 설정에 드는 시간을 줄일 수 있다. EC2 인스턴스에 설치하고자 하는 모든 소프트웨어를 AMI에 패키징해 둘 수 있기 때문이다.
-~~~
-
-- AMI are built for a specific region (and can be copied across regions)  
-→ `AMI`를 특정 지역에 구축한 다음 다른 지역으로 복사해서 `AWS`의 글로벌 인프라를 활용할 수도 있다. 
-
-- You can launch EC2 instances from:
-~~~
-- A Public AMI: AWS provided
-→ 전체 공개 AMI는 AWS에서 기본적으로 제공한다. 그 중 아마존 리눅스 AMI는 매우 인기있는 AMI 중 하나이다.
-
-- Your own AMI: you make and maintain them yourself
-→ 자체적으로 생성, 유지할 수 있다. 물론 직접 만들면 유지나 관리도 직접 해야한다.
-
-- An AWS Marketplace AMI: an AMI someone else made (and potentially sells)
-→ 마켓플레이스 AMI를 통해 EC2 인스턴스를 실행할 수도 있다. 이건 다른 사람이 구축한 이미지를 쓰는 것이다. 보통 구매해야 한다.
-이것도 꽤 흔한데, 기업에서 자체적으로 AMI를 구성해 자신들이 만든 소프트웨어를 넣고 구성까지 마친 다음 마켓플레이스에서 판매하는 것이다.
-~~~
-
-#### 1. AMI Process (from an EC2 instance)
-- Start an EC2 instance and customize it  
-→ `EC2` 인스턴스를 원하는대로 설정해 준다.
-
-- Stop the instance (for data integrity)  
-→ 이후 인스턴스를 중지해 데이터 무결성을 확보한다.
-
-- Build an AMI – this will also create EBS snapshots  
-→ 이 인스턴스를 바탕으로 `AMI`를 구축한다. 이 과정에서 `EBS` 스냅샷이 생성된다.
-
-- Launch instances from other AMIs  
-→ 구축한 `AMI`로 인스턴스를 실행할 수 있다.
-
-![image](https://user-images.githubusercontent.com/97398071/232325616-e8ec78d0-a6b2-4cf2-86e7-fa383a77e55c.png)
-
-- `EC2` → `Instances` → `Actions` → `Image and templates` → `Create image`를 통해 정지된 인스턴스로부터 `AMI`를 생성할 수 있다.
- 
-![image](https://user-images.githubusercontent.com/97398071/232325843-59020359-c45f-4986-ae66-d908a3fac026.png)
-
-- 생성한 `AMI`는 인스턴스 생성시 사용할 수 있다.
-
-![image](https://user-images.githubusercontent.com/97398071/232326104-7afa9506-f07f-440f-8cda-2b74868c78f5.png)
-
-### 5. EC2 Instance Store
-- EBS volumes are network drives with good but “limited” performance  
-→ `EC2` 인스턴스에 네트워크 드라이브를 연결하는 것은 그 성능이 제한된다. 이 제한된다는 것은 성능 자체가 떨어진다는 것은 아니다.
-
-- If you need a high-performance hardware disk, use EC2 Instance Store  
-→ 보다 높은 성능을 원한다면 이때는 `EC2` 인스턴스에 연결된 하드웨어 디스크의 성능이 향상되어야 한다.
-`EC2` 인스턴스는 가상 머신이지만 실제로는 하드웨어 서버에 연결되어 있기 때문이다. 
-이럴 때 사용하는 `EC2` 인스턴스를 `EC2` 인스턴스 스토어라고 부르며, 이는 해당하는 물리적 서버에 연결된 하드웨어 드라이브를 가리킨다.
-
-- EC2 Instance Store lose their storage if they’re stopped (ephemeral)  
-→ `EC2` 인스턴스 스토어를 중지 또는 종료하면 해당 스토리지 또한 손실되어 장기적으로 데이터를 보관할만한 장소가 될 수 없다.
-이와 같은 이유로 인해 인스턴스 스토어는 임시 스토리지라고도 불린다. 장기 스토리지의 경우에는 `EBS`가 적합하다.
-
-- Good for buffer / cache / scratch data / temporary content  
-→ 버퍼나 캐시, 스크래치 데이터, 임시 컨텐츠 데이터를 보관할 때 사용할 수 있다.
-
-- Backups and Replication are your responsibility  
-→ 그러므로 `EC2` 인스턴스 스토어를 사용할 때에는 필요에 따라 데이터를 백업해 두거나 복제해 두어야 한다.
-
-### 6. EBS Volume
+### 4. EBS Volume
 - EBS Volumes come in 6 types  
 → `EBS` 볼륨에는 총 6개 유형이 있다.
 ~~~
@@ -189,6 +121,7 @@
 → 가상 데스크톱, 개발, 테스트 환경 등에서 사용할 수 있다.
 
 - 크기는 `1GB`부터 `16 TB`까지 다양하다.
+
 - `gp2`와 `gp3`의 차이점은 다음과 같다.
 ~~~
 - gp3:
@@ -274,7 +207,7 @@ Max throughput 500 MiB/s – max IOPS 500
 → 다중 연결을 실행하려면 반드시 클러스터 인식 파일 시스템을 사용해야 한다.
 ~~~
 
-### 7. EBS Encryption
+### 5. EBS Encryption
 - When you create an encrypted EBS volume, you get the following:  
 → `EBS` 볼륨을 생성하면 암호화가 동시다발적으로 일어난다.
 ~~~

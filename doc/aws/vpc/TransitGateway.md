@@ -3,7 +3,7 @@
 - `Transit` = 환승
 
 - For having transitive peering between thousands of VPC and on-premises, hub-and-spoke (star) connection  
-→ `Transit Gateway`를 사용하면 복수의 `VPC`와 온프레미스 데이터 센터 `Site-to-Site VPN`, `Direct Connect` 허브와 스포크 등을 피어링 없이 연결할 수 있다.
+→ `Transit Gateway`를 사용하면 복수의 `VPC`와 온프레미스 데이터 센터, `Site-to-Site VPN`, `Direct Connect`, `hub-and-spoke`를 피어링 없이 연결할 수 있다.
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/ae18c6b1-d61d-47d4-91e6-05e76ec66ebf)
 
@@ -26,6 +26,9 @@
 
 - Supports IP Multicast (not supported by any other AWS service)  
 → 유일하게 `IP 멀티캐스트`를 지원하는 서비스이다. 만약 시험에 `IP 멀티캐스트`가 나오면 `Transit Gateway`를 떠올려야 한다.
+
+- 사내 인프라팀은 리소스 분리를 위해 `A, B, C, D, E`라는 5개의 서로 다른 `VPC`를 운영하고 있습니다. 조직 개편으로 인해 인프라 팀에서는 모든 `VPC`를 상호 연결하려고 합니다. 이를 구축하기 위해 인프라 팀은 VPC A를 중심으로 하여 허브 앤 스포크 모델로 `VPC A`와 나머지 `VPC`에 대한 피어링 연결을 설정했습니다. 하지만 인프라 팀은 모든 `VPC` 간의 연결을 구성하는 데 실패했습니다. 솔루션 아키텍트의 관점에서 봤을 때, 다음 중 가장 리소스 효율적이고 확장 가능한 솔루션은 무엇입니까?
+→ `Transit Gateway`로 `VPC`를 상호 연결한다.
 
 ### 2. Transit Gateway: Site-to-Site VPN ECMP
 - ECMP = Equal-cost multi-path routing  

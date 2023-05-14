@@ -28,6 +28,9 @@
 - Cognito vs IAM: “hundreds of users”, ”mobile users”, “authenticate with SAML”  
 → `Cognito`의 사용자는 `AWS` 외부의 웹과 모바일 앱을 대상으로 한다. `수백 명의 사용자`, `모바일 사용자`, `SAML을 통한 인증`같은 키워드가 나오면 `Cognito`를 설명하는 것이다.
 
+- 여러분은 `AWS`가 `API Gateway` 내에서 `API` 호출을 승인하기 위해 제공하는 다양한 인증/인가 메커니즘에 대해 조언하기 위해 한 회사에 솔루션 아키텍트로 고용되었습니다. 회사는 사용자 관리 기능을 기본으로 제공하는 솔루션을 선호합니다. 다음 중 주어진 사례에 가장 알맞은 솔루션은 무엇입니까?
+→ `Amazon Cognito` 사용자 풀을 사용한다.
+
 ### 2. Cognito User Pools (CUP) – User Features
 - Create a serverless database of user for your web & mobile apps  
 → 웹 및 모바일 앱을 대상으로 하는 서버리스 사용자 데이터베이스이다.
@@ -87,6 +90,8 @@
 
 - Default IAM roles for authenticated and guest users  
 → 기본 `IAM` 역할을 정의할 수도 있다. 게스트 사용자나 특정 역할이 정의되지 않은 인증된 사용자는 기본 `IAM` 역할을 상속받게 된다.
+
+- 사용자 풀에 있는 사용자가 `AWS` 리소스에 액세스할 수 있도록 하기 위해 `AWS` 자격 증명을 위한 사용자 풀 토큰을 교환하도록 자격 증명 풀을 구성할 수 있다. 그러므로 자격 증명 풀은 그 자체로서는 인증 메커니즘이 아니다.
 
 ### 5. Cognito Identity Pools – Diagram
 - 웹이나 모바일 애플리케이션에서 `S3` 버킷 또는 `DynamoDB` 테이블에 직접 액세스하고 싶은 상황이다. 이 때 `Cognito` 자격 증명 풀을 사용한다.

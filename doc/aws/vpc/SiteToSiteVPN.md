@@ -31,8 +31,6 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 2. Site-to-Site VPN Connections
-- 중요하다.
-
 - Customer Gateway Device (On-premises)
 ~~~
 - Public Internet-routable IP address for your Customer Gateway device
@@ -53,7 +51,7 @@
 → `CloudHub`는 서로 다른 위치 간의 기본 또는 보조 네트워크 연결에 사용되며 여러 `VPN`을 연결할 때 안전한 소통을 보장한다. 
 
 - Low-cost hub-and-spoke model for primary or secondary network connectivity between different locations (VPN only)  
-→ 비용이 적게 드는 허브 및 스포크 모델을 사용한다. 
+→ 비용이 적게 드는 허브 앤 스포크 모델을 사용한다. 
 
 - It’s a VPN connection so it goes over the public Internet  
 → `VPN` 연결이므로 모든 트래픽이 공용 인터넷을 통과한다. 사설 네트워크로는 연결되지 않는다.

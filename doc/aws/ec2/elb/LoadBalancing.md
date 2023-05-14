@@ -279,6 +279,9 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+- 일래스틱 로드 밸런서가 대상 그룹에 있는 모든 EC2 인스턴스를 비정상(`Unhealthy`) 상태로 표시했습니다. 하지만 개발자가 웹브라우저에서 `EC2` 인스턴스의 `IP` 주소를 입력했을 때는 웹 사이트에 접속할 수 있었습니다. 인스턴스 상태가 비정상으로 표시되는 이유는 타당한 것은 무엇입니까? (2개를 고르시오.)
+→ `EC2` 인스턴스의 보안 그룹에서 애플리케이션 로드 밸런서의 보안 그룹으로부터의 트래픽을 허용하지 않았다.
+
 ---
 #### ▶ Reference
 - [Sticky Session](https://www.imperva.com/learn/availability/sticky-session-persistence-and-cookies/)

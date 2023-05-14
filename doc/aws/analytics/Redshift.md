@@ -113,6 +113,9 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+- 한 `IT` 회사에서 `Amazon Redshift`를 사용해 유통 조직을 위한 맞춤형 데이터 웨어하우스 솔루션을 구축했습니다. 회사의 일일 분석 보고서에는 지난 1년간의 데이터만 사용되기 때문에 비용 최적화 작업의 일환으로 1년이 지난 과거 데이터를 모두 S3로 이동하려고 합니다. 하지만 분석가들은 일일 보고서와 지난 과거 데이터를 상호 참조하는 기능을 계속해서 사용하고 싶어 합니다. 회사에서는 최소한의 비용과 최소한의 노력을 들여 솔루션을 개발하기를 원합니다. 솔루션 아키텍트로서 이 사례를 해결하기 위해 어떤 방법을 제안하시겠습니까?  
+→ `Redshift Spectrum`을 사용해 `S3`에 있는 과거 데이터를 가리키는 `Redshift` 클러스터 테이블을 생성한다. 분석 팀은 과거 데이터를 쿼리하여 `Redshift`의 일일 보고서와 상호 참조할 수 있다.
+
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

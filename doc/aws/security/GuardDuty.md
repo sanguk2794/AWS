@@ -11,8 +11,7 @@
 
 - Input data includes:
 ~~~
-- Amazon GuardDuty는 여러 소스에서 입력 데이터를 얻는다.
-
+- Amazon GuardDuty는 여러 소스에서 입력 데이터를 얻는다. 소스를 외워야 한다.
 - CloudTrail Events Logs – unusual API calls, unauthorized deployments
 - CloudTrail Management Events – create VPC subnet, create trail, …
 - CloudTrail S3 Data Events – get object, list objects, delete object, …
@@ -42,6 +41,9 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - 요약하면 `GuardDuty`는 `VPC Flow Logs`, `CloudTrail Events Logs`, `DNS Logs`, `Kubernetes Audit Logs`를 모두 `GuardDuty`로 불러온다. 그리고 `CloudWatch` 이벤트 규칙 덕분에 `Lambda` 함수나 `SNS` 주제 알림을 받을 수 있다.
+
+- 한 금융 서비스 회사에서 자사의 `Amazon S3` 버킷에 저장된 민감 데이터를 식별하려고 합니다. 또한 회사는 `S3`에 저장된 모든 데이터를 모니터링하여 악의적인 시도로부터 보호하고자 합니다. 솔루션 아키텍트의 관점에서 다음 중 주어진 요구 사항을 해결하는 데 도움이 될 만한 솔루션은 무엇입니까?  
+→ `Amazon GuardDuty`를 사용해 S3에 저장된 데이터에 대한 악의적인 시도를 모니터링하고, `Amazon Macie`를 사용해 S3에 저장된 민감 데이터를 식별한다.
 
 ---
 #### ▶ Reference

@@ -24,7 +24,7 @@
 → 관리자가 아닌 사용자에게 책임을 위임하기 위해 권한 경계 내에서 새 IAM 사용자를 생성
 
 - Allow developers to self-assign policies and manage their own permissions, while making sure they can’t “escalate” their privileges (= make themselves admin)
-→ 개발자가 권한을 스스로 부여하고 관리하는 상황에서 특권을 남용하는 것을 막기 위해 스스로를 관리자로 만들지 못 하게 설정
+→ 개발자가 권한을 스스로 부여하고 관리하는 상황에서 특권을 남용하는 것을 막기 위해 스스로를 관리자로 만들 수 없도록 설정
 
 - Useful to restrict one specific user (instead of a whole account using Organizations & SCP)
 → 계정에 SCP를 적용해서 계정의 모든 사용자를 제한하지 않고 AWS Organizations의 특정 사용자만 제한
@@ -33,6 +33,9 @@
 ![image](https://user-images.githubusercontent.com/97398071/236675105-40191288-4c57-48e4-97c6-bcb0f3b5f03f.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+- 한 `IT` 기업은 팀에 합류한 신입 개발자에게 `DynamoDB`에 대한 모든 액세스 권한이 부여되는 사건이 보고된 이후 보안 모범 사례를 검토하려고 합니다. 해당 개발자는 새로운 기능을 구현하던 중 실수로 프로덕션 환경에 있는 테이블 몇 개를 삭제했습니다. 이런 사고의 재발을 방지할 수 있는 가장 효율적인 해결 방법은 무엇입니까?
+→ 권한 경계(Permissions boundary)를 사용해 직원이 `IAM` 주체에게 부여할 수 있는 최대 권한을 제어한다.
 
 ### 2. IAM Policy Evaluation Logic
 - `IAM` 정책 평가 논리이다. 외울 필요는 없고 이해만 할 정도면 충분하다.

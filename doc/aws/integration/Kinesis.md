@@ -26,7 +26,7 @@
 ### 2. Kinesis Data Streams
 - 시스템에서 큰 규모의 데이터 흐름을 다루는 서비스이다.
 - 여러 개의 샤드로 구성되어 있고, 샤드는 `N`번까지 번호가 매겨진다. 샤드의 숫자는 프로비저닝이 필요하다.
-- 데이터는 모든 샤드에 분배된다.  
+- 데이터는 모든 샤드에 분배된다.
 
 - 시나리오는 다음과 같다.
 ~~~
@@ -36,7 +36,7 @@
 - 모든 생성자는 정확히 동일한 역할을 수행한다. 매우 낮은 수준에서 SDK에 의존하며, Kinesis Data Streams에 레코드를 전달한다.
 - 레코드는 근본적으로 두 가지 요소로 구성된다. 파티션 키와 최대 1MB 크기의 데이터 블롭이 그것이다.
 
-- 일단 데이터가 스트림에 들어가면 많은 소비자가 이 데이터를 사용하게 된다. 
+- 일단 데이터가 스트림에 들어가면 많은 소비자가 이 데이터를 사용하게 된다.
 → 소비자는 SDK, KCL에 의존하는 애플리케이션, Lambda, Kinesis Data Firehose, Kinesis Data Analytics 등 다양하다.
 
 - 소비자가 받는 레코드는 파티션 키, 샤드에서 레코드의 위치를 나타내는 시퀀스 번호, 데이터 자체를 의미하는 데이터 블롭으로 이루어져 있다.
@@ -131,6 +131,11 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 - 회사에서 `Amazon Kinesis Data Streams`을 사용해 클릭 스트림 데이터를 수집하여 분석 작업을 수행하고 있습니다. 며칠 뒤에 캠페인이 예정되어 있고 트래픽은 예측이 불가능하며 100배까지 증가할 수도 있습니다. 이런 경우에 적합한 `Kinesis Data Stream` 용량 모드는 무엇입니까?  
 → 온디맨드 모드
 
+- 한 빅데이터 분석 업체가 `Kinesis Data Streams(KDS)`을 사용하여 농업 과학 기업의 필드 장치에서 `IoT` 데이터를 받아 처리하고 있습니다. 들어온 데이터 스트림은 다양한 컨슈머 애플리케이션에서 사용되고 있는데, 엔지니어들이 프로듀서와 데이터 스트림 컨슈머 사이에서 데이터 전달 속도의 성능 저하를 발견했습니다. 솔루션 아키텍트의 관점에서 주어진 사례의 성능 문제를 개선하기에 적합한 방식은 무엇입니까?  
+→ `Kinesis Data Streams`의 `Enhanced Fanout` 기능을 활성화한다.  
+`Amazon Kinesis Data Streams(KDS)`는 엄청난 규모로 확장할 수 있는 견고한 실시간 데이터 스트리밍 서비스입니다. `KDS`는 웹사이트 클릭스트림, 데이터베이스 이벤트 스트림, 재무 거래, 소셜미디어 피드, `IT` 로그, 위치추적 이벤트 등 수십만 가지 소스에서 초당 수 기가바이트에 이르는 데이터를 연속적으로 수집할 수 있습니다.
+기본값으로 스트림 데이터를 소비하는 모든 애플리케이션 간에 2MB/초/샤드의 출력이 공유됩니다. 스트림으로부터 병렬로 데이터를 검색하는 다수의 컨슈머가 있다면 향상된 팬아웃 기능을 사용하셔야 합니다. 향상된 팬아웃 기능을 사용하여 개발자는 스트림 컨슈머를 등록하여 향상된 팬아웃 기능을 사용하고 샤드당 2MB/초라는 읽기 처리 속도로 수신할 수 있으며 이러한 처리 속도는 스트림 안의 샤드 개수에 맞춰 자동으로 스케일링됩니다.
+
 #### 2. Kinesis Data Streams Security
 - Control access / authorization using IAM policies  
 → `IAM` 정책을 통해 샤드 생성과 샤드 접근에 대한 권한을 제어할 수 있다.
@@ -158,12 +163,14 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 - 생산자로부터 데이터를 가져올 수 있는 유용한 서비스이다. 생산자는 `Kinesis Data Streams`의 생산자에 더해 `Kinesis Data Streams`, `CloudWatch`, `AWS Iot` 등이 포함된다.
 
 - Fully Managed Service, no administration, automatic scaling, serverless  
-→ `Kinesis Data Firehose`는 완전 관리형 서비스이다. 오토 스케일링을 지원하며, 서버리스이므로 관리할 서버가 없다.
+→ `Kinesis Data Firehose`는 완전 관리형 서비스이다. 오토 스케일링을 지원하며 서버리스이므로 관리할 서버가 없다.
 
 - 소비자는 다음과 같다. 반드시 외워야한다.
 ~~~
 - AWS: Redshift / Amazon S3 / ElasticSearch - ElasticSearch는 이름이 바뀌었다. OpenSearch Service이다.
 → Redshift는 데이터 웨어하우스이다. 이 부분은 반드시 기억하자.
+
+- Kinesis Data Firehose는 S3, Redshift, Elasticsearch 또는 Splunk에만 사용할 수 있다. Kinesis Data Firehose에서 나오는 데이터를 소비하는 개인 애플리케이션을 가질 수 없다.
 
 - 3rd party partner: Splunk / MongoDB / DataDog / NewRelic / …
 → 서드파티 모듈에도 데이터를 송신할 수 있다.
