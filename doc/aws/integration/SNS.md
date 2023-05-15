@@ -47,12 +47,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 다음 중 `AWS SNS`를 지원하지 않는 구독자를 고르세요.
-→ `Kinesis Data Streams`, 현재 `Kinesis Data Firehose`는 지원되지만, `Kinesis Data Streams`는 지원되지 않는다.
-
-- 다음 중 사용자들에게 이메일 알림을 보내려 할 때 도움이 되는 `AWS` 서비스는 무엇인가요?
-→ `Amazon SNS`
-
 ### 2. Amazon SNS – How to publish
 - Topic Publish (using the SDK) 
 ~~~
@@ -131,9 +125,6 @@
 
 - Cross-Region Delivery: works with SQS Queues in other regions  
 → 리전 간 전달도 가능하다. 즉 보안상 허용된다면 한 리전의 `SNS` 주제에서 다른 리전의 `SQS` 대기열로 메세지를 전송할 수 있다.
-
-- 3개의 서로 다른 애플리케이션으로 동일한 메시지를 보내려 합니다. 3개의 애플리케이션 모두 `SQS`를 사용하고 있습니다. 이를 위해, 어떤 접근법을 선택하는 것이 가장 적절할까요?  
-→ `SNS` + `SQS` 팬아웃 패턴을 사용
 
 ### 5. Application: S3 Events to multiple queues
 - If you want to send the same S3 event to many SQS queues, use fan-out  

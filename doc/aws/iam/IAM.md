@@ -260,9 +260,6 @@
 
 ![Download credential report](https://user-images.githubusercontent.com/97398071/228143971-cdc3bf09-aa88-418f-81ed-51731bb1ed9b.png)
 
-- 다음 중 `IAM` 보안 도구에 해당되는 것은 무엇인가요?
-→ `IAM Credential Report`
-
 #### 2. Get Access Advisor Information
 - `IAM` → `Users` → `Detail` → `Access Advisor`
 

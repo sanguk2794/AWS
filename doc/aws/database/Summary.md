@@ -92,9 +92,6 @@
 - Use case: Store relational datasets (RDBMS / OLTP), perform SQL queries, transactions  
 → `Amazon RDS`는 관계형 데이터베이스를 저장하는데 활용된다. 이에는 `RDBMS`와 `OLTP`가 포함된다. 또, `SQL`을 실행할 수도 있고 트랜잭션에도 활용된다.
 
-- 다음 중 `SQL` 언어 호환성 및 삽입, 업데이트, 삭제와 같은 변환 프로세싱 기능을 통해 관계형 데이터셋의 저장을 보조해주는 데이터베이스는 무엇인가요?  
-→ `Amazon RDS`
-
 ### 4. Amazon Aurora – Summary
 - Compatible API for PostgreSQL / MySQL, separation of storage and compute  
 → `Aurora`는 데이터베이스 엔진인 `PostgreSQL`, `MySQL`과 호환되는 `API`이다. 컴퓨팅과 스토리지가 분리된 특별한 서비스이다.
@@ -134,9 +131,6 @@
 - Use case: same as RDS, but with less maintenance / more flexibility / more performance / more features  
 → 사용 사례는 `RDS`와 기본적으로 같다. 하지만 `Aurora`는 유지, 관리할 부분이 적고 유연성이 높으며 성능도 더 뛰어나고 내장된 기능도 더 많다.
 
-- 여러분은 온라인 트랜잭션 프로세싱(OLTP)을 수행하려 합니다. 이 작업에는 오토 스케일링 기능이 내장되어 있고, 기반 스토리지에 대해 최대 복제본 수를 제공하는 데이터베이스를 사용하고자 합니다. 이 경우, 다음 중 어떤 AWS 서비스를 추천할 수 있을까요?  
-→ `Aurora`
-
 ### 5. Amazon ElastiCache – Summary
 - Managed Redis / Memcached (similar offering as RDS, but for caches)  
 → 관리형 `Redis`, `Memcached`로 `RDS`와 비슷한 기능을 제공하지만 캐싱 작업에 사용된다.
@@ -165,9 +159,6 @@
 
 - Use Case: Key/Value store, Frequent reads, less writes, cache results for DB queries, store session data for websites, cannot use SQL.  
 → `ElastiCache`의 사용 사례에는 키-값 스토어가 있으며, 데이터베이스를 자주 읽는다면 데이터베이스 쿼리를 캐싱하는 것이 좋다. 웹사이트 사용자를 위한 세션 데이터를 저장할 수도 있다. `ElastiCache`에서는 `SQL`을 저장할 수 없다.
-
-- 다음 중 `Redis API`와 호환이 가능한 캐싱 기능을 제공하는 `AWS` 서비스는 무엇인가요?  
-→ `ElastiCache`
 
 ### 6. Amazon DynamoDB – Summary
 - AWS proprietary technology, managed serverless NoSQL database, millisecond latency  
@@ -211,12 +202,6 @@
 - Use Case: Serverless applications development (small documents 100s KB), distributed serverless cache, doesn’t have SQL query language available  
 → `400KB` 미만의 문서를 다루는 작은 서버리스 애플리케이션 개발, 서버리스 캐시 분산 등이 있다. `DynamoDB` 또한 `SQL`을 사용할 수 없다.
 
-- 온프레미스 `MongoDB NoSQL` 데이터베이스를 `AWS`로 이전하려 합니다. 데이터베이스 서버를 관리하고 싶지 않기 때문에 고가용성 및 높은 내구성과 신뢰성을 제공하며, 가급적이면 서버리스인 관리형 `NoSQL` 데이터베이스를 사용하려 합니다. 이런 경우, 어떤 데이터베이스를 선택해야 할까요?  
-→ `DynamoDB`
-
-- 한 기상 예보 기관은 미국 여러 도시에서 주요 기상 지표를 수집하여 키-값 쌍 형태의 데이터로 만들어 1분에 한 번씩 `AWS` 클라우드로 전송하고 있습니다. 솔루션 아키텍트로서 이 데이터를 안정적으로 처리 및 저장할 수 있는 고가용성 솔루션을 구축하는 데 어떤 `AWS` 서비스를 사용하시겠습니까? (2개를 고르시오.)  
-→ `Lambda`, `DynamoDB`, `RDS`는 키-값 쌍 데이터를 저장하기에 적합하지 않으므로 이 선택지는 오답이다.
-
 ### 7. Amazon S3 – Summary
 - S3 is a… key / value store for objects  
 → `S3`는 객체를 키-값으로 저장한다.
@@ -250,9 +235,6 @@
 
 - Use Cases: static files, key value store for big files, website hosting  
 → 정적 파일, 큰 파일의 키-값 스토어 또는 웹 사이트의 호스팅이 있다.
-
-- 각각의 크기가 `100MB`인 한 세트의 파일들이 있는데, 이 파일을 안전하고 내구성이 높은 키-값 스토어에 저장하려 합니다. 이 경우, 다음 중 어떤 `AWS` 서비스를 사용하는 게 권장될까요?  
-→ `Amazon S3`
 
 ---
 #### ▶ Reference

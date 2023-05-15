@@ -40,12 +40,6 @@
 - Great for knowledge graphs (Wikipedia), fraud detection, recommendation engines, social networking  
 → 지식 그래프를 저장하는데도 뛰어난 성능을 보여준다. 예를 들어 모든 위키피디아 기사들은 서로 연결되어 있으므로 위키피디아 데이터베이스는 지식 그래프이다. 이외에도 사기 탐지, 추천 엔진, 소셜 네트워킹도 그렇다.
 
-- 한 스타트업 회사가 솔루션 아키텍트인 여러분에게 사용자들이 서로 친구가 될 수 있고, 서로의 포스트에 좋아요를 남길 수 있는 소셜 미디어 웹사이트 아키텍처의 구축을 도와달라고 한 상황입니다. 이 회사는 ‘Mike의 친구들이 남긴 포스트에는 몇 개의 좋아요가 있는가?’와 같은 복잡한 쿼리를 수행하려 합니다. 이 경우, 어떤 데이터베이스의 사용을 추천할 수 있을까요?
-→ `Amazon Neptune`
-
-- 한 소셜 미디어 회사의 개발 팀에서 “사용자 A의 친구가 올린 동영상의 좋아요 개수는 몇 개인가?”와 같은 복잡한 쿼리를 처리하려고 합니다. 솔루션 아키텍트의 관점에서 위와 같은 사례를 처리하기에 가장 적절한 AWS 데이터베이스 서비스는 다음 중 무엇입니까?
-→ `Amazon Neptune`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

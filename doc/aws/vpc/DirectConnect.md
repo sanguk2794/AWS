@@ -79,8 +79,8 @@
 - Data in transit is not encrypted but is private  
 → `Direct Connect`에는 암호화 기능이 없어서 데이터가 암호화되지는 않는다. 하지만 프라이빗 연결이므로 보안을 유지할 수 있다.
 
-- AWS Direct Connect + VPN provides an IPsec-encrypted private connection  
-→ 만약 암호화를 원한다면 `AWS Direct Connect`와 함께 `VPN`을 설치해야 한다. `IPsec`으로 암호화된 프라이빗 연결이 가능하다.
+- AWS Direct Connect + VPN provides an IPSec-encrypted private connection  
+→ 만약 암호화를 원한다면 `AWS Direct Connect`와 함께 `VPN`을 설치해야 한다. `IPSec`으로 암호화된 프라이빗 연결이 가능하다.
 
 - Good for an extra level of security, but slightly more complex to put in place  
 → 추가적인 보안을 확보할 수 있지만 구현이 복잡하다.

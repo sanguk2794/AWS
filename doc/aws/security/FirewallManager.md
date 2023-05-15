@@ -13,7 +13,7 @@
 → 보안 정책에 ALB, API Gateway CloudFront 등에 적용되는 웹 애플리케이션 방화벽(WAF) 규칙이 포함된다.
 
 - AWS Shield Advanced (ALB, CLB, NLB, Elastic IP, CloudFront)
-→ 보안 정책에 ALB, CLB, NLB, 엘라스틱 IP CloudFront를 위한 AWS Shield 어드밴스드 규칙이 포함된다.
+→ 보안 정책에 ALB, CLB, NLB, 일래스틱 IP CloudFront를 위한 AWS Shield 어드밴스드 규칙이 포함된다.
 
 - Security Groups for EC2, Application Load Balancer and ENI resources in VPC
 → 보안 정책에 EC2, ALB, VPC의 ENI 리소스를 위한 보안 그룹 정책이 포함된다.

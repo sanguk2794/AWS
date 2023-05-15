@@ -4,7 +4,7 @@
 → 완전 관리형 데이터베이스이다. 데이터가 다중 `AZ`간에 복제되므로 가용성이 높다.
 
 - NoSQL database - not a relational database - with transaction support  
-→ 클라우드 데이터베이스이며, `AWS`의 독점 서비스이다. 트랜잭션이 지원되는 `NoSQL` 데이터베이스이다. 
+→ 클라우드 데이터베이스이며 `AWS`의 독점 서비스이다. 트랜잭션이 지원되는 `NoSQL` 데이터베이스이다. 
 
 - Scales to massive workloads, distributed database  
 → 방대한 워크로드로 확장이 가능하다. 데이터베이스가 내부에서 분산되기 때문이다.
@@ -61,13 +61,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- DynamoDB 표를 생성하기 전에는 DynamoDB 테이블이 실행될 EC2 인스턴스를 프로비저닝해야 합니다.  
-→ 아니다. `DynamoDB`는 프로비저닝, 패치, 혹은 관리할 서버가 없고 설치, 유지 및 운용해야 할 소프트웨어가 없는 서버리스 서비스이다. 
-`DynamoDB`는 용량 조정 및 성능 유지를 위한 테이블의 확장 및 축소를 자동으로 스케일링한다. 이는 프로비저닝(`RCU` & `WCU` 지정) 및 온디맨드 (사용한 만큼의 비용 책정) 용량 모드 모두를 제공한다.
-
-- DynamoDB 테이블 내 항목의 최대 크기는 ...................입니다.  
-→ `400KB`
-
 ### 3. DynamoDB – Read/Write Capacity Modes
 - Control how you manage your table’s capacity (read/write throughput)  
 → `DynamoDB`를 사용하려면 읽기/쓰기 용량 모드를 설정해야 한다. 테이블 관리 모드를 제어하는 데 두 가지 방식이 있다.
@@ -102,17 +95,11 @@
 
 - 수천 개의 트랜잭션에서 수백만 개의 트랜잭션으로 1분 이내에 확장해야 하는 애플리케이션이 있다면 빠르게 확장되지 않는 프로비저닝 모드는 적합하지 않다.
 
-- 또, 트랜잭션이 없거나 하루에 많아야 4~5회밖에 되지 않는 워크로드에서도 온디맨드 모드가 더욱 적합하다. 어떤 모드가 더 적합한지 선택할 수 있도록 준비해야 한다.
-
-- DynamoDB 테이블을 10 `RCU`와 10 `WCU`로 프로비저닝했습니다. 한 달 후, 더 많은 읽기 트래픽을 처리하기 위해 `RCU`를 증가시키려 합니다. 어떻게 해야 할까요?
-→ `RCU`는 증가, `WCU`는 동일하게 유지
-
-- 여러분은 `DynamoDB`를 데이터 저장소로 활용하여 원활하고 지속적인 사용 경험을 제공하는 프로덕션 환경에서 애플리케이션을 실행하고 있습니다. 하지만 예측할 수 없는 대량의 요청을 테스트하려면 개발 모드에서도 애플리케이션을 실행해야 있습니다. 이런 경우에 제안할 수 있는 가장 경제적인 솔루션은 무엇입니까?  
-→ 프로덕션 환경에서는 프로비저닝된 용량 모드 및 오토 스케일링을 사용하고 개발 환경에서는 온디맨드 용량 모드를 사용한다.
+- 또, 트랜잭션이 없거나 하루에 많아야 4 ~ 5회밖에 되지 않는 워크로드에서도 온디맨드 모드가 더욱 적합하다. 어떤 모드가 더 적합한지 선택할 수 있도록 준비해야 한다.
 
 ### 4. DynamoDB Accelerator (DAX)
 - Fully-managed, highly available, seamless in-memory cache for DynamoDB  
-→ 고가용성의 완전 관리형 인메모리 캐시이다.
+→ 고가용성을 지닌 완전 관리형 인메모리 캐시이다.
 
 - Help solve read congestion by caching  
 → `DynamoDB`에 읽기 작업이 많을 때 `DAX` 클러스터를 생성하고 데이터를 캐싱하여 읽기 혼잡을 해결한다.
@@ -125,15 +112,6 @@
 
 - 5 minutes TTL for cache (default)  
 → 캐시의 기본 `TTL`은 5분이나 변경할 수 있다.
-
-- `DynamoDB`를 데이터베이스로 사용하는 전자 상거래 웹사이트가 있습니다. 곧 크리스마스 세일 기간에 들어갈 예정이며, 굉장히 인기가 높은 몇몇 항목들이 높은 조회수를 기록할 것으로 예상하고 있습니다. 안타깝게도 작년에는 높은 트래픽의 양으로 인해 `ProvisionedThroughputExceededException` 예외 처리 오류가 발생했었습니다. 이 오류의 재발을 방지하려면 어떻게 해야 할까요?  
-→ `DAX` 클러스터 생성하기
-
-- 한 회사가 `Lambda`, `DynamoDB`, `Step Functions`으로 구성된 `AWS`에 서버리스 애플리케이션을 보유하고 있습니다. 지난달에 애플리케이션으로 들어오는 요청 개수가 증가하여 DynamoDB 비용이 증가하였고 요청 처리 속도도 느려지기 시작했습니다. 추가 조사를 진행한 결과, 요청의 대부분은 `DynamoDB` 테이블의 쿼리에 대한 읽기 요청이었습니다. 스로틀링을 방지하고 비용을 효율적으로 절감하려면 어떤 방법을 사용해야 합니까?  
-→ `DAX`를 사용해 자주 요청되는 읽기 데이터를 캐싱한다.
-
-- `AWS`에 호스팅할 예정인 웹 사이트가 현재 개발 진행 중에 있습니다. 이 웹 사이트에는 로그인한 사용자의 사용자 세션과 자동 만료 시간을 저장하고, 만료된 사용자 세션을 삭제해야 한다는 요구 사항이 있습니다. 다음 중 이런 경우에 가장 적합한 `AWS` 서비스는 무엇입니까?  
-→ 사용자 세션을 `DynamoDB` 테이블에 저장하고 `TTL`을 활성화한다.
 
 #### 1. DynamoDB Accelerator (DAX) vs. ElastiCache
 - `DAX`는 `DynamoDB` 앞에 있고 개별 객체의 캐시와 쿼리와 스캔 캐시를 처리하는데 유용하다.
@@ -153,7 +131,7 @@
 - Use cases:
 ~~~
 - React to changes in real-time (welcome email to users)
-→ 테이블의 변경 사항에 대해 실시간으로 반응할 수 있다. 사용자 테이블에 새로운 사용자가 등록됐을 때 환영 이메일을 보낼 수 있다. 
+→ 테이블의 변경 사항에 대해 실시간으로 반응할 수 있다. 사용자 테이블에 새로운 사용자가 등록됐을 때 환영 이메일을 보낼 수 있다.
 
 - Real-time usage analytics
 → 실시간으로 자동 분석을 수행할 수 있다.
@@ -169,6 +147,7 @@
 ~~~
 
 - `DynamoDB`에는 `DynamoDB Streams`와 `Kinesis Data Streams`, 두 종류의 스트림 처리 방식이 있다.
+
 - DynamoDB Streams
 ~~~
 - 24 hours retention
@@ -206,9 +185,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235819238-ab12bbf2-8a7b-49cf-b11b-3ed08dbdacca.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- DynamoDB를 데이터 저장소로 사용하는 모바일 애플리케이션을 개발했습니다. 신규 사용자가 가입한 후 환영 이메일을 자동으로 보내려고 합니다. 이를 달성하는 가장 효율적인 방법은 무엇일까요?  
-→ `DynamoDB Streams`을 활성화하고 이메일을 보내기 위해 람다 함수를 호출하도록 구성, `DynamoDB Streams`을 사용하면, `DynamoDB` 테이블의 항목 레벨 수정의 시간 순서를 파악할 수 있습니다. 이는 `AWS Lambda`에 통합되어 있기 때문에, 이벤트에 실시간으로 자동 응답하는 트리거를 생성할 수 있다.
 
 ### 6. DynamoDB Global Tables
 - 여러 리전 간에 복제가 가능한 테이블이이며, 두 테이블간의 양방향 복제가 가능하다.
@@ -303,9 +279,6 @@
 - Import errors are logged in CloudWatch Logs
 → 가져올 때 발생한 오류는 모두 CloudWatch Logs에 기록된다.
 ~~~
-
-- 여러분이 `DevOps` 엔지니어로 일하고 있는 축구 회사에는 서버 쪽에 `DynamoDB` 테이블을 둔 웹 사이트가 있습니다. 현재 시청자 의견에 대한 보고서를 생성하기 위해 분석 팀과 함께 업무를 진행하고 있습니다. 분석 팀은 DynamoDB의 데이터를 JSON 포맷으로 S3 버킷에 호스팅한 다음, 거기서 작업을 시작하고 보고서를 생성하기를 원합니다. `DynamoDB` 데이터를 `JSON` 파일로 변환하는 데 가장 적합한 경제적인 방식은 무엇입니까?  
-→ `DynamoDB` 테이블을 선택하고 `S3`로 내보내기를 선택한다.
 
 ---
 #### ▶ Reference

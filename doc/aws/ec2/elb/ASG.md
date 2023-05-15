@@ -125,32 +125,30 @@
 - Most simple and easy to set-up
 - Example: I want the average ASG CPU to stay at around 40%
 ~~~
-- 한 애플리케이션이 애플리케이션 로드 밸런서(ALB)와 오토 스케일링 그룹(ASG)을 통해 배포되었습니다. 
-이 상태에서 ASG의 크기를 수동으로 조정해 EC2 인스턴스의 평균 연결 개수가 약 1,000개가 되도록 조정 정책을 정의하려고 합니다. 어떤 조정 정책을 사용해야 합니까?  
-→ Target Tracking Scaling
 
 - Simple / Step Scaling  
-→ 단순과 단계 스케일링은 조금 더 복잡하다. `CloudWatch` 경보를 설정하고 전체 `ASG`에 대한 `CPU` 사용률이 70%를 초과하는 경우 용량을 두 유닛 추가하거나
-`CPU` 사용량이 30% 이하로 떨어지는 경우 유닛 하나를 제거한다는 등의 설정을 추가해야 한다.
-즉, 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 필요가 있다.
 ~~~
+- 단순과 단계 스케일링은 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 수 있다.
+
 - When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
 - When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1
+→ CloudWatch 경보를 설정하고 전체 ASG에 대한 CPU 사용률이 70%를 초과하는 경우 두 유닛 추가하고 CPU 사용량이 30% 이하로 떨어지는 경우 유닛 하나를 제거하는 등의 설정을 추가해야 한다.
 ~~~
 
 - 여러분의 상사가 애플리케이션이 데이터베이스로 보내는 분당 요청 수를 기반으로 오토 스케일링 그룹을 스케일링하라고 요청했습니다. 어떻게 해야 할까요?  
-→ 백엔드-데이터베이스 연결에는 ‘분당 요청'에 해당하는 `CloudWatch` 지표가 존재하지 않는다. `CloudWatch` 경보를 생성하려면 `CloudWatch` 사용자 지정 지표를 먼저 생성해야 한다.
+→ 백엔드와 데이터베이스 간 연결에는 분당 요청에 해당하는 `CloudWatch` 지표가 존재하지 않는다. `CloudWatch` 경보를 생성하려면 `CloudWatch` 사용자 지정 지표를 먼저 생성해야 한다.
 
 - Scheduled Actions Scaling  
-→ 예약된 작업은 예정된 사용 패턴을 바탕으로 스케일링을 수행할 때 사용한다. 예를 들어 금요일 오후 5시에 큰 이벤트가 예정되어 있다면 여러 사람들이 애플리케이션을 사용하는데 대비해 `ASG` 최소 용량을 금요일마다 자동으로 스케일 아웃을 수행한다.
 ~~~
+- 예약된 작업은 예정된 사용 패턴을 바탕으로 스케일링을 수행할 때 사용한다. 
+- 예를 들어 금요일마다 큰 이벤트가 있다면 트래픽 증가에 대비해 금요일마다 자동으로 스케일 아웃을 수행한다.
+
 - Anticipate a scaling based on known usage patterns
 - Example: increase the min capacity to 10 at 5 pm on Fridays
 ~~~
 
 #### 2. Predictive Scaling
-- 예측 스케일링을 통해 `AWS` 내 오토 스케일링 서비스를 활용하여 지속적으로 예측을 생성할 수 있다. 로드를 보고서 다음 스케일링을 예측하는 것이다.
-시간에 걸쳐 과거 로드를 분석해 예측이 생성된다. 그리고 해당 예측을 바탕으로 사전에 스케일링 작업이 예약되는 것이다.
+- 예측 스케일링을 통해 `AWS` 내 오토 스케일링 서비스를 활용하여 지속적으로 예측을 생성할 수 있다. 로드를 보고서 다음 스케일링을 예측하는 것이다. 과거 로드를 분석해 예측이 생성되고 해당 예측을 바탕으로 사전에 스케일링 작업이 예약된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233829911-a7a3c3d9-a028-4600-a28e-0e9d0e5fc7b7.png)
 
@@ -172,34 +170,29 @@
 → 물론 다른 지표를 기준으로 사용하는 것도 가능하다.
 ~~~
 
-- `EC2` → `Auto Scaling` → `Auto scaling group` → auto scaling 대상 클릭 → `Automatic scaling`  
+- `EC2` → `Auto Scaling` → `Auto scaling group` → 오토 스케일링 그룹 선택 → `Automatic scaling`  
 → 스케일링 정책을 확인할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233830457-01eb44de-0b88-41e0-8cc7-9193e9cd918d.png)
 
 ### 6. Scaling Cool-downs
 - After a scaling activity happens, you are in the cooldown period (default 300 seconds)  
-→ 스케일링 정책 중 또 다른 중요한 내용에는 스케일링 휴지가 있다. 
-스케일링 작업이 끝날때마다 인스턴스의 추가 또는 삭제를 막론하고 기본적으로 300초의 휴지 기간을 갖는 것이다.
+→ 스케일링 정책 중 또 다른 중요한 내용에는 스케일링 휴지가 있다. 스케일링 작업이 끝날때마다 인스턴스의 추가 또는 삭제를 막론하고 기본적으로 300초의 휴지 기간을 갖는 것이다.
 
 - During the cooldown period, the ASG will not launch or terminate additional instances (to allow for metrics to stabilize)  
-→ 휴지 기간에는 `ASG`가 추가 인스턴스를 실행 또는 종료할 수 없다. 
-이는 지표를 이용하여 새로운 인스턴스가 안정화될 수 있도록 하며, 새로운 지표의 양상을 살펴보기 위함이다.
+→ 휴지 기간에는 `ASG`가 추가 인스턴스를 실행 또는 종료할 수 없다. 이는 지표를 이용하여 새로운 인스턴스가 안정화될 수 있도록 하며 새로운 지표의 양상을 살펴보기 위함이다.
 
 - Advice: Use a ready-to-use AMI to reduce configuration time in order to be serving request fasters and reduce the cooldown period  
-→ 즉시 사용 가능한 `AMI`를 이용하여 인스턴스 구성 시간을 단축하고 이를 통해 요청을 좀 더 신속히 처리하는 것이 좋다.
-`EC2` 인스턴스의 구성에 할애되는 시간이 적으면 활성화 시간이 빨라지므로 휴지 기간 또한 단축할 수 있다.
+→ 즉시 사용 가능한 `AMI`를 이용하여 인스턴스 구성 시간을 단축하고 이를 통해 요청을 좀 더 신속히 처리하는 것이 좋다. `EC2` 인스턴스의 구성에 할애되는 시간이 적으면 활성화 시간이 빨라지므로 휴지 기간 또한 단축할 수 있다.
 
 ### 7. Stress Check in Amazon Linux 2
-- 해당 커맨드를 `EC2 Instance Connect` 또는 `SSH`를 통해 실행한다. 그러면 `CPU` 사용률이 증가하므로 오토스케일링 그룹의 테스트가 가능해진다.
+- 해당 커맨드를 `EC2 Instance Connect` 또는 `SSH`를 통해 실행한다. 그러면 `CPU` 사용률이 증가하므로 `ASG`의 테스트가 가능하다.
 ~~~ shell
 $ sudo amazon-linux-extras install epel -y
 $ sudo yum install stress -y
 
 $ stress -c 4
 ~~~
-
-
 
 ---
 #### ▶ Reference

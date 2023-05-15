@@ -18,7 +18,7 @@
 → 애플리케이션 상태를 일래스틱 캐시에 저장해 애플리케이션을 무상태로 만들 수 있다. 
 
 - AWS takes care of OS maintenance / patching, optimizations, setup, configuration, monitoring, failure recovery and backups  
- → `AWS`는 일래스틱 캐시에도 `RDS`와 동일한 유지보수를 수행한다.
+→ `AWS`는 일래스틱 캐시에도 `RDS`와 동일한 유지보수를 수행한다.
 
 - Using ElastiCache involves heavy application code changes  
 → 일래스틱 캐시를 사용할 때 애플리케이션에 대한 몇 가지 어려운 코드 변경을 요청할 수도 있다. 단순한 활성화가 아니라 캐시를 사용한다.
@@ -27,9 +27,9 @@
 
 #### 1. ElastiCache Solution Architecture - DB Cache
 - 일래스틱 캐시 사용을 위한 아키텍쳐의 예시로 `DB Cache`를 들 수 있다.
+
 - Applications queries ElastiCache, if not available, get from RDS and store in ElastiCache.  
-→ 일라스틱 캐시가 `RDS`와 애플리케이션 사이에 존재하고 애플리케이션은 일라스틱 캐시에 쿼리를 수행한다.
-캐시 미스의 경우에는 데이터베이스에서 데이터를 가져와서 데이터베이스에서 읽는다.
+→ 일래스틱 캐시가 `RDS`와 애플리케이션 사이에 존재하고 애플리케이션은 일래스틱 캐시에 쿼리를 수행한다. 캐시 미스의 경우에는 데이터베이스에서 데이터를 가져와서 데이터베이스에서 읽는다.
 
 ![image](https://user-images.githubusercontent.com/97398071/234031615-bf7cfca3-5aa2-4fc8-b0bc-736c34b8bde4.png)
 
@@ -39,8 +39,7 @@
 → 이는 `RDB`의 부하를 줄이는데 도움을 준다. 
 
 - Cache must have an invalidation strategy to make sure only the most current data is used in there.  
-→ 하지만 데이터를 캐시에 저장하기 때문에 캐시 무효화 전략이 있어야하며 가장 최근 데이터만 사용하는지 확인해야 한다.
-이것이 캐싱 사용할 때의 가장 큰 어려움이다.
+→ 하지만 데이터를 캐시에 저장하기 때문에 캐시 무효화 전략이 있어야하며 가장 최근 데이터만 사용하는지 확인해야 한다. 이것이 캐싱 사용할 때의 가장 큰 어려움이다.
 
 #### 2. ElastiCache Solution Architecture – User Session Store
 - User logs into any of the application  
@@ -50,8 +49,7 @@
 → 사용자가 애플리케이션의 모든 계정에 로그인하면 애플리케이션이 일래스틱 캐시에 세션 데이터를 기록하는 것이다.
 
 - The user hits another instance of our application  
-→ 사용자가 애플리케이션의 다른 인스턴스로 리디렉션되면 애플리케이션은 일래스틱 캐시에서 직접 세션 캐시를 검색할 수 있다.
-그래서 사용자는 계속 로그인한 상태로 한 번 더 로그인 할 필요가 없다.
+→ 사용자가 애플리케이션의 다른 인스턴스로 리디렉션되면 애플리케이션은 일래스틱 캐시에서 직접 세션 캐시를 검색할 수 있다. 그래서 사용자는 계속 로그인한 상태로 한 번 더 로그인 할 필요가 없다.
 
 - The instance retrieves the data and the user is already logged in  
 → 사용자의 세션 데이터를 일래스틱 캐시에 기록해서 애플리케이션을 무상태로 만든 것이다.
@@ -62,10 +60,11 @@
 
 ### 2. ElastiCache – Redis vs Memcached
 - REDIS  
-→ 고가용성, 백업, 읽기 전용 복제본이 레디스의 대표적 특징이다.
 ~~~
+- 고가용성, 백업, 읽기 전용 복제본이 레디스의 대표적 특징이다.
+
 - Multi AZ with Auto-Failover
-→ 레디스는 자동 장애 조치로 다중 `AZ`를 수행한다.
+→ 레디스는 자동 장애 조치로 다중 AZ에 배포된다.
 
 - Read Replicas to scale reads and have high availability
 → 읽기 전용 복제본은 읽기 스케일링에 사용되며 가용성이 높다.
@@ -109,8 +108,7 @@
 - Redis AUTH
 ~~~
 - You can set a “password/token” when you create a Redis cluster
-→ 레디스를 인증하려면 레디스 AUTH를 사용하여 레디스 클러스터를 생성할 때 비밀번호나 토큰을 설정할 수 있다.
-이렇게 하면 캐시에 들어갈 때 비밀번호를 사용할 수 있다.
+→ 레디스를 인증하려면 레디스 AUTH를 사용하여 레디스 클러스터를 생성할 때 비밀번호나 토큰을 설정할 수 있다. 이렇게 하면 캐시에 들어갈 때 비밀번호를 사용할 수 있다.
 
 - This is an extra level of security for your cache (on top of security groups)
 → 이는 캐시에 사용할 수 있는 보안 그룹에 대한 추가적인 수준의 보안이다.
@@ -118,9 +116,6 @@
 - Support SSL in flight encryption
 → 전송 중 암호화를 위해 SSL 보안을 지원할 수 있다.
 ~~~
-
-- 사용자들이 연결되었을 때, 비밀번호를 입력하도록 하여 ElastiCache Redis 클러스터의 보안을 높이기 위해서는 어떻게 해야 할까요?  
-→ `Redis Auth` 사용하기
 
 - Memcached
 ~~~
@@ -148,8 +143,7 @@
 → 레디스에는 고유성과 요소 순서를 모두 보장하는 정렬된 집합이라는 기능이 있다.
 
 - Each time a new element added, it’s ranked in real time, then added in correct order  
-→ 요소가 추가될 때마다 실시간으로 순위가 매겨진 다음 올바른 순서로 추가된다. 레디스 클러스터가 있는 경우 실시간으로 1, 2, 3위 플레이어가 있는
-실시간 리더보드를 생성한다는 개념이다. 모든 레디스 캐시는 동일한 리더보드를 사용할 수 있다.
+→ 요소가 추가될 때마다 실시간으로 순위가 매겨진 다음 올바른 순서로 추가된다. 레디스 클러스터가 있는 경우 실시간으로 1, 2, 3위 플레이어가 있는 실시간 리더보드를 생성한다는 개념이다. 모든 레디스 캐시는 동일한 리더보드를 사용할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/234041990-f63d1674-2b3a-4d95-b765-06583f74d05b.png)
 

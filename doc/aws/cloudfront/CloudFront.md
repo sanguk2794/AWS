@@ -42,6 +42,8 @@
 → CloudFront를 통해 버킷에 데이터를 전송하는 것도 가능하다. 이를 Ingress라 한다.
 ~~~
 
+- `OAI, Origin Access Identity`는 `CloudFront`가 `S3`에 저장된 `Private` 객체에 액세스 할 수 있도록 하는 특별한 식별자이다.
+
 - Custom Origin (HTTP) 
 ~~~
 - Application Load Balancer 
@@ -62,11 +64,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235299150-36373d7e-600a-4a07-8928-c10361848b23.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- `S3` 버킷 상에 호스팅된 정적 웹사이트가 있습니다. 요청을 더 잘 처리하고 성능을 향상시키기 위해 `S3` 버킷을 가리키는 `CloudFront` 배포를 생성했습니다. 얼마 후, 여러분은 아직도 사용자들이 `S3` 버킷에서 웹사이트로 직접 액세스할 수 있다는 것을 알게 되었습니다. 여러분은 사용자들이 `CloudFront`만을 통해서 웹사이트로 액세스하게끔 하려 합니다. 이를 위해서는 어떻게 해야 할까요?  
-→ `CloudFront` 배포를 구성해 원본 액세스 `ID`를 생성한 후, `S3` 버킷이 오직 `CloudFront` 배포 `OAI` 사용자들이 보내는 요청만을 수락하도록 업데이트
-
-- `OAI, Origin Access Identity`는 `CloudFront`가 `S3`에 저장된 `Private` 객체에 액세스 할 수 있도록 하는 특별한 식별자이다.
 
 #### 1. CloudFront – S3 as an Origin
 - `S3`를 원본으로 사용한다고 가정할 때, `LA` 엣지에 접근하는 클라이언트에게는 `LA` 엣지에서 직접 컨텐츠를 제공한다. 그리고 이 `LA` 엣지는 내부 `AWS`망을 통해 `S3` 버킷의 원본을 받아온다.
@@ -157,7 +154,6 @@
 → 일부 리전을 대상으로 동적 컨텐츠를 낮은 지연 시간 내 제공하고자 할 때 유용하다. 
 ~~~
 
-
 #### 3. CloudFront – ALB or EC2 as an origin
 - `CloudFront`가 원본으로 지정 가능한 대상에는 `EC2` 인스턴스나 `ALB` 등, `Custom Origin (HTTP)` 또한 포함된다.
 
@@ -197,9 +193,6 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/235301285-35482471-fb27-403e-9887-be851b9114b7.png)
 
-- `ALB`가 관리하는 `EC2` 인스턴스 플릿에 호스팅된 웹사이트를 제공하는 `CloudFront` 배포가 있습니다. 모든 클라이언트가 미국에 있는데도 불구하고, 타 국가로부터 일부 악성 요청이 들어오고 있다는 점을 발견했습니다. 오직 미국으로부터의 사용자들만을 허가하고, 다른 국가는 차단하려면 어떻게 해야 할까요?  
-→ `CloudFront` 지리적 제한 사용하기
-
 ### 4. CloudFront - Pricing
 - CloudFront Edge locations are all around the world  
 → `CloudFront`의 엣지 로케이션은 전 세계에 고루 분포되어 있다.
@@ -231,10 +224,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235301606-6f2c1c41-cc94-42e3-a41e-2a189819c5a2.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- 한 회사에서 `AWS`로 미디어 공유 웹 사이트를 배포하고 있습니다. `CloudFront`를 사용해 미국과 유럽에 있는 고객에게만 짧은 지연 시간으로 컨텍스트를 제공할 예정입니다. 얼마 뒤 `CloudFront`에서 엄청난 비용이 발생했습니다. 다음 중 미국와 유럽만을 대상으로 하여 비용을 절감할 수 있는 `CloudFront` 기능은 무엇입니까?  
-→ `CloudFront` 가격 등급
-
 
 ### 5. CloudFront – Cache Invalidations
 - In case you update the back-end origin, CloudFront doesn’t know about it and will only get the refreshed content after the TTL has expired  

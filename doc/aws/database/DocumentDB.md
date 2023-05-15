@@ -21,9 +21,6 @@
 - Automatically scales to workloads with millions of requests per seconds  
 → `DocumentDB`는 초당 수백만 건의 요청이 있는 워크로드로 확장될 수 있도록 설계되었다. 만약 시험을 볼 때 `MongoDB` 키워드를 확인한다면 `DocumentDB`를 떠올리면 된다. 그리고 만약 `NoSQL` 관련 내용이 보인다면 `DocumentDB`와 더불어 `DynamoDB`를 떠올려야 한다.
 
-- 회사의 온프레미스 웹 사이트는 프런트엔드에 `ReactJS`를 사용하고, 백엔드에 `NodeJS`를 사용하며 데이터 베이스로 `MongoDB`를 사용합니다. `MongoDB` 데이터베이스를 자체 호스팅하려면 여러 유지 보수 작업이 필요한데 이런 문제를 처리할 수 있는 인력과 경험이 부족하여 몇 가지 문제가 발생하고 있습니다. 결국 웹 사이트를 AWS 서버로 옮기기로 결정하였고, `ReactJS` 프런트엔드 애플리케이션은 `S3` 버킷에서 호스팅하고 `NodeJS` 백엔드는 `EC2` 인스턴스 세트에서 호스팅하기로 했습니다. 코드 변경 없이 높은 확장성과 가용성을 제공하는 `MongoDB` 데이터베이스를 마이그레이션하려면 어떤 `AWS` 서비스를 사용해야 합니까?  
-→ `DocumentDB`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

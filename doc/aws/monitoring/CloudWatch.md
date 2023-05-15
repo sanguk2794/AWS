@@ -10,7 +10,7 @@
 → 지표는 각각 다른 네임스페이스에 저장되며 서비스당 이름 공간은 하나이다.
 
 - Dimension is an attribute of a metric (instance id, environment, etc…)  
-→ 지표의 속성으로 측정 기준이 있는데 `CPU` 사용률에 대한 지표는 특정 인스턴스나 특정 환경등과 관련이 있을 것이다.
+→ 지표의 속성으로 측정 기준이 있는데 `CPU` 사용률에 대한 지표는 특정 인스턴스나 특정 환경 등과 관련이 있을 것이다.
 
 - Up to 10 dimensions per metric  
 → 지표 당 최대 측정 기준은 10개이다.
@@ -29,19 +29,20 @@
 → `CloudWatch` 지표는 `CloudWatch` 외부로 스트리밍할 수 있다. `CloudWatch` 지표를 원하는 대상으로 지속적으로 스트리밍하면 거의 실시간으로 전송되고 지연 시간도 짧아진다.
 
 - Amazon Kinesis Data Firehose (and then its destinations)  
-→ `CloudWatch` 지표는 `Amazon Kinesis Data Firehose`로 거의 실시간으로 스트리밍된다. `Amazon Kinesis Data Firehose`에서 원하는 곳으로 지표 데이터를 전송할 수 있다.
+→ `CloudWatch` 지표를 `Amazon Kinesis Data Firehose`로 거의 실시간으로 스트리밍할 수 있다.
+
+- `Amazon Kinesis Data Firehose`에서 원하는 곳으로 지표 데이터를 전송할 수 있다.
+~~~
+- Amazon Kinesis Data Firehose에서 S3 버킷으로 지표를 보내 Athena를 사용하면 지표를 분석할 수 있다.
+- Amazon Kinesis Data Firehose에서 Redshift를 사용해 지표로 데이터 웨어하우스를 만들 수 있다.
+- Amazon Kinesis Data Firehose에서 Amazon OpenSearch를 사용해 대시보드를 생성할 수 있다.
+~~~
 
 - 3rd party service provider: Datadog, Dynatrace, New Relic, Splunk, Sumo Logic…  
 → 타사 서비스에도 `CloudWatch` 지표를 전송할 수 있다.
 
 - Option to filter metrics to only stream a subset of them  
-→ 모든 이름공간에 속한 지표를 스트림할 수 있으며, 몇몇 이름공간의 지표로 필터링도 가능하다.
-
-- `Amazon Kinesis Data Firehose`에서 `S3` 버킷으로 지표를 보내 `Athena`를 사용하면 지표를 분석할 수 있다.
-
-- `Amazon Kinesis Data Firehose`에서 `Redshift`를 사용해 지표로 데이터 웨어하우스를 만들 수 있다.
-
-- `Amazon Kinesis Data Firehose`에서 `Amazon OpenSearch`를 사용해 대시보드를 생성할 수 있다.
+→ 모든 이름공간에 속한 지표를 스트림할 수 있으며 몇몇 이름공간의 지표로 필터링도 가능하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236108668-c9071109-adc5-48d4-9239-7d3b2e6871b5.png)
 
@@ -234,12 +235,12 @@
 → 첫 번째는 `EC2` 인스턴스의 동작이다. 인스턴스를 멈추거나 삭제하거나 재시작하거나 복구하는 등의 동작을 포함한다.
 
 - Trigger Auto Scaling Action  
-→ 두 번째는 오토스케일링의 동작 트리거이다. 스케일 아웃과 스케일 인 등이 포함된다.
+→ 두 번째는 오토 스케일링의 동작이다. 스케일 아웃과 스케일 인 등이 포함된다.
 
 - Send notification to SNS (from which you can do pretty much anything)  
 → 세 번째는 `SNS` 서비스에 알람을 전송하는 것이다.
 
-#### 2. EC2 Instance Recovery
+#### 2. EC2 Instance Recovery, CloudWatch Alarm Actions
 - Status Check:
 ~~~
 - Instance status = check the EC2 VM
@@ -247,7 +248,7 @@
 → 상태 점검에는 VM 점검을 위환 상태 점검과 하드웨어 점검을 위한 시스템 상태 점검이 포함된다.
 ~~~
 
-- 특정 `EC2` 인스턴스를 모니터링하다가 경보가 위반되는 경우 `EC2` 인스턴스 복구를 실행해 `EC2` 인스턴스를 다른 호스트로 옮기는 등의 작업을 수행할 수 있다.
+- `CloudWatch` 경보 액션을 사용하면 특정 `EC2` 인스턴스를 모니터링하다가 경보가 위반되는 경우 `EC2` 인스턴스 복구를 실행해 `EC2` 인스턴스를 다른 호스트로 옮기는 등의 작업을 수행할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236632802-8db10359-6ea7-4dae-acf1-3d6154168c9b.png)
 

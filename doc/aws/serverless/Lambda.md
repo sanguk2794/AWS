@@ -32,10 +32,15 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/235742473-3199432b-fc22-4bfa-a5fb-dc068abf47c2.png)
 
+- 람다 함수는 매우 빠르게 스케일링할 수 있기 때문에 동시성이 급증하면 알림을 받을 수 있는 통제장치가 필요하다.
+
+- 람다 함수를 구성하여 레이어 형태로 된 추가적인 코드와 콘텐츠를 가져올 수 있다. 레이어는 라이브러리, 커스텀 런타임 또는 기타 의존성이 포함되어 있는 `ZIP` 아카이브이다. 레이어를 사용하면 배포 패키지에 넣지 않고도 함수에서 라이브러리를 사용할 수 있다.
+
 ### 2. Benefits of AWS Lambda
 - Easy Pricing:  
-→ 가격 책정이 아주 쉬워진다.
 ~~~
+- 가격 책정이 아주 쉬워진다.
+
 - Pay per request and compute time
 → 람다가 수신하는 요청의 횟수에 따라 과금이 이루어진다.
 
@@ -44,7 +49,7 @@
 ~~~
 
 - Integrated with the whole AWS suite of services  
-→ 다양한 `AWS` 서비스와 통합되기도 한다.
+→ 다양한 `AWS` 서비스와 통합할 수 있다.
 
 - Integrated with many programming languages  
 → `Lambda`에 여러가지의 프로그래밍 언어를 사용할 수 있어서 상당히 자유로운 편이다.
@@ -53,7 +58,7 @@
 → `CloudWatch`와의 통합을 위한 쉬운 모니터링이 가능하다.
 
 - Easy to get more resources per functions (up to 10GB of RAM!)  
-→ 함수당 최대 `10GB`의 램을 프로비저닝 할 수 있다.
+→ 함수당 최대 `10GB`의 램을 프로비저닝 가능하다.
 
 - Increasing RAM will also improve CPU and network!  
 → 함수의 램을 증가시키면 `CPU` 및 네트워크 품질과 성능도 함께 향상된다.
@@ -83,33 +88,19 @@
 ~~~
 
 ### 4. AWS Lambda Integrations Main ones
-- API Gateway  
-→ `REST API`를 생성한다. 그리고 람다 함수를 호출한다.
+~~~
+- API Gateway → REST API를 생성한다. 그리고 람다 함수를 호출한다.
+- Kinesis → 람다를 이용해 데이터를 변환한다.
+- DynamoDB → 트리거를 생성할 때 사용한다. 데이터베이스에서 무슨 일이 생기면 람다 함수가 작동되도록 한다.
+- S3 → 객체 파일이 생성되거나 할 때 람다 함수가 작동되도록 한다.
+- CloudWatch Logs → 어디든 해당 로그를 스트림할 수 있다.
+- SNS → 알림과 토픽에 대처할 수 있다.
+- SQS → 대기열 메세지를 처리할 수 있다.
+- Cognito → 유저가 데이터베이스에 로그인 할 때마다 응답한다.
 
-- Kinesis  
-→ 람다를 이용해 데이터를 변환한다.
-
-- DynamoDB  
-→ 트리거를 생성할 때 사용한다. 데이터베이스에서 무슨 일이 생기면 람다 함수가 작동되도록 한다.
-
-- S3  
-→ 객체 파일이 생성되거나 할 때 람다 함수가 작동되도록 한다.
-
-- CloudFront
-- CloudWatch Events EventBridge  
-→ `AWS`의 인프라에 어떤 일이 생기고 그 상황에 대응하고자 할 때 람다 함수가 작동되도록 한다. 예를 들면 파이프라인이 끊어졌을 때 상황에 따라 자동화가 가능하다.
-
-- CloudWatch Logs  
-→ 어디든 해당 로그를 스트림할 수 있다.
-
-- SNS  
-→ 알림과 토픽에 대처할 수 있다.
-
-- SQS  
-→ 대기열 메세지를 처리할 수 있다.
-
-- Cognito  
-→ 유저가 데이터베이스에 로그인 할 때마다 응답한다.
+- CloudFront, CloudWatch Events EventBridge  
+→ AWS의 인프라에 어떤 일이 생기고 그 상황에 대응하고자 할 때 람다 함수가 작동되도록 한다. 예를 들면 파이프라인이 끊어졌을 때 상황에 따라 자동화가 가능하다.
+~~~
 
 ### 5. Use case
 #### 1. Serverless Thumbnail creation
@@ -203,9 +194,6 @@
 → 환경변수는 4KB까지 가질 수 있다. 
 ~~~
 
-- 데이터를 프로세싱하는 데에 대략 1시간 정도가 걸리는 `Lambda` 함수를 생성했습니다. 코드를 머신에서 로컬로 실행했을 때에는 문제가 없었으나, `Lambda` 함수를 호출할 때는 3초가 지난 후 ‘시간초과' 오류가 발생하여 실패합니다. 어떻게 해야 할까요?  
-→ 코드를 다른 곳(예: `EC2` 인스턴스)에서 실행
-
 ### 8. Customization At The Edge
 - 보통 함수와 애플리케이션은 특정 리전에서 배포된다. 하지만, `CloudFront`를 사용하면 전 세계에 분포되어 있는 엣지을 통해 콘텐츠를 배포할 수 있다.
 
@@ -263,9 +251,6 @@
 
 - User Tracking and Analytics  
 → 사용자 추적 및 분석에 활용 가능하다.
-
-- `CloudFront` 배포를 통해 전역적으로 제공되는 애플리케이션이 있습니다. 인증 요청이 오리진까지 전달되게 하는 대신, `CloudFront` 엣지 로케이션에서 사용자를 인증하려 합니다. 이 요구 사항을 만족시키기 위해서는 어떤 방법을 사용해야 할까요?  
-→ `Lambda@Edge`
 
 ###### 1. A/B 테스트
 분할 테스트 또는 버킷 테스트라고도 하는 `A/B` 테스트는 두 가지 콘텐츠를 비교하여 방문자/뷰어가 더 높은 관심을 보이는 버전을 확인한다.

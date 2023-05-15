@@ -43,8 +43,7 @@
 - Beanstalk is free but you pay for the underlying instances  
 → `Beanstalk` 서비스 자체는 무료이지만 `Beanstalk`가 활용할 기본 인스턴스들이나 `ASG`, `ELB` 등에 대한 비용은 지불해야 한다.
 
-- 플랫폼을 선택하고 애플리케이션 코드를 선택한 후, 애플리케이션 실행에 필요한 모든 기능이 포함된 완전 관리형 플랫폼이 생성된다.
-`EC2` 인스턴스, `ELB`, `ASG` 등의 설정을 일일히 구성할 필요가 없다.
+- 플랫폼을 선택하고 애플리케이션 코드를 선택한 후, 애플리케이션 실행에 필요한 모든 기능이 포함된 완전 관리형 플랫폼이 생성된다. `EC2` 인스턴스, `ELB`, `ASG` 등의 설정을 일일히 구성할 필요가 없다.
 
 ### 3. Elastic Beanstalk – Components
 - Application: collection of Elastic Beanstalk components (environments, versions, configurations, …)  
@@ -69,12 +68,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/234600966-f294556f-c4a4-47ee-b3bf-de58e524f242.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- 애플리케이션을 개발 중에 있으며, 최소 비용을 사용해 이 애플리케이션을 `Elastic Beanstalk`으로 배포하려 합니다. 이를 위해서는, 애플리케이션을 .................. 에서 실행해야 합니다.  
-→ 단일 인스턴스 모드, 단일 인스턴스 모드는 하나의 `EC2` 인스턴스와 하나의 `Elastic IP`를 생성한다.
-
-- 애플리케이션을 `Elastic Beanstalk`으로 배포하던 도중, 배포 프로세스가 극도로 느리다는 것을 알게 되었습니다. 로그를 검토한 결과, 종속성이 매 배포 당 각 EC2 인스턴스로 리졸브된다는 사실을 발견했습니다. 영향을 최소화하면서 배포 프로세스를 빠르게 하려면 어떻게 해야 할까요?  
-→ 종속성을 포함하는 `Golden AMI`를 생성해 그 이미지를 `EC2` 인스턴스 실행에 사용
 
 #### 1. Web Server Tier vs. Worker Tier
 - `Web Server Tier`는 클라이언트가 직접 접근한다. 

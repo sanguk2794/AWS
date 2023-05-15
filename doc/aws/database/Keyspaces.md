@@ -30,9 +30,6 @@
 - Use cases: store IoT devices info, time-series data, …  
 → 사용 사례로는 `IoT` 장치 정보와 `time-series` 데이터 저장 등이 있다.
 
-- 회사에서 자체 호스팅 중인 온프레미스 `Apache Cassandra` 데이터베이스를 `AWS`로 이전하려고 합니다. 다음 중 완전 관리형이면서 가용성 높고 확장 가능한 `Apache Cassandra` 데이터베이스를 제공하는 `AWS` 서비스는 무엇입니까?  
-→ `Keyspaces`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

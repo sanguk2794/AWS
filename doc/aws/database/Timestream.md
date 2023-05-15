@@ -42,9 +42,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 한 스타트업에서 기후 변화로 인한 산불 발생을 줄이기 위해 새로운 프로젝트를 진행하고 있습니다. 업체에서는 개발 중인 센서를 숲 전체에 뿌려 산불이 발생하기 전에 이를 감지하는 데 도움이 될만 한 온도, 습도, 기압과 같은 데이터를 수집하려고 합니다. 업체는 매초 다양한 수치를 읽어 저장할 수 있는 수천 개의 센서를 생산할 예정입니다. 센서는 화재 발생 가능성을 예측할 수 있도록 읽어들인 수치를 저장하고 빠르게 분석할 수 있어야 합니다. 이런 경우 데이터 저장에 사용할 수 있는 `AWS` 서비스는 무엇입니까?  
-→ `Amazon Timestream`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

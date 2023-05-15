@@ -69,8 +69,7 @@
 → 확장된 프로토콜로 새로 추가된 기능이기 때문에 모든 클라이언트가 지원하지는 않는다.
  
 - Only works for ALB & NLB (newer generation), CloudFront, Does not work for CLB (older gen)  
-→ `ALB`, `NLB`, `CloudFront`에서만 동작한다. `CLB`에서는 동작하지 않는다. 
-그렇기에 어떤 로드 밸런서에 `SSL` 인증서가 여러개라면 `ALB`와 `NLB` 중 하나이다.
+→ `ALB`, `NLB`, `CloudFront`에서만 동작한다. `CLB`에서는 동작하지 않는다. 그렇기에 어떤 로드 밸런서에 `SSL` 인증서가 여러개라면 `ALB`와 `NLB` 중 하나이다.
 
 #### 4. Elastic Load Balancers – SSL Certificates
 - `ELB`의 종류별로 `SSL` 지원이 다르다.

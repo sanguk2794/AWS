@@ -6,7 +6,7 @@
 → `Kinesis`를 활용하면 실시간 스트리밍 데이터를 손쉽게 수집하고 처리하여 분석할 수 있다.
 
 - Ingest real-time data such as: Application logs, Metrics, Website clickstreams, IoT telemetry data…  
-→ 실시간 데이터에는 애필르키에션 로그, 계측, 웹 사이트 클릭 스트림, `IoT` 원격 측정 데이터 등 어떤 것도 포함될 수 있다.
+→ 실시간 데이터에는 애플리케이션 로그, 계측, 웹 사이트 클릭 스트림, `IoT` 원격 측정 데이터 등 어떤 것도 포함될 수 있다.
 
 - 키네시스는 4가지 서비스로 구성되어 있다.
 ~~~
@@ -34,7 +34,7 @@
 → 생산자는 애플리케이션, 데스크톱, 휴대전화, SDK, KPL, Kinesis Agent 등 다양하다.
 
 - 모든 생성자는 정확히 동일한 역할을 수행한다. 매우 낮은 수준에서 SDK에 의존하며, Kinesis Data Streams에 레코드를 전달한다.
-- 레코드는 근본적으로 두 가지 요소로 구성된다. 파티션 키와 최대 1MB 크기의 데이터 블롭이 그것이다.
+→ 레코드는 근본적으로 두 가지 요소로 구성된다. 파티션 키와 최대 1MB 크기의 데이터 블롭이 그것이다.
 
 - 일단 데이터가 스트림에 들어가면 많은 소비자가 이 데이터를 사용하게 된다.
 → 소비자는 SDK, KCL에 의존하는 애플리케이션, Lambda, Kinesis Data Firehose, Kinesis Data Analytics 등 다양하다.
@@ -90,9 +90,6 @@ aws kinesis describe-stream --stream-name test
 aws kinesis get-shard-iterator --stream-name test --shard-id shardId-000000000000 --shard-iterator-type TRIM_HORIZON
 ~~~
 
-- 한 `Kinesis Data Stream`에 6개의 샤드가 프로비저닝되어 있습니다. 이 데이터 스트림은 보통 5MB/초의 속도로 데이터를 수신하며, 8MB/초의 속도로 데이터를 전송합니다. 이따금 트래픽이 2배까지 증가하여 `ProvisionedThroughputExceededException` 예외 처리가 발생합니다. 이 문제를 해결하려면 어떻게 해야 할까요?  
-→ 더 많은 샤드 추가
-
 #### 1. Kinesis Data Streams – Capacity Modes
 - `Kinesis Data Streams`에는 프로비저닝 유형과, 온디맨드 유형의 두 가지 용량 유형이 있다.
 
@@ -123,18 +120,10 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 → 이 용량은 지난 30일 동안 관측한 최대 처리량에 기반하여 자동으로 조정된다.
 
 - Pay per stream per hour & data in/out per GB
-→ 시간당 데이터량 단위에 따라 비용이 부가된다. 즉, 비용 산정 방식이 다르다. 
+→ 시간당 데이터량 단위에 따라 비용이 부가된다. 프로비저닝 모드와 비용 산정 방식이 다르다.
 ~~~
 
 - 사전에 사용량을 예측할 수 없다면 온디맨드 유형을, 예측할 수 있다면 프로비저닝 유형을 사용하는 것이 낫다.
-
-- 회사에서 `Amazon Kinesis Data Streams`을 사용해 클릭 스트림 데이터를 수집하여 분석 작업을 수행하고 있습니다. 며칠 뒤에 캠페인이 예정되어 있고 트래픽은 예측이 불가능하며 100배까지 증가할 수도 있습니다. 이런 경우에 적합한 `Kinesis Data Stream` 용량 모드는 무엇입니까?  
-→ 온디맨드 모드
-
-- 한 빅데이터 분석 업체가 `Kinesis Data Streams(KDS)`을 사용하여 농업 과학 기업의 필드 장치에서 `IoT` 데이터를 받아 처리하고 있습니다. 들어온 데이터 스트림은 다양한 컨슈머 애플리케이션에서 사용되고 있는데, 엔지니어들이 프로듀서와 데이터 스트림 컨슈머 사이에서 데이터 전달 속도의 성능 저하를 발견했습니다. 솔루션 아키텍트의 관점에서 주어진 사례의 성능 문제를 개선하기에 적합한 방식은 무엇입니까?  
-→ `Kinesis Data Streams`의 `Enhanced Fanout` 기능을 활성화한다.  
-`Amazon Kinesis Data Streams(KDS)`는 엄청난 규모로 확장할 수 있는 견고한 실시간 데이터 스트리밍 서비스입니다. `KDS`는 웹사이트 클릭스트림, 데이터베이스 이벤트 스트림, 재무 거래, 소셜미디어 피드, `IT` 로그, 위치추적 이벤트 등 수십만 가지 소스에서 초당 수 기가바이트에 이르는 데이터를 연속적으로 수집할 수 있습니다.
-기본값으로 스트림 데이터를 소비하는 모든 애플리케이션 간에 2MB/초/샤드의 출력이 공유됩니다. 스트림으로부터 병렬로 데이터를 검색하는 다수의 컨슈머가 있다면 향상된 팬아웃 기능을 사용하셔야 합니다. 향상된 팬아웃 기능을 사용하여 개발자는 스트림 컨슈머를 등록하여 향상된 팬아웃 기능을 사용하고 샤드당 2MB/초라는 읽기 처리 속도로 수신할 수 있으며 이러한 처리 속도는 스트림 안의 샤드 개수에 맞춰 자동으로 스케일링됩니다.
 
 #### 2. Kinesis Data Streams Security
 - Control access / authorization using IAM policies  
@@ -160,23 +149,21 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 3. Kinesis Data Firehose
-- 생산자로부터 데이터를 가져올 수 있는 유용한 서비스이다. 생산자는 `Kinesis Data Streams`의 생산자에 더해 `Kinesis Data Streams`, `CloudWatch`, `AWS Iot` 등이 포함된다.
+- 생산자로부터 데이터를 가져올 수 있는 유용한 서비스이다. 생산자는 `Kinesis Data Streams`의 생산자에 더해 `Kinesis Data Streams`, `CloudWatch`, `AWS IoT` 등이 포함된다.
 
 - Fully Managed Service, no administration, automatic scaling, serverless  
 → `Kinesis Data Firehose`는 완전 관리형 서비스이다. 오토 스케일링을 지원하며 서버리스이므로 관리할 서버가 없다.
 
 - 소비자는 다음과 같다. 반드시 외워야한다.
 ~~~
-- AWS: Redshift / Amazon S3 / ElasticSearch - ElasticSearch는 이름이 바뀌었다. OpenSearch Service이다.
-→ Redshift는 데이터 웨어하우스이다. 이 부분은 반드시 기억하자.
-
-- Kinesis Data Firehose는 S3, Redshift, Elasticsearch 또는 Splunk에만 사용할 수 있다. Kinesis Data Firehose에서 나오는 데이터를 소비하는 개인 애플리케이션을 가질 수 없다.
-
+- AWS: Redshift / Amazon S3 / ElasticSearch - OpenSearch Service로 이름이 바뀌었다.
 - 3rd party partner: Splunk / MongoDB / DataDog / NewRelic / …
-→ 서드파티 모듈에도 데이터를 송신할 수 있다.
+→ Kinesis Data Firehose는 S3, Redshift, Elasticsearch 또는 서드파티 API에만 소비자로써 활용 가능하다. 
 
 - Custom: send to any HTTP endpoint
 → HTTP 엔드포인트가 있는 자체 API를 보유하고 있다면 이를 소비자로 설정할 수 있다.
+
+- Kinesis Data Firehose에서 나오는 데이터를 소비하는 개인 애플리케이션을 가질 수 없다.
 ~~~
 
 - Pay for data going through Firehose  
@@ -195,9 +182,6 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 
 - Can send failed or all data to a backup S3 bucket  
 → 실패한 데이터 혹은 모든 데이터를 백업 `S3` 버킷에 보낼 수 있다.
-
-- 대량의 실시간 데이터를 생성하는 애플리케이션을 실행 중이며, 이 데이터를 `S3`와 `Redshift`로 로딩하려 합니다. 또한 이 데이터들은 목적지에 도달하기 전에 변환되어야 합니다. 이를 위해, 선택할 수 있는 가장 적절한 아키텍처는 무엇인가요?  
-→ `Kinesis Data Streams` + `Kinesis Data Firehose`
 
 ### 4. Kinesis Data Streams vs Firehose
 - Kinesis Data Streams
@@ -249,8 +233,8 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 - You want to consume the data in order for each truck, so that you can track their movement accurately.  
 → 각 트럭의 순서대로 데이터를 소비해서 트럭의 이동경로를 추적하고 그 경로를 순서대로 확인하려고 한다.
 
-- How should you send that data into Kinesis?
-- Answer: send using a “Partition Key” value of the “truck_id”  
+- How should you send that data into Kinesis?  
+→ Answer: send using a “Partition Key” value of the “truck_id”  
 → 이 데이터를 키네시스에 전송하기 위해서는 파티션 키, 여기에서는 트럭 `ID`를 사용해야 한다.
 
 - The same key will always go to the same shard  
@@ -260,9 +244,6 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 한 웹사이트 내에서 사용자들이 클릭하는 순서, 사용자들이 보내는 시간 및 탐색이 어디에서 시작되고 어떻게 종료되는지 등의 클릭스트림 데이터를 분석하고자 합니다. `Amazon Kinesis`를 사용하기로 했고, 웹사이트가 이러한 클릭스트림 데이터를 `Kinesis Data Stream`으로 전송하도록 구성한 상태입니다. `Kinesis Data Stream`으로 전송된 데이터를 확인하던 중, 데이터가 순서대로 정렬되어 있지 않으며, 한 개별 사용자로부터 온 데이터가 여러 샤드에 분산되어 있다는 것을 알게 되었습니다. 이 경우, 어떻게 문제를 해결해야 할까요?  
-→ `Kinesis`로 보내지는 각 레코드에 사용자의 신원을 나타내는 파티션 키를 추가해야 함
-
 ### 6. Ordering data into SQS
 - For SQS standard, there is no ordering.  
 → `SQS standard`에는 순서가 없다. 그렇기에 `FIFO`라는 선입선출 방식을 추가했다.
@@ -271,7 +252,7 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 → `FIFO`의 그룹 `ID`를 사용하지 않는 이상 모든 메세지가 소비되는 방식은 보내진 순서에 따르며 소비자는 하나만 존재한다.
 
 - You want to scale the number of consumers, but you want messages to be “grouped” when they are related to each other  
-→ 연관메세지를 그룹화한다면 그룹 `ID`를 사용할 수 있다. 
+→ 연관 메세지를 그룹화한다면 그룹 `ID`를 사용할 수 있다. 
 
 - Then you use a Group ID (similar to Partition Key in Kinesis)  
 → 그룹 `ID`는 `Kenesis`의 파티션 키와 그 사용법이 비슷하다.
@@ -312,8 +293,7 @@ aws kinesis get-shard-iterator --stream-name test --shard-id shardId-00000000000
 → 최대 초당 300개의 메세지를 처리 가능하다. 단, 배치를 사용하면 최대 3000개를 처리할 수 있다.
 ~~~
 
-- 중요한 것은 경우에 따라 적절한 모델이 달라진다는 것이다.  
-→`SQS FIFO`는 그룹 아이디 숫자에 따른 동적 소비자 수를 원할 때 사용하며, `Kinesis data streams`는 샤드 `ID`당 데이터를 정렬할 때 사용한다.
+- 중요한 것은 경우에 따라 적절한 모델이 달라진다는 것이다. `SQS FIFO`는 그룹 아이디 숫자에 따른 동적 소비자 수를 원할 때 사용하며, `Kinesis data streams`는 샤드 `ID`당 데이터를 정렬할 때 사용한다.
 
 ---
 #### ▶ Reference

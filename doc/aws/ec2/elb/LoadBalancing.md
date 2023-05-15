@@ -49,8 +49,7 @@
 ~~~
 
 - It costs less to setup your own load balancer but it will be a lot more effort on your end  
-→ 일래스틱 로드 밸런서는 무조건 사용하는 것이 추전된다. 
-자체 로드 밸런서를 마련하는 것보다 저렴하며, 굉장히 번거로운 확장성 측면에서의 로드 밸런서 관리를 `AWS`가 보장해주기 때문이다.
+→ 일래스틱 로드 밸런서는 무조건 사용하는 것이 추전된다. 자체 로드 밸런서를 마련하는 것보다 저렴하며, 굉장히 번거로운 확장성 측면에서의 로드 밸런서 관리를 `AWS`가 보장해주기 때문이다.
 
 - It is integrated with many AWS offerings / services  
 → 로드 밸런서는 다수의 `AWS` 서비스들과 통합되어 있다.
@@ -102,11 +101,6 @@
 - Support redirects (from HTTP to HTTPS for example)  
 → 리다이렉트를 지원한다. `HTTP`에서 `HTTPS`로 트래픽을 자동 리다이렉트할 때 로드 밸런서 레벨에서 가능하다.
 
-- 한 웹 사이트가 애플리케이션 로드 밸런서 뒤에 있는 오토 스케일링 그룹의 EC2 인스턴스에서 호스팅되고 있습니다.
-현재 `HTTP`로 서비스 중인 웹 사이트를 `HTTPS`로 바꾸는 작업을 진행하고 있습니다. `ACM` 인증서를 발급받아 애플리케이션 로드 밸런서에 적용한 상태입니다.
-사용자들이 `HTTP`가 아닌 `HTTPS`를 사용해 웹 사이트에 접속하게 하려면 어떻게 해야 합니까?  
-→ 애플리케이션 로드 밸런서가 `HTTP`를 `HTTPS`로 리디렉션하도록 설정한다.
-
 - Routing tables to different target groups:  
 → 경로 라우팅을 지원한다. 이를 통해 트래픽을 다른 대상 그룹으로 라우팅할 수 있다.
 ~~~
@@ -129,8 +123,7 @@
 - 하나의 로드 밸런서로 다수의 애플리케이션을 처리할 수 있다.
 
 ###### 1. 라우팅
-라우팅은 네트워크에서 경로를 선택하는 프로세스이다. 컴퓨터 네트워크는 노드라고 하는 여러 시스템과 이러한 노드를 연결하는 경로 또는 링크로 구성되며, 
-상호 연결된 네트워크에서 두 노드 간의 통신은 여러 경로를 통해 이루어질 수 있다. 라우팅은 미리 정해진 규칙을 사용하여 여러 경로 중 최상의 경로를 선택하는 프로세스이다.
+라우팅은 네트워크에서 경로를 선택하는 프로세스이다. 컴퓨터 네트워크는 노드라고 하는 여러 시스템과 이러한 노드를 연결하는 경로 또는 링크로 구성되며, 상호 연결된 네트워크에서 두 노드 간의 통신은 여러 경로를 통해 이루어질 수 있다. 라우팅은 미리 정해진 규칙을 사용하여 여러 경로 중 최상의 경로를 선택하는 프로세스이다.
 
 ###### 2. Application Load Balancer (v2) Target Groups
 - EC2 instances (can be managed by an Auto Scaling Group) – HTTP
@@ -187,11 +180,9 @@
 ![image](https://user-images.githubusercontent.com/97398071/233117177-cf7db438-2e7d-40a3-9915-cfd70c4f4f15.png)
 
 ###### 5. Port mapping
-`port forwarding`이라고도 불리는 `port mapping`은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 
-네트워크 게이트웨이를 가로지르는 동안 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환(NAT)의 응용이다.
+`port forwarding`이라고도 불리는 `port mapping`은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 네트워크 게이트웨이를 가로지르는 동안 하나의 IP 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 네트워크 주소 변환(NAT)의 응용이다.
 
-이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 
-통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
+이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
 
 #### 3. Network Load Balancer (v2 - new generation)
 - 2017년도에 출시된 로드 밸런서로 `NLB`라고 불린다. `L4` 로드 밸런서이므로 `TCP`와 `UDP` 트래픽을 다룬다.
@@ -209,10 +200,6 @@
 
 - NLB are used for extreme performance, TCP or UDP traffic  
 → 고성능, `TCP`, `UDP`, `정적 IP`가 나오면 네트워크 로드 밸런스를 고려하는 것이 좋다. 
-
-- 규정 준수를 위해, `고정된 정적 IP 주소`를 최종 사용자에게 노출하여 사용자들이 안정적이고, 규제 기관의 승인을 받은 방화벽 규칙을 작성할 수 있도록 하려 합니다.
-이런 경우, 다음 중 어떤 종류의 `Elastic Load Balancer`를 사용해야 할까요?  
-→ `NLB`
 
 - Not included in the AWS free tier  
 → 네트워크 로드 밸런서는 `AWS`의 프리티어에 포함되지 않는다.
@@ -278,9 +265,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/233097202-fe1b0364-b493-45bc-b0f3-bf325cd10ebd.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- 일래스틱 로드 밸런서가 대상 그룹에 있는 모든 EC2 인스턴스를 비정상(`Unhealthy`) 상태로 표시했습니다. 하지만 개발자가 웹브라우저에서 `EC2` 인스턴스의 `IP` 주소를 입력했을 때는 웹 사이트에 접속할 수 있었습니다. 인스턴스 상태가 비정상으로 표시되는 이유는 타당한 것은 무엇입니까? (2개를 고르시오.)
-→ `EC2` 인스턴스의 보안 그룹에서 애플리케이션 로드 밸런서의 보안 그룹으로부터의 트래픽을 허용하지 않았다.
 
 ---
 #### ▶ Reference

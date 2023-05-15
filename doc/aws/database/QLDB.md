@@ -21,9 +21,6 @@
 - Difference with Amazon Managed Blockchain: no decentralization component, in accordance with financial regulation rules  
 → `Amazon` 관리형 블록체인이라는 다른 데이터베이스도 있다. `QLDB`와 관리형 블록체인의 차이점은, 관리형 블록체인은 탈중앙화 요소가 있는 것에 비해 `QLDB`에는 탈중앙화 개념이 없다는 것이다. `QLDB`에는 중앙 권한 구성요소만 존재한다.
 
-- 한 온라인 결제 기업은 자사 인프라를 호스팅하는 데 `AWS`를 사용하고 있습니다. 애플리케이션 특성상 신용거래, 직불거래와 같은 금융 거래에 대해 정확한 기록을 저장해야 한다는 엄격한 요구 사항이 있습니다. 이러한 거래 기록은 안전하고 변경이 불가능하며 암호화되어 있는 저장소에 저장해야 하고, 암호학적으로 검증이 가능해야 합니다. 이런 사례에 가장 적합한 `AWS` 서비스는 무엇입니까?  
-→ `Amazon QLDB`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
