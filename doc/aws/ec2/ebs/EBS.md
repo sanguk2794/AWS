@@ -48,7 +48,7 @@
 - This can be controlled by the AWS console / AWS CLI  
 → 이 설정은 `AWS` 콘솔뿐만 아니라 `CLI`에서도 수정 가능하다.
 
-- 회사에서 `EC2` 인스턴스와 별도의 영구 스토리지를 제공하는 `EBS` 볼륨에 비즈니스 크리티컬 데이터를 저장하려고 합니다. 개발 팀에서 테스트를 진행하던 중에 `EC2` 인스턴스를 종료하면 연결된 `EBS` 볼륨 또한 소실된다는 것을 발견했고, 이는 예상과 상반된 결과였습니다. 솔루션 아키텍트의 관점에서 이 문제를 어떻게 설명할 수 있습니까?
+- 회사에서 `EC2` 인스턴스와 별도의 영구 스토리지를 제공하는 `EBS` 볼륨에 비즈니스 크리티컬 데이터를 저장하려고 합니다. 개발 팀에서 테스트를 진행하던 중에 `EC2` 인스턴스를 종료하면 연결된 `EBS` 볼륨 또한 소실된다는 것을 발견했고, 이는 예상과 상반된 결과였습니다. 솔루션 아키텍트의 관점에서 이 문제를 어떻게 설명할 수 있습니까?  
 → `EBS` 볼륨이 `Amazon EC2` 인스턴스의 루트 볼륨으로 설정되었다. 인스턴스를 종료하면 기본 동작에 의해 연결된 루트 볼륨도 함께 종료된다.
 
 ### 3. EBS Snapshots
@@ -122,18 +122,19 @@
 
 - 크기는 `1GB`부터 `16 TB`까지 다양하다.
 
-- `gp2`와 `gp3`의 차이점은 다음과 같다.
+- `gp3`:
 ~~~
-- gp3:
-Baseline of 3,000 IOPS and throughput of 125 MiB/s
-Can increase IOPS up to 16,000 and throughput up to 1000 MiB/s independently
-→ 최신 세대의 볼륨이다. IOPS, 처리량을 독자적으로 설정할 수 있다.
+- Baseline of 3,000 IOPS and throughput of 125 MiB/s
+- Can increase IOPS up to 16,000 and throughput up to 1000 MiB/s independently
+→ 최신 세대의 볼륨이다. IOPS와 처리량을 독자적으로 설정할 수 있다.
+~~~
 
-- gp2:
-Small gp2 volumes can burst IOPS to 3,000
-Size of the volume and IOPS are linked, max IOPS is 16,000
-3 IOPS per GB, means at 5,334 GB we are at the max IOPS
-→ 좀 더 오래된 버전으로 볼륨이 더 작다. 볼륨과 IOPS가 연결되어 있어서 IOPS, 처리량을 증가시키기 위해서 볼륨의 사이즈를 같이 증가시켜야 한다는 단점이 있다.
+- `gp2`:
+~~~
+- Small gp2 volumes can burst IOPS to 3,000
+- Size of the volume and IOPS are linked, max IOPS is 16,000
+- 3 IOPS per GB, means at 5,334 GB we are at the max IOPS
+→ 좀 더 오래된 버전으로 볼륨이 더 작다. 볼륨과 IOPS가 연결되어 있어서 IOPS와 처리량을 증가시키기 위해서는 볼륨의 사이즈를 같이 증가시켜야 한다는 단점이 있다.
 ~~~
 
 #### 2. EBS Volume Types Use cases Provisioned IOPS (PIOPS) SSD
@@ -145,12 +146,11 @@ Size of the volume and IOPS are linked, max IOPS is 16,000
 
 - `io1`과 `io2`중에서는 최신 세대를 고르는 것이 좋다. 동일한 비용일 경우 `io2`가 더 높은 내구성과 기가 당 `IOPS`를 제공한다.
 ~~~
-- io1/io2 (4 GiB - 16 TiB):
-Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other
-Can increase PIOPS independently from storage size
+- Max PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other
+- Can increase PIOPS independently from storage size
 → gp3와 동일하게 IOPS, 처리량을 독자적으로 설정할 수 있다.
 
-io2 have more durability and more IOPS per GiB (at the same price as io1)
+- io2 have more durability and more IOPS per GiB (at the same price as io1)
 → 보다 최신 버전인 io2는 io1과 동일한 비용으로 더 높은 내구성과 기가 당 `IOPS`를 제공한다.
 
 - io2 Block Express (4 GiB – 64 TiB):
@@ -165,15 +165,14 @@ io2 have more durability and more IOPS per GiB (at the same price as io1)
 → 이 타입들은 루트 볼륨이 될 수 없는 이전 유형의 볼륨에 해당한다.
 
 - 125 GiB to 16 TiB
+
 - Throughput Optimized HDD
 ~~~
 - st1
 → 처리량 최적화 HDD로 빅데이터, 데이터 웨어하우스, 로그 처리에 적합하다.
-Big Data, Data Warehouses, Log Processing
-Max throughput 500 MiB/s – max IOPS 500
 
 - sc1
-→ 콜드 HDD이다. 아카이브 데이터용으로 접근 빈도가 낮은 데이터에 적합하다. 최저 비용으로 데이터를 저장할 때 사용하는 것이다.
+→ 콜드 HDD이다. 아카이브 데이터용으로 접근 빈도가 낮은 데이터에 적합하다. 최저 비용으로 데이터를 저장할 때 사용한다.
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/232329028-f57caa96-21d1-4bc9-b8e9-1d70480e8f49.png)
