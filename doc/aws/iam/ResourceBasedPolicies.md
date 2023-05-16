@@ -24,7 +24,7 @@
 - Supported by: Amazon S3 buckets, SNS topics, SQS queues, etc…  
 → 리소스 기반 정책을 지원하는 `AWS` 서비스와 리소스가 점점 늘어나고 있다. 현재는 `Amazon S3` 버킷, `SNS`, `SQS`, `Lambda` 함수 등에서 설정 가능하다.
 
-### 11. Amazon EventBridge – Security
+### 2. Amazon EventBridge – Security
 - 리소스 기반 정책과 `IAM` 역할 설정의 차이는 `Amazon EventBridge`에서 사용할 때 가장 크게 드러난다.
 
 - When a rule runs, it needs permissions on the target  
