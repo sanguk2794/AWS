@@ -103,16 +103,16 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 5. Amazon ECS – Data Volumes (EFS)
-- 데이터를 지속하기 위해 `Data Volumes`가 필요하다. 이에는 여러 종류가 존재하며, 가장 많이 사용하는 것이 `EFS`이다.
+- 데이터를 지속하기 위해 `Data Volumes`가 필요하다. 그리고 `ECS`의 `Data Volumes`으로 가장 많이 사용되는 것은 `EFS`이다.
 
 - Mount EFS file systems onto ECS tasks  
 → `EC2` 태스크에 파일 시스템을 마운트해서 데이터를 공유하려고 한다.
 
 - Works for both EC2 and Fargate launch types  
-→ `NFS`라서 `EC2`와 `Fargate` 시작 유형에 모두 호환된다.
+→ `NFS`는 `EC2`와 `Fargate` 시작 유형에 모두 호환된다.
 
 - Tasks running in any AZ will share the same data in the EFS file system  
-→ 어느 `AZ`에서 실행되는 태스크든 `EFS`에 연결되어 있다면 데이터를 공유할 수 있고, 원한다면 파일 시스템을 통해 다른 태스크와도 연결할 수 있다.
+→ 어느 `AZ`에서 실행되는 태스크든 `EFS`에 연결되어 있다면 데이터를 공유할 수 있고 원한다면 파일 시스템을 통해 다른 태스크와도 연결할 수 있다.
 
 - Fargate + EFS = Serverless  
 → `Fargate`로 `ECS` 태스크를 실행하고 파일 시스템 지속성을 위해 `Amazon EFS`를 사용하는게 가장 좋은 이용 사례이다.
@@ -122,9 +122,6 @@
 
 - Note: Amazon S3 cannot be mounted as a file system  
 → `S3`는 파일 시스템으로 마운트될 수 없다.
-
-- 도커 컨테이너 상에서 실행 중인 `WordPress` 웹사이트를 온프레미스에서 `AWS`로 이전하려 합니다. `ECS` 클러스터에서 애플리케이션을 실행하기로 했으나, 도커 컨테이너가 웹사이트 파일, 이미지, 영상을 비롯한 동일한 `WordPress` 웹사이트 콘텐츠에 액세스할 수 있게끔 하려 합니다. 이를 위해서는 어떤 방법이 권장될까요?  
-→ `EFS` 볼륨 마운트
 
 ### 6. ECS Service Auto Scaling
 - Automatically increase/decrease the desired number of ECS tasks  
@@ -165,7 +162,7 @@
 - Auto Scaling Group Scaling
 ~~~
 - Scale your ASG based on CPU Utilization, Add EC2 instances over time
-→ CPU 사용률에 따라 ASG를 확장하도록 설정하면 CPU 사용률이 급등할 때 EC2 인스턴스를 추가할 수있다.
+→ CPU 사용률에 따라 ASG를 확장하도록 설정하면 CPU 사용률이 급등할 때 EC2 인스턴스를 추가할 수 있다.
 ~~~
 
 - ECS Cluster Capacity Provider - 이 쪽이 추천된다.
@@ -174,7 +171,7 @@
 → ECS 클러스터 용량 공급자는 아주 똑똑하다. 새 태스크를 실행할 용량이 부족하면 자동으로 ASG를 확장한다.
 
 - Capacity Provider paired with an Auto Scaling Group
-→ 용량 공급자는 ASG와 함께 사용되며  
+→ 용량 공급자는 ASG와 함께 사용된다.
 
 - Add EC2 Instances when you’re missing capacity (CPU, RAM…)
 → RAM이나 CPU가 모자랄 때 자동으로 EC2 인스턴스를 추가해준다.
@@ -204,7 +201,7 @@ Amazon EventBridge는 ECS 태스크를 실행하는 규칙을 생성할 수 있�
 ~~~
 - Amazon EventBridge에 한 시간마다 트리거되는 규칙적인 일정을 생성한다.
 
-- 이를 받은 Fargate는 ECS 태스크를 실행한다. 즉, 한 시간마다 Fargate 클러스터에 새 태스크가 생성된다.
+- 이를 받은 Fargate는 ECS 태스크를 실행한다. 한 시간마다 Fargate 클러스터에 새 태스크가 생성된다.
 
 - 태스크에는 Amazon S3에 접근 가능한 ECS 태스크 역할을 생성한다. 처리 결과를 S3에 전송한다.
 ~~~
