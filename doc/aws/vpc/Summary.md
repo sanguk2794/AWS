@@ -7,7 +7,7 @@
 → `VPC`는 가상 사설 클라우드로 `IPv4`와 `IPv6`용으로 작동한다.
 
 - Subnets – tied to an AZ, we define a CIDR  
-→ 서브넷은 `CIDR`가 정의된 `AZ`에 연결되며 공용 및 사설 서브넷이 있다.
+→ 서브넷은 `CIDR`가 정의된 `AZ`에 연결되며 공용 및 프라이빗 서브넷이 있다.
 
 - Internet Gateway – at the VPC level, provide IPv4 & IPv6 Internet Access  
 → 공용 서브넷을 구축할 때 인터넷 게이트웨이를 연결해서 공용 서브넷에서 인터넷 게이트웨이로 경로를 만들어야 한다. 활성화되면 `IPv4` 및 `IPv6`에 인터넷 액세스를 제공한다.
@@ -16,10 +16,10 @@
 → 라우팅 테이블은 대체 게이트웨이나 `VPC` 피어링 연결, `VPC` 엔드 포인트로 향하는 라우트를 갖도록 편집하고 네트워크가 `VPC` 내부에서 작동하도록 돕는다.
 
 - Bastion Host – public EC2 instance to SSH into, that has SSH connectivity to EC2 instances in private subnets  
-→ `Bastion Host`는 공용 `EC2` 인스턴스로 `SSH`를 수행하며 사설 서브넷의 다른 `EC2`로 `SSH` 연결을 할 수 있다.
+→ `Bastion Host`는 공용 `EC2` 인스턴스로 `SSH`를 수행하며 프라이빗 서브넷의 다른 `EC2`로 `SSH` 연결을 할 수 있다.
 
 - NAT Instances – gives Internet access to EC2 instances in private subnets. Old, must be setup in a public subnet, disable Source / Destination check flag  
-→ `NAT` 인스턴스는 `EC2` 인스턴스이며 사설 및 공용 서브넷에 배포되어 사설 서브넷의 `EC2` 인스턴스에 인터넷 액세스를 제공한다. 더는 사용하지 않는다.
+→ `NAT` 인스턴스는 `EC2` 인스턴스이며 사설 및 공용 서브넷에 배포되어 프라이빗 서브넷의 `EC2` 인스턴스에 인터넷 액세스를 제공한다. 더는 사용하지 않는다.
 
 - NAT Gateway – managed by AWS, provides scalable Internet access to private EC2 instances, IPv4 only  
 → 지금은 `NAT Instances` 대신 `NAT Gateway`를 사용한다. 성능이 훨씬 좋고 `AWS`에서 관리한다. 사설 `EC2` 인스턴스에 확장 가능한 인터넷 액세스를 제공한다. `IPv4`에서만 작동한다.

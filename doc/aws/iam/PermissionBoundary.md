@@ -34,9 +34,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 한 `IT` 기업은 팀에 합류한 신입 개발자에게 `DynamoDB`에 대한 모든 액세스 권한이 부여되는 사건이 보고된 이후 보안 모범 사례를 검토하려고 합니다. 해당 개발자는 새로운 기능을 구현하던 중 실수로 프로덕션 환경에 있는 테이블 몇 개를 삭제했습니다. 이런 사고의 재발을 방지할 수 있는 가장 효율적인 해결 방법은 무엇입니까?
-→ 권한 경계(Permissions boundary)를 사용해 직원이 `IAM` 주체에게 부여할 수 있는 최대 권한을 제어한다.
-
 ### 2. IAM Policy Evaluation Logic
 - `IAM` 정책 평가 논리이다. 외울 필요는 없고 이해만 할 정도면 충분하다.
 - 전체 흐름의 각 단계마다 평가가 이루어진다. 평가 중 명시적인 거부가 있다면 자동으로 거부된다. 모든 방면에서 거부되지 않고 허용됐을 때만 액세스가 성공한다.

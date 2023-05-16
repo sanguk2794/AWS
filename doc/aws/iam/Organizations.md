@@ -31,6 +31,8 @@
 
 - 서브 유저가 `IAM` 루트 계정이라고 하더라도 접근을 제어할 수 있다. 예를 들어 루트 계정인 서브 유저의 `S3` 접근을 제한할 수 있다.
 
+- `IAM` 역할을 이용하면 조직의 `AWS` 리소스에 액세스할 수 없는 사용자나 서비스에게 액세스 권한을 위임할 수 있다.
+
 ![image](https://user-images.githubusercontent.com/97398071/236652907-6a1b0e96-eded-4834-9839-724589479597.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)

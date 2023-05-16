@@ -7,7 +7,7 @@
 → `AWS`에 도커 이미지를 저장하고 관리하는 데 사용된다.
 
 - Private and Public repository (Amazon ECR Public Gallery https://gallery.ecr.aws)  
-→ `ECR`에는 두 가지 옵션이 있다. 특정 계정들에 한해 이미지를 공개하도록 `private`로 게시하거나, `Amazon ECR Public Gallery`에 `public`으로 게시할 수 있다.
+→ `ECR`에는 두 가지 옵션이 있다. 특정 계정들에 한해 이미지를 공개하도록 프라이빗으로 게시하거나, `Amazon ECR Public Gallery`에 퍼블릭으로 게시할 수 있다.
 
 - Fully integrated with ECS, backed by Amazon S3  
 → `ECR`은 `Amazon ECS`와 완전히 통합되어 있고, 이미지는 백그라운드에서 `Amazon S3`에 저장된다.

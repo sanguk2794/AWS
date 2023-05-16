@@ -38,9 +38,7 @@
 - 이를 위해 그룹을 생성한다. 만약 그룹을 먼저 생성했다면 유저를 해당 그룹에 포함시킬 수 있다.
 
 - `Add tags(optional)`  
-→ `AWS`에서는 어디에서도 태그를 사용할 수 있는데, 유저의 접근을 추적, 제어할 수 있도록 도와주는 정보이다.
-`Key`와 `Value`의 쌍으로 이루어져 있으며 `Department:Engineering`과 같은 형식으로 부서를 기입해 둔다거나 필요한 다른 정보를 기입하는 데 사용한다.
-그룹, 계정 말고도 태그를 기입할 수 있는 곳은 많기 때문에 그냥 추가적인 정보를 기입하는 곳이라고 생각하면 된다.
+→ `AWS`에서는 어디에서도 태그를 사용할 수 있는데, 유저의 접근을 추적, 제어할 수 있도록 도와주는 정보이다. `Key`와 `Value`의 쌍으로 이루어져 있으며 `Department:Engineering`과 같은 형식으로 부서를 기입해 둔다거나 필요한 다른 정보를 기입하는 데 사용한다. 그룹, 계정 말고도 태그를 기입할 수 있는 곳은 많기 때문에 그냥 추가적인 정보를 기입하는 곳이라고 생각하면 된다.
 
 - `[userName]_credentials.csv` 다운로드  
 → 유저의 자격 증명 정보가 들어있다. 타인을 위해 유저를 생성한 경우에는 특정 메일 주소로 유저 정보를 보낼 수 있다.
@@ -57,8 +55,7 @@
 → `IAM`에서는 `Policies`, 또는 `IAM Policies`라고 불리는 `JSON` 타입의 문서를 통해 권한을 지정한다. 이 파일은 프로그래머가 아니더라도 이해할 수 있도록 이해하기 쉬운 영어로 구성되어 있다.
 
 - In AWS you apply the Least privilege principle: don’t give more permissions than a user needs  
-→ `AWS`는 `Least privilege principle, 최소 권한의 원칙`을 적용한다. 유저가 꼭 필요한 것 이상의 권한을 주지 않는 것이다.
-유저가 허가받지 않은 서비스를 사용할 수 있도록 허용한다면 유저가 너무 많은 서비스를 실행하여 큰 비용이 발생하거나 보안 문제를 야기할 수 있다.
+→ `AWS`는 `Least privilege principle, 최소 권한의 원칙`을 적용한다. 유저가 꼭 필요한 것 이상의 권한을 주지 않는 것이다. 유저가 허가받지 않은 서비스를 사용할 수 있도록 허용한다면 유저가 너무 많은 서비스를 실행하여 큰 비용이 발생하거나 보안 문제를 야기할 수 있다.
 
 #### 1. Policies
 - `AWS`에서는 정책을 통해 권한을 부여한다.
@@ -209,8 +206,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - `My Security Cridential` → `Multi-factor authentification (MFA)` → `Activate MFA`  
-→ `MFA` 설정이 가능하다. 만약 가상 `MFA` 장치를 활용한다면 안드로이드와 아이폰에서 사용 가능한 `Virtual MFA Application`의 리스트를 확인한 후
-하나의 애플리케이션을 선택하면 된다.
+→ `MFA` 설정이 가능하다. 만약 가상 `MFA` 장치를 활용한다면 안드로이드와 아이폰에서 사용 가능한 `Virtual MFA Application`의 리스트를 확인한 후 하나의 애플리케이션을 선택하면 된다.
 
 ### 6. IAM - Roles for Services
 - Some AWS service will need to perform actions on your behalf  

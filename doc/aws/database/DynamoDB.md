@@ -114,11 +114,17 @@
 → 캐시의 기본 `TTL`은 5분이나 변경할 수 있다.
 
 #### 1. DynamoDB Accelerator (DAX) vs. ElastiCache
-- `DAX`는 `DynamoDB` 앞에 있고 개별 객체의 캐시와 쿼리와 스캔 캐시를 처리하는데 유용하다.
+- 두 서비스의 공통점은 캐시 서비스라는 것이다. 하지만 캐시를 저장하는 방식에서 차이가 있다.
+~~~
+- DAX는 결과 객체를 캐싱한다.
+- ElastiCache는 집약된 결과를 캐싱한다.
 
-- 집계 결과와 같은 캐시는 `Amazon ElastiCache`가 좋고, `DynamoDB`는 대용량의 연산을 저장할 때 좋다. 두 서비스는 상호 보완적인 성격을 가진다.
+- ElastiCache가 SQL 쿼리 캐싱을 지원하는 것에 비해 DAX는 SQL 쿼리 캐싱을 지원하지 않는다.
+~~~
 
-- `DynamoDB`에 캐싱 솔루션을 추가할 때는 보통 `DAX`를 사용한다.
+- `DAX`가 `DynamoDB` 전용인 것에 비해 `ElastiCache`는 다양한 데이터베이스 또는 애플리케이션과 결합해 사용할 수 있다.
+- 이미 `DynamoDB`를 사용하고 있다면 `DAX`를 사용할 때 애플리케이션 로직을 수정하지 않아도 괜찮다. 하지만 `ElastiCache`는 캐시를 활용하는 로직을 사용하기 위해 코드를 크게 변경해야 한다.
+- `DynamoDB`를 사용하고 있다면 대부분의 상황에서의 캐싱 솔루션으로 `DAX`를 사용하는 것이 추천된다. 이외의 상황이라면 `ElastiCache`를 사용하는 것이 추천된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235819117-b6b86fe5-a183-45ff-9aa9-ae1dc6083fbc.png)
 
