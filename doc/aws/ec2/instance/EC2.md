@@ -105,11 +105,10 @@ Scaling the services using an auto-scaling group (ASG)
 → `EC2` 사용자 데이터 스크립트를 사용하여 인스턴스의 부트스트랩이 가능하다.
 
 - bootstrapping means launching commands when a machine starts, That script is only run once at the instance first start  
-→ 머신이 작동할 때 명령을 시작하는 것을 말한다. 스크립트는 처음 시작할 때 한 번만 실행되고 다시 실행되지 않는다.
+→ 머신이 작동할 때 명령을 시작하는 것을 말한다. 스크립트는 처음 시작할 때 한 번만 실행되고 다시 실행되지 않는다. 사용자 데이터가 실행 시 한 번만 실행되도록 지정하거나 매번 인스턴스를 재부팅하거나 시작할 때마다 실행되도록 지정할 수 있다.
 
 - EC2 user data is used to automate boot tasks such as: Installing updates, Installing software, Downloading common files from the internet, Anything you can think of  
-→ 인스턴스를 부팅할 때 자동화하고 싶은 작업(업데이트, 소프트웨어 설치, 파일 다운로드, 그 외의 생각하는 모든 것)들을 설정할 수 있다.
-사용자 데이터 스크립트에 작업을 더 추가할수록 부팅시 인스턴스가 할 일이 늘어날 뿐이다.
+→ 인스턴스를 부팅할 때 자동화하고 싶은 작업(업데이트, 소프트웨어 설치, 파일 다운로드, 그 외의 생각하는 모든 것)들을 설정할 수 있다. 사용자 데이터 스크립트에 작업을 더 추가할수록 부팅시 인스턴스가 할 일이 늘어날 뿐이다.
 
 - The EC2 User Data Script runs with the root user  
 → 시작 스크립트를 작성할 때에는 `root 폴더`, `sudo`를 기준으로 작성해야한다. `User Data Script`는 `root` 권한을 가지고 `root` 패스에서 시작되기 때문이다.
@@ -119,8 +118,7 @@ Scaling the services using an auto-scaling group (ASG)
 드라이브는 `SSD`, 하드디스크 등의 물리적인 저장장치를 말한다.
 
 ###### 2. Storage
-스토리지는 한 개 이상의 드라이브로 구성된 대용량 데이터 저장장치를 말한다. 
-여러 개의 드라이브를 하나의 스토리지로 사용하기 위한 기술을 `레이드 (Raid, Redundant Array of Independent Disk)`라고 한다.
+스토리지는 한 개 이상의 드라이브로 구성된 대용량 데이터 저장장치를 말한다. 여러 개의 드라이브를 하나의 스토리지로 사용하기 위한 기술을 `레이드 (Raid, Redundant Array of Independent Disk)`라고 한다.
 
 ###### 3. Volume
 볼륨은 논리적인 드라이브를 말한다. 윈도우에서의 파티션과 같다. 하나의 하드디스크를 하나로 쓸 수 있지만, `C`, `D` 등 여러 개로 나누어 사용할 수도 있는 것이다.
