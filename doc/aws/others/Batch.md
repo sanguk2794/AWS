@@ -50,10 +50,10 @@
 → Batch는 EC2 인스턴스에 의존하기 때문에 시간 제한이 없다.
 
 - Any runtime as long as it’s packaged as a Docker image 
-→ 도커 이미지로 패키징하는 한, 런타임의 길이는 상관없다.
+→ 도커 이미지로 패키징하는 한 런타임의 길이는 상관없다.
 
 - Rely on EBS / instance store for disk space 
-→ 스토리지는, EC2 인스턴스와 같이 제공되는 스토리지를 사용하면 된다. 이는 EBS 볼륨이 될 수도 있고 디스크 공간을 위한 EC2 인스턴스 스토어일 수도 있다.
+→ 스토리지는 EC2 인스턴스와 같이 제공되는 스토리지를 사용하면 된다. 이는 EBS 볼륨이 될 수도 있고 디스크 공간을 위한 EC2 인스턴스 스토어일 수도 있다.
 
 - Relies on EC2 (can be managed by AWS)
 → 실제 EC2 인스턴스에 의존한다. 하지만 관리형 서비스이므로 오토 스케일링 등은 신경쓰지 않아도 괜찮다.
