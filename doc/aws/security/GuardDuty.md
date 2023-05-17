@@ -3,8 +3,11 @@
 - Intelligent Threat discovery to protect your AWS Account  
 → `Amazon GuardDuty`는 `AWS` 계정을 보호하는 지능형 위협 탐지 서비스이다.
 
-- Uses Machine Learning algorithms, anomaly detection, 3rd party data  
-→ 머신 러닝 알고리즘을 사용하여 이상 탐지하고, 타사 데이터를 이용해 계정에 대한 공격을 탐지한다.
+- Uses Machine Learning algorithms, anomaly detection, 3rd party data 
+→ 머신 러닝 알고리즘을 사용한다. 이상 탐지와 타사 데이터를 이용해 계정에 대한 공격을 탐지한다.
+
+- anomaly detection  
+→ 이상 탐지는 예상과는 다른 패턴을 보이는 개체 또는 자료를 찾는 것을 의미한다.
 
 - One click to enable (30 days trial), no need to install software  
 → 클릭 한 번으로 활성화가 가능하다. 소프트웨어를 설치할 필요 없이 백엔드에서 작동된다.
@@ -40,10 +43,7 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 요약하면 `GuardDuty`는 `VPC Flow Logs`, `CloudTrail Events Logs`, `DNS Logs`, `Kubernetes Audit Logs`를 모두 `GuardDuty`로 불러온다. 그리고 `CloudWatch` 이벤트 규칙 덕분에 `Lambda` 함수나 `SNS` 주제 알림을 받을 수 있다.
-
-- 한 금융 서비스 회사에서 자사의 `Amazon S3` 버킷에 저장된 민감 데이터를 식별하려고 합니다. 또한 회사는 `S3`에 저장된 모든 데이터를 모니터링하여 악의적인 시도로부터 보호하고자 합니다. 솔루션 아키텍트의 관점에서 다음 중 주어진 요구 사항을 해결하는 데 도움이 될 만한 솔루션은 무엇입니까?  
-→ `Amazon GuardDuty`를 사용해 S3에 저장된 데이터에 대한 악의적인 시도를 모니터링하고, `Amazon Macie`를 사용해 S3에 저장된 민감 데이터를 식별한다.
+- 요약하면 `GuardDuty`는 `VPC Flow Logs`, `CloudTrail Events Logs`, `DNS Logs`, `Kubernetes Audit Logs`를 모두 `GuardDuty`로 불러들여 `CloudWatch` 이벤트 규칙을 설정할 때 사용한다. 이벤트 규칙 설정을 통해 `Lambda` 함수를 실행하거나 `SNS` 주제 알림을 보낼 수 있다.
 
 ---
 #### ▶ Reference
