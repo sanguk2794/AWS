@@ -1,7 +1,7 @@
 ## VPC Endpoints
 ### 1. VPC Endpoints
 - `AWS`에서 `DynamoDB`와 같은 서비스를 이용하면 퍼블릭 액세스가 가능하다.  
-→ 그 이유는 `DynamoDB`의 `VPC`가 `NAT Gateway`와 `Internet Gateway`를 통한 퍼블릭 액세스가 허용하고 있기 때문이다. 이 때의 트래픽은 공용 인터넷을 거친다.
+→ 그 이유는 `DynamoDB`의 `VPC`가 `NAT Gateway`와 `Internet Gateway`를 통한 퍼블릭 액세스를 허용하고 있기 때문이다. 이 때의 트래픽은 공용 인터넷을 거친다.
 
 - 해당하는 리전 내의 `CloudWatch`, `Amazon S3` 등의 서비스를 이용할 때 공용 인터넷을 경유하지 않는 프라이빗 액세스를 원할 수 있다. 이 때 `VPC Endpoints`를 사용하면 공용 인터넷을 거치지 않고도 인스턴스에 액세스할 수 있다.
 
@@ -49,8 +49,7 @@
 - Interface Endpoints (powered by PrivateLink)
 ~~~
 - Provisions an ENI (private IP address) as an entry point (must attach a Security Group)
-→ 인터페이스 엔드포인트는 ENI를 프로비저닝해야 한다.
-이 때, ENI는 VPC의 프라이빗 IP 주소이자 AWS의 엔트리 포인트가 된다. ENI가 있으므로 반드시 보안 그룹을 연결해야 한다.
+→ 인터페이스 엔드포인트는 ENI를 프로비저닝해야 한다. 이 때, ENI는 VPC의 프라이빗 IP 주소이자 AWS의 엔트리 포인트가 된다. ENI가 있으므로 반드시 보안 그룹을 연결해야 한다.
 
 - Supports most AWS services
 → 대부분의 AWS 서비스를 지원한다.
