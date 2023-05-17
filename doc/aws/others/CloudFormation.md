@@ -14,10 +14,10 @@
 - Then CloudFormation creates those for you, in the right order, with the exact configuration that you specify  
 → `CloudFormation`은 정한 순서와 구성 그대로 이 모든 것을 자동으로 생성해 준다.
 
-- `CloudFormation`은 스택을 생성한 후 스택 템플릿을 제공해야 한다. 스택 템플릿을 생성할 때의 리전은 반드시 `us-east-`이어야 한다. 그렇지 않으면 제대로 작동하지 않고 오류가 발생한다.
+- `CloudFormation`은 스택을 생성한 후 스택 템플릿을 제공해야 한다. 스택 템플릿을 생성할 때의 리전은 반드시 `us-east-`이어야 한다. 그렇지 않으면 제대로 작동하지 않고 오류가 발생한다.  
 → 순서를 알아서 이해할 정도로 충분히 똑똑한 서비스이다. 
 
-- `CloudFormation`을 삭제할 경우 사용했던 리소스들도 자동으로 삭제한다. 하나하나 지우지 않아도 괜찮다.
+- `CloudFormation`을 삭제할 경우 사용했던 리소스들이 자동으로 삭제된다. 하나하나 지우지 않아도 괜찮다.
 
 ### 2. Benefits of AWS CloudFormation
 - Infrastructure as code
@@ -85,7 +85,7 @@
 → 모든 리소스와 그 관계를 확인할 수 있다.
 
 - We can see the relations between the components  
-→ 시험 관점에서 보면, `CloudFormation`은 코드형 인프라가 있을 때 사용하게 된다. 아키텍처를 다른 환경, 다른 리전, 다른 `AWS` 계정에서 반복해야한다면 굉장히 편리하다.
+→ 시험 관점에서 보면 `CloudFormation`은 코드형 인프라가 있을 때 사용하게 된다. 아키텍처를 다른 환경, 다른 리전, 다른 `AWS` 계정에서 반복해야한다면 굉장히 편리하다.
 
 ---
 #### ▶ Reference
