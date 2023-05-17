@@ -19,7 +19,7 @@
 → 트래픽 미러링 기능을 사용하면 소스 `ENI`로 전송되는 트래픽이 타겟으로도 보내진다. 그리고 타겟에서는 트래픽 자체를 분석한다. 모든 정보가 아닌 일부 정보만을 취득하고 싶다면 필터를 사용할 수도 있다.
 
 - Source and Target can be in the same VPC or different VPCs (VPC Peering)  
-→ 소스와 타겟을 여러 개 설정할 수 있다. 이 때, 소스와 타겟이 동일한 `VPC` 내에 있어야 하지만, `VPC Peering`을 활성화했다면 다른 `VPC`에 있더라도 대상이 될 수 있다.
+→ 소스와 타겟을 여러 개 설정할 수 있다. 기본적으로 소스와 타겟이 동일한 `VPC` 내에 있어야 하지만 `VPC Peering`을 활성화했다면 다른 `VPC`에 있더라도 대상이 될 수 있다.
 
 - Use cases: content inspection, threat monitoring, troubleshooting, …  
 → 콘텐츠 검사와 위협 모니터링 네트워킹 문제 해결 등에 사용된다.

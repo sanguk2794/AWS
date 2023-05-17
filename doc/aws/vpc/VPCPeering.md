@@ -1,7 +1,7 @@
 ## VPC Peering
 ### 1. VPC Peering
 - Privately connect two VPCs using AWS’ network  
-→ `VPC`는 `AWS`의 네트워크를 사용하여 연결된다.
+→ `VPC`는 `AWS`의 사설 네트워크를 통해 연결된다.
 
 - Make them behave as if they were in the same network  
 → 동일한 네트워크에 있는 것처럼 동작하도록 한다.
@@ -10,7 +10,7 @@
 → 서로 다른 `VPC`가 통신하려면 `VPC Peering Connection`을 활성화해야 한다.
 
 - Must not have overlapping CIDRs  
-→ `VPC Peering Connection`을 활성화할 때, `VPC`의 `CIDR`는 중복되면 안된다. 연결했을 때 `CIDR`가 겹치면 통신을 할 수 없기 때문입니다
+→ `VPC Peering Connection`을 활성화할 때, `VPC`의 `CIDR`는 중복되면 안된다. 연결했을 때 `CIDR`가 겹치면 통신을 할 수 없기 때문이다.
 
 - You must update route tables in each VPC’s subnets to ensure EC2 instances can communicate with each other  
 → `VPC Peering Connection`을 활성화하는 것만으로 통신이 가능한 것은 아니다. `EC2` 인스턴스가 서로 통신할 수 있도록 각 `VPC`의 서브넷에서 `Route Table`의 설정을 변경해야 한다.

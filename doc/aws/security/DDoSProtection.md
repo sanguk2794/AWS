@@ -104,7 +104,7 @@
 - Security groups and Network ACLs(BP5)
 ~~~
 - Use security groups and NACLs to filter traffic based on specific IP at the subnet or ENI-level
-→ 보안 그룹과 네트워크 ACL 등을 설정하여 특정 IP의 트래픽을 필터링할 수 있다.
+→ 보안 그룹과 NACL 등을 설정하여 특정 IP의 트래픽을 필터링할 수 있다.
 
 - Elastic IP are protected by AWS Shield Advanced
 → Elastic IP도 AWS Shield Advanced로 보호할 수 있다.

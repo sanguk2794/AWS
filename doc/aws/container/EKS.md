@@ -61,18 +61,15 @@
 - AWS Fargate
 ~~~
 - No maintenance required; no nodes managed
-→ 노드를 원치 않을 경우 Amazon EKS가 지원하는 Fargate 모드를 선택한다. 유지 관리가 필요없고 노드를 관리하지 않아도 괜찮고 Amazon EKS에서 컨테이너만 실행하면 된다.
+→ 노드를 원치 않을 경우 Amazon EKS가 지원하는 Fargate 모드를 선택한다. 유지 관리가 필요없고 노드를 관리하지 않아도 괜찮다.
 ~~~
-
-- `Amazon EKS`는 다음 중 ………………..를 제외한 나머지 노드 타입을 지원합니다.  
-→ `AWS Lambda`
 
 ### 3. Amazon EKS – Data Volumes
 - Need to specify StorageClass manifest on your EKS cluster  
 → `Amazon EKS` 클러스터에 데이터 볼륨을 연결하려면 `EKS` 클러스터에 스토리지 클래스 매니패스트를 지정해야 한다.
 
 - Leverages a Container Storage Interface (CSI) compliant driver  
-→ `EBS`, `FSx`, `EFS` 등 스토리지와 연결하기 위한 `컨테이너 스토리지 인터페이스, CSI`라는 규격 드라이버를 지원하는데 시험에 나올만한 키워드이다.
+→ `EBS`, `FSx`, `EFS` 등 스토리지와 연결하기 위해 `CSI, Container Storage Interface`라는 규격 드라이버를 지원한다.
 
 - Support for…
 ~~~

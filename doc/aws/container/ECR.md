@@ -24,9 +24,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 온프레미스 도커 기반 애플리케이션을 `Amazon ECS`로 이전하려 합니다. 여러분은 도커 허브 컨테이너 이미지 라이브러리를 컨테이너 이미지 리포지토리로 사용하고 있었습니다. 다음의 대체 `AWS `서비스들 중 `Amazon ECS`와 완전히 통합되어 있는 서비스는 무엇인가요?  
-→ `Amazon ECR`
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

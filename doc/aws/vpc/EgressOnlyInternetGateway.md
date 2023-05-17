@@ -1,13 +1,15 @@
 ## Egress-only Internet Gateway
 ### 1. Egress-only Internet Gateway
+- `Egress` = 송신, `Ingress` = 수신
+
 - Used for IPv6 only (similar to a NAT Gateway but for IPv6)  
 → 송신 전용 인터넷 게이트웨이는 오직 `IPv6` 트래픽에서만 사용된다. `NAT Gateway`와 비슷하지만 `IPv6` 전용이라는 특징이 있다.
 
 - Allows instances in your VPC outbound connections over IPv6 while preventing the internet to initiate an IPv6 connection to your instances  
-→ `IPv6`을 통한 `VPC` 아웃바운드 연결을 허용하는 동시에 인터넷이 인스턴스에 대한 `IPv6` 연결을 시작하지 못하도록 한다.
+→ `IPv6`을 통한 `VPC` 아웃바운드 연결을 허용하는 동시에 인터넷이 인스턴스에 대한 `IPv6` 연결을 시작할 수 없도록 거부하는 송신 전용의 게이트웨이이다.
 
 - You must update the Route Tables  
-→ 라우팅 테이블을 수정해야 한다.
+→ 사용을 위해서는 `Route Table`을 수정해야 한다.
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/2a2d9390-c3e6-4b07-92be-8e7c8e31badd)
 
@@ -21,7 +23,7 @@
 - 여기에서 공용 인스턴스와 사설 인스턴스는 라우팅 테이블의 설정이 달라진다.
 ~~~
 
-- Public EC2 인스턴스를 인터넷과 연결하기 위해서는 다음과 같이 설정해야 한다.
+- 퍼블릭 서브넷의 `EC2` 인스턴스를 인터넷과 연결하기 위해서는 다음과 같이 설정해야 한다.
 
 | Destination             | Target |
 |-------------------------|--------|
@@ -30,7 +32,7 @@
 | 0.0.0.0/0               | igw-id |
 | ::/0                    | igw-id |
 
-- Private EC2 인스턴스를 인터넷과 연결하기 위해서는 다음과 같이 설정해야 한다.
+- 프라이빗 서브넷의 `EC2` 인스턴스를 인터넷과 연결하기 위해서는 다음과 같이 설정해야 한다.
 
 | Destination             | Target         |
 |-------------------------|----------------|

@@ -41,13 +41,17 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 3. VPC Flow Logs –Troubleshoot SG & NACL issues
-- 흐름 로그를 보안 그룹과 NACL 문제의 트러블 슈팅에 사용할 수 있다.
+- 흐름 로그를 보안 그룹과 `NACL` 문제의 트러블 슈팅에 사용할 수 있다.
 
 - 들어오는 요청에 대한 트러블 슈팅 시나리오는 다음과 같다.
 ~~~
 - NACL과 서브넷에 요청이 들어온다. 이때 NACL은 무상태이고 보안 그룹은 상태를 유지한다.
-- 인바운드 REJECT가 표시된 경우 EC2 외부에서 전송한 인바운드 요청이 거부되었다는 뜻으로 NACL이나 보안 그룹 중 하나가 요청을 거부하고 있다는 것을 의미한다.
-- 인바운드 ACCEPT 아웃바운드 REJECT는 NACL 문제라는 의미이다. 보안 그룹은 상태 유지하므로 인바운드가 ACCEPT로 표시되면 자동으로 아웃바운드가 ACCEPT여야 하기 때문이다.
+
+- 인바운드 REJECT
+→ EC2 외부에서 전송한 인바운드 요청이 거부되었다는 뜻으로 NACL이나 보안 그룹 중 하나가 요청을 거부하고 있다는 것을 의미한다.
+
+- 인바운드 ACCEPT 아웃바운드 REJECT
+→ NACL 문제이다. 보안 그룹은 상태 유지하므로 인바운드가 ACCEPT로 표시되면 자동으로 아웃바운드가 ACCEPT여야 하기 때문이다.
 ~~~
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/0d7e99f3-5186-49c2-9d65-d338e9d1b532)
@@ -61,8 +65,10 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 4. VPC Flow Logs – Architectures
-- `CloudWatch Logs`로 전송된 흐름 로그는 `CloudWatch Contributor Insights`를 이용해 `VPC` 네트워크에 가장 많이 기여하는 상위의 `IP` 주소를 식별할 수 있다.
+- `CloudWatch Logs`로 전송된 흐름 로그는 `CloudWatch Contributor Insights`를 이용해 `VPC` 네트워크에 가장 많이 기여하는 상위의 `IP` 주소를 식별하는데 사용할 수 있다.
+
 - `SSH`나 `RDP` 프로토콜에 관하여 지표 필터를 설정할 수 있다. 평소보다 `SSH`나 `RDP` 프로토콜 요청이 너무 많은 경우 `CloudWatch` 경보를 트리거하여 `Amazon SNS` 주제로 경보를 전송할 수 있다. 네트워크에 수상한 행동이 발생했을 수 있기 때문이다.
+
 - 흐름 로그를 `S3` 버킷에 전송 및 저장해서 `Amazon Athena`를 이용하여 `SQL`로 `VPC` 흐름 로그를 분석할 수 있다. 흐름 로그에 대한 광범위한 분석이 필요할 때에는 `S3`가 좋은 선택이다.
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/93620f10-3aec-447f-8a1b-ff435141592c)

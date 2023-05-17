@@ -104,9 +104,12 @@
 ### 6. Site-to-Site VPN connection as a backup
 - 회사 데이터 센터를 `Direct Connect`를 통해 `VPC`에 연결할 때의 시나리오이다.
 ~~~
-- Direct Connect를 통해 VPC에 연결한다. 기본 방법이며, 비용도 많이 들고 가끔은 Direct Connect 연결에 문제가 발생할 수도 있다.
+- Direct Connect를 통해 VPC에 연결한다. 비용이 많이 들고 가끔은 Direct Connect 연결에 문제가 발생할 수도 있다.
+
 - 복원을 위해 또 다른 Direct Connect로 보조 연결을 할 수 있지만 이는 상당히 많은 비용이 소모된다.
-- 또는 Site to Site VPN을 백업 연결을 두어 기본 연결에 문제가 발생했을 때 사용하도록 설정할 수 있다. Site-to-Site VPN을 통해 퍼블릭 인터넷에 연결할 수 있으므로 안정성이 높아진다.
+
+- 이 때 Site-to-Site VPN을 백업 연결으로 두고 기본 연결에 문제가 발생했을 때 사용하도록 설정할 수 있다.
+→ Site-to-Site VPN을 통한 퍼블릭 액세스가 가능해지기 때문에 안정성이 높아진다.
 ~~~
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/fe3db549-61af-4520-915f-fed285127006)
