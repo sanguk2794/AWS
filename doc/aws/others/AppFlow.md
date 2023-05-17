@@ -16,7 +16,7 @@
 → `AppFlow` 내에서 필터링, 유효성 검사와 같은 데이터 변환을 수행 가능하다.
 
 - Encrypted over the public internet or privately over AWS PrivateLink  
-→ 공용 인터넷을 통해 암호화되거나 `AWS PrivateLink`를 통한 비공로 암호화가 지원된다.
+→ 공용 인터넷 통과시 암호화를 지원하며, `AWS` 사설 인터넷을 통과하도록 하는 비공개 암호화 또한 지원된다.
 
 - Don’t spend time writing the integrations and leverage APIs immediately  
 → `AppFlow`을 사용하면 통합을 만드는 데 시간을 쓰지 않아도 된다. `API`를 활용하여 여러분의 계정 내에서 바로 데이터를 사용할 수 있다.
