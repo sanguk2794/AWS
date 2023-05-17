@@ -18,7 +18,7 @@
 
 - Define Web ACL (Web Access Control List) Rules:
 ~~~
-- 서비스에 `WAF`를 배포한 이후에는 `ACL` 규칙을 정의해야 한다.
+- 서비스에 WAF를 배포한 이후에는 ACL 규칙을 정의해야 한다.
 
 - IP Set: up to 10,000 IP addresses – use multiple Rules for more IPs
 → 여기에서 규칙은 IP 주소를 기반으로 구성된다. IP 세트를 정의할 수 있는데 각 IP 세트는 최대 10000개의 IP 주소를 가질 수 있다. 더 많은 IP 주소가 필요하면 규칙을 여러개 생성하면 된다.
