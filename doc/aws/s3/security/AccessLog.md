@@ -7,7 +7,7 @@
 → `S3`로 보낸 모든 요청은 승인 또는 거부 여부와 상관없이 다른 `S3` 버킷에 파일로 기록된다.
 
 - That data can be analyzed using data analysis tools…  
-→ 해당 데이터는 `Amazon Athena` 등 데이터 분석 도구로 분석할 수 있다.
+→ 해당 데이터는 `Amazon Athena` 등 데이터 분석 도구를 사용해 분석할 수 있다.
 
 - The target logging bucket must be in the same AWS region  
 → 대상 로깅 버킷은 같은 `AWS` 리전에 있어야 한다.
@@ -20,9 +20,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235289834-f1bbc074-7350-495f-b9b6-08dd8b11c6cd.png)
 
 - 로그는 누가 액세스했는지, 어떤 버킷인지, 액세스 시간 등의 정보를 제공한다.
-
-- 직원 중에 누군가가 접근 권한이 없는 S3 버킷 파일에 접근하려 했던 것으로 의심됩니다. 해당 직원에게 알리지 않고 사실 여부를 확인하려면 어떻게 해야 합니까?  
-→ `S3` 액세스 로그를 활성화하고 `Athena` 로그를 분석한다.
 
 ### 2. S3 Access Logs: Warning
 - Do not set your logging bucket to be the monitored bucket  
