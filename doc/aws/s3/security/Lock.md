@@ -3,14 +3,13 @@
 - Adopt a WORM (Write Once Read Many) model  
 → `WORM` 모델을 채용하기 위해 `Glaciar Vault`를 잠글 수 있다. `WORM`은 한 번 쓰고 여러 번 읽는다는 뜻이다.
 
+- `볼트, Vault`는 `Glacier`에서 최상위 폴더 디렉터리를 의미한다.
+
 - Create a Vault Lock Policy - Lock the policy for future edits (can no longer be changed or deleted)  
 → 누구도 변경하거나 삭제할 수 없도록 객체를 `S3 Glacier Vault`에 넣고 수정하거나 삭제할 수 없도록 잠그는 것이다. 관리자나 `AWS` 서비스를 삭제해도 마찬가지다.
 
 - Helpful for compliance and data retention  
 → 규정 준수와 데이터 보존에 유용하다.
-
-- 회사에는 규정상 백업된 데이터베이스를 4년 동안 보관해야 한다는 의무가 있습니다. 백업된 데이터가 지워지지 않도록 보관하려면 어떤 구성을 사용해야 합니까?  
-→ 볼트 잠금 정책이 적용된 `Glacier Vault`
 
 ### 2. S3 Object Lock
 - `S3` 객체 잠금을 활성화하려면 먼저 버저닝을 활성화해야 한다.
@@ -55,12 +54,6 @@
 - can be freely placed and removed using the s3:PutObjectLegalHold IAM permission
 → s3:PutObjectLegalHold IAM 권한을 가진 사용자는 어떤 객체에서든 법적 보존을 설정하거나 제거할 수 있다.
 ~~~
-
-- 회사에서 S3 버킷에 데이터와 파일을 저장하고 있습니다. 이 파일 중 일부는 회사 규정 준수 정책에 따라 정해진 기간 동안 보관해야 하며 덮어쓰거나 삭제되지 않도록 보호해야 합니다. 이런 경우에 사용할 수 있는 S3 기능은 무엇입니까?  
-→ `S3` 객체 잠금 - 규정 준수 모드
-
-- `S3` 객체 잠금 설정 중에서 객체 또는 객체 버전을 무기한 덮어쓰거나 삭제할 수 없도록 방지하고, 수동으로 삭제할 수 있는 기능만을 제공하는 설정은 무엇입니까?
-→ 법적 보존
 
 ---
 #### ▶ Reference
