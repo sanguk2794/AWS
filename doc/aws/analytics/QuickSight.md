@@ -3,8 +3,7 @@
 - Serverless machine learning-powered business intelligence service to create interactive dashboards  
 → `Amazon QuickSight`는 서버리스 머신 러닝 기반 `BI` 서비스이다. 대화형 대시보드를 생성해준다.
 
-- Fast, automatically scalable, embeddable, with per-session pricing  
-→ 웹사이트에 임베드할 수 있으며 세션당 비용을 지불한다.
+- `Amazon QuickSight`는 대시보드를 특정 사용자나 그룹과 공유할 수 있다.
 
 - Use cases:
 ~~~
@@ -25,13 +24,10 @@
 → `RDS`, `Aurora`, `Athena`, `Redshift`, `S3` 등 다양한 데이터 소스에 연결할 수 있다.
 
 - In-memory computation using SPICE engine if data is imported into QuickSight  
-→ 인 메모리 연산 엔진인 `SPICE` 엔진을 사용한다. 이 엔진은 `Amazon QuickSight`로 데이터를 직접 가져올 때 사용되며 `Amazon QuickSight`가 다른 `DB`에 연결되어 있을때는 작동하지 않는다.
+→ 인메모리 연산 엔진인 `SPICE` 엔진을 사용한다. 이 엔진은 `Amazon QuickSight`로 데이터를 직접 가져올 때 사용되며 `Amazon QuickSight`가 다른 `DB`에 연결되어 있을때는 작동하지 않는다.
 
 - Enterprise edition: Possibility to setup Column-Level security (CLS)  
 → `Amazon QuickSight`는 훌륭한 사용자 수준 기능을 제공한다. `Amazon QuickSight`의 엔터프라이즈 에디션에는 액세스 권한이 없는 사용자에게 일부 열이 표시되지 않도록 열 수준 보안을 설정할 수 있다.
-
-- 한 전자 상거래 기업은 주문 내역, 고객 정보, 이익, 전년도 매출과 같은 모든 과거 데이터를 `Redshift` 클러스터에 호스팅하고 있습니다. 전년도 이익과 총매출액을 표시하는 대시보드 및 보고서를 생성해야 한다는 요구 사항이 있었기 때문에, 내년에도 같은 요구 사항이 있을 것으로 보입니다. `DevOps` 팀은 이와 같은 대시보드를 정의할 수 있고 기본적으로 `Redshift`와 통합이 가능한 AWS 서비스를 찾는 업무를 맡았습니다. 가장 적합한 `AWS` 서비스는 무엇입니까?  
-→ `Amazon QuickSight`
 
 ### 2. QuickSight Integrations
 - `Amazon QuickSight`는 `AWS`의 다양한 데이터 소스와 통합할 수 있다.
@@ -46,11 +42,12 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 3. QuickSight – Dashboard & Analysis
-- `Amazon QuickSight`에는 크게 세 개의 개념이 있다. 대시보드와 분석, 그리고 사용자가 그 것이다.
+- `Amazon QuickSight`에는 크게 세 개의 개념이 있다. 대시보드와 분석, 사용자가 그 것이다.
 
 - Define Users (standard versions) and Groups (enterprise version)
 ~~~
 - 스탠다드 버전에서는 사용자를 정의할 수 있고 그룹은 엔터프라이즈 버전에서만 사용할 수 있다.
+
 - These users & groups only exist within QuickSight, not IAM !!
 → QuickSight의 사용자 그룹은 QuickSight 서비스 전용이다. IAM 사용자와는 다르다. IAM 사용자는 관리용으로만 사용된다.
 ~~~
@@ -72,8 +69,6 @@
 
 - Users who see the dashboard can also see the underlying data  
 → 액세스 권한이 있는 사용자는 기본 데이터를 볼 수도 있다. 
-
-- `Amazon QuickSight`는 분석 및 대시보드를 생성해야 하며 특정 사용자나 그룹과 공유할 수 있다. 
 
 ---
 #### ▶ Reference

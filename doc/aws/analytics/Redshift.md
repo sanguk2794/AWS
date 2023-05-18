@@ -1,16 +1,16 @@
 ## Redshift
 ### 1. Redshift Overview
 - Redshift is based on PostgreSQL, but it’s not used for OLTP  
-→ 데이터베이스이자 분석 엔진인 `Redshift`는 `PostgreSQL` 기반이지만 `온라인 트랜잭션 처리, OLTP`에는 사용되지 않는다.
+→ `Redshift`는 `PostgreSQL` 기반이지만 `OLTP, 온라인 트랜잭션 처리`에는 사용되지 않는다.
 
 - It’s OLAP – online analytical processing (analytics and data warehousing)  
-→ 온라인 분석 처리를 의미하는 `OLAP` 유형의 데이터베이스이며 분석과 데이터 웨어하우징에 사용한다.
+→ `OLAP, 온라인 분석 처리` 유형의 데이터베이스이며 분석과 데이터 웨어하우징에 사용한다.
 
 - 10x better performance than other data warehouses, scale to PBs of data  
 → 다른 데이터 웨어하우징들과 비교했을 때 성능이 10배 이상 뛰어나다. 데이터가 `PB` 규모로 확장되므로 모든 데이터를 `Redshift`에 로드하면 빠르게 분석할 수 있다.
 
 - Columnar storage of data (instead of row based) & parallel query engine  
-→ `Redshift`의 성능 향상이 가능한데, 이는 열 기반 데이터 스토리지를 사용하기 때문이다. 행 기반이 아니라 병렬 쿼리 엔진이 있는 것이다.
+→ `Redshift`는 열 기반 데이터 스토리지이다. 행 기반이 아니라 병렬 쿼리 엔진이 있는 것이다. 열 기반 스토리지를 사용함녀 전체 디스크의 `I/O`를 크게 줄이기 때문에 분석 쿼리 성능을 최적화할 수 있다.
 
 - Pay as you go based on the instances provisioned  
 → `Redshift` 클러스터에서 프로비저닝한 인스턴스에 대한 비용만 지불하면 된다.
@@ -22,15 +22,9 @@
 → `Amazon Quicksight`같은 `BI` 도구나 `Tableau`를 `Redshift`에 통합할 수 있다.
 
 - vs Athena: faster queries / joins / aggregations thanks to indexes  
-→ `Redshift`는 먼저 모든 데이터를 `Redshift`에 로드해야 한다. `Redshift`의 쿼리가 더 빠르고 조인과 통합을 훨씬 더 빠르게 수행할 수 있는 이유는 `Athena`에는 없는 인덱스가 있기 때문이다.
+→ 분석을 하기 위해서는 모든 데이터를 `Redshift`에 로드해야 한다. `Redshift`의 쿼리가 더 빠르고 조인과 통합을 훨씬 더 빠르게 수행할 수 있는 이유는 `Athena`에는 없는 인덱스가 있기 때문이다.
 
-- `S3`의 임시 쿼리라면 `Athena`가 좋은 사용 사례가 되지만 쿼리가 많고 복잡하며 조인하거나 집계하는 등 집중적인 데이터 웨어하우스라면 `Redshift`가 더 뛰어난 성능을 보여준다.
-
-- 대량의 컬럼형 데이터에 대해 분석 쿼리를 효율적으로 수행할 수 있는 데이터베이스를 구성하고자 합니다. 이 데이터 웨어하우스에 `Amazon QuickSight`와 같은 보고 및 대시보드 도구를 연결해 사용하려고 합니다. 가장 적합한 `AWS` 기술을 무엇입니까?  
-→ `Amazon Redshift`
-
-- `Redshift`에서 클러스터와 데이터 저장소 사이의 모든 `COPY`와 `UNLOAD` 트래픽이 `VPC`를 통하도록 강제하는 기능은 무엇입니까?  
-→ 향상된 `VPC` 라우팅
+- `S3`의 임시 쿼리라면 `Athena`가 좋은 사용 사례가 된다. 하지만, 쿼리가 많고 복잡하며 조인하거나 집계하는 복잡한 연산을 수행할 때에는 `Redshift`가 더 뛰어난 성능을 보여준다.
 
 ### 2. Redshift Cluster
 - Leader node: for query planning, results aggregation  
@@ -51,7 +45,7 @@
 
 ### 3. Redshift – Snapshots & DR(Disasters Recovery)
 - Redshift has “Multi-AZ” mode for some clusters  
-→ `Redshift`에는 다중 `AZ` 모드가 없고 클러스터가 한 개의 `AZ`에 있으므로 재해 복구 전략을 적용하려면 스냅샷을 사용해야 한다.
+→ `Redshift`에는 `다중 AZ` 모드가 없고 클러스터가 한 개의 `AZ`에 있으므로 재해 복구 전략을 적용할 때 스냅샷을 사용해야 한다.
 
 - Snapshots are point-in-time backups of a cluster, stored internally in S3  
 → 스냅샷은 클러스터의 지정 시간 백업으로 `S3` 내부에 저장된다.
@@ -78,14 +72,11 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 솔루션 아키텍트로서 `Redshift` 클러스터에 대한 재해 복구 계획을 수립하는 업무를 맡았습니다. 어떤 작업을 해야 합니까?  
-→ 자동 스냅샷을 활성화한 다음, `Redshift` 클러스터가 스냅샷을 다른 `AWS` 리전으로 자동 복사하도록 설정한다.
-
 ### 4. Loading data into Redshift: Large inserts are MUCH better
 - `Redshift`에 데이터를 삽입하는 방법에는 3가지가 있다.
 ~~~
 - Amazon Kinesis Data Firehose
-→ Firehose가 다양한 소스로부터 데이터를 받아서 Redshift에 보내는 것이다.
+→ Amazon Kinesis Data Firehose를 사용해 Redshift에 데이터를 전송할 수 있다.
 
 - S3 using COPY command
 → S3에 데이터를 로드하고 Redshift에서 복사 명령을 실행하면 IAM 역할을 사용해 S3 버킷에서 Redshift 클러스터로 데이터를 복사한다.
@@ -112,9 +103,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235945253-570d2563-2d5a-4b5f-8c67-8dea9d85aab2.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- 한 `IT` 회사에서 `Amazon Redshift`를 사용해 유통 조직을 위한 맞춤형 데이터 웨어하우스 솔루션을 구축했습니다. 회사의 일일 분석 보고서에는 지난 1년간의 데이터만 사용되기 때문에 비용 최적화 작업의 일환으로 1년이 지난 과거 데이터를 모두 S3로 이동하려고 합니다. 하지만 분석가들은 일일 보고서와 지난 과거 데이터를 상호 참조하는 기능을 계속해서 사용하고 싶어 합니다. 회사에서는 최소한의 비용과 최소한의 노력을 들여 솔루션을 개발하기를 원합니다. 솔루션 아키텍트로서 이 사례를 해결하기 위해 어떤 방법을 제안하시겠습니까?  
-→ `Redshift Spectrum`을 사용해 `S3`에 있는 과거 데이터를 가리키는 `Redshift` 클러스터 테이블을 생성한다. 분석 팀은 과거 데이터를 쿼리하여 `Redshift`의 일일 보고서와 상호 참조할 수 있다.
 
 ---
 #### ▶ Reference

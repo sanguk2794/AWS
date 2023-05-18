@@ -1,15 +1,13 @@
 ## AWS Lake Formation
 ### 1. AWS Lake Formation
-- `AWS Lake Formation`는 데이터 레이크 생성을 돕는다.
-
 - Data lake = central place to have all your data for analytics purposes  
 → 데이터 레이크는 데이터 분석을 위해 모든 데이터를 한 곳으로 모아주는 중앙 집중식 저장소이다.
 
 - Fully managed service that makes it easy to setup a data lake in days  
-→ `Lake Formation`은 데이터 레이크 생성을 수월하게 해 주는 완전 관리형 서비스이다. 보통 수개월이 걸리는 작업을 며칠만에 완료할수도 있다.
+→ `Lake Formation`은 데이터 레이크의 생성을 수월하게 해 주는 완전 관리형 서비스이다. 보통 수개월이 걸리는 작업을 며칠만에 완료할수도 있다.
 
 - Discover, cleanse, transform, and ingest data into your Data Lake  
-→ `Lake Formation`는 데이터 검색, 정제, 변환, 주입을 돕는다. 
+→ `Lake Formation`는 데이터의 검색, 정제, 변환, 주입을 돕는다. 
 
 - It automates many complex manual steps (collecting, cleansing, moving, cataloging data, …) and de-duplicate (using ML Transforms)  
 → 데이터 수집, 정제나 카탈로깅, 복제같은 복잡한 수작업을 자동화하고 기계 학습 변환 기능으로 중복제거를 수행한다.
@@ -29,9 +27,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235967188-5ea469b7-166e-4418-bb8f-cba748366462.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- `RDS`, `S3` 버킷에 데이터가 저장되어 있고, 데이터에 대한 분석 작업을 수행할 수 있도록 `AWS Lake Formation`을 데이터 레이크로 사용해 수집, 이동 및 분류하고 있습니다. 회사에는 빅데이터 개발자와 `ML` 엔지니어가 아주 많기 때문에 민감 정보가 포함되었을 수도 있는 일부 데이터에 대해서는 접근을 제한하려고 합니다. 이런 경우 무엇을 사용해야 합니까?  
-→ `AWS Lake Formation` 세분화된 액세스 제어
 
 ### 2. AWS Lake Formation: Centralized Permissions Example
 - `Lake Formation`을 사용하는 이유는 바로 중앙화된 권한이다. 중요하다.
