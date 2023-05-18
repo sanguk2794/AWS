@@ -26,17 +26,14 @@
 → 인증받은 사용자만 동영상을 다운로드받을 수 있게 허용한다.
 
 - Allow an ever-changing list of users to download files by generating URLs dynamically
-→ 다운로드 가능한 사용자 목록이 계속 변하는 경우에는 `URL`을 동적으로 생성해서 다운로드 할 수 있게 한다.
+→ 다운로드 가능한 사용자 목록이 계속 변하는 경우에는 URL을 동적으로 생성해서 다운로드 할 수 있게 한다.
 
 - Allow temporarily a user to upload a file to a precise location in your S3 bucket
 → 또는 일시적으로 사용자가 S3 버킷의 특정한 위치에 파일을 업로드하도록 허용할 수 있다.
 ~~~
 
-- 증가하는 연합 사용자들(Federated Users)에게 임시 `URL`을 제공해 해당 사용자들이 `S3` 버킷의 특정 위치로 파일을 업로드할 수 있게 하려고 합니다. 어떤 기능을 사용해야 합니까?  
-→ `미리 서명된 URL`
-
 ### 2. Pre-Signed URLs Scenario
-- AWS 외부의 사용자에게 한 파일에 대한 권한을 부여할 때, 보안 문제를 해결하기 위해 버킷을 `private`로 생성한다.
+- `AWS` 외부의 사용자에게 한 파일에 대한 권한을 부여할 때, 보안 문제를 해결하기 위해 버킷을 프라이빗으로 생성한다.
 
 - 버킷 소유자는 해당 파일의 `미리 서명된 URL`을 생성한다.
 
