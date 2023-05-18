@@ -24,9 +24,6 @@
 
 - 발음은 `콜스`이다.
 
-- `S3` 버킷에서 파일을 로드하는 웹 사이트가 있습니다. `Chrome` 브라우저에서 파일 `URL`을 직접 입력하면 정상적으로 가져오는데, 웹 사이트를 통해 같은 파일을 로드하려고 하면 동작하지 않습니다. 무엇이 문제입니까?  
-→ `CORS`가 잘못되었다.
-
 ### 2. CORS Scenario
 - 웹 브라우저가 오리진에 요청을 전송한다.
 
@@ -53,13 +50,13 @@ Access-Control-Allow-Method: GET, PUT, DELETE
 - It’s a popular exam question  
 
 - You can allow for a specific origin or for * (all origins)  
-→ 이 작업을 빠르게 수행하려면 특정 오리진을 허용하거나, `*`를 붙여 모든 오리진을 허용해야 한다.
+→ 이 작업을 빠르게 수행하려면 특정 오리진을 허용하거나 `*`를 붙여 모든 오리진을 허용해야 한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235287358-1de994af-0202-45c7-b3ef-976069f5a146.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- `permissions` - `Cross-origin resource sharing (CORS)` 옵션이 있다. 이는 `JSON` 형식으로 정의해야 한다.
+- `permissions` → `Cross-origin resource sharing (CORS)` 옵션이 있다. 이는 `JSON` 형식으로 정의해야 한다.
 ~~~ json
 [
     {
