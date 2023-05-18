@@ -127,10 +127,10 @@
 → `Amazon S3` 버킷에는 두 개의 엔드포인트가 있다.
 ~~~
 - HTTP Endpoint – non encrypted
-→ `HTTP Endpoint`는 암호화되지 않은 엔드포인트이다.
+→ HTTP Endpoint는 암호화되지 않은 엔드포인트이다.
 
 - HTTPS Endpoint – encryption in flight
-→ `HTTPS Endpoint`는 전송 중 암호화 엔드포인트이다.
+→ HTTPS Endpoint는 전송 중 암호화 엔드포인트이다.
 ~~~
 
 - HTTPS is recommended  
@@ -155,7 +155,7 @@
 
 - 암호화는 객체의 특정 버전 `ID`에 적용된다.
 
-- 버킷의 기본 암호화를 지정할 때에는 `Amazon S3` - `Bucket` - `Properties` - `Default encryption`에서 기본 암호화를 활성화하면 된다.
+- 버킷의 기본 암호화를 지정할 때에는 `Amazon S3` → `Bucket` → `Properties` → `Default encryption`에서 기본 암호화를 활성화하면 된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235284575-af5d51a9-f972-40c8-8f91-a2cff65e0b8d.png)
 
