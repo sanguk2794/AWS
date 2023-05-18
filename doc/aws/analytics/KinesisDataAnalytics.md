@@ -53,7 +53,7 @@
 
 - `Flink`는 코드로 작성해야 하는 특별한 애플리케이션이다. `Flink` 애플리케이션을 `Kinesis Data Analytics`의 `Flink` 전용 클러스터에서 실행할 수 있다.
 
-- `Apache Flink`를 사용해 두 개의 메인 데이터 소스인 `Kinesis Data Analytics`이나 `Amazon MSK`의 데이터를 읽을 수 있다.
+- `Apache Flink`를 사용해 두 개의 메인 데이터 소스인 `Kinesis Data Analytics`나 `Amazon MSK`의 데이터를 읽을 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235972231-58201557-a3a2-4c67-94eb-2fda21d3ae9e.png)
 
@@ -62,10 +62,10 @@
 - Run any Apache Flink application on a managed cluster on AWS
 ~~~
 - AWS의 관리형 클러스터에서 Apache Flink 애플리케이션을 실행할 수 있다. Apache Flink는 표준 SQL보다 훨씬 강력하다.
-고급 쿼리 능력이 필요하거나 Kinesis Data Streams나 AWS 관리형 kafka인 Amazon MSK같은 서비스로부터 스트리밍 데이터를 읽는 능력이 필요할 때 Kinesis Data Analytics를 사용한다.
+→ 고급 쿼리 능력이 필요할 때나 Kinesis Data Streams, MSK 등의 서비스로부터 스트리밍 데이터를 읽는 능력이 필요할 때 Kinesis Data Analytics를 사용한다.
 
 - provisioning compute resources, parallel computation, automatic scaling
-→ 이 서비스를 사용하면 컴퓨팅 리소스를 자동 프로비저닝 할 수 있으며, 병렬 연산과 오토 스케일링이 지원된다.
+→ 이 서비스를 사용하면 컴퓨팅 리소스를 자동 프로비저닝할 수 있으며 병렬 연산과 오토 스케일링이 지원된다.
 
 - application backups (implemented as checkpoints and snapshots)
 → 체크포인트와 스냅샷으로 구현되는 애플리케이션 백업이 가능하다.
