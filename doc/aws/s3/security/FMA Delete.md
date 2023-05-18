@@ -1,7 +1,7 @@
 ## MFA Delete
 ### 1. Amazon S3 – MFA Delete
 - MFA (Multi-Factor Authentication) – force users to generate a code on a device (usually a mobile phone or hardware) before doing important operations on S3  
-→ 중요한 작업을 수행하기 전에 `Amazon S3`에 해당 코드를 삽입해야 하도록 설정할 수 있다.
+→ `Amazon S3`에서 중요한 작업을 수행하기 전 `MFA` 인증을 요구할 수 있다.
 
 - MFA will be required to:
 ~~~
@@ -27,7 +27,7 @@
 - Only the bucket owner (root account) can enable/disable MFA Delete  
 → 버킷 소유자, 즉 루트 계정만이 `MFA Delete`를 활성화하거나 비활성화할 수 있다.
 
-- `SDK` 혹은 `CLI`를 통해서만 설정 가능하다.
+- `SDK` 혹은 `CLI`를 통해서만 설정 가능하다. `AWS` 콘솔에서는 설정이 불가능하다.
 ~~~ shell
 # generate root access keys
 aws configure --profile root-mfa-delete-demo
@@ -38,10 +38,6 @@ aws s3api put-bucket-versioning --bucket [your bucket name] --versioning-configu
 # disable mfa delete
 aws s3api put-bucket-versioning --bucket [your bucket name] --versioning-configuration Status=Enabled,MFADelete=Disabled --mfa "[arn-of-mfa-device] [mfa-code]" --profile [your profile name]
 ~~~
-
-- `S3` 버킷에서 버전 관리를 활성화했고 파일 삭제 시에는 각별히 더 주의를 기울이고자 합니다. 실수로 영구 삭제되는 것을 방지하려면 어떤 설정을 활성화해야 합니까?  
-→ `MFA Delete`를 활성화한다.
-
 
 ---
 #### ▶ Reference
