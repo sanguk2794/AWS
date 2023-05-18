@@ -1,7 +1,7 @@
 ## Route 53
 ### 1. Amazon Route 53
 - A highly available, scalable, fully managed and Authoritative DNS  
-→ 고가용성, 확장성을 갖춘, 완전히 관리되며 권한있는 `DNS`이다.
+→ 고가용성과 확장성을 갖춘 완전히 관리되며 권한있는 `DNS`이다.
 
 - Authoritative = the customer (you) can update the DNS records  
 → 권한이 있다는 것은 고객인 유저가 `DNS` 레코드를 업데이트할 수 있다는 것이다. 즉, `DNS`를 완전히 제어할 수 있다는 것이다.
@@ -11,7 +11,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - Route 53 is also a Domain Registrar  
-→ 루트 53는 도메인 이름 레지스트라 중 하나이다.
+→ 루트 53는 도메인 레지스트라 중 하나이다.
 
 - Ability to check the health of your resources  
 → 리소스 관련 상태 확인이 가능하다.
@@ -33,7 +33,7 @@
 → 도메인/서브 도메인 이름
 
 - Record Type – e.g., A or AAAA
-→ 레코드 종류, A, AAAA 등이 있다.
+→ 레코드 타입
 
 - Value – e.g., 12.34.56.78
 → IP Address
@@ -170,7 +170,7 @@ $ dig [url]
 - Alias:
 ~~~
 - Points a hostname to an AWS Resource (app.mydomain.com => blabla.amazonaws.com)
-→ `Route 53`에 한정되지만 호스트 이름이 특정 `AWS` 리소스로 향하도록 할 수 있다.
+→ Route 53에 한정되지만 호스트 이름이 특정 AWS 리소스로 향하도록 할 수 있다.
 
 - Works for ROOT DOMAIN and NON ROOT DOMAIN (aka mydomain.com)
 → 별칭 레코드는 루트 및 비루트 도메인 모두에 작동한다. 이는 아주 유용하다. 
@@ -218,7 +218,7 @@ $ dig [url]
 - `CNAME`을 이용해 `ALB`로 이동시키는 것보다 `Alias`를 이용하는게 보다 좋은 방법이다.  
 → 레코드를 생성할 때 `VALUE` 옆에 있는 `Alias`를 활성화시키고 로드밸런서를 선택하면 된다. 별칭 레코드의 사용은 무료이다.
 
-- `Domain Apex` - 루트 도메인을 도메인으로 사용하는 것을 말한다.
+- `Domain Apex` - 루트 도메인을 도메인으로 사용하는 것을 말한다.  
 → 레코드 생성시 레코드 이름을 비워놓고 타입으로 `CNAME`을 선언한 뒤 `Value` 값으로 `ALB`의 도메인 이름을 설정하는 것은 허용되지 않는다.
 `CNAME` 대신 `Alias`를 활용하자.
 
@@ -305,7 +305,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 
 #### 3. Routing Policies – Latency-based
 - Redirect to the resource that has the least latency close to us  
-→ 지연 시간이 가장 짧은 리소스로 리다이렉팅을 하는 정책이다.
+→ 지연 시간이 가장 짧은 리소스로 리다이렉트하는 정책이다.
 
 - Super helpful when latency for users is a priority  
 → 지연 시간에 민감한 웹사이트나 애플리케이션이 있는 경우에 아주 유용하다.
@@ -314,7 +314,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 → 지연 시간은 유저가 레코드로 가장 가까운 식별된 `AWS` 리전에 연결하기까지 걸리는 시간을 기반으로 측정된다.
 
 - Germany users may be directed to the US (if that’s the lowest latency)  
-→ 만약 유저가 독일에 있고 미국에 있는 리소스의 지연 시간이 가장 짧다면 미국 리전으로 인다이렉팅된다.
+→ 만약 유저가 독일에 있고 미국에 있는 리소스의 지연 시간이 가장 짧다면 미국 리전으로 인다이렉트된다.
 
 - Can be associated with Health Checks (has a failover capability)  
 → 상태 체크와 연결이 가능하다.
@@ -378,7 +378,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 → AWS 리소스로 속한 특정 리전을 지정하면 목록에서 자동으로 올바른 라우팅을 계산한다.
 
 - Non-AWS resources (specify Latitude and Longitude)
-→ 온프레미스 데이터 센터인 경우 위도와 경도를 지정해서 `AWS`가 위치를 파악하도록 해야한다.
+→ 온프레미스 데이터 센터인 경우 위도와 경도를 지정해서 AWS가 위치를 파악하도록 해야한다.
 ~~~
 
 - You must use Route 53 Traffic Flow to use this feature  
@@ -420,7 +420,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 세 가지 방법이 존재한다.
 ~~~
 - Health checks that monitor an endpoint (application, server, other AWS resource)
-→ 공용 엔드 포인트를 모니터링한다. `application`, `server`, `other AWS resource`등이 리소스가 될 수 있다.
+→ 공용 엔드 포인트를 모니터링한다. application, server, other AWS resource등이 리소스가 될 수 있다.
 
 - Health checks that monitor other health checks (Calculated Health Checks)
 → 다른 상태 확인을 모니터링한다. 이를 계산된 상태 확인이라고 부른다.
