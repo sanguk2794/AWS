@@ -22,9 +22,6 @@
 - It’s important to understand which ones are for which situation for the exam  
 → 시험에서는 어느 것이 어떤 상황에 해당하는지 이해하는 것이 중요하다.
 
-- `S3` 버킷에 있는 모든 파일이 기본적으로 암호화되게 하고 싶습니다. 이를 달성하기 위한 최적의 방법은 무엇입니까?  
-→ 기본 암호화를 활성화한다.
-
 ### 2. Amazon S3 Encryption – Server Side Encryption
 #### 1. Amazon S3 Encryption – SSE-S3
 - Encryption using keys handled, managed, and owned by AWS  
@@ -61,9 +58,6 @@
 ![image](https://user-images.githubusercontent.com/97398071/235283509-c074401e-d592-4a87-bcfa-00c388f8ab8f.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- 근무하고 있는 회사에서 데이터를 암호화해 S3에 저장하고 싶어 합니다. 회사에서는 암호화 키를 `AWS`에 저장하고 관리하는 것은 상관없지만, 암호화 키의 순환 정책에 대한 제어권은 유지하고 싶어합니다. 이럴 경우 ....................를 사용할 것을 권장합니다.  
-→ `SSE-KMS`
 
 #### 3. SSE-KMS Limitation
 - If you use SSE-KMS, you may be impacted by the KMS limits  
