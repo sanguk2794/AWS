@@ -1,7 +1,7 @@
 ## DNS
 ### 1. What is DNS?
 - Domain Name System which translates the human friendly hostnames into the machine IP addresses  
-→ `DNS`는 사람들에게 친숙한 호스트 이름을 대상 서버 `IP` 주소로 번역해 준다.
+→ `DNS`는 사람들에게 친숙한 호스트 이름을 대상 서버의 `IP` 주소로 번역해 주는 서비스이다.
 ~~~
 www.google.com => 172.217.18.36
 ~~~
@@ -41,7 +41,7 @@ www.google.com => 172.217.18.36
 
 - 다음 질문을 할 서버는 서브도메인 `DNS` 서버이다. 이는 `Route 53` 등 도메인 이름 레지스트라에 의해 관리되는 서버이다. 이 `DNS` 서버는 `example.com`이 무엇인지 알고 있고, 그 결과값을 로컬 `DNS` 서버에 반환한다.
 
-- 이렇게 `DNS` 서버에 반복적으로 물어보며 가장 구체적인 것을 찾아낸다. 찾아낸 값은 로컬 `DNS` 서버에서 캐시한다.
+- 이렇게 `DNS` 서버에 반복적으로 물어보며 가장 구체적인 것을 찾아낸다. 찾아낸 값은 로컬 `DNS` 서버에 캐시된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/234052721-32d01ff4-1875-4b66-bf4c-55c82f92b4ae.png)
 
