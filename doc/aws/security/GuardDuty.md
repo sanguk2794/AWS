@@ -3,7 +3,7 @@
 - Intelligent Threat discovery to protect your AWS Account  
 → `Amazon GuardDuty`는 `AWS` 계정을 보호하는 지능형 위협 탐지 서비스이다.
 
-- Uses Machine Learning algorithms, anomaly detection, 3rd party data 
+- Uses Machine Learning algorithms, anomaly detection, 3rd party data  
 → 머신 러닝 알고리즘을 사용한다. 이상 탐지와 타사 데이터를 이용해 계정에 대한 공격을 탐지한다.
 
 - anomaly detection  
