@@ -10,7 +10,7 @@
 → 다른 데이터 웨어하우징들과 비교했을 때 성능이 10배 이상 뛰어나다. 데이터가 `PB` 규모로 확장되므로 모든 데이터를 `Redshift`에 로드하면 빠르게 분석할 수 있다.
 
 - Columnar storage of data (instead of row based) & parallel query engine  
-→ `Redshift`는 열 기반 데이터 스토리지이다. 행 기반이 아니라 병렬 쿼리 엔진이 있는 것이다. 열 기반 스토리지를 사용함녀 전체 디스크의 `I/O`를 크게 줄이기 때문에 분석 쿼리 성능을 최적화할 수 있다.
+→ `Redshift`는 열 기반 데이터 스토리지이다. 행 기반이 아니라 병렬 쿼리 엔진이 있는 것이다. 열 기반 스토리지를 사용하면 전체 디스크의 `I/O`를 크게 줄일 수 있으므로 분석 쿼리 성능을 최적화할 수 있다.
 
 - Pay as you go based on the instances provisioned  
 → `Redshift` 클러스터에서 프로비저닝한 인스턴스에 대한 비용만 지불하면 된다.
@@ -56,7 +56,7 @@
 - You can restore a snapshot into a new cluster  
 → 새로운 `Redshift` 클러스터에 스냅샷을 복원할 수 있다.
 
-- 스냅샷에는 수동화와 자동화, 두 가지 모드가 있다.
+- 스냅샷에는 수동화와 자동화의 두 가지 모드가 있다.
 ~~~
 - Automated: every 8 hours, every 5 GB, or on a schedule. Set retention between 1 to 35 days
 → 스냅샷이 8시간마다 또는 5GB마다 생성되도록 예약할 수 있다. 이 때 자동화된 스냅샷의 보존 기간을 1일부터 35일까지로 설정할 수 있다.
