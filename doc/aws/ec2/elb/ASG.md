@@ -43,8 +43,7 @@
 
 ### 2. Auto Scaling Group Attributes
 - A Launch Template (older “Launch Configurations” are deprecated)  
-→ 인스턴스 속성을 기반으로 `ASG`를 생성하기 위해서는 시작 템플릿을 생성해야 한다. 이 시작 템플릿에는 `EC2` 인스턴스를 시작하는 방법에 대한 정보들이 포함되어 있다.
-이 정보들은 `EC2` 인스턴스를 생성할 때 지정한 매개변수들과 매우 유사하다.
+→ 인스턴스 속성을 기반으로 `ASG`를 생성하기 위해서는 시작 템플릿을 생성해야 한다. 이 시작 템플릿에는 `EC2` 인스턴스를 시작하는 방법에 대한 정보들이 포함되어 있다. 이 정보들은 `EC2` 인스턴스를 생성할 때 지정한 매개변수들과 매우 유사하다.
 ~~~
 - AMI + Instance Type
 - EC2 User Data
@@ -67,8 +66,7 @@
 → `CloudWatch` 경보를 통한 스케일 인 및 스케일 아웃이 가능하다. 
 
 - An alarm monitors a metric (such as Average CPU, or a custom metric)  
-→ 경보를 위한 지표로써 평균 `CPU` 등 원하는 사용자 지정 지표를 지정할 수 있다. 이 경보가 울리는 것이 트리거가 되어 `ASG`의 스케일링 활동을 유발하는 것이다.
-경보에 의해 내부적으로 자동적인 스케일링이 이루어지기 때문에 `ASG`라는 이름이 붙었다.
+→ 경보를 위한 지표로써 평균 `CPU` 등 원하는 사용자 지정 지표를 지정할 수 있다. 이 경보가 울리는 것이 트리거가 되어 `ASG`의 스케일링 활동을 유발하는 것이다. 경보에 의해 내부적으로 자동적인 스케일링이 이루어지기 때문에 `ASG`라는 이름이 붙었다.
 
 - Based on the alarm:
 ~~~
@@ -120,23 +118,35 @@
 - 동적 스케일링 정책에는 대상 추적 스케일링, 단순과 단계 스케일링, 예약된 작업 스케일링의 세 가지 유형이 있다.
 
 - Target Tracking Scaling  
-→ 대상 추적 스케일링은 가장 단순하고 설정하기도 쉽다. 예를 들어 모든 `ASG`의 대상 그룹 내 인스턴스들의 평균 `CPU` 사용률을 추적하여 이 수치가 40%대에 머무르게 설정할 수 있다.
+→ 대상 추적 스케일링 정책은 가장 단순하고 설정하기도 쉽다. 예를 들어 모든 `ASG`의 대상 그룹 내 인스턴스들의 평균 `CPU` 사용률을 추적하여 이 수치가 40%대에 머무르게 설정할 수 있다.
 ~~~
 - Most simple and easy to set-up
 - Example: I want the average ASG CPU to stay at around 40%
+
+- 대상 추적 스케일링 정책은 휴지 기간이 만료될 때까지 기다리지 않고 즉시 조정 활동을 트리거할 수 있다.
 ~~~
 
-- Simple / Step Scaling  
+- Step Scaling
+~~~
+- 단계 스케일링 정책은 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 수 있다.
+
+- When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
+- When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1
+→ CloudWatch 경보를 설정하고 전체 ASG에 대한 CPU 사용률이 70%를 초과하는 경우 두 유닛 추가하고 CPU 사용량이 30% 이하로 떨어지는 경우 유닛 하나를 제거하는 등의 설정을 추가해야 한다.
+
+- 단계 조정 정책은 휴지 기간이 만료될 때까지 기다리지 않고 즉시 조정 활동을 트리거할 수 있다.
+~~~
+
+- Simple Scaling  
 ~~~
 - 단순과 단계 스케일링은 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 수 있다.
 
 - When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
 - When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1
 → CloudWatch 경보를 설정하고 전체 ASG에 대한 CPU 사용률이 70%를 초과하는 경우 두 유닛 추가하고 CPU 사용량이 30% 이하로 떨어지는 경우 유닛 하나를 제거하는 등의 설정을 추가해야 한다.
-~~~
 
-- 여러분의 상사가 애플리케이션이 데이터베이스로 보내는 분당 요청 수를 기반으로 오토 스케일링 그룹을 스케일링하라고 요청했습니다. 어떻게 해야 할까요?  
-→ 백엔드와 데이터베이스 간 연결에는 분당 요청에 해당하는 `CloudWatch` 지표가 존재하지 않는다. `CloudWatch` 경보를 생성하려면 `CloudWatch` 사용자 지정 지표를 먼저 생성해야 한다.
+- 단순 조정 정책을 통해 조정 활동을 수행하기 위해 휴지 기간이 만료될 때까지 기다려야 한다.
+~~~
 
 - Scheduled Actions Scaling  
 ~~~
@@ -192,6 +202,15 @@ $ sudo amazon-linux-extras install epel -y
 $ sudo yum install stress -y
 
 $ stress -c 4
+~~~
+
+### 7. 인스턴스의 기본 종료 정책
+- 기본 종료 순서는 다음과 같다.
+~~~
+- 여러 가용 영역에 인스턴스가 있는 경우 인스턴스가 가장 많은 가용 영역과 축소로부터 보호되지 않는 인스턴스가 하나 이상 있는 가용 영역을 선택합니다. 이 인스턴스 수가 있는 가용 영역이 둘 이상인 경우 가용 영역을 선택한다. 
+- 선택한 가용 영역에서 가장 오래된 시작 구성을 사용하는 비보호 인스턴스를 선택한다. 그러한 인스턴스가 하나 있으면 종료한다.
+- 위 기준에 따라 종료할 인스턴스가 여러 개인 경우 다음 청구 시간에 가장 가까운 비보호 인스턴스를 결정한다.
+- 다음 청구 시간에 가장 가까운 비보호 인스턴스가 둘 이상인 경우 이러한 인스턴스 중 하나를 무작위로 선택한다.
 ~~~
 
 ---

@@ -24,6 +24,13 @@
 - Can create CloudWatch Custom Metrics (for the RAM for example)  
 → `CloudWatch`에 커스텀 지표를 만들 수 있다. 예를 들면 `EC2` 인스턴스로부터 메모리 사용량을 추출할 수 있다. 이는 굉장히 전형적인 사례이다.
 
+- 자동으로 `CloudWatch`가 제공하는 대표적인 `EC2` 인스턴스 모니터링 지표는 다음과 같다. 메모리 사용량이 포함되지 않는다는 것에 주의해야 한다.
+~~~
+- EC2 인스턴스의 CPU 사용률
+- EC2 인스턴스의 디스크 읽기 활동 
+- EC2 인스턴스 외부의 네트워크 패킷
+~~~
+
 ### 2. CloudWatch Metric Streams
 - Continually stream CloudWatch metrics to a destination of your choice, with near-real-time delivery and low latency.  
 → `CloudWatch` 지표는 `CloudWatch` 외부로 스트리밍할 수 있다. `CloudWatch` 지표를 원하는 대상으로 지속적으로 스트리밍하면 거의 실시간으로 전송되고 지연 시간도 짧아진다.

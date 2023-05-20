@@ -14,7 +14,7 @@
 → 동종 마이그레이션을 지원한다. 온프레미스 Oracle에서 RDS Oracle로 데이터의 마이그레이션이 가능하다.
 
 - Heterogeneous migrations: ex Microsoft SQL Server to Aurora
-→ 이기종 마이그레이션을 지원한다. 예를 들면ㅁ Microsoft SQL Server에서 Aurora로 마이그레이션이 가능하다.
+→ 이기종 마이그레이션을 지원한다. 예를 들면 Microsoft SQL Server에서 Aurora로 마이그레이션이 가능하다.
 ~~~
 
 - Continuous Data Replication using CDC  
@@ -39,7 +39,7 @@
 → 마이크로소프트 `Azure SQL`의 마이그레이션 또한 가능하다.
  
 - Amazon RDS: all including Aurora  
-→ `RDS`는 오로라와 `Amazon S3`를 포함한 모든 데이터베이스가 포함된다.
+→ `RDS`는 오로라와 `Amazon S3`를 포함한 모든 데이터베이스가 포함된다. `S3`로 데이터를 전송할 때 파일은 `.csv` 형태로 마이그레이션된다.
 
 - Amazon S3
 
@@ -65,7 +65,7 @@
 → `OLTP`를 사용한다면 `SQL` 서버나 `Oracle`을 `MySQL`, 또는 `PostgreSQL`, 오로라로 마이그레이션 가능하다.
 
 - Example OLAP: (Teradata or Oracle) to Amazon Redshift  
-→ `OLAP`에 사용되는 `Amazon` 레드시프트로의 변환도 가능하다.
+→ `OLAP`에 사용되는 `Amazon Redshift`로의 변환도 가능하다.
 
 - You do not need to use SCT if you are migrating the same DB engine
 ~~~
@@ -73,6 +73,8 @@
 - Ex: On-Premise PostgreSQL => RDS PostgreSQL
 - The DB engine is still PostgreSQL (RDS is the platform)
 ~~~
+
+- 데이터의 마이그레이션에는 어느 정도 시간이 걸린다. 그러므로 긴급하게 온프레미스 `RDS`를 `AWS`로 마이그레이션한다면 `SCT`를 사용하는 것이 적절하지 않다.
 
 ### 4. DMS - Continuous Replication
 - `DMS`에 지속적인 복제를 설정할 수 있다.
@@ -83,6 +85,8 @@
 - MySQL을 실행하는 Amazon RDS 데이터베이스에 맞도록 스키마 변환을 수행한다.
 - 그러면 DMS 복제 인스턴스를 설정해 풀로드(full load)와 CDC를 사용할 수 있고 지속적 복제가 생긴다.
 ~~~
+
+- CDC = Change Data Capture
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/34809fd9-42f0-463d-b72b-85fa6709dbf2)
 

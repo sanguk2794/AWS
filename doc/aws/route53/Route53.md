@@ -416,8 +416,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 → 주로 공용 리소스에 대한 상태를 확인하는 방법이다. 물론 개인 리소스의 상태를 확인할 수 있는 방법도 존재한다.
 
 - Health Check => Automated DNS Failover:  
-→ 장애가 발생한 리전으로 트래픽을 전송하지 않기 위해서는 `Route 53`에 상태 확인을 생성해야 한다. 이는 `DNS`의 장애 조치를 자동화하기 위한 작업이다.
-세 가지 방법이 존재한다.
+→ 장애가 발생한 리전으로 트래픽을 전송하지 않기 위해서는 `Route 53`에 상태 확인을 생성해야 한다. 이는 `DNS`의 장애 조치를 자동화하기 위한 작업이다. 세 가지 방법이 존재한다.
 ~~~
 - Health checks that monitor an endpoint (application, server, other AWS resource)
 → 공용 엔드 포인트를 모니터링한다. application, server, other AWS resource등이 리소스가 될 수 있다.
@@ -436,7 +435,8 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- `health check`를 위한 `url`은 `domain/health`가 일반적이다.
+- `Health check`를 위한 `URL`은 `Domain/health`가 일반적이다.
+- 하나의 기본 레코드와 하나의 보조 레코드를 두고 기본 레코드가 실패했을 때 보조 레코드를 참조할도록 활성-수동 장애 조치 구성을 만들 때, 레코드를 만들고 라우팅 정책에 대한 장애 조치를 지정하기만 하면 된다.
 
 #### 1. Health Checks – Monitor an Endpoint
 - About 15 global health checkers will check the endpoint health  

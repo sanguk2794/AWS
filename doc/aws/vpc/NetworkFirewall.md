@@ -52,6 +52,8 @@
 - Rules can be centrally managed cross- account by AWS Firewall Manager to apply to many VPCs  
 → 이 규칙들 역시 중앙 집중식으로 관리되며 여러 계정과 `VPC`에 적용된다.
 
+- 만약 `S3` 등 아마존 서비스로의 데이터 액세스를 특정 `VPC`로 제한하고자 한다면 `Network Firewall`은 사용할 수 없다.
+
 ### 3. Network Firewall – Fine Grained Controls
 - 네트워크 트래픽을 세부적으로 관리할 수 있다.
 

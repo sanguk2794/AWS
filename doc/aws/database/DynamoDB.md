@@ -37,6 +37,7 @@
 → `DynamoDB`에 테이블을 생성하면 각 테이블에 기본 키가 부여된다. 그리고 기본 키는 생성시 결정된다.
 
 - 기본키는 `Partition key`와 `Sort key`를 결합한 복합키이다. 이 중 `Sort key`는 `optional`이다.
+→ 고유한 파티션 키 값이 많을수록 프로비저닝된 처리량을 보다 효율적으로 사용할 수 있다.
 
 - Each table can have an infinite number of items (= rows)  
 → 각 테이블에 데이터를 추가한다. 레코드를 무한히 추가할 수 있다.

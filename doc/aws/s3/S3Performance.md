@@ -38,7 +38,7 @@
 - `Amazon S3 Transfer Acceleration`를 사용하면 클라이언트와 `S3` 버킷 간 빠르고 쉽고 안전한 장거리 파일 전송이 가능하다.
 
 - Increase transfer speed by transferring file to an AWS edge location which will forward the data to the S3 bucket in the target region
-→ 파일을 `AWS` 앳지 로케이션으로 전송한다. 엣지 로케이션에 도착한 데이터는 최적화된 네트워크 경로를 통해 `S3` 버킷으로 전달된다.
+→ 파일을 `AWS` 엣지 로케이션으로 전송한다. 엣지 로케이션에 도착한 데이터는 최적화된 네트워크 경로를 통해 `S3` 버킷으로 전달된다.
 
 - Compatible with multi-part upload
 → 전송 가속화를 멀티파트 업로드와 함께 사용할 수 있다.
@@ -46,6 +46,8 @@
 ![image](https://user-images.githubusercontent.com/97398071/235168434-edbdfc47-92a5-42c6-936d-950dc3ceac12.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+- `S3`에 모든 데이터를 가장 빠른 방법으로 집계해야 한다면 `S3 Transfer Acceleration`를 사용해야 한다.
 
 #### S3 Byte-Range Fetches
 - `S3 바이트 범위 가져오기` 기능은 파일을 수신하고 파일을 읽는 가장 효율적인 방법 중 하나이다.

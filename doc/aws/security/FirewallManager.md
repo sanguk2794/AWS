@@ -48,7 +48,7 @@
 → `Shield Advanced`는 `DDoS` 공격으로부터 고객을 보호한다. 또, `AWS` 디도스 대응 팀이 항시 대기하고 있어 공격을 받았을 때 지원을 받을 수 있다. 또, `WAF` 규칙을 자동 생성해준다.
 
 - If you’re prone to frequent DDoS attacks, consider purchasing Shield Advanced  
-→ 디도스 공격을 자주 받는다면 `Shield Advanced`를 사용하는 것이 좋은 선택지가 될 수 있다.
+→ 디도스 공격을 자주 받는다면 `Shield Advanced`를 사용하는 것이 좋은 선택지가 될 수 있다. 디도스 공격 방어의 선택지로 `Firewall`이 등장한다면 틀린 답이다.
 
 ---
 #### ▶ Reference

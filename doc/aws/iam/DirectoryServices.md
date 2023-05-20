@@ -70,6 +70,8 @@
 ~~~
 - Integration is out of the box
 → Directory 서비스를 통해 AWS 관리형 AD 연결한다면 IAM Identity Center를 AWS 관리형 Microsoft AD에 통합하고 연결하도록 설정하는 것으로 충분하다.
+
+- 모든 AWS 계정을 다중 계정 설정으로 통합할 수 있다. Organizations를 사용하여 모든 기능이 켜진 새 조직을 생성하고 그 아래에 하위 계정을 생성해야 한다.
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/236678808-6ec3f21e-af72-43f0-8282-e0fb3de1efb8.png)
@@ -90,6 +92,13 @@
 ![image](https://user-images.githubusercontent.com/97398071/236678829-7198ca07-0a5f-431b-aa3d-92aeb08113df.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
+
+### 4. Active Directory Federation Service
+- `Federation`
+→ 페더레이션은 신뢰가 설정된 도메인의 컬렉션이다. 신뢰 수준은 다른 경우도 있지만 일반적으로 인증 및 권한 부여가 포함된다.
+
+- `Active Directory Federation Service`는 사용자 계정 및 응용 프로그램이 완전히 다른 네트워크나 조직에 있는 경우에도 완벽한 단일 프롬프트 액세스를 제공해주는 `ID` 액세스 솔루션이다.
+- `Active Directory`에 저장된 온프레미스 자격 증명을 사용하여 두 환경의 리소스에 액세스하기를 원할 때 `Active Directory Federation Service`를 사용하여 `SAML 2.0` 기반 페더레이션을 설정해 사용할 수 있다.
 
 ---
 #### ▶ Reference

@@ -44,7 +44,7 @@
 - `Amazon Inspector`가 평가하는 요소는 다음과 같다.
 
 - Remember: only for EC2 instances, Container Images & Lambda functions  
-→ `Amazon Inspector`는 실행 중인 `EC2` 인스턴스, `Amazon ECR`의 컨테이너 이미지, `Lambda` 함수에만 사용된다는 점을 기억해야 한다.
+→ `Amazon Inspector`는 실행 중인 `EC2` 인스턴스, `Amazon ECR`의 컨테이너 이미지, `Lambda` 함수에만 사용할 수 있다.
 
 - Continuous scanning of the infrastructure, only when needed  
 → 필요한 경우에만 인프라를 지속적으로 스캔한다.
@@ -57,6 +57,10 @@
 
 - A risk score is associated with all vulnerabilities for prioritization  
 → 우선 순위 지정을 위한 위험 점수는 실행될 때마다 모든 취약성과 연결된다.
+
+### 3. AWS Artifact
+- `AWS Artifact`는 자신에게 해당되는 규정 준수와 관련된 정보를 제공하는 신뢰할 수 있는 중앙 리소스이다. `AWS Marketplace`에서 제품을 판매하는 `ISV`와 `AWS`의 보안 및 규정 준수 보고서에 온디맨드로 액세스할 수 있다.
+- 규정 준수에 관한 보고서가 필요하다면 `AWS Inspector`이 아닌 `AWS Artifact`를 활용해야 한다.
 
 ---
 #### ▶ Reference

@@ -17,10 +17,10 @@
 → `WebSocket` 프로토콜을 지원한다.
 
 - Handle API versioning (v1, v2…)  
-→ `API`의 버저닝을 핸들링한다.
+→ `API`의 버저닝을 핸들링할 수 있다.
 
 - Handle different environments (dev, test, prod…)  
-→ `Dev`, `Test`, `Prod` 등 여러 환경을 핸들링한다.
+→ `Dev`, `Test`, `Prod` 등 여러 환경을 핸들링할 수 있다.
 
 - Handle security (Authentication and Authorization)  
 → 보안에도 활용할 수 있다. 인증, 권한 부여 등 수많은 보안 기능을 `API Gateway`에 활성화할 수 있다.
@@ -35,17 +35,14 @@
 → `API Gateway` 수준에서 요청과 응답을 변형하거나 유효성을 검사해 올바른 호출이 실행되게 할 수 있다.
 
 - Generate SDK and API specifications  
-→ `SDK`나 `API` 스펙을 생성하거나 `API` 응답을 캐시할 수 있다.
+→ `SDK`나 `API` 스펙을 생성할 수 있다.
 
 - Cache API responses  
 → 응답을 캐시할 수 있다.
 
 - `API`를 생성하고 각각의 `Method`를 생성한다.
-
 - 메서드 정의 완료 후 `Create` → `Deploy`를 수행하면 호출 가능한 `URL`이 생성된다.
-
-- 서버리스 `API`를 생성하기 위해서는 `Amazon API Gateway`를 ......................와(과) 통합해야 합니다.  
-→ `AWS` 람다
+- 스로틀 제한 및 결과 캐싱을 통해 트래픽을 줄일 수 있다. 백엔드 서버의 부하가 높을 것으로 예상된다면 `CloudFront` 캐시가 아닌 `API Gateway`의 응답을 캐시하는 것이 정답이다.
 
 ### 3. API Gateway – Integrations High Level
 - Lambda Function
@@ -105,12 +102,10 @@
 → API Gateway는 여전히 생성된 리전에 위치하지만 모든 CloudFront 엣지 로케이션에서 액세스될 수 있다.
 ~~~
 
-- 엣지 최적화 `API` 게이트웨이를 사용할 경우, `API Gateway`가 모든 `AWS` 리전의 `CloudFront` 엣지 로케이션에 존재하게 됩니다.  
-→ 아니다. `API` 요청은 가장 가까운 `CloudFront` 엣지 로케이션으로 라우팅되며, 이는 지연 시간을 향상시킵니다. `API Gateway`는 여전히 하나의 `AWS` 리전에 존재한다.
-
 - Regional:
 ~~~
 - CloudFront 엣지 로케이션을 원하지 않을 때는 Regional Deploy를 사용한다.
+
 - For clients within the same region
 → 모든 사용자는 API Gateway를 생성한 리전과 같은 리전에 있어야 한다.
 
@@ -155,18 +150,6 @@
 - Must setup CNAME or A-alias record in Route 53
 → Route 53에 CNAME이나 A-별칭 레코드를 설정해 도메인 및 API Gateway를 가리키도록 해야한다.
 ~~~
-
-- 여러분이 가진 모바일 애플리케이션에서 애플리케이션 사용자에게 S3 버킷에 있는 개인 공간에 액세스할 수 있는 권한을 부여하려고 합니다. 어떻게 해야 합니까?  
-→ `Amazon Cognito` 아이덴티티 페더레이션을 사용한다.
-
-- 여러분은 `AWS`에 호스팅할 예정인 새로운 웹 및 모바일 애플리케이션을 개발하고 있으며, 현재 로그인 및 회원 가입 페이지를 구현하는 작업을 진행하고 있습니다. 애플리케이션 백엔드는 서버리스로 되어 있으며 구현에 `Lambda`, `DynamoDB`, `API Gateway`를 사용하고 있습니다. 다음 중 백엔드에 대한 인증을 구성하는 데 가장 쉽고 적합한 방식은 무엇입니까?  
-→ `Cognito` 사용자 풀을 사용한다.
-
-- 여러분이 운영 중인 모바일 애플리케이션에서 등록된 사용자들 모두 S3 버킷에 있는 자신의 폴더에서 이미지를 업로드 또는 다운로드할 수 있게 하려고 합니다. 또한 사용자들이 페이스북과 같은 소셜 미디어 계정을 통해 가입 및 로그인할 수 있게 하고자 합니다. 어떤 `AWS` 서비스는 사용해야 합니까?  
-→ `Amazon Cognito`
-
-### 6. Amazon Cognito
-`Amazon Cognito`는 웹 및 모바일 앱에 대한 인증, 권한 부여 및 사용자 관리를 제공한다. 사용자는 사용자 이름과 암호를 사용하여 직접 로그인하거나 `Facebook`, `Amazon`, `Google` 또는 `Apple` 같은 타사를 통해 로그인할 수 있다.
 
 ---
 #### ▶ Reference

@@ -56,9 +56,7 @@
 ~~~
 
 - 클라우드가 엣지 로케이션에 `HTTP` 요청을 보내면 엣지는 요청받은 컨텐츠가 캐싱되어 있는지 확인한다.
-
 - 캐싱되어 있지 않을 경우에는 원본으로 가서 요청 결과를 가져오면서 이를 로컬 캐시에 저장한다.
-
 - 다른 클라이언트가 같은 컨텐츠를 같은 엣지에서 요청하면 캐싱되어 있는 값을 응답에 사용한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235299150-36373d7e-600a-4a07-8928-c10361848b23.png)
@@ -67,11 +65,8 @@
 
 #### 1. CloudFront – S3 as an Origin
 - `S3`를 원본으로 사용한다고 가정할 때, `LA` 엣지에 접근하는 클라이언트에게는 `LA` 엣지에서 직접 컨텐츠를 제공한다. 그리고 이 `LA` 엣지는 내부 `AWS`망을 통해 `S3` 버킷의 원본을 받아온다.
-
 - 버킷 자체는 `OAC`로 보호받으며, `S3` 버킷 정책에 의해서만 수정할 수 있다.
-
 - 이는 다른 엣지 로케이션을 통해 요청을 수행하는 클라이언트에게도 동일하게 적용된다.
-
 - `CloudFront`와 엣지 로케이션을 통해 특정 리전에 속한 `S3` 버킷을 전 세계의 엣지 로케이션으로 분산시킬 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235299450-8f5c4e92-776e-497e-897b-2a76f5590375.png)
@@ -105,24 +100,6 @@
     ]
   }
 ~~~
-
-- 이 S3 버킷 정책이 하는 역할은 무엇인가요?
-~~~ json
-{
-    "Version": "2012-10-17",
-    "Id": "Mystery policy",
-    "Statement": [{
-         "Sid": "What could it be?",
-         "Effect": "Allow",
-         "Principal": {
-             "CanonicalUser": "CloudFront Origin Identity Canonical User ID"
-         },
-         "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::examplebucket/*"
-    }]
-}
-~~~
-→ `CloudFront` 배포 원본 액세스 `ID`에서 오는 `S3` 버킷 콘텐츠만이 평가될 수 있도록 허가
 
 #### 2. CloudFront vs S3 Cross Region Replication
 - 목적이 다르다. `CloudFront`는 전세계에 걸친 `CDN`이라면 `S3` 교차 리전 복제는 다른 리전으로의 버킷 복제이다.
@@ -241,8 +218,13 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/235302136-3ab18b84-33c8-4fa3-affc-2342759f0332.png)
 
+### 6. CloudFront - Using signed cookies
+- 현재의 `URL`을 변경하지 않으려는 경우나 여러 제한된 파일에 대한 액세스 권한을 제공하려는 경우, `CloudFront` 서명된 쿠키를 사용하여 콘텐츠 액세스를 제어할 수 있다. 
+- `URL`을 변경하지 않고 유료 구독자에게만 여러 비공개 미디어 파일에 대한 액세스를 제공해야 할 때 주로 사용된다.
+
 ---
 #### ▶ Reference
 - [Amazon CloudFront 오리진 액세스 제어(OAC)로 S3 오리진 보호하기](https://aws.amazon.com/ko/blogs/korea/amazon-cloudfront-introduces-origin-access-control-oac/)
+- [서명된 쿠키 사용](https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---

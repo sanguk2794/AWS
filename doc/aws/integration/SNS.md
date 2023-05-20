@@ -31,8 +31,9 @@
 - 100,000 topics limit  
 → 계정당 100,000 개의 주제를 가질 수 있다.
 
-- Emails, SMS & Mobile Notification, HTTP(S) Endpoints, SQS, Lambda, Kinesis Data Firehose... 
-
+- Emails, SMS & Mobile Notification, HTTP(S) Endpoints, SQS, Lambda, Kinesis Data Firehose...
+→ 이메일을 타겟으로 설정할 수 있다. 이메일을 보내야된다고 무조건 `SES`를 선택하면 틀린다.
+ 
 ![image](https://user-images.githubusercontent.com/97398071/235562492-18bbc849-0972-456d-a1a1-61b754f9b834.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)

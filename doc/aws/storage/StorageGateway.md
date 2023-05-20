@@ -93,9 +93,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- `S3`에 대규모의 데이터셋이 저장되어 있습니다. 여러분은 `NFS`, 혹은 `SMB` 프로토콜을 사용해 온프레미스 서버를 통해 이 데이터셋에 액세스하려 합니다. 또한, 온프레미스 `Microsoft AD`를 통해 이러한 파일에 대한 액세스를 인증하고자 합니다. 무엇을 사용해야 할까요?  
-→ `AWS Storage Gateway - File Gateway`
-
 #### 2. Amazon FSx File Gateway
 - Native access to Amazon FSx for Windows File Server  
 → `Amazon FSx` 파일 서버에 네이티브 액세스를 제공한다.
@@ -156,8 +153,7 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 테이프 백업에 가상 인피니트 스토리지를 노출하려고 합니다. 여러분은 사용 중인 것과 동일한 소프트웨어를 유지하고, `iSCSI`와 호환 가능한 인터페이스를 사용하려 합니다. 어떤 방법을 사용해야 할까요?  
-→ `AWS Storage Gateway - Tape Gateway`
+- `AWS Storage Gateway`를 사용하여 `Amazon S3 Glacier`, `Amazon S3 Glacier Deep Archive`에 데이터를 직접 백업할 수 있다.
 
 ### 3. Storage Gateway – Hardware appliance
 - 게이트웨이는 회사 데이터 센터에 설치되어 있어야 한다.

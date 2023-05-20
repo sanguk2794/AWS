@@ -32,6 +32,8 @@
 - Monitoring dashboards
 → 데이터베이스의 성능을 대시보드에 모니터링할 수 있다.
 
+- 향상된 모니터링을 활성화할 수 있다. DB 인스턴스가 실행되는 운영 체제에 대한 측정치를 실시간으로 제공해 준다. 
+
 - Read replicas for improved read performance
 → 읽기 전용 복제본을 활용해 읽기 성능을 개선할 수 있다.
 
@@ -151,6 +153,16 @@
 
 - Note:The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)  
 → 원하는 경우에는 읽기 전용 복제본을 다중 `AZ`로 설정할 수 있다.
+
+- `Amazon RDS`가 자동으로 대기 복제본으로 장애 조치를 수행하는 이벤트에는 다음이 포함된다.
+~~~
+- 기본 가용 영역의 가용성 손실
+- 네트워크 연결 실패
+- 기본 컴퓨팅 장치 오류
+- 기본 스토리지 오류
+~~~
+
+- 기본 데이터베이스의 인스턴스가 실패하면 `RDS`는 `DB` 인스턴스에 대한 `CNAME` 레코드를 뒤집어 대기 인스턴스를 가리키도록 하고, 대기 인스턴스를 새로운 기본 인스턴스로 승격시킨다.
 
 ### 6. RDS – From Single-AZ to Multi-AZ
 - `RDS`를 단일 `AZ`에서 다중 `AZ`로 전환할 수 있다.

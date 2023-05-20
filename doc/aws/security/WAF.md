@@ -30,7 +30,7 @@
 → 용량에 제한을 걸어 요청이 최대 2MB를 넘지 않게 설정하거나 지역 일치 조건을 두어 특정 국가를 허용 또는 차단할 수 있다.
 
 - Rate-based rules (to count occurrences of events) – for DDoS protection
-→ 속도 기반 규칙을 설정하면 IP 당 요청 수를 측정하여 디도스 공격을 막을 수도 있다.
+→ 속도 기반 규칙을 설정하면 IP 당 요청 수를 측정하여 디도스 공격을 막을 수도 있다. 각 발신 IP 주소에 대한 요청 속도를 추적하고 속도가 한도를 초과하는 IP에 대한 규칙 작업을 트리거할 수 있기 때문이다.
 ~~~
 
 - Web ACL are Regional except for CloudFront  

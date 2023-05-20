@@ -7,12 +7,10 @@
 → `EBS`를 사용한다면 인스턴스가 종료된 후에도 데이터를 지속할 수 있다. 이것이 바로 `EBS Volume`을 쓰는 주목적이다. 
 
 - Analogy: Think of them as a “network USB stick”, It’s a network drive (i.e. not a physical drive)  
-→ `EBS`는 `네트워크 USB`라고 생각하면 편리하다. 실제 연결이 네트워크를 통해 이루어지는 네트워크 드라이버이다.
-통신시 네트워크를 이용하므로 컴퓨터가 다른 서버에 도달할 때 까지의 지연이 생길 수 있다.
+→ `EBS`는 `네트워크 USB`라고 생각하면 편리하다. 실제 연결이 네트워크를 통해 이루어지는 네트워크 드라이버이다. 통신시 네트워크를 이용하므로 컴퓨터가 다른 서버에 도달할 때 까지의 지연이 생길 수 있다.
 
 - They are bound to a specific availability zone, An EBS Volume in us-east-1a cannot be attached to us-east-1b  
-→ `EBS Volume`은 하나의 `AZ`에서만 사용 가능하다. `us-east-1a`의 `EBS Volume`을 `us-east-1b`에서 사용할 수 없다.
-`Attach`하기 위해서는 반드시 `EC2`의 `AZ`와 `EBS Volume`의 가용 영역을 일치시켜야 한다.
+→ `EBS Volume`은 하나의 `AZ`에서만 사용 가능하다. `us-east-1a`의 `EBS Volume`을 `us-east-1b`에서 사용할 수 없다. `Attach`하기 위해서는 반드시 `EC2`의 `AZ`와 `EBS Volume`의 가용 영역을 일치시켜야 한다.
 
 - To move a volume across, you first need to snapshot it  
 → 단, 스냅샷을 이용할 경우 다른 `AZ`로도 볼륨을 옮길 수 있다.
@@ -27,8 +25,7 @@
 → `EC2` 인스턴스로부터 분리될 수 있고, 매우 빠르게 다른 인스턴스로 연결될 수 있다.
 
 - They can only be mounted to one instance at a time (at the CCP level)  
-→ `CCP` 레벨의 `EBS Volume`은 한 번에 하나의 인스턴스에만 마운트할 수 있다. 
-하나의 `EBS`에 2개의 인스턴스가 연결되는 것은 불가능하나, 여러 `EBS`가 하나의 인스턴스에 연결되는 것은 문제없이 가능하다. 
+→ `CCP` 레벨의 `EBS Volume`은 한 번에 하나의 인스턴스에만 마운트할 수 있다. 하나의 `EBS`에 2개의 인스턴스가 연결되는 것은 불가능하나, 여러 `EBS`가 하나의 인스턴스에 연결되는 것은 문제없이 가능하다. 
 
 ![image](https://user-images.githubusercontent.com/97398071/232322378-b44dc275-4f5e-4bd0-90d0-d790ebff9995.png)
 
@@ -38,6 +35,8 @@
 - 인스턴스와 연결된 `EBS Volume` 정보는 `EC2` → `Instances` → `Storage`에서 확인 가능하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232322884-c6ffbe30-947f-4915-85fb-83d7f0c20098.png)
+
+- `EBS` 볼륨은 프로덕션 중에 라이브 구성 변경을 지원한다. 즉, 서비스 중단 없이 볼륨 유형, 볼륨 크기 및 `IOPS` 용량을 수정할 수 있다.
 
 ### 2. EBS – Delete on Termination attribute
 - `EC2` 인스턴스를 통해 `EBS Volume`을 생성하는 경우 `Delete on Terminaton` 속성을 지정할 수 있다.  
@@ -89,6 +88,8 @@
 - `EC2` → `Elsatic Block Store` → `Snapshot` → `Recycle bin`은 스냅샷과 `AMI`가 실수로 지워지지 않도록 보호해 준다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232324437-ebd35737-180d-4144-bb26-8a24216fa28e.png)
+
+- `Amazon DLM, Amazon Data Lifecycle Manager`를 사용하여 `Amazon EBS` 볼륨을 백업하기 위해 생성된 스냅샷의 생성, 보존 및 삭제를 자동화할 수 있다.
 
 ### 4. EBS Volume
 - EBS Volumes come in 6 types  

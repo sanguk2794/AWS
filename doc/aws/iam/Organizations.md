@@ -126,6 +126,10 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+### 4. Resource Access Manager
+- `AWS Resource Access Manager, RAM`는 `AWS` 계정 또는 `AWS` 조직 내에서 `AWS` 리소스를 쉽고 안전하게 공유할 수 있게 해주는 서비스이다.
+- `AWS Transit Gateway`, 서브넷, `AWS License Manager` 구성 및 `Amazon Route 53 Resolver` 규칙 리소스를 공유할 수 있다.
+
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

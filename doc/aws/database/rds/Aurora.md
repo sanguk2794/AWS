@@ -177,6 +177,10 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
+### 4. event trigger
+- `RDS 이벤트`는 `DB 인스턴스 이벤트`, `DB 파라미터 그룹 이벤트`, `DB 보안 그룹 이벤트`, `DB 스냅샷 이벤트`와 같은 운영 이벤트만 제공한다. 데이터 수정 이벤트(INSERT, DELETE 등)를 캡처하는 것은 불가능하다.
+- 기본 함수 또는 저장 프로시저를 사용하면 `Amazon Aurora MySQL-Compatible Edition DB` 클러스터에서 `AWS Lambda` 함수를 호출할 수 있다.
+
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
