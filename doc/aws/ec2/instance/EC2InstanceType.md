@@ -33,12 +33,23 @@
 
 - Use cases
 ~~~
-- Batch processing workloads → 데이터 일괄 처리
-- Media transcoding → 미디어 트랜스코딩
-- High performance web servers → 고성능 웹 서버
-- High performance computing (HPC) → 고성능 컴퓨팅
-- Scientific modeling & machine learning → 머신 러닝
-- Dedicated gaming servers → 전용 게임 서버 
+- Batch processing workloads 
+→ 데이터 일괄 처리
+
+- Media transcoding 
+→ 미디어 트랜스코딩
+
+- High performance web servers 
+→ 고성능 웹 서버
+
+- High performance computing (HPC) 
+→ 고성능 컴퓨팅
+
+- Scientific modeling & machine learning 
+→ 머신 러닝
+
+- Dedicated gaming servers 
+→ 전용 게임 서버 
 ~~~
 
 #### 1. Media transcoding
@@ -103,11 +114,11 @@
 ~~~
 
 #### 1. OLTP
-- `OLTP, 온라인 트랜잭션 처리`는 온라인 뱅킹, 쇼핑, 주문 입력 또는 텍스트 메시지 전송 등 동시에 발생하는 다수의 트랜잭션을 실행하는 데이터 처리 유형이다.
+- `OLTP, 온라인 트랜잭션 처리`는 온라인 뱅킹, 쇼핑, 주문 입력 또는 텍스트 메시지 전송 등 동시에 발생하는 다수의 트랜잭션을 실행하는 데이터 처리 유형이다.  
 → 이러한 트랜잭션은 전통적으로 경제 또는 재무 트랜잭션이라고 칭하며, 기업이 회계 또는 보고 목적으로 언제든 정보에 액세스할 수 있도록 기록 및 보호된다.
 
 #### 2. Data Warehouse
-- 데이터 웨어하우스는 보고 및 분석을 위해 데이터베이스 테이블, Excel 시트 등의 구조화된 데이터와 XML 파일, 웹 페이지 등의 반구조화된 데이터를 저장하는 중앙 집중식 레포지토리이다.
+- 데이터 웨어하우스는 보고 및 분석을 위해 데이터베이스 테이블, `Excel` 시트 등의 구조화된 데이터와 `XML` 파일, 웹 페이지 등의 반구조화된 데이터를 저장하는 중앙 집중식 레포지토리이다.
 - 많은 양의 정보를 저장할 수 있기 때문에 사용자가 데이터마이닝, 데이터 시각화 및 기타 형태의 `BI` 보고에 사용할 수 있는 풍부한 과거 데이터에 쉽게 액세스할 수 있도록 한다.
 
 ---

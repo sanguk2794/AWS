@@ -1,7 +1,5 @@
 ## Kinesis
 ### 1. Kinesis Overview
-- `Kinesis`는 공인 인증시험에서 제일 중요한 파트 중 하나이다.
-
 - Makes it easy to collect, process, and analyze streaming data in real-time  
 → `Kinesis`를 활용하면 실시간 스트리밍 데이터를 손쉽게 수집하고 처리하여 분석할 수 있다.
 

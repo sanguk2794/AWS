@@ -31,7 +31,7 @@
 - 100,000 topics limit  
 → 계정당 100,000 개의 주제를 가질 수 있다.
 
-- Emails, SMS & Mobile Notification, HTTP(S) Endpoints, SQS, Lambda, Kinesis Data Firehose...
+- Emails, SMS & Mobile Notification, HTTP(S) Endpoints, SQS, Lambda, Kinesis Data Firehose...  
 → 이메일을 타겟으로 설정할 수 있다. 이메일을 보내야된다고 무조건 `SES`를 선택하면 틀린다.
  
 ![image](https://user-images.githubusercontent.com/97398071/235562492-18bbc849-0972-456d-a1a1-61b754f9b834.png)
@@ -41,9 +41,6 @@
 - Many AWS services can send data directly to SNS for notifications  
 → `SNS`는 많은 아마존 서비스에서 데이터를 수신하기도 한다.
 
-- CloudWatch Alarms, ASG, CloudFormation, AWS Budgets, S3 Bucket, AWS DMS, Lambda, DynamoDB, RDS Events...  
-→ 기억하지 않아도 된다.
-
 ![image](https://user-images.githubusercontent.com/97398071/235563062-daf70215-7c89-45d0-a100-b9b821d2bd93.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
@@ -52,7 +49,7 @@
 - Topic Publish (using the SDK) 
 ~~~
 - Create a topic 
-→ 메세지를 개시하기 위해서 먼저 주제를 생성한다.
+→ 메세지를 게시하기 위해서 먼저 주제를 생성한다.
 
 - Create a subscription (or many) 
 → 하나 또는 여러 개의 구독을 생성한다.

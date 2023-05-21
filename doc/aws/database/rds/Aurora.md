@@ -65,21 +65,35 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 3. Features of Aurora
-- `Aurora`의 특징은 다음과 같다.
-~~~
-- Automatic fail-over → 자동 장애 조치
-- Backup and Recovery → 백업 및 복구
-- Isolation and security → 격리 및 보안
-- Industry compliance → 산업 규정 준수
-- Push-button scaling → 자동 스케일링을 통한 버튼식 스케일링
-- Automated Patching with Zero Downtime → 제로 다운타임 자동 패치 설치
-- Advanced Monitoring → 고급 모니터링
-- Routine Maintenance → 통상 유지 관리
-- Backtrack: restore data at any point of time without using backups → 과거 어떤 시점의 데이터로도 복원 가능
-~~~
+- Automatic fail-over  
+→ 자동 장애 조치
+
+- Backup and Recovery  
+→ 백업 및 복구
+
+- Isolation and security  
+→ 격리 및 보안
+
+- Industry compliance  
+→ 산업 규정 준수
+
+- Push-button scaling  
+→ 자동 스케일링을 통한 버튼식 스케일링
+
+- Automated Patching with Zero Downtime  
+→ 제로 다운타임 자동 패치 설치
+
+- Advanced Monitoring  
+→ 고급 모니터링
+
+- Routine Maintenance  
+→ 통상 유지 관리
+
+- Backtrack: restore data at any point of time without using backups  
+→ 과거 어떤 시점의 데이터로도 복원 가능
 
 #### 1. Aurora Replicas - Auto Scaling
-- 복제본의 오토스케일링이 일어나면 자동으로 리더 엔드포인트가 연장 혹은 단축된다. 그 중 스케일 아웃이 일어날 경우 읽기가 좀 더 분산된 형태로 이루어진다. 이를 통해 전반적인 `CPU` 사용량 감소를 기대할 수 있다.
+- 복제본의 오토 스케일링이 일어나면 자동으로 리더 엔드포인트가 연장 혹은 단축된다. 그 중 스케일 아웃이 일어날 경우 읽기가 좀 더 분산된 형태로 이루어진다. 이를 통해 전반적인 `CPU` 사용량 감소를 기대할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233849527-d5f817e7-5796-4ef4-af68-832252442972.png)
 
@@ -165,19 +179,19 @@
 - SagaMaker는 백엔드에서 어떤 머신 러닝 모델이라도 사용할 수 있도록 지원해주고 Amazon Comprehend는 감정 분석을 지원해 준다.
 ~~~
 
-- You don’t need to have ML experience
+- You don’t need to have ML experience  
 → `Aurora` 머신 러닝을 사용하기 위해 머신 러닝 경험은 필요하지 않다.
  
 - Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
 → 활용 예시로 감지, 맞춤 광고, 감정 분석, 제품 추천등이 있으며 모두 `Aurora` 내에서 가능하다. 
 
-- `Application`이 `Aurora`에 아주 간단한 쿼리 (예를 들어 추천 상품은?) 를 조회하면 `Aurora`가 머신 러닝 서비스로 데이터를 전송하고, 머신 러닝 서비스는 `Aurora`로 직접 예측을 반환해 준다. 그리고 `Aurora`는 쿼리의 결과를 애플리케이션에 반환한다.
+- `Application`이 `Aurora`에 아주 간단한 쿼리를 조회하면 `Aurora`가 머신 러닝 서비스로 데이터를 전송하고, 머신 러닝 서비스는 `Aurora`로 직접 예측을 반환해 준다. 그리고 `Aurora`는 쿼리의 결과를 애플리케이션에 반환한다.
 
 ![image](https://user-images.githubusercontent.com/97398071/233850883-5884b322-6962-4dcd-b2c2-097fd8d20d30.png)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-### 4. event trigger
+### 4. RDS Events
 - `RDS 이벤트`는 `DB 인스턴스 이벤트`, `DB 파라미터 그룹 이벤트`, `DB 보안 그룹 이벤트`, `DB 스냅샷 이벤트`와 같은 운영 이벤트만 제공한다. 데이터 수정 이벤트(INSERT, DELETE 등)를 캡처하는 것은 불가능하다.
 - 기본 함수 또는 저장 프로시저를 사용하면 `Amazon Aurora MySQL-Compatible Edition DB` 클러스터에서 `AWS Lambda` 함수를 호출할 수 있다.
 

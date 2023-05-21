@@ -1,8 +1,7 @@
 ## SSL/TLS
 ### 1. SSL/TLS - Basics
 - An SSL Certificate allows traffic between your clients and your load balancer to be encrypted in transit (in-flight encryption)  
-→ `SSL, Secure Sockets Layer` 인증서를 이용하면 클라이언트와 로드 밸런서 사이에서 트래픽이 이동하는 동안 암호화된다. 이를 전송 중 암호화라고 한다.
-암호화된 요청은 송신자와 수신자 측에서만 복호화할 수 있다.
+→ `SSL, Secure Sockets Layer` 인증서를 이용하면 클라이언트와 로드 밸런서 사이에서 트래픽이 이동하는 동안 암호화된다. 이를 전송 중 암호화라고 한다. 암호화된 요청은 송신자와 수신자 측에서만 복호화할 수 있다.
 
 - SSL refers to Secure Sockets Layer, used to encrypt connections  
 → `SSL`은 연결을 암호화하는데 사용화한다.
@@ -52,10 +51,10 @@
 → 다중 도메인을 지원하기 위해 다른 인증서를 추가할 수도 있다.
 
 - Clients can use SNI (Server Name Indication) to specify the hostname they reach  
-→ 클라이언트는 `SNI, Server Name Indication`라는 것을 사용해 접속할 호스트의 이름을 알릴 수 있다.
+→ 클라이언트는 SNI, Server Name Indication라는 것을 사용해 접속할 호스트의 이름을 알릴 수 있다.
 
 - Ability to specify a security policy to support older versions of SSL / TLS (legacy clients)  
-→ 원하는 대로 보안 정책을 지정할 수 있다. 구 버전의 `SSL`과 `TLS`, 즉 레거시 클라이언트를 지원할 수도 있다.
+→ 원하는 대로 보안 정책을 지정할 수 있다. 구 버전의 SSL과 TLS, 즉 레거시 클라이언트를 지원할 수도 있다.
 ~~~
  
 ### 3. SSL – Server Name Indication (SNI)
@@ -73,6 +72,7 @@
 
 #### 4. Elastic Load Balancers – SSL Certificates
 - `ELB`의 종류별로 `SSL` 지원이 다르다.
+
 - Classic Load Balancer (v1)  
 → 지원하기는 하지만, `SSL` 인증서를 하나만 둘 수 있다.
 ~~~
@@ -88,12 +88,9 @@
 ~~~
 
 - `EC2` → `Load Balancing` → `Load Balancers` → `ALB` or `NLB` 인스턴스  클릭 → `Listeners` → `Add Listener`  
-→ `ALB`의 경우 프로토콜을 `HTTPS`로, 포트번호를 `HTTPS`의 기본값인 443로 설정한다. `NLB`의 경우 프로토콜을 `TLS`로, 포트번호를 `TLS`의 기본값인 443로 설정한다.
-해당 설정 값과 일치하는 요청이 왔을 경우 요청은 특정 `Target group`으로 전달된다.
+→ `ALB`의 경우 프로토콜을 `HTTPS`로, 포트번호를 `HTTPS`의 기본값인 443로 설정한다. `NLB`의 경우 프로토콜을 `TLS`로, 포트번호를 `TLS`의 기본값인 443로 설정한다. 해당 설정 값과 일치하는 요청이 왔을 경우 요청은 특정 `Target group`으로 전달된다.
 
-- `Secure listener settings` 설정에서 `SSL` 보안 정책을 설정할 수 있는데, 인증서가 어떤 방식을 쓰게 할 것인지 정하는 것이다.
-필요에 따라 구 버전의 `SSL`이나 `TLS` 등과 호환되게 할 수 있다.
-
+- `Secure listener settings` 설정에서 `SSL` 보안 정책을 설정할 수 있는데, 인증서가 어떤 방식을 쓰게 할 것인지 정하는 것이다. 필요에 따라 구 버전의 `SSL`이나 `TLS` 등과 호환되게 할 수 있다.
 - 인증서를 `ACM`에서 가져오거나, 개인키, 인증서, 인증서 체인을 입력해 외부에서 가져올 수 있다. 외부에서 가져올 경우 인증서가 `ACM`으로 직접 들어간다.
 
 ---

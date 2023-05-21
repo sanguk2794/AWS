@@ -12,7 +12,7 @@
 → `Kubernetes`는 오픈 소스 시스템으로 `Docker`로 컨테이너화한 애플리케이션의 자동 배포, 확장, 관리를 지원한다.
 
 - It’s an alternative to ECS, similar goal but different API  
-→ 컨테이너를 실행한다는 목적은 `ECS`와 비슷하지만, 사용하는 `API`가 다르다. `ECS`는 오픈소스가 아닌 반면, `Kubernetes`는 오픈소스이고 여러 클라우드 제공자가 사용하므로 표준화를 기대할 수 있다.
+→ 컨테이너를 실행한다는 목적은 `ECS`와 비슷하지만 사용하는 `API`가 다르다. `ECS`는 오픈소스가 아닌 반면 `Kubernetes`는 오픈소스이고 여러 클라우드 제공자가 사용하므로 표준화를 기대할 수 있다.
 
 - EKS supports EC2 if you want to deploy worker nodes or Fargate to deploy serverless containers  
 → `EKS`에는 `EC2` 시작 모드와 `Fargate` 모드의 두 가지 실행 모드가 있다. 

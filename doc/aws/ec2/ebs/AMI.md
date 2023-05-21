@@ -51,7 +51,14 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/232326104-7afa9506-f07f-440f-8cda-2b74868c78f5.png)
 
+### 3. AMI vs. EBS Snapshot
+- 기본적으로 `EBS`를 백업한다는 점에서 `AMI` 와 `Snapshot`은 동일하다.
+- `AMI` 는 `EC2` 인스턴스에 연결되어 있는 모든 `EBS Volume`과 `OS`를 동시에 백업한다. 하지만, 스냅샷은 사용자가 선택한 `EBS Volume`의 데이터만을 백업한다.
+- `AMI`는 바로 `EC2` 인스턴스를 생성할 수 있다. 하지만, 스냅샷은 해당 스냅샷을 이용해 `AMI`를 생성하는 단계를 거쳐야한다.
+- `OS` 와 별개로 데이터만 백업하고 싶은 경우에 스냅샷을 사용하면 된다.
+
 ---
 #### ▶ Reference
+- [[AWS] 📚 AMI / Snapshot 개념 & 백업 사용법 💯 정리](https://inpa.tistory.com/entry/AWS-📚-AMI-Snapshot-개념-백업-사용법-💯-정리)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---

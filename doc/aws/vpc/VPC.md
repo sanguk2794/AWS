@@ -13,6 +13,10 @@
 
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/9c7acf92-53dd-4cd9-94d4-489715743ce0)
 
+- `VPC`는 리전의 모든 가용 영역에 걸쳐 존재한다. `VPC`를 생성한 후 각 가용 영역에 하나 이상의 서브넷을 추가할 수 있다.
+- 각 서브넷은 전적으로 하나의 가용 영역 내에 있어야 하며 여러 영역에 걸쳐 있을 수 없다.
+
+
 ### 2. VPC in AWS – IPv4
 - VPC = Virtual Private Cloud  
 → `VPC`는 `Virtual Private Cloud`의 약자이다.

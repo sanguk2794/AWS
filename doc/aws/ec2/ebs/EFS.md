@@ -1,7 +1,7 @@
 ## EFS
 ### 1. Amazon EFS – Elastic File System
 - Managed NFS (network file system) that can be mounted on many EC2  
-→ 일래스틱 파일 시스템은 관리형 `NFS`이다. 즉, 네트워크 파일 시스템이다. 네트워크 파일 시스템이므로 여러 `EC2` 인스턴스에 마운트될 수 있다.
+→ 일래스틱 파일 시스템은 관리형 `NFS, 네트워크 파일 시스템`이다. 네트워크 파일 시스템이므로 여러 `EC2` 인스턴스에 마운트될 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232503495-111c69e3-65a0-4258-8625-e2f8508b8636.png)
 
@@ -39,7 +39,7 @@
 → 리눅스의 표준 파일 시스템인 `POSIX` 시스템을 사용하며, 표준 파일 `API`를 가진다.
 
 - File system scales automatically, pay-per-use, no capacity planning!  
-→ 미리 용량을 계획하지 않아도 된다. 파일 시스템에 따라 자동으로 확장되고 사용량에 따라 요금을 지불하면 된다.
+→ 미리 용량을 계획하지 않아도 된다. 파일 시스템에 따라 자동으로 확장되기 때문이다. 사용량에 따라 요금이 청구된다.
 
 ### 3. EFS – Storage Classes
 - `EFS Standard` 및 `Standard-IA` 스토리지 클래스는 `AWS` 리전 내의 여러 가용 영역에 파일 시스템 데이터와 메타데이터를 중복 저장하여 최고 수준의 가용성과 내구성을 제공한다.
@@ -63,7 +63,7 @@
 - 가용성과 내구성 측면에서는 두 가지 옵션이 있다.
 
 - Standard: Multi-AZ, great for prod
-→ Standard 옵션은 다중 AZ에 데이터를 보존한다. 한 AZ가 중단되더라도 EFS 파일 시스템에 영향을 주지 않기 때문에 프로덕션 사용 사례에 적합하다.
+→ 다중 AZ에 데이터를 보존한다. 한 AZ가 중단되더라도 EFS 파일 시스템에 영향을 주지 않기 때문에 프로덕션 사용 사례에 적합하다.
 
 - One Zone: One AZ, great for dev, backup enabled by default, compatible with IA (EFS One Zone-IA)
 → 단일 AZ에 데이터를 보존하므로 Standard에 비해 가용성이 떨어진다. 하지만 비용이 약 20% 저렴하다.
@@ -127,7 +127,7 @@ $ ls /[NFC path]
 
 ### 7. EBS vs EFS
 #### 1. EBS volumes
-- `EBS` 볼륨은 한 번에 하나의 인스턴스에만 연결이 가능하고 특정 가용 영역에 한정된다. `EBS`의 유형 중 `gp2`는 디스크 크기가 늘어나면 `I/O`도 함께 증가한다. 또, `io1`은 `I/O`를 볼륨 크기와 관계 없이 독립적으로 증가시킬 수 있다. 중요한 데이터베이스를 실행할 때 좋은 방법이다.
+- `EBS` 볼륨은 한 번에 하나의 인스턴스에만 연결이 가능하고 특정 가용 영역에 한정된다.
 ~~~
 - one instance (except multi-attach io1/io2)
 - are locked at the Availability Zone (AZ) level

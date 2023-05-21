@@ -20,14 +20,11 @@
 - IAM Authentication: IAM roles to connect to your database (instead of username/pw)  
 → `DB` 인증시 `RDS`와 `Aurora`는 사용자 이름과 패스워드라는 전통적인 조합을 사용할 수 있으며 `IAM Role`을 통해 `DB`에 접속할 수도 있다. `IAM Role`을 통해 접속할 수 있는 `DB`는 `Aurora`와 `PostgreSQL`, `MySQL`로 제한된다.
 
-- 사내(On-premise)에서 관리하던 `MySQL` 데이터베이스를 `RDS`로 옮겼습니다. 데이터베이스와 상호 작용하는 애플리케이션과 개발자가 아주 많은 상태입니다. 모든 개발자는 회사의 `AWS` 계정에 `IAM` 사용자로 등록되어 있습니다. 모든 개발자에 대해 `DB` 사용자를 생성하지 않고 `MySQL RDS DB` 인스턴스에 액세스할 수 있게 하려면 가장 적절한 방법은 무엇입니까?  
-→ `IAM` 데이터베이스 인증을 활성화한다.
-
 - Security Groups: Control Network access to your RDS / Aurora DB  
-→ 보안 그룹을 통해 `DB`에 대한 네트워크 액세스를 통제할 수 있다. 특정 포트, `IP`, 보안 그룹 등이 포함된다.
+→ 보안 그룹을 통해 `DB`에 대한 네트워크 액세스를 통제할 수 있다.
 
 - No SSH available except on RDS Custom  
-→ `RDS`와 `Aurora`는 `SSH`로 액세스가 불가능하다. 관리형 서비스이기 때문이다. 다만 `RDS Custom`은 예외이다.
+→ `RDS`와 `Aurora`는 관리형 서비스이기 때문에 `SSH`로 인스턴스에 액세스할 수 없다. 다만 `RDS Custom`은 예외이다.
 
 - Audit Logs can be enabled and sent to CloudWatch Logs for longer retention  
 → 감사 로그가 있어서 시간에 따라 `RDS` 및 `Aurora`에서 어떤 쿼리가 생성되는지 확인할 수 있다. 이 로그는 시간이 지나면 자동 삭제된다. 장기간 보관하고 싶다면 `CloudWatch Logs`로 로그 데이터를 전송해야 한다.

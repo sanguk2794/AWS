@@ -75,12 +75,6 @@
 
 - 암호화를 지원한다.
 
-- 수백 `TB`의 데이터를 `Amazon S3`로 이전한 후, `EC2` 인스턴스 플릿을 사용해 처리해야 합니다. 광대역은 `1Gbit/초`입니다. 여러분은 데이터를 더 빠르게 이전하고, 가능하면 전송 중에 데이터를 처리했으면 합니다. 어떤 방법을 추천할 수 있을까요?  
-→ `Snowball Edge` 사용하기
-
-- 여러분은 수백 `TB`의 데이터를 `AWS S3`로 최대한 빨리 이전시켜야 합니다. 여러분의 네트워크 대역폭을 사용해보려 했으나, 업로드 프로세스가 완료되기까지 약 3주가 소요됩니다. 이런 경우 어떤 접근법이 권장될까요?  
-→ `Snowball Edge` 사용하기
-
 #### 2. AWS Snowcone
 - Small, portable computing, anywhere, rugged & secure, withstands harsh environments  
 → `Snowball Edge`보다 훨씬 작은 어디서나 컴퓨팅 가능한 작은 휴대용 장치이다. 견고하고 안전하다. 심지어 사막, 물 속 등 가혹한 환경을 버틸 수 있다.

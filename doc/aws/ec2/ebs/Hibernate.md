@@ -31,7 +31,6 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - 절전 모드를 실행시키면 실행 중인 인스턴스는 중지 상태로 전환되고 `RAM`의 내용은 `EBS Volume`에 덤프된다. 그리고 `RAM`은 사라진다.
-
 - 재기동시 `EBS Volume`에 덤프했던 `RAM` 정보를 그대로 읽어들여 인스턴스 메모리에 적재한다. 이렇게 하면 `EC2` 인스턴스를 중지한 적 없던 것처럼 사용할 수 있다.
 
 - Use cases:
@@ -46,9 +45,9 @@
 → 서비스 초기화가 많은 시간이 걸릴 때 이를 무시하고 빠르게 재부팅이 하고 싶을 때 
 ~~~
 
-- 절전 모드를 지원하는 제품군이 많다.
+- 많은 제품군이 절전 모드를 지원한다.
 ~~~
-C3, C4, C5, I3, M3, M4, R3, R4, T2, T3, ...
+- C3, C4, C5, I3, M3, M4, R3, R4, T2, T3, ...
 ~~~
 
 - 인스턴스 `RAM`의 최대 크기는 `150GB`이다. 최대 크기는 이후 `AWS`의 정책 변경에 따라 달라질 수 있다.
@@ -66,12 +65,11 @@ C3, C4, C5, I3, M3, M4, R3, R4, T2, T3, ...
 → 절전 모드는 최대 60일까지 사용할 수 있다. 이 기간은 이후 정책 변경에 따라 달라질 수 있다.
 
 - `EC2` → `Instances` → `Launch an instance` → `details` → `Stop - Hibernate behavior`  
-→ 이 설정을 활성화하면 `EC2` 인스턴스를 절전모드로 변경할 수 있다. 밑의 경고 문구는 절전 모드를 활성화하는 경우 루트 볼륨에 `RAM`을 저장할 수 있는 공간이 충분한지 그리고 루트 `EBS` 볼륨이 암호화되었는지 확인해야 한다는 의미이다.
+→ 이 설정을 활성화하면 `EC2` 인스턴스를 절전모드로 변경할 수 있다. 절전 모드를 활성화하는 경우 루트 볼륨에 `RAM`을 저장할 수 있는 공간이 충분한지 그리고 루트 `EBS` 볼륨이 암호화되었는지 확인해야 한다는 경고 문구가 출력된다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232238334-13d347ff-42e0-4363-ac08-57aca50fe81a.png)
 
 - 암호화 설정은 `EC2` → `Instances` → `Launch an instance` → `Configure storage` → `Advanced` → `EBS Volume` → `Encrypted`에서 가능하다. 
-
 - 메모리는 스토리지 용량과 메모리 용량을 비교하면 된다.
 
 - 실제 절전모드에 들어갔는지에 대한 체크는 인스턴스 가동시간을 확인할 수 있는 `uptime` 커맨드를 사용하면 된다. `uptime`의 출력 시간이 1분 이상이 되면 인스턴스를 중지하고 다시 기동해 `uptime` 커맨드를 실행시키자.
@@ -85,6 +83,9 @@ $ uptime
 $0 uptime
 23:35:50 up 5 min, 1 users ...
 ~~~
+
+- 인스턴스가 시작된 후에는 인스턴스에 대해 최대 절전 모드를 활성화하거나 비활성화할 수 없다.
+- 최대 절전 모드를 준비하고 있다면 인스턴스의 상태가 `running`이 아니라고 하더라도 비용이 청구된다.
 
 ---
 #### ▶ Reference

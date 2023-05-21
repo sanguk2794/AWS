@@ -87,6 +87,9 @@
 - We can see the relations between the components  
 → 시험 관점에서 보면 `CloudFormation`은 코드형 인프라가 있을 때 사용하게 된다. 아키텍처를 다른 환경, 다른 리전, 다른 `AWS` 계정에서 반복해야한다면 굉장히 편리하다.
 
+- 스택 생성이 진행되기 전에 필요한 구성 요소가 제대로 실행되고 있는지 확인할 수 있다.  
+→ `CloudFormation` 템플릿의 인스턴스에 대한 `CreationPolicy` 특성을 구성하고 `cfn-signal` 도우미 스크립트를 사용하면 애플리케이션을 설치, 구성에 대한 성공과 실패 여부를 확인할 수 있다.
+
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

@@ -13,7 +13,7 @@
 → 애플리케이션의 데이터의 시간에 따른 모든 변경 내용을 검토하는데 사용된다.
 
 - Immutable system: no entry can be removed or modified, cryptographically verifiable  
-→ 불변 시스템이다. 데이터베이스에 무언가를 쓰면 삭제하거나 수정할 수 없다. 정말로 아무 것도 삭제되지 않았는지 확인하기 위해 암호화 서명을 하기도 한다. 금융 트랜잭션에서 유용하다. 어떤 금융 데이터도 데이터베이스에서 사라지게 하고 싶지 않을 가능성이 높기 때문이다.
+→ 불변 시스템이다. 데이터베이스에 무언가를 쓰면 삭제하거나 수정할 수 없다. 정말로 아무것도 삭제되지 않았는지 확인하기 위해 암호화 서명을 하기도 한다. 금융 트랜잭션에서 유용하다. 어떤 금융 데이터도 데이터베이스에서 사라지게 하고 싶지 않을 가능성이 높기 때문이다.
 
 - 2-3x better performance than common ledger blockchain frameworks, manipulate data using SQL  
 → 일반 원장 블록체인 프레임워크보다 2 ~ 3배 더 나은 성능을 얻을 수 있다. 또, `SQL`을 사용해 데이터를 관리할 수도 있다.

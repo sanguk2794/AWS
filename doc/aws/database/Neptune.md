@@ -5,8 +5,7 @@
 
 - A popular graph dataset would be a social network
 ~~~
-- 그래프 데이터 셋의 대표적인 예는 소셜 네트워크이다. 아래 모든 것들이 연결되어 그래프를 만든다. 
-이러한 그래프 데이터 셋에서는 `NepTune`을 데이터베이스로 선택하는 것이 좋다.
+- 그래프 데이터 셋의 대표적인 예는 소셜 네트워크이다. 아래 모든 것들이 연결되어 그래프를 만든다.
 
 - Users have friends 
 → 친구가 있다.

@@ -36,7 +36,7 @@
 - Each table has a Primary Key (must be decided at creation time)  
 → `DynamoDB`에 테이블을 생성하면 각 테이블에 기본 키가 부여된다. 그리고 기본 키는 생성시 결정된다.
 
-- 기본키는 `Partition key`와 `Sort key`를 결합한 복합키이다. 이 중 `Sort key`는 `optional`이다.
+- 기본키는 `Partition key`와 `Sort key`를 결합한 복합키이다. 이 중 `Sort key`는 `optional`이다.  
 → 고유한 파티션 키 값이 많을수록 프로비저닝된 처리량을 보다 효율적으로 사용할 수 있다.
 
 - Each table can have an infinite number of items (= rows)  
@@ -55,7 +55,7 @@
 - Set Types – String Set, Number Set, Binary Set
 ~~~
 
-- Therefore, in DynamoDB you can rapidly evolve schemas
+- Therefore, in DynamoDB you can rapidly evolve schemas  
 → 데이터의 유형과 구성 면에서 스키마를 빠르게 전개해야 할 때 `DynamoDB`를 선택하면 좋다. 중요하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/235818985-16633634-fef2-4ffa-b3c3-c398304837f9.png)
@@ -91,12 +91,11 @@
 → 정확히 사용한 만큼 비용을 지불한다. 모든 읽기와 쓰기에 대해 비용을 지불해야 한다.
 
 - Great for unpredictable workloads, steep sudden spikes
-→ 비싼 솔루션이지만, 워크로드를 예측할 수 없거나 급격히 증가하는 경우에 유용하다.
+→ 비싼 솔루션이지만 워크로드를 예측할 수 없거나 급격히 증가하는 경우에 유용하다.
 ~~~
 
 - 수천 개의 트랜잭션에서 수백만 개의 트랜잭션으로 1분 이내에 확장해야 하는 애플리케이션이 있다면 빠르게 확장되지 않는 프로비저닝 모드는 적합하지 않다.
-
-- 또, 트랜잭션이 없거나 하루에 많아야 4 ~ 5회밖에 되지 않는 워크로드에서도 온디맨드 모드가 더욱 적합하다. 어떤 모드가 더 적합한지 선택할 수 있도록 준비해야 한다.
+- 또, 트랜잭션이 없거나 하루에 많아야 4 ~ 5회밖에 되지 않는 워크로드에서도 프로비저닝 모드는 적합하지 않다. 어떤 모드가 더 적합한지 선택할 수 있도록 준비해야 한다.
 
 ### 4. DynamoDB Accelerator (DAX)
 - Fully-managed, highly available, seamless in-memory cache for DynamoDB  
@@ -119,7 +118,6 @@
 ~~~
 - DAX는 결과 객체를 캐싱한다.
 - ElastiCache는 집약된 결과를 캐싱한다.
-
 - ElastiCache가 SQL 쿼리 캐싱을 지원하는 것에 비해 DAX는 SQL 쿼리 캐싱을 지원하지 않는다.
 ~~~
 
@@ -153,7 +151,7 @@
 → DynamoDB 테이블의 변경 사항에 대해 Lambda 함수를 실행할 수 있다.
 ~~~
 
-- `DynamoDB`에는 `DynamoDB Streams`와 `Kinesis Data Streams`, 두 종류의 스트림 처리 방식이 있다.
+- `DynamoDB`에서는 `DynamoDB Streams`과 `Kinesis Data Streams`, 두 종류의 스트림을 데이터를 생성할 수 있다.
 
 - DynamoDB Streams
 ~~~
@@ -194,7 +192,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 6. DynamoDB Global Tables
-- 여러 리전 간에 복제가 가능한 테이블이이며, 두 테이블간의 양방향 복제가 가능하다.
+- 여러 리전 간에 복제가 가능한 테이블이며, 두 테이블간의 양방향 복제가 가능하다.
 
 - Make a DynamoDB table accessible with low latency in multiple-regions  
 → 복수의 리전에서 짧은 지연 시간으로 액새스할 수 있게 도와준다.

@@ -1,9 +1,8 @@
 ## Backup
 ### 1. RDS Backup
-- Automated backups:  
+- Automated backups:
+→ `RDS` 백업을 위한 첫 번째 방법은 `AWS`에서 제공하는 자동 백업이다.
 ~~~
-- RDS 백업을 위한 첫 번째 방법은 AWS에서 제공하는 자동 백업이다.
-
 - Daily full backup of the database (during the backup window)
 → 자동 백업은 RDS 서비스가 자동으로 매일 데이터베이스 유지 관리 시간에 데이터베이스 전체를 백업한다.
 
@@ -17,36 +16,33 @@
 → 자동 백업 보유 기간은 1일부터 35일까지로 설정할 수 있다. 만약 이 기능을 비활성화하고 싶다면 0로 설정해서 자동 백업을 비활성화하면 된다.
 ~~~
 
-- Manual DB Snapshots  
+- Manual DB Snapshots
+→ `RDS` 백업을 위한 두 번째 방법은 수동 `DB` 스냅샷이다.
 ~~~
-- RDS 백업을 위한 두 번째 방법은 수동 DB 스냅샷이다. 
-
 - Manually triggered by the user
 → 사용자가 수동으로 트리거해야 한다.
 
 - Retention of backup for as long as you want
 → 원하는 만큼 오랫동안 보유할 수 있다는 장점이 있다.
-
-- Trick: in a stopped RDS database, you will still pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead
-→ 원본 데이터베이스의 스냅샷을 만들고 원본 데이터베이스를 삭제하면 `RDS`를 중지시키는 것보다 훨씬 더 저렴한 가격으로 데이터베이스 정보를 보존할 수 있다.
-그리고 다시 사용할 때가 되면 스냅샷을 복원해서 사용하면 된다.
 ~~~
+
+- Trick: in a stopped RDS database, you will still pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead  
+→ 원본 데이터베이스의 스냅샷을 만들고 원본 데이터베이스를 삭제하면 `RDS`를 중지시키는 것보다 훨씬 더 저렴한 가격으로 데이터베이스 정보를 보존할 수 있다. 다시 사용할 때가 되면 스냅샷을 복원해서 사용하면 된다.
 
 ### 2. Aurora Backups
 - Automated backups  
+→ `Aurora` 백업을 위한 첫 번째 방법은 `AWS`에서 제공하는 자동 백업이다.
 ~~~
-- Aurora 백업을 위한 첫 번째 방법은 AWS에서 제공하는 자동 백업이다.
-
 - 1 to 35 days (cannot be disabled)
-→ 자동 백업은 백업 데이터 보유 기간을 1일부터 35일까지로 설정할 수 있으며 비활성화가 불가능하다. `RDS`와 다른 점이다.
+→ 자동 백업은 백업 데이터 보유 기간을 1일부터 35일까지로 설정할 수 있으며 비활성화가 불가능하다. RDS와 다른 점이다.
+
 - point-in-time recovery in that timeframe 
 → 지정 시간 복구 기능이 있으며 정해진 시간 범위 내의 어느 시점으로도 복구가 가능하다.
 ~~~
 
 - Manual DB Snapshots  
+→ `Aurora` 백업을 위한 두 번째 방법은 수동 `DB` 스냅샷이다.
 ~~~
-→ Aurora 백업을 위한 두 번째 방법은 수동 DB 스냅샷이다.
-
 - Manually triggered by the user 
 → 사용자가 수동으로 트리거해야 한다.
 
@@ -59,9 +55,8 @@
 → `RDS`와 `Aurora` 백업 또는 스냅샷을 복원 가능하다. 복원할 때마다 새로운 데이터베이스가 생성된다.
 
 - Restoring MySQL RDS database from S3  
+→ `S3`를 사용해 `MySQL RDS`를 복원할 수 있다.
 ~~~
-- S3를 사용해 MySQL RDS를 복원할 수 있다.
-
 - Create a backup of your on-premises database
 → 온프레미스 데이터베이스의 백업을 만든다.
 
@@ -73,9 +68,8 @@
 ~~~
 
 - Restoring MySQL Aurora cluster from S3  
+- `S3`를 사용해 `MySQL Aurora`를 복원할 수 있다.
 ~~~
-- S3를 사용해 MySQL Aurora를 복원할 수 있다.
-
 - Create a backup of your on-premises database using Percona XtraBackup
 → Percona XtraBackup라는 소프트웨어를 사용해 온프레미스 데이터베이스를 외부로 다시 백업한다.
 

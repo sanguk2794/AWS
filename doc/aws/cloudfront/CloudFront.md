@@ -8,7 +8,9 @@
 - `Amazon CloudFront`는 `.html`, `.css`, `.js` 및 이미지 파일과 같은 정적 및 동적 웹 콘텐츠를 엣지 로케이션에 캐싱하여 사용자에게 더 빨리 배포하도록 지원하는 웹 서비스이다.
 ~~~
 - 콘텐츠가 이미 지연 시간이 가장 낮은 엣지 로케이션에 있는 경우 CloudFront가 콘텐츠를 즉시 제공한다.
-- 콘텐츠가 엣지 로케이션에 없는 경우 CloudFront는 콘텐츠의 최종 버전에 대한 소스로 지정된 오리진(Amazon S3 버킷, MediaPackage 채널, HTTP 서버(예: 웹 서버) 등)에서 콘텐츠를 검색한다.
+
+- 콘텐츠가 엣지 로케이션에 없는 경우 CloudFront는 콘텐츠의 최종 버전에 대한 소스로 지정된 오리진에서 콘텐츠를 검색한다.
+→ 오리진에는 Amazon S3 버킷, MediaPackage 채널, HTTP 서버 등이 포함된다.
 ~~~
 
 - Improves users experience  
@@ -18,7 +20,7 @@
 → 현재 `CloudFront`는 전 세계 총 216개의 엣지 로케이션을 통해 구성된다. 그리고 `AWS`는 지속적으로 엣지 로케이션을 추가하고 있다.
 
 - DDoS protection (because worldwide), integration with Shield, AWS Web Application Firewall  
-→ 컨텐츠가 전체적으로 분산되어 있으므로 `DDoS, Distributed Denial of Service` 공격으로부터 상대적으로 자유롭다. 
+→ 컨텐츠가 전체적으로 분산되어 있으므로 `DDoS, Distributed Denial of Service` 공격에 상대적으로 자유롭다. 
 
 ![image](https://user-images.githubusercontent.com/97398071/235298917-17467254-78ab-4f83-b421-d31a5eb2c764.png)
 
@@ -219,8 +221,9 @@
 ![image](https://user-images.githubusercontent.com/97398071/235302136-3ab18b84-33c8-4fa3-affc-2342759f0332.png)
 
 ### 6. CloudFront - Using signed cookies
-- 현재의 `URL`을 변경하지 않으려는 경우나 여러 제한된 파일에 대한 액세스 권한을 제공하려는 경우, `CloudFront` 서명된 쿠키를 사용하여 콘텐츠 액세스를 제어할 수 있다. 
+- 현재의 `URL`을 변경하지 않으려는 경우나 여러 제한된 파일에 대한 액세스 권한을 제공하려는 경우, 서명된 쿠키를 사용하여 콘텐츠 액세스를 제어할 수 있다.
 - `URL`을 변경하지 않고 유료 구독자에게만 여러 비공개 미디어 파일에 대한 액세스를 제공해야 할 때 주로 사용된다.
+- 사용자들이 `CloudFront`만을 통해서 웹사이트로 액세스하게끔 하게 할 때에는 `CloudFront` 배포를 구성해 원본 액세스 `ID`를 생성한 후 `S3` 버킷이 오직 `CloudFront` 배포 `OAI` 사용자들이 보내는 요청만을 수락하도록 업데이트해야 한다.
 
 ---
 #### ▶ Reference

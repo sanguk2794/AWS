@@ -56,12 +56,10 @@
 → 애플리케이션 서버는 클라이언트의 `IP`를 직접 보는 것이 불가능하다.
 
 - The true IP of the client is inserted in the header X-Forwarded-For  
-→ 클라이언트의 실제 `IP`는 `X-Forwarded-For`라고 불리는 헤더에 삽입된다.
+→ 클라이언트의 실제 `IP`는 `X-Forwarded-For`라고 불리는 헤더에 삽입된다. `ALB`를 사용할 때, `EC2` 인스턴스에서 클라이언트의 `IP`를 알기 위해서는 `X-Forwarded-For` 헤더를 확인해야 한다.
 
 - We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)  
 → 클라이언트의 실제 `Port`는 `X-Forwarded-Port`라고 불리는 헤더에 삽입되며, 프로토콜은 `X-Forwarded-Proto`라고 불리는 헤더에 삽입된다.
-
-- 즉 `ALB`를 사용할 때, `EC2` 인스턴스가 클라이언트의 `IP`를 알기 위해서는 `X-Forwarded-Port`와 `X-Forwarded-Proto`를 확인해야 한다.
 
 #### 1. 라우팅
 - 컴퓨터 네트워크는 노드라고 하는 여러 시스템과 이러한 노드를 연결하는 경로 또는 링크로 구성되며, 상호 연결된 네트워크에서 두 노드 간의 통신은 여러 경로를 통해 이루어질 수 있다.
@@ -111,8 +109,8 @@
 
 #### 4. Port mapping
 - `port mapping`은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 네트워크 게이트웨이를 가로지르는 동안 하나의 `IP` 주소와 포트 번호 결합의 통신 요청을 다른 곳으로 넘겨주는 `NAT, 네트워크 주소 변환`의 응용이다.
-- 이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 IP 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
-- `port forwarding`이라고도 불린다.  
+- 이 기법은 게이트웨이의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 `IP` 주소와 포트 번호를 내부 호스트에 다시 매핑함으로써 이루어진다.
+- `port forwarding`이라고도 불린다.
 
 ### 4. Network Load Balancer (v2 - new generation)
 - 2017년도에 출시된 로드 밸런서로 `NLB`라고 불린다. `L4` 로드 밸런서이므로 `TCP`와 `UDP` 트래픽을 다룬다. `TCP`와 `UDP`, `TLS, secure TCP` 프로토콜을 지원한다.
@@ -143,7 +141,7 @@
 - `NLB`, `ALB`를 함께 사용한다면 `NLB`를 통해 고정 `IP` 주소를 얻을 수 있고 `ALB`를 통해 `HTTP` 유형의 트래픽을 처리하는 규칙을 얻을 수 있다.
 
 - Health Checks support the TCP, HTTP and HTTPS Protocols  
-→ 대상 그룹이 수행하는 상태 확인시 `TCP`뿐만 아니라 `HTTP`, `HTTPS`를 포함한 세 가지 프로토콜을 지원한다.
+→ 대상 그룹에 대한 상태 확인시 `TCP`뿐만 아니라 `HTTP`, `HTTPS`를 포함한 세 가지 프로토콜을 지원한다.
 
 - 네트워크 로드 밸런서에서는 밸런서의 보안 그룹을 정의하지 않는다. 네트워크 로드 밸런서로 들어온 모든 트래픽이 곧장 `EC2` 인스턴스로 들어간다. 들어온 트래픽을 허용할 것인지 아닌지는 `EC2` 인스턴스의 보안 그룹을 통해 결정된다.
 

@@ -5,16 +5,16 @@
 
 - The ENI can have the following attributes:
 ~~~
-Primary private IPv4, one or more secondary IPv4
+- Primary private IPv4, one or more secondary IPv4
 → 주요 사설 IPv4와 하나 이상의 보조 IPv4를 가질 수 있다. 또, EC2에 보조 ENI를 얼마든지 추가할 수 있다.
 
-One Elastic IP (IPv4) per private IPv4 and public IPv4
+- One Elastic IP (IPv4) per private IPv4 and public IPv4
 → 각각의 ENI는 사설 IPv4당 Elastic IPv4를 갖거나 혹은 하나의 공용 IPv4를 가질 수 있으므로 사설 및 공용 IP가 한 개씩 제공된다.
 
-One or more security groups
+- One or more security groups
 → ENI에 하나 이상의 보안 그룹을 연결할 수 있다.
 
-A MAC address
+- A MAC address
 → 맥 주소를 연결할 수도 있다.
 ~~~
 
@@ -30,16 +30,16 @@ A MAC address
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 네트워크 인터페이스는 인스턴스의 `Network` → `Network Instance` 탭에서 확인이 가능하다.
+- 네트워크 인터페이스는 인스턴스의 `Network` → `Network Instance` 탭에서 확인이 가능하다.  
 → 각 인스턴스에는 기본적으로 하나의 네트워크 인터페이스가 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232233225-4270f098-6906-471c-88bd-a351d47af171.png)
 
-- 네트워크 인터페이스는 `EC2` → `Network Interface` 탭에서 확인 가능하다. 
+- 네트워크 인터페이스는 `EC2` → `Network Interface` 탭에서 확인 가능하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232233392-c3b49581-8882-4920-85a5-3c5b7ca6f19c.png)
 
-- 네트워크 인터페이스 생성 화면이다. 
+- 네트워크 인터페이스 생성 화면이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232233504-867fa52b-920e-45fb-a46e-3106dfb6526b.png)
 
@@ -54,13 +54,13 @@ A MAC address
 - `ELB` 사용  
 → 이것은 고가용성을 제공하기 위해 선호되는 방법이다.
 
-- `Elastic IPs` 주소 리디렉션  
-→ 탄력적 IP 주소를 사용하면 여러 가용 영역에 걸쳐 있는 인스턴스들을 지정할 수 있다. 실패를 감지하고 탄력적 IP를 다시 연결할 때 직접 작업이 필요하다.
+- `Elastic IP` 주소 리디렉션  
+→ `Elastic IP` 주소를 사용하면 여러 가용 영역에 걸쳐 있는 인스턴스들을 지정할 수 있다. 실패를 감지하고 탄력적 `IP`를 다시 연결할 때 직접 작업이 필요하다.
 
 - `ENI` 재할당  
-→ 모든 `EC2` 인스턴스는 기본 `ENI`를 보유하며, 선택적으로 추가 `ENI`를 보유할 수 있다. 트래픽을 보조 `ENI` 로 보낸 다음 해당 보조 `ENI`를 다른 인스턴스로 이동시킬 수 있다. 이는 탄력적 IP 주소 재할당과 유사하다.
+→ 모든 `EC2` 인스턴스는 기본 `ENI`를 보유하며, 선택적으로 추가 `ENI`를 보유할 수 있다. 트래픽을 보조 `ENI` 로 보낸 다음 해당 보조 `ENI`를 다른 인스턴스로 이동시킬 수 있다. 이는 탄력적 `IP` 주소 재할당과 유사하다.
 
-- `ENI`는 `Elastic IPs`가 가지고 있는 문제들과 더불어 동일한 `AZ` 내에서만 다시 할당할 수 있다는 추가적 문제까지 있기 때문에 권장되지 않는다.
+- `ENI`는 `Elastic IPs`가 가지고 있는 문제들과 더불어 동일한 `AZ` 내에서만 다시 할당할 수 있다는 추가적 문제까지 있기 때문에 사용이 권장되지 않는다.
 
 ---
 #### ▶ Reference

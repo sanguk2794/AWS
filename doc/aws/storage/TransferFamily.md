@@ -30,12 +30,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 다음 중 `AWS` 전송 제품군이 지원하지 않는 프로토콜은 무엇인가요?  
-→ 전송 층 보안(TLS)
-
-- 한 머신 러닝 업체가 `S3` 버킷에 호스팅된 데이터 세트를 기반으로 연구를 진행하고 있습니다. 업체는 다른 사람들이 연구에 활용할 수 있도록 데이터 세트 중 일부를 공개하기로 결정했지만, S3 버킷 자체를 퍼블릭으로 설정하는 건 원치 않습니다. 또한 데이트 세트는 `FTP` 프로토콜로 접근할 수 있어야 합니다. 최소한의 노력으로 이 요구 사항을 충족하려면 어떻게 해야 합니까?  
-→ `AWS Transfer Family`를 사용
-
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)

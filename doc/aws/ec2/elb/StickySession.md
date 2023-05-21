@@ -51,6 +51,7 @@ Application cookie, Duration-based Cookie와 동일한 이름을 가진 쿠키(A
 
 ---
 #### ▶ Reference
+- [Sticky Session](https://www.imperva.com/learn/availability/sticky-session-persistence-and-cookies/)
 - [AWS Sticky Session チュートリアル](https://qiita.com/Uking/items/7663b07efa588a08709d)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---

@@ -110,12 +110,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- 회사는 `AWS`의 `FSx for Windows` 파일 서버 스토리지에 저장된 수많은 파일과 데이터를 사용하고 있습니다. 이 파일들은 현재 `AWS`에 호스팅된 리소스에서 사용됩니다. 이 파일들을 온프레미스에서 짧은 지연 시간으로 액세스할 수 있어야 합니다. 이를 달성하는 데 도움이 될 만한 `AWS` 서비스는 무엇입니까?  
-→ Amazon FSx File Gateway
-
-- 회사에서는 `Amazon S3` 파일 게이트웨이를 실행해 `S3` 버킷에 데이터를 호스팅하고 있으며, `SMB`를 사용해 해당 데이터를 온프레미스에 마운트할 수 있습니다. 현재 데이터는 S3 Standard 스토리지 클래스에 호스팅되어 있는데 S3에 드는 비용을 절감하기 위해 데이터 중 일부를 `S3 Glacier`로 옮기기로 결정했습니다. 데이터를 `S3 Glacier`로 자동으로 옮길 수 있는 가장 효율적인 방법은 무엇입니까?  
-→ `S3` 수명 주기 정책을 사용한다.
-
 #### 3. Volume Gateway
 - Block storage using iSCSI protocol backed by S3  
 → 블록 스토리지로 `Amazon S3`가 백업하는 `iSCSI` 프로토콜을 사용한다.

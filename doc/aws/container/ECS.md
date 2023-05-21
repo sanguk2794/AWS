@@ -39,6 +39,9 @@
 - To scale, just increase the number of tasks. Simple - no more EC2 instances  
 → 태스크 수를 늘리는 것 만으로 확장이 가능하다. 시험에서는 `EC2` 시작 유형보다 서버 관리가 쉽기 때문에 서버리스인 `Fargate`를 사용하라는 문제가 자주 등장한다.
 
+- `Fargate` 작업에는 최소 `20GiB`의 무료 임시 스토리지가 제공된다.
+
+
 ### 3. Amazon ECS – IAM Roles for ECS
 - EC2 Instance Profile (EC2 Launch Type only):  
 → `EC2` 시작 유형의 `ECS`를 사용할 경우에만 설정한다. `EC2 Instance Profile`을 사용하면 `EC2` 인스턴스에 `IAM` 역할을 전달할 수 있다.
@@ -53,7 +56,7 @@
 → 인스턴스에 저장된 ECS 서비스가 CloudWatch에 컨테이너 로그를 송신한다.
 
 - Pull Docker image from ECR
-→ ECR로부터 도거 이미지를 가져온다.
+→ ECR로부터 도커 이미지를 가져온다.
 
 - Reference sensitive data in Secrets Manager or SSM Parameter Store
 → Secrets Manager나 SSM Parameter Store에서 민감 데이터를 참고하기도 한다.
@@ -191,9 +194,7 @@ Amazon EventBridge는 ECS 태스크를 실행하는 규칙을 생성할 수 있�
 - 이 아키텍처는 도커 컨테이너를 이용해 한 시간마다 배치 처리를 하는 아키텍처이다.
 ~~~
 - Amazon EventBridge에 한 시간마다 트리거되는 규칙적인 일정을 생성한다.
-
 - 이를 받은 Fargate는 ECS 태스크를 실행한다. 한 시간마다 Fargate 클러스터에 새 태스크가 생성된다.
-
 - 태스크에는 Amazon S3에 접근 가능한 ECS 태스크 역할을 생성한다. 처리 결과를 S3에 전송한다.
 ~~~
 
@@ -204,7 +205,6 @@ Amazon EventBridge는 ECS 태스크를 실행하는 규칙을 생성할 수 있�
 #### 3. ECS – SQS Queue Example
 ~~~
 - ECS 서비스에 두 개의 태스크가 있고, 이 두 태스크는 SQS 대기열에서 메세지를 가져와서 처리한다.
-
 - 여기에 ECS 서비스 오토 스케일링을 활성화하면 SQS 대기열에 메세지가 많아질수록 ECS 서비스에 태스크가 많아진다.
 ~~~
 

@@ -85,7 +85,6 @@
 
 ---
 #### ▶ Reference
-- [Sticky Session](https://www.imperva.com/learn/availability/sticky-session-persistence-and-cookies/)
 - [라우팅이란 무엇입니까?](https://aws.amazon.com/ko/what-is/routing/)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---

@@ -2,9 +2,9 @@
 ### 1. Private vs Public IP
 - Networking has two sorts of IPs. IPv4 and IPv6
 ~~~
-- 네트워크에는 두 종류의 `IPv4`와 `IPv6`, 두 종류의 IP가 있다.
-- IPv4: 1.160.10.240
-- IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf
+- 네트워크에는 IPv4와 IPv6, 두 종류의 IP가 있다.
+→ IPv4: 1.160.10.240
+→ IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf
 ~~~
 
 - IPv4 is still the most common format used online.  
@@ -42,45 +42,44 @@
 - By default, your EC2 machine comes with  
 → 내부 `AWS` 네트워크에서는 `Private IP`를, `WWW`에는 `Public IP`를 사용한다.
 ~~~
-A private IP for the internal AWS Network
-A public IP, for the WWW.
+- A private IP for the internal AWS Network
+- A public IP, for the WWW.
 ~~~
 
 - When we are doing SSH into our EC2 machines:  
 → `EC2` 기기에 `SSH`를 통해 접근할 때에는 `Private IP`를 사용할 수 없다. `VPN`을 통해 사설망에 쓰지 않는 이상 같은 네트워크에 있는 것이 아니기 때문이다.
 ~~~
-We can’t use a private IP, because we are not in the same network
-We can only use the public IP.
+- We can’t use a private IP, because we are not in the same network
+- We can only use the public IP.
 ~~~
 
 - If your machine is stopped and then started, the public IP can change  
-→ 인스턴스를 멈췄다가 재기동하면 `Public IP`는 바뀔 수 있다.
+→ 인스턴스를 재기동할 때 `Public IP`는 변경될 수 있지만, `Private IP`는 변경되지 않는다.
 
 ### 2. Elastic IPs
 - When you stop and then start an EC2 instance, it can change its public IP  
 → `EC2` 인스턴스를 시작하고 종료할 때, 공용 `IP`를 바꿀 수 있다.
 
 - If you need to have a fixed public IP for your instance, you need an Elastic IP  
-→ 어떤 이유에서든 인스턴스에 고정된 `Public IP`를 사용하는 경우 이 탄력적 `IP`가 필요하다.
+→ 인스턴스에 고정된 `Public IP`가 필요하다면 탄력적 `IP`가 필요하다.
 
 - An Elastic IP is a public IPv4 IP you own as long as you don’t delete it  
-→ `Elastic IP`는 공용 `IPv4`이며, 삭제하지 않는 한 계속 가지고 있게 된다. 물론 이 값은 한번에 한 인스턴스에만 사용할 수 있다.
+→ `Elastic IP`는 공용 `IPv4`이며 삭제하지 않는 한 계속 보존된다. `Elastic IP`는 하나의 인스턴스에만 연결할 수 있다.
 
 - With an Elastic IP address, you can mask the failure of an instance or software by rapidly remapping the address to another instance in your account.  
-→ `IP Address`가 탄력적이면 한 인스턴스에서 다른 인스턴스로 빠르게 이동함으로써 인스턴스 또는 소프트웨어 오류를 마스킹할 때 사용할 수 있다.
-하지만, `탄력적 IP`는 기본적으로 계정당 5개만 설정할 수 있기 때문에 위와 같이 사용할 일은 사실 드물다. 단, 이 개수를 늘려 줄 것을 `AWS`측에 요청할 수는 있다.
+→ `IP Address`가 탄력적이면 한 인스턴스에서 다른 인스턴스로 빠르게 이동함으로써 인스턴스 또는 소프트웨어 오류를 마스킹할 때 사용할 수 있다. 하지만, `탄력적 IP`는 기본적으로 계정당 5개만 설정할 수 있기 때문에 위와 같이 사용할 일은 사실 드물다. 단, 이 개수를 늘려 줄 것을 `AWS`측에 요청할 수는 있다.
 
 - Overall, try to avoid using Elastic IP  
 → 결론적으로, `Elastic IP`는 사용하지 않는 것이 좋다.
 ~~~
-They often reflect poor architectural decisions
+- They often reflect poor architectural decisions
 → 탄력적 아이피는 매우 좋지 않은 구조적 결정으로 종종 언급된다.
 
-Instead, use a random public IP and register a DNS name to it
+- Instead, use a random public IP and register a DNS name to it
 → 대신 임의의 Public IP를 써서 DNS 이름을 할당하는 것이 좋다. DNS는 Route 53을 통해 설정 가능하다.
 
 - Or, as we’ll see later, use a Load Balancer and don’t use a public IP
-→ 로드 밸런서를 사용하면 Public IP를 전혀 사용하지 않을수도 있다. 이 것이 AWS에서 선택할 수 있는 최상의 패턴이다.
+→ 로드 밸런서를 사용하면 탄력적 IP를 전혀 사용하지 않을 수 있다. 탄력적 IP를 사용하지 않는 것이 AWS에서 선택할 수 있는 최상의 패턴이다.
 ~~~
 
 #### 1. Allocate Elastic IP

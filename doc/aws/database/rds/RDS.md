@@ -9,6 +9,7 @@
 - It allows you to create databases in the cloud that are managed by AWS  
 → 클라우드의 `RDS` 서비스에 `DB`를 생성할 수 있고 `AWS`가 `DB`를 관리해준다. 다음 종류의 `DB`를 지원한다.
 ~~~
+- Aurora
 - Postgres
 - MySQL
 - MariaDB
@@ -80,6 +81,8 @@
 
 - Supports all RDS database engines (MariaDB, MySQL, PostgreSQL, SQL Server, Oracle)  
 → `RDS Storage Auto Scaling`은 모든 `RDS` 데이터베이스 엔진에서 제공된다.
+
+- `DB` 인스턴스에 할당된 스토리지 늘리면 할당된 스토리지를 늘리면 변경 중에 성능이 저하될 수 있다. 하지만, `RDS Storage Auto Scaling`은 증가하는 데이터베이스 워크로드에 대응하여 다운타임 없이 스토리지 용량을 자동으로 확장한다.
 
 ### 4. RDS Read Replicas for read scalability
 - Up to 5 Read Replicas  
@@ -237,7 +240,7 @@
 - `RDB`를 특정 시점으로 복원하거나 다른 리전으로 스냅샷을 마이그레이션하는 것도 가능하다.
 
 ### 8. RDS Custom
-- `RDS`에서는 기저 운영체제나 사용자 지정 기능에 액세스 불가능하다. 그러나 `RDS Custom`에서는 가능하다.
+- `RDS`에서는 기저 운영체제나 사용자 지정 기능에 액세스가 불가능하다. 그러나 `RDS Custom`에서는 가능하다.
 
 - Managed Oracle and Microsoft SQL Server Database with OS and database customization  
 → `RDS Custom`은 `Oracle`과 `Microsoft SQL Server`, 두 유형의 데이터베이스에서만 사용할 수 있다.
@@ -247,7 +250,8 @@
 
 - Custom: access to the underlying database and OS so you can  
 ~~~
-- 기저 데이터베이스와 운영 체제에 액세스할 수 있게 되어 내부 설정 구성, 패치 적용 그리고 네이티브 기능 활성화가 가능하며 `SSH` 또는 `SSM` 세션 관리자를 사용해서 `RDS` 뒤에 있는 기저 `EC2` 인스턴스에 액세스할 수 있다.
+- 기저 데이터베이스와 운영 체제에 액세스할 수 있게 되어 내부 설정 구성, 패치 적용 그리고 네이티브 기능 활성화가 가능하다.
+- SSH 또는 SSM 세션 관리자를 사용해서 RDS 뒤에 있는 기저 EC2 인스턴스에 액세스할 수 있다.
 
 - Configure settings
 - Install patches

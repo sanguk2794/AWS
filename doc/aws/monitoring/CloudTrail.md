@@ -110,12 +110,12 @@
 ### 4. Amazon EventBridge – Intercept API Calls
 - `CloudTrail` 통합 중에 `API` 호출을 가로채는 `Amazon EventBridge`와의 통합은 중요하다.
 
-- 사용자가 테이블 삭제 `API` 호출을 사용해서 `DynamoDB`의 테이블을 삭제할 때마다 SNS 알림을 받고 싶다고 가정한다.
+- 사용자가 테이블 삭제 `API` 호출을 사용해서 `DynamoDB`의 테이블을 삭제할 때마다 `SNS` 알림을 받고 싶다고 가정한다.
 ~~~
 - AWS에서 API 호출을 실행할 때마다 API 호출 자체가 CloudTrail에 로깅된다.
 - 그리고 모든 API 호출은 Amazon EventBridge에 이벤트로 기록된다.
 - 여기서 특정 테이블 삭제 API 호출을 찾아 규칙을 생성한다.
-- 규칙의 대상으로 `SNS`를 설정해 메세지를 송신할 수 있다.
+- 규칙의 대상으로 SNS를 설정해 메세지를 송신할 수 있다.
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/236638855-5857c91d-23bf-436d-8cdc-9c7fea6f5d94.png)

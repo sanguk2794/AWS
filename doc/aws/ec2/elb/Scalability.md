@@ -53,8 +53,7 @@
 ~~~
 
 - Horizontal Scaling: Increase number of instances (= scale out / in)  
-→ 수평 확장은 인스턴스의 숫자를 늘리거나 줄이는 것을 말하며, 이 때에는 스케일링 그룹과 로드 밸런서가 함께 사용된다.
-`AWS` 용어로 인스턴스 수를 늘리는 것을 `Scale Out`, 줄이는 것을 `Scale In`이라고 한다.
+→ 수평 확장은 인스턴스의 숫자를 늘리거나 줄이는 것을 말하며, 이 때에는 스케일링 그룹과 로드 밸런서가 함께 사용된다. `AWS` 용어로 인스턴스 수를 늘리는 것을 `Scale Out`, 줄이는 것을 `Scale In`이라고 한다.
 ~~~
 - Auto Scaling Group
 - Load Balancer

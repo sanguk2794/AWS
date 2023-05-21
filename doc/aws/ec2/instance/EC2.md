@@ -124,13 +124,24 @@ Scaling the services using an auto-scaling group (ASG)
 → 볼륨은 논리적인 드라이브를 말한다. 윈도우에서의 파티션과 같다. 하나의 하드디스크를 하나로 쓸 수 있지만, `C`, `D` 등 여러 개로 나누어 사용할 수도 있는 것이다.
 
 #### 3. Instance Detail
-- `Instance ID` → 인스턴스의 고유 식별자
-- `Public IPv4 address` → `EC2` 인스턴스에 접근하기 위해 사용되는 주소
-- `Private IPv4 address` → `AWS` 네트워크에서 내부적으로 인스턴스에 접근할 때 사용되는 주소 
-- 이외에도 `Hostname`, `Private IP DNS name`, `Platform`, `AMI`, `Key pair` 등의 정보를 확인할 수 있다.
+- 인스턴스 세부 정보에서 여러 정보들을 확인할 수 있다.
+~~~
+- Instance ID  
+- Public IPv4 address 
+- Private IPv4 address
+- Hostname, Platform, AMI, Key pair 등..
+~~~
+
+![image](https://github.com/sanguk2794/AWS/assets/97398071/6705f537-f494-4546-986a-e822506886dc)
+
+#### 4. 인스턴스 정지, 재기동
 - `Stop Instance`를 통해 인스턴스의 일시정지가 가능하다. 정지중인 인스턴스에는 요금이 부과되지 않는다.
 - `Terminate Instance`를 통해 인스턴스를 영구삭제할 수 있다.
 - `Start Instance`를 통해 인스턴스를 재기동할 수 있다. 인스턴스를 재기동하면 `Public IPv4` 주소는 변경되지만 `Private IPv4` 주소는 유지된다.
+
+#### 5. 인스턴스 개수 제한
+- 지역당 `vCPU` 기반 온디맨드 인스턴스의 개수 제한이 있다. 한도 증가 양식을 `AWS`에 제출할 수 있다.
+- 새 `AWS` 계정은 여기에 설명된 제한보다 낮은 제한으로 시작할 수 있다.
 
 ---
 #### ▶ Reference

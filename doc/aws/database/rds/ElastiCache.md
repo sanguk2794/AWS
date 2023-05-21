@@ -6,10 +6,10 @@
 ![image](https://user-images.githubusercontent.com/97398071/234034994-5aa91cd0-31fe-490e-b6c1-60029181ffd0.png)
 
 - ElastiCache is to get managed Redis or Memcached  
-→ 또한, 일래스틱 캐시는 레디스 또는 멤캐시트와 같은 캐시 기술을 관리할 수 있도록 한다.
+→ 일래스틱 캐시는 레디스 또는 멤캐시트와 같은 캐시 기술을 관리할 수 있다.
 
 - Caches are in-memory databases with really high performance, low latency  
-→ 캐시는 높은 성능과 낮은 지연 시간을 가진 인-메모리 데이터베이스이다.
+→ 캐시는 높은 성능과 낮은 지연 시간을 가진 인메모리 데이터베이스이다.
 
 - Helps reduce load off of databases for read intensive workloads  
 → 읽기 집약적인 워크로드의 부하를 줄이는데 도움을 준다. 데이터베이스가 매번 쿼리되지 않고 캐시되기 때문이다.

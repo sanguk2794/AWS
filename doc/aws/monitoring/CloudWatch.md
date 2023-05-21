@@ -72,7 +72,7 @@
 - Kinesis Data Streams
 - Kinesis Data Firehose
 - AWS Lambda
-- ElasticSearch
+- OpenSearch Service
 ~~~
 
 #### 1. CloudWatch Logs - Sources

@@ -74,7 +74,7 @@
 → 자체 키 구성 요소를 KMS에 임포트할 수 있다. 고객 관리형 키와 동일하게 매달 1달러의 비용이 청구된다.
 ~~~
 
-- + pay for API call to KMS ($0.03 / 10000 calls)  
+- pay for API call to KMS ($0.03 / 10000 calls)  
 → 더불어, `KMS`로 호출하는 모든 `API` 요청에 대해서는 비용을 지불해야 한다.
 
 - Automatic Key rotation:
@@ -92,7 +92,7 @@
 ### 4. Copying Snapshots across regions
 - 스냅샷을 교차 리전에 복제할 수 있다.
 ~~~
-- `KMS` 키로 암호화된 `EBS` 볼륨이 있고 리전은 `eu-west-2`라고 가정한다. 이 `EBS` 볼륨을 다른 리전으로 복제하기 위한 시나리오이다.
+- KMS 키로 암호화된 EBS 볼륨이 있고 리전은 eu-west-2라고 가정한다. 이 EBS 볼륨을 다른 리전으로 복제하기 위한 시나리오이다.
 - EBS 볼륨의 스냅샷을 생성한다. 암호화된 스냅샷에서 스냅샷을 생성하면 생성된 스냅샷 또한 동일한 KMS 키로 암호화된다.
 - 다른 리전으로 스냅샷을 복사하려면 다른 KMS 키를 사용해서 스냅샷을 다시 암호화해야 하는데 이 부분은 AWS가 자동으로 처리해준다. 다만, 동일한 KMS 키가 서로 다른 리전에 있을수는 없다.
 - 스냅샷을 ap-southeast-2 리전의 자체 EBS 볼륨으로 복원한다. 
@@ -150,7 +150,7 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ### 7. KMS Multi-Region Keys
-- `KMS`에는 다중 리전 키를 둘 수 있다. 한 리전의 기본 키가 다른 리전으로 복제되며, 이 때의 키 `ID`는 동일하다.
+- `KMS`에는 다중 리전 키를 둘 수 있다. 한 리전의 기본 키가 다른 리전으로 복제되며 이 때의 키 `ID`는 동일하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/236682983-5310491d-459f-4d63-a5b3-d86c2f9b274d.png)
 

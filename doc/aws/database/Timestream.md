@@ -35,7 +35,7 @@
 - Amazon Timestream – Architecture
 ~~~
 - 시계열 데이터베이스는 AWS IoT에서 데이터를 받을 수 있고, Kinesis Data Streams의 데이터를 람다를 통해 받을 수도 있다. Prometheus, telegraf와도 통합이 가능하다.
-- Timestream와 연결 가능한 것은 Amazon QuickSight, Amazon SagaMaker, Grafana, JDBC 커넥션 등과 연결 가능하다.
+- Timestream와 연결 가능한 것은 Amazon QuickSight, Amazon SagaMaker, Grafana, JDBC 커넥션 등이 있다.
 ~~~
 
 ![image](https://user-images.githubusercontent.com/97398071/235907249-1f308732-9082-41ce-8bf4-1b0c6c21b0e5.png)

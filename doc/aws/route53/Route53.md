@@ -86,11 +86,11 @@
 - 호스팅 영역에는 두 가지 유형이 있다.
 ~~~
 - Public Hosted Zones – contains records that specify how to route traffic on the Internet (public domain names) 
-application1.mypublicdomain.com
+→ application1.mypublicdomain.com
 → 인터넷에서 트래픽을 라우팅하고자 하는 방식에 대한 정보를 담고 있는 컨테이너이다. 
 
 - Private Hosted Zones – contain records that specify how you route traffic within one or more VPCs (private domain names) 
-application1.company.internal
+→ application1.company.internal
 → Amazon VPC 서비스로 생성한 하나 이상의 VPC 내에 있는 도메인과 그 하위 도메인에 대하여 Amazon Route 53의 DNS 쿼리 응답 정보가 담긴 컨테이너이다.
 ~~~
 
@@ -117,10 +117,9 @@ application1.company.internal
 
 #### 5. Register Record
 - 도메인을 등록하면 해당 도메인에 대한 레코드를 생성할 수 있어진다.
-
 - 레코드 이름, 타입, 값, `TTL`, 라우팅 정책 설정 이후 `Create Record` 버튼을 누르면 레코드가 생성된다.
 
-- 아래 명령어를 통해 `nslookup`, `dig` 명령을 클라우드 셸에 설치해 `ip address`를 확인할 수 있다.
+- 아래 명령어를 통해 `nslookup`, `dig` 명령어를 설치하면 `ip address`를 확인할 수 있다.
 ~~~ shell
 $ sudo yum install -y bind-utils
 ~~~
@@ -136,16 +135,13 @@ $ dig [url]
 ~~~
 
 #### 6. Route 53 – Records TTL (Time To Live)
-- 클라이언트가 재요청을 보내거나 같은 호스트 이름으로 접속할 때, `DNS` 시스템에 쿼리를 보내지 않아도 괜찮도록 답변을 캐시에 저장하도록 할 수 있다.
-캐시에 답변을 보존하는 시간을 `TTL`이라고 한다. 하지만 캐시에도 시간이 소요되기 때문에 `Cache TTL`이 발생하긴 한다.
+- 클라이언트가 재요청을 보내거나 같은 호스트 이름으로 접속할 때, `DNS` 시스템에 쿼리를 보내지 않아도 괜찮도록 답변을 캐시에 저장하도록 할 수 있다. 캐시에 답변을 보존하는 시간을 `TTL`이라고 한다. 하지만 캐시에도 시간이 소요되기 때문에 `Cache TTL`이 발생하긴 한다.
 
 - High TTL – e.g., 24 hr  
-→ `Route 53`의 트래픽이 현저히 적어진다. 클라이언트의 `DNS` 조회 요청 또한 그 횟수가 획기적으로 줄 것이다.
-하지만 클라이언트가 오래된 레코드를 받을 가능성이 존재한다.
+→ `Route 53`의 트래픽이 현저히 적어진다. 클라이언트의 `DNS` 조회 요청 또한 그 횟수가 획기적으로 줄 것이다. 하지만 클라이언트가 오래된 레코드를 받을 가능성이 존재한다.
 
 - Low TTL – e.g., 60 sec.  
-→ `DNS`의 트래픽 양이 많아져서 비용이 많이 들게 된다. `Route 53`의 요청의 양에 따라 요금이 책정되기 때문이다.
-하지만, 레코드 변경이 빨라져 레코드 변경 전반 작업이 편리해진다.
+→ `DNS`의 트래픽 양이 많아져서 비용이 많이 들게 된다. `Route 53`의 요청의 양에 따라 요금이 책정되기 때문이다. 하지만, 레코드 변경이 빨라져 레코드 변경 전반 작업이 편리해진다.
 
 - Except for Alias records, TTL is mandatory for each DNS record  
 → `TTL`은 모든 레코드에 있어 필수적이다. 단, 별칭 레코드는 예외이다.
@@ -212,7 +208,7 @@ $ dig [url]
 
 ![image](https://user-images.githubusercontent.com/97398071/234525129-97f20002-0396-46b8-a0b5-642b136b3043.png)
 
-- But You cannot set an ALIAS record for an EC2 DNS name
+- But You cannot set an ALIAS record for an EC2 DNS name  
 → `EC2`의 `DNS` 이름에 대해서는 별칭 레코드를 설정할 수 없다. 중요하다.
 
 - `CNAME`을 이용해 `ALB`로 이동시키는 것보다 `Alias`를 이용하는게 보다 좋은 방법이다.  
@@ -246,7 +242,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 - Latency based → 지연 시간 기반
 - Geolocation → 지리적
 - Multi-Value Answer → 다중 값 응답
-- Geoproximity  (using Route 53 Traffic Flow feature) → 지리 근접 라우팅 정책 
+- Geoproximity (using Route 53 Traffic Flow feature) → 지리 근접 라우팅
 ~~~
 
 #### 1. Routing Policies – Simple
@@ -436,6 +432,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 - `Health check`를 위한 `URL`은 `Domain/health`가 일반적이다.
+- `Route 53` 상태 확인을 사용하여 활성-활성 및 활성-수동 장애 조치 구성을 구성할 수 있다.
 - 하나의 기본 레코드와 하나의 보조 레코드를 두고 기본 레코드가 실패했을 때 보조 레코드를 참조할도록 활성-수동 장애 조치 구성을 만들 때, 레코드를 만들고 라우팅 정책에 대한 장애 조치를 지정하기만 하면 된다.
 
 #### 1. Health Checks – Monitor an Endpoint
@@ -492,7 +489,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 → 개인 `VPC`, 온프레미스 리소스 등 개인 엔드 포인트에의 접속은 불가능하다.
 
 - You can create a CloudWatch Metric and associate a CloudWatch Alarm, then create a Health Check that checks the alarm itself   
-→ 그래서 `CloudWatch` 지표를 만들어 `CloudWatch` 알람을 할당하는 식으로 이 문제를 해결할 수 있다. 그러면 `CloudWatch` 경보를 상태 확인에 할당할 수 있는 것이다.
+→ `CloudWatch` 지표를 만들어 `CloudWatch` 알람을 할당하는 식으로 이 문제를 해결할 수 있다. `CloudWatch` 경보를 상태 확인에 사용하는 것이다.
 
 ![image](https://user-images.githubusercontent.com/97398071/234544805-885631bf-7294-4684-ba0b-05d555af2589.png)
 
@@ -525,9 +522,6 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 
 - Domain Registrar != DNS Service, But every Domain Registrar usually comes with some DNS features  
 → 도메인 이름 레지스트라가 일부 `DNS` 기능을 제공하는 것은 맞으나 도메인 레지스트라는 `DNS` 서비스와 다르다.
-
-- `GoDaddy`를 위해 도메인을 구매했으며, Route 53을 DNS 서비스 제공자로 사용하려 합니다. 이를 위해서는 어떤 작업을 수행해야 할까요?  
-→ 공용 호스팅 영역을 생성하고 타사 `Registrar NS` 레코드 업데이트하기
 
 ---
 #### ▶ Reference

@@ -44,7 +44,7 @@
 → 서버는 그 데이터를 절대 복호화할 수 없다.
 
 - Could leverage Envelope Encryption  
-→ 이를 위해 봉투 암호화를 활용할 수 있다.
+→ 이를 위해 봉투 암호화를 활용할 수 있다. 
 
 ![image](https://user-images.githubusercontent.com/97398071/236682342-d64b938c-ad8c-4fc9-849a-ce7fa5e7a4ca.png)
 

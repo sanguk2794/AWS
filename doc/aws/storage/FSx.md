@@ -51,9 +51,6 @@
 - Data is backed-up daily to S3  
 → 모든 데이터는 재해 복구 목적으로 `Amazon S3`에 매일 백업된다.
 
-- 여러분의 `EC2 Windows` 서버는 `Windows`의 보안 메커니즘을 준수하며, `Microsoft Active Directory`와 통합된 네트워크 파일 시스템을 마운트하여 일부 데이터를 공유해야 합니다. 어떤 방법을 추천할 수 있을까요?  
-→ `Windows`용 `Amazon FSx`
-
 ### 3. Amazon FSx for Lustre
 - Lustre is a type of parallel distributed file system, for large-scale computing  
 → `Lustre`는 분산 파일 시스템으로, 대규모의 연산에 사용된다.
@@ -90,9 +87,6 @@
 
 - Can be used from on-premises servers (VPN or Direct Connect)  
 → `VPN` 또는 직접 연결을 통해 온프레미스 서버에서 사용할 수 있다.
-
-- 고성능 컴퓨팅과 전산 유전학 연구를 수행하기 위해 `IOPS`를 최대화해 줄 분산 `POSIX` 준수 파일 시스템이 필요한 상황입니다. 이 파일 시스템은 수백만 개의 `IOPS`로 손쉽게 스케일링할 수 있어야 합니다. 어떤 방법을 추천할 수 있을까요?  
-→ `Amazon FSx for Lustre`
 
 #### 1. FSx Lustre - File System Deployment Options
 - `Lustre`의 파일 시스템 배포 옵션에는 스크래치 파일 시스템과 영구 파일 시스템이 있다.
@@ -135,9 +129,6 @@
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-- `FSx` 파일 시스템에 있는 다음 배포 옵션 중에서 `AZ` 내에 복사된 장기 스토리지를 제공하는 것은 무엇인가요?  
-→ 영구 파일 시스템, 이는 데이터가 동일한 AZ 내에서 복제되는 장기 스토리지를 제공하며, 실패한 파일들은 수 분 내로 교체된다.
-
 ### 4. Amazon FSx for NetApp ONTAP
 - Managed NetApp ONTAP on AWS  
 → 파일 관리 시스템이다.
@@ -168,9 +159,6 @@
 - Point-in-time instantaneous cloning (helpful for testing new workloads)  
 → 지정 시간 복제 기능이 있다. 새 워크로드 등을 테스트할 때 용이하다. 스테이징 파일 시스템을 둘 수 있기 때문이다.
 
-- `Amazon FSx for NetApp ONTAP`는 다음 중 ………………를 제외한 나머지 프로토콜과 호환됩니다.  
-→ `FTP`
-
 ### 5. Amazon FSx for OpenZFS
 - Managed OpenZFS file system on AWS  
 → `AWS`의 관리형 파일 시스템이다.
@@ -200,9 +188,6 @@
 
 - Point-in-time instantaneous cloning (helpful for testing new workloads)  
 → `ONTAP`과 동일하게 지정 시간 복제 기능이 있다.
-
-- 온프레미스 ZFS 파일 시스템을 `AWS`로 마이그레이션 하는데 가장 적합한 `AWS` 서비스는 무엇입니까?  
-→ `Amazon FSx for OpenZFS`
 
 ---
 #### ▶ Reference

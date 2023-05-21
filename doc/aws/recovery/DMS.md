@@ -30,6 +30,8 @@
 - 대상 RDS 데이터베이스로 데이터를 마이그레이션 한다.
 ~~~
 
+- `AWS Database Migration Service`를 사용하면 가동 중지 시간이 거의 없이 데이터베이스를 `AWS`로 마이그레이션할 수 있다.
+
 ### 2. DMS Sources and Targets
 #### 1. SOURCES
 - On-Premise and EC2 instances databases: Oracle, MS SQL Server, MySQL, MariaDB, PostgreSQL, MongoDB, SAP, DB2  
