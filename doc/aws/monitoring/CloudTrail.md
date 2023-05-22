@@ -6,6 +6,8 @@
 - CloudTrail is enabled by default!  
 → `CloudTrail`는 기본적으로 활성화 상태이다.
 
+- 기본적으로 `CloudTrail` 이벤트 로그 파일은 `Amazon S3` 서버 측 암호화를 사용해 암호화된다.
+
 - Get an history of events / API calls made within your AWS Account by:
 ~~~
 - Console

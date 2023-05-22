@@ -17,6 +17,9 @@
 - `KMS`의 기본 키 스토어 대신 `AWS KMS`를 키 스토어로 사용할 수 있다.  
 → `AWS Key Management Service`의 기본 사용자 지정 키 저장소를 `AWS CloudHSM`로 대체할 수 있다.
 
+- 잘못된 암호를 사용하여 두 번 이상 관리자로 로그인을 시도하면 `HSM` 어플라이언스가 초기화된다. `HSM`이 초기화되면 `HSM`의 모든 키, 인증서 및 기타 데이터가 폐기된다.
+→ 자격 증명을 분실한 경우 키를 복구할 방법이 없다. `Amazon`은 암호화 키의 손실을 방지하기 위해 프로덕션 `CloudHSM` 클러스터의 별도 가용 영역에서 둘 이상의 `HSM`을 사용할 것을 강력히 권장한다.
+
 ---
 #### ▶ Reference
 - [AWS CloudHSM란 무엇인가요?](https://docs.aws.amazon.com/ko_kr/cloudhsm/latest/userguide/introduction.html)

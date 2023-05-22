@@ -112,10 +112,10 @@
 
 #### 3. Volume Gateway
 - Block storage using iSCSI protocol backed by S3  
-→ 블록 스토리지로 `Amazon S3`가 백업하는 `iSCSI` 프로토콜을 사용한다.
+→ 볼륨 게이트웨이는 온프레미스 애플리케이션을 위한 클라우드 기반 `iSCSI` 블록 스토리지 볼륨이다.
 
 - Backed by EBS snapshots which can help restore on-premises volumes!  
-→ 볼륨이 `EBS` 스냅샷으로 저장되며 필요에 따라 온프레미스 볼륨을 복구할 수 있다. 
+→ 볼륨이 `EBS` 스냅샷으로 저장되며 필요에 따라 온프레미스 볼륨을 복구할 수 있다.
 
 - 볼륨 게이트웨이에는 두 가지 유형이 존재한다. 두 유형의 차이점은 중요하다.
 ~~~

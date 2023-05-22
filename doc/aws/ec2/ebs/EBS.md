@@ -75,7 +75,9 @@
 → `Amazon DLM, Amazon Data Lifecycle Manager`를 사용하면 `Amazon EBS` 볼륨을 백업하기 위해 생성된 스냅샷의 생성, 보존 및 삭제를 자동화할 수 있다.
 
 - EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic
-→ 스냅샷이나 백업을 생성할 때 `EBS` 볼륨 내의 `I/O`를 전부 사용한다. 그러므로 인스턴스가 `EBS`를 사용 중이 아닐 때에만 실행해야 한다.
+→ 백업을 생성할 때 `EBS` 볼륨 내의 `I/O`를 전부 사용한다. 그러므로 애플리케이션이 많은 트래픽을 처리하는 동안에는 백업을 실행하면 안 된다.
+
+- 스냅샷을 생성하는 동안 볼륨에 대한 지속적인 읽기 및 쓰기가 가능하다. 스냅샷이 완료되기 전에도 인스턴스를 사용할 수 있다.
 
 #### 2. Create Snapshot
 - `EC2` → `Elsatic Block Store` → `Volumes`에서 `EBS`의 스냅샷을 생성할 수 있다.

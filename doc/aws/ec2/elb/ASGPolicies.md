@@ -18,6 +18,7 @@
 ~~~
 - 단계 스케일링 정책은 경고를 설정할 때 한 번에 추가할 유닛의 수와 한 번에 제거할 유닛의 수를 단계별로 설정할 수 있다.
 - 단계 조정 정책은 휴지 기간이 만료될 때까지 기다리지 않고 즉시 조정 활동을 트리거할 수 있다.
+- CloudWatch 경보에 대한 조정 지표 및 임계값을 지정하여 수행해야 한다.
 
 - When a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units
 - When a CloudWatch alarm is triggered (example CPU < 30%), then remove 1

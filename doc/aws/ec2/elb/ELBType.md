@@ -28,6 +28,8 @@
 - Support redirects (from HTTP to HTTPS for example)  
 → 리다이렉트를 지원한다. `HTTP`에서 `HTTPS`로 트래픽을 자동 리다이렉트할 때 로드 밸런서 레벨에서 가능하다.
 
+- `ALB`는 가중 대상 그룹 라우팅을 지원한다.  이 기능을 사용하면 규칙에 의해 여러 대상 그룹으로 전달되는 트래픽의 가중치 라우팅을 수행할 수 있다.
+
 - Routing tables to different target groups:  
 → 경로 라우팅을 지원한다. 이를 통해 트래픽을 다른 대상 그룹으로 라우팅할 수 있다.
 ~~~

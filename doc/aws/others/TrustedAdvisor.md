@@ -1,7 +1,7 @@
 ## Trusted Advisor
 ### 1. Trusted Advisor
 - No need to install anything – high level AWS account assessment  
-→ 사용자는 계정을 분석하고 권장사항을 제공받기 위해 `AWS`로부터 높은 수준의 계정 평가를 받으려고 한다.
+→ 사용자는 계정을 분석하고 권장 사항을 제공받기 위해 `AWS`로부터 높은 수준의 계정 평가를 받으려고 한다.
 
 - Analyze your AWS accounts and provides recommendation:
 ~~~
@@ -32,6 +32,7 @@
 ~~~
 
 - 시험에 관련하여 기억할 것은 비즈니스 지원 플랜이 있어야 `Trusted Advisor`의 전체 기능에 액세스를 할 수 있고, 그전까지는 핵심 검사만 가능하다 것과 비즈니스와 기업 지원 플랜을 사용할 경우 `Trusted Advisor`에 프로그래매틱 액세스할 수 있다는 것이다.
+
 
 ### 2. Trusted Advisor Checks Examples
 - Cost Optimization: 
@@ -72,7 +73,9 @@
 
 - Service Limits  
 → 특정 서비스가 할당량에 도달했는지 알 수 있다. 이를 활용하여 실제로 도달하기 전에 서비스 할당량을 늘릴 수 있다.
- 
+
+- `AWS Trusted Advisor` 서비스 제한은 서비스 제한 지표를 `CloudWatch`에 게시한다. 따라서 경보를 구성하고 `Amazon SNS`에 알림을 보낼 수 있다.
+
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 ---

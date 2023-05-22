@@ -49,10 +49,10 @@
 - EC2 Enhanced Networking는 SR-IOV라고도 불린다.
 
 - Higher bandwidth, higher PPS (packet per second), lower latency
-→ 넓은 대역폭, 높은 PPS(packet per second)가 제공되므로 지연 시간이 짧아진다.
+→ 넓은 대역폭, 높은 PPS가 제공되므로 지연 시간이 짧아진다.
 
 - Option 1: Elastic Network Adapter (ENA) up to 100 Gbps
-→ ENA(Elastic Network Adapter)를 사용하면 네트워크 속도를 100 Gbps까지 올릴 수 있다. 중요하다.
+→ ENA를 사용하면 네트워크 속도를 100Gbps까지 올릴 수 있다. 중요하다.
 
 - Option 2: Intel 82599 VF up to 10 Gbps – LEGACY
 → Intel의 82599VF라는 걸 사용해 최대 10Gbps까지 올릴 수 있다. 과거 버전의 ENA이다.

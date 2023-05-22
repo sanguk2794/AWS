@@ -20,6 +20,11 @@
 
 - `Aurora` 인스턴스를 삭제할 때는 `Reader` 인스턴스 → `Writer` 인스턴스 → 클러스터 인스턴스의 순으로 삭제를 진행해야 한다.
 
+- 동일한 가용 영역 또는 다른 가용 영역에 `Amazon Aurora` 복제본이 있는 경우 장애 조치 시 `Amazon Aurora`는 `DB` 인스턴스의 `CNAME` 레코드를 뒤집어 정상 복제본을 가리키도록 한다.
+- `Aurora Serverless`를 실행중이라면 `Aurora`는 자동으로 다른 `AZ`에 `DB` 인스턴스를 다시 생성한다.
+- `Amazon Aurora Replica`가 없고 `Aurora Serverless`를 실행하지 않는 경우 `Aurora`는 원래 인스턴스와 동일한 가용 영역에 새 `DB` 인스턴스를 생성하려고 시도합니다.
+→ 교체는 최선을 다해 수행되며 가용 영역에 광범위하게 영향을 미치는 문제가 있는 경우 실패할 수 있다.
+
 ### 2. Aurora High Availability and Read Scaling
 - `Aurora`의 가장 중요한 특징은 높은 가용성과 읽기 스케일링이다.
 

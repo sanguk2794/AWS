@@ -70,6 +70,8 @@
 - Lower cost than S3 Standard  
 → `S3 Standard`보다 비용이 적게 들지만 검색 비용이 발생한다.
 
+- 객체를 `Standard-IA` 또는 `One Zone-IA`로 전환하려면 최소 30일 동안 오브젝트를 저장한 상태여야 한다.
+
 - Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
 ~~~
 - 99.9% Availability

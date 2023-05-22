@@ -20,6 +20,8 @@
 - IAM Authentication: IAM roles to connect to your database (instead of username/pw)  
 → `DB` 인증시 `RDS`와 `Aurora`는 사용자 이름과 패스워드라는 전통적인 조합을 사용할 수 있으며 `IAM Role`을 통해 `DB`에 접속할 수도 있다. `IAM Role`을 통해 접속할 수 있는 `DB`는 `Aurora`와 `PostgreSQL`, `MySQL`로 제한된다.
 
+- `IAM`  인증은 `MySQL` 및 `PostgreSQL`에서 작동한다. 인증 토큰을 활용한다. 데이터베이스 접속을 위한 `IAM` 사용자를 생성해야 하는데 이는 `AWS` 제공 플러그인에 의해 처리된다.
+
 - Security Groups: Control Network access to your RDS / Aurora DB  
 → 보안 그룹을 통해 `DB`에 대한 네트워크 액세스를 통제할 수 있다.
 
