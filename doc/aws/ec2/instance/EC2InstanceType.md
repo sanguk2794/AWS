@@ -22,7 +22,7 @@
 
 ### 2. EC2 Instance Types – General Purpose
 - Great for a diversity of workloads such as web servers or code repositories  
-→ 범용의 인스턴스는 웹 서버나 코드 저장소와 같은 다양한 작업에 적합하다. 범용 인스턴스는 `M`으로 시작된다.
+→ 범용 인스턴스는 웹 서버나 코드 저장소와 같은 다양한 작업에 적합하다. 범용 인스턴스는 `M`으로 시작된다.
 
 - Balance between: Compute, Memory, Networking  
 → 범용 인스턴스는 컴퓨팅, 메모리, 네트워킹간의 균형이 잘 맞는다.
@@ -67,13 +67,13 @@
 - Use cases
 ~~~
 - High performance, relational/non-relational databases
-→ 인 메모리 데이터베이스가 되는 고성능의 관계형 또는 비관계형의 데이터베이스
+→ 인메모리 데이터베이스가 되는 고성능의 관계형 또는 비관계형의 데이터베이스
 
 - Distributed web scale cache stores
 → ElastiCache(AWS 서비스 중 하나)를 예로 들 수 있는 분산 웹스케일 캐시 저장소
 
 - In-memory databases optimized for BI (business intelligence)
-→ 비즈니스 인텔리전스에 최적화된 인 메모리 데이터베이스
+→ 비즈니스 인텔리전스에 최적화된 인메모리 데이터베이스
 
 - Applications performing real-time processing of big unstructured data
 → 대규모 비정형 데이터의 실시간 처리를 실행하는 애플리케이션
