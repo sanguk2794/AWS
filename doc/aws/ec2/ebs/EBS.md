@@ -1,13 +1,13 @@
 ## EC2 Instance Storage
 ### 1. What’s an EBS Volume?
 - An EBS (Elastic Block Store) Volume is a network drive you can attach to your instances while they run  
-→ `EBS` 볼륨은 인스턴스가 실행 중인 동안 연결 가능한 네트워크 드라이브이다.
+→ `EBS` 볼륨은 실행 중인 인스턴스에 연결 가능한 네트워크 드라이브이다.
 
 - It allows your instances to persist data, even after their termination  
-→ `EBS`를 사용한다면 인스턴스가 종료된 후에도 데이터를 지속할 수 있다. 이것이 바로 `EBS Volume`을 쓰는 주목적이다. 
+→ `EBS`를 사용한다면 인스턴스가 종료된 후에도 데이터를 지속할 수 있다. 이것이 바로 `EBS Volume`을 쓰는 주목적이다.
 
 - Analogy: Think of them as a “network USB stick”, It’s a network drive (i.e. not a physical drive)  
-→ `EBS`는 `네트워크 USB`라고 생각하면 편리하다. 실제 연결이 네트워크를 통해 이루어지는 네트워크 드라이버이다. 통신시 네트워크를 이용하므로 컴퓨터가 다른 서버에 도달할 때 까지의 지연이 생길 수 있다.
+→ `EBS`는 `네트워크 USB`라고 생각하면 편리하다. 실제 연결이 네트워크를 통해 이루어지는 네트워크 드라이버이다. 통신시 네트워크를 이용하므로 지연이 생길 수 있다.
 
 - They are bound to a specific availability zone, An EBS Volume in us-east-1a cannot be attached to us-east-1b  
 → `EBS Volume`은 하나의 `AZ` 내에서만 사용 가능하다. `us-east-1a`의 `EBS Volume`을 `us-east-1b`에서 사용할 수 없다. `Attach`하기 위해서는 반드시 `EC2`의 `AZ`와 `EBS Volume`의 가용 영역을 일치시켜야 한다.
@@ -16,7 +16,7 @@
 → 단, 스냅샷을 이용할 경우 다른 `AZ`로 볼륨을 옮길 수 있다.
 
 - Have a provisioned capacity (size in GBs, and IOPS (I/O per seconds))  
-→ 볼륨이기 때문에 용량을 미리 결정해야 한다. 그러면 해당 프로비전 용량에 따라 요금이 청구된다.
+→ 볼륨이기 때문에 용량을 미리 결정해야 한다. 그러면 해당 프로비저닝 용량에 따라 요금이 청구된다.
 
 - `EBS` 볼륨은 프로덕션 중의 라이브 구성 변경을 지원한다. 서비스 중단 없이 볼륨 유형, 볼륨 크기 및 `IOPS` 용량을 수정할 수 있다.
 
@@ -55,7 +55,7 @@
 → `EC2`의 인스턴스로부터 `EBS` 볼륨을 분리할 필요는 없지만 `AWS`는 분리할 것을 권장한다.
 
 - Can copy snapshots across AZ or Region
-→ `EBS` 스냅샷은 다른 `AZ`나 다른 리전에서도 복사해서 사용할 수 있다.
+→ 생성한 `EBS` 스냅샷은 다른 `AZ`나 다른 리전에 복사해서 사용할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232323611-c6fb4422-6519-4496-b236-155e16277fd8.png)
 
@@ -63,10 +63,10 @@
 
 #### 1. EBS Snapshots Features
 - EBS Snapshot Archive  
-→ 아카이브 티어로 스냅샷을 옮길 수 있다. 최대 75%까지 저렴하다. 하지만 스냅샷을 복원하는 데 24시간에서 72시간이 걸린다.
+→ 아카이브 티어로 스냅샷을 옮길 수 있다. 최대 75%까지 저렴하지만 스냅샷을 복원하는 데 24시간에서 72시간이 걸린다.
 
 - Recycle Bin for EBS Snapshots  
-→ 스냅샷을 삭제할 때 영구 삭제하는 대신에 휴지통에 넣을 수 있다. 실수로 삭제하더라도 휴지통에서 복원 가능해진다. 복원 가능 기간은 1일에서 1년 사이에서 설정할 수 있다.
+→ 스냅샷을 삭제할 때 영구 삭제하는 대신에 휴지통에 넣을 수 있다. 실수로 삭제하더라도 휴지통에서 복원이 가능해진다. 복원 가능 기간은 1일에서 1년 사이에서 설정할 수 있다.
 
 - Fast Snapshot Restore (FSR)  
 → 빠른 스냅샷 복원은 스냅샷의 완전 초기화를 통해 첫 사용에서의 지연 시간을 없애는 기능이다. 스냅샷이 아주 크고 `EBS` 볼륨 또는 `EC2` 인스턴스를 빠르게 초기화해야 할 때 유용하다. 하지만 비용이 많이 들기 때문에 주의가 필요하다.
