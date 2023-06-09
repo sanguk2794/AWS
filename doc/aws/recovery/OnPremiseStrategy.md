@@ -16,7 +16,7 @@
 → 기존의 VM과 애플리케이션을 EC2로 마이그레이션 할 수 있다.
 
 - Create a DR repository strategy for your on-premises VMs 
-→ 재해 복구 리포지토리 전략을 생성할 수 있다.
+→ 재해 복구 레포지토리 전략을 생성할 수 있다.
 
 - Can export back the VMs from EC2 to on-premises
 → VM을 EC2에서 온프레미스 환경으로 다시 마이그레이션 할 수 있다.
