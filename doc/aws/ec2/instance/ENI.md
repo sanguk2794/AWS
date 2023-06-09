@@ -1,12 +1,12 @@
 ## ENI
 ### 1. Elastic Network Interfaces
 - Logical component in a VPC that represents a virtual network card  
-→ `VPC`의 논리적 구성 요소이며 가상 네트워크 카드를 나타낸다. `ENI`는 `EC2` 인스턴스가 네트워크에 액세스할 수 있게 해준다.
+→ 가상 네트워크 카드를 나타내는 `VPC`의 논리적 구성 요소이다. `ENI`는 `EC2` 인스턴스가 네트워크에 액세스할 수 있게 해준다.
 
 - The ENI can have the following attributes:
 ~~~
 - Primary private IPv4, one or more secondary IPv4
-→ 주요 사설 IPv4와 하나 이상의 보조 IPv4를 가질 수 있다. 또, EC2에 보조 ENI를 얼마든지 추가할 수 있다.
+→ 주요 사설 IPv4와 하나 이상의 보조 IPv4를 가질 수 있다. 또, EC2에 보조 ENI를 얼마든지 연결할 수 있다.
 
 - One Elastic IP (IPv4) per private IPv4 and public IPv4
 → 각각의 ENI는 사설 IPv4당 Elastic IPv4를 갖거나 혹은 하나의 공용 IPv4를 가질 수 있으므로 사설 및 공용 IP가 한 개씩 제공된다.
@@ -15,16 +15,16 @@
 → ENI에 하나 이상의 보안 그룹을 연결할 수 있다.
 
 - A MAC address
-→ 맥 주소를 연결할 수도 있다.
+→ 맥 주소를 연결할 수 있다.
 ~~~
 
 - You can create ENI independently and attach them on the fly (move them) on EC2 instances for fail over  
-→ `EC2` 인스턴스와 독립적으로 `ENI`를 생성하고 즉시 연결하거나 장애 조치를 위해 `EC2` 인스턴스에서 이동할 수 있다.
+→ `EC2` 인스턴스와 독립적으로 `ENI`를 생성해 인스턴스에 즉시 연결할 수 있다.
 
 - Bound to a specific availability zone (AZ)  
 → `ENI`는 특정 가용 영역에만 바인딩된다.
 
-- 하나의 인스턴스에서 문제가 생겼을 때, 다른 `ENI`가 연결되어 있으면 `ENI`를 옮겨서 `Private IP`를 이동시킬 수 있다. 그러면 `Private IP`가 문제 인스턴스에서 문제가 발생하지 않은 두 번째 인스턴스로 연결되므로 장애 조치에 매우 유용하다.
+- 하나의 인스턴스에서 문제가 생겼을 때 `ENI`를 옮겨서 사설 `IP`를 이동시킬 수 있다. 그러면 사설 `IP`가 문제 인스턴스에서 문제가 발생하지 않은 두 번째 인스턴스로 연결되므로 장애 조치에 매우 유용하다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232232936-cc5ed9fe-1cda-493f-827b-82278fb89e5a.png)
 
@@ -39,20 +39,20 @@
 
 ![image](https://user-images.githubusercontent.com/97398071/232233392-c3b49581-8882-4920-85a5-3c5b7ca6f19c.png)
 
-- 네트워크 인터페이스 생성 화면이다.
+- 네트워크 인터페이스 생성 화면은 아래와 같다.
 
 ![image](https://user-images.githubusercontent.com/97398071/232233504-867fa52b-920e-45fb-a46e-3106dfb6526b.png)
 
 - 생성 후 `Attach`를 통해 인스턴스를 연결할 수 있다.
-- 인스턴스를 종료하면 직접 생성한 `ENI`는 남아 있지만, 인스턴스 생성시 자동 생성된 `ENI`는 자동으로 삭제된다.
-- `ENI`를 사용하면 `Private IPv4` 주소를 더 많이 활용할 수 있고, 네트워킹 작업이 수월해져서 복잡한 사용 사례에 많은 도움이 된다.
-- `ENI`는 있어도 비용이 발생하지 않는다.
+- 인스턴스를 종료하면 직접 생성한 `ENI`는 남아 있지만 인스턴스 생성시 자동 생성된 `ENI`는 자동으로 삭제된다.
+- `ENI`를 사용하면 사설 `IPv4` 주소를 더 많이 활용할 수 있다. 네트워킹 작업이 수월해져서 복잡한 사용 사례에 많은 도움이 된다.
+- `ENI`는 비용이 발생하지 않는다.
 
 ### 2. 고가용성 달성을 위한 방법
-- 고가용성을 달성하려면 인스턴스 장애 시 트래픽을 리디렉션할 수 있는 기능이 필요하며, 3가지 옵션이 존재한다. 결론부터 말하자면 `ELB`를 사용해야 한다. 진정한 고가용성을 실현 가능하다.
+- 고가용성을 달성하려면 인스턴스 장애 시 트래픽을 리디렉션할 수 있는 기능이 필요하며, 이를 위한 3가지 옵션이 존재한다. 결론부터 말하자면 `ELB`를 사용해야 한다. 진정한 고가용성을 실현 가능하다.
 
 - `ELB` 사용  
-→ 이것은 고가용성을 제공하기 위해 선호되는 방법이다.
+→ 고가용성을 제공하기 위해 선호되는 방법이다.
 
 - `Elastic IP` 주소 리디렉션  
 → `Elastic IP` 주소를 사용하면 여러 가용 영역에 걸쳐 있는 인스턴스들을 지정할 수 있다. 실패를 감지하고 탄력적 `IP`를 다시 연결할 때 직접 작업이 필요하다.

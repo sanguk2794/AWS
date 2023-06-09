@@ -67,61 +67,70 @@
 - Use cases
 ~~~
 - High performance, relational/non-relational databases
-→ 인메모리 데이터베이스가 되는 고성능의 관계형 또는 비관계형의 데이터베이스
+→ 인메모리 데이터베이스가 되는 고성능의 관계형 또는 비관계형 데이터베이스
 
 - Distributed web scale cache stores
-→ ElastiCache(AWS 서비스 중 하나)를 예로 들 수 있는 분산 웹스케일 캐시 저장소
+→ ElastiCache 등 분산 웹스케일 캐시 저장소
 
 - In-memory databases optimized for BI (business intelligence)
 → 비즈니스 인텔리전스에 최적화된 인메모리 데이터베이스
 
 - Applications performing real-time processing of big unstructured data
-→ 대규모 비정형 데이터의 실시간 처리를 실행하는 애플리케이션
+→ 대규모 비정형 데이터의 실시간 처리를 수행하는 애플리케이션
 ~~~
 
 #### 1. in-memory database
-- 디스크가 아닌 주 메모리에 모든 데이터를 보유하는 데이터베이스이다. 디스크 검색보다 자료 접근이 훨씬 빠른 것이 가장 큰 장점이다.
-- 데이터 양의 빠른 증가로 데이터베이스 응답 속도가 떨어지는 문제를 해결할 수 있는 대안 중 하나이다. 전형적인 디스크 방식은 디스크에 저장된 데이터를 대상으로 쿼리를 수행하는 것에 비해 인메모리 방식은 메모리상에 색인을 넣어 필요한 모든 정보를 메모리상의 색인을 통해 빠르게 검색할 수 있기 때문이다.
-- 단점이라면 매체가 휘발성이라는 것이다. `DB` 서버 전원이 갑자기 꺼져버리면 안에 있는 자료들이 초고속으로 즉시 삭제된다. 
+- 디스크가 아닌 메모리에 모든 데이터를 보유하는 데이터베이스이다. 디스크 검색보다 자료 접근이 훨씬 빠르다.
+- 데이터베이스 응답 속도 문제를 해결할 수 있는 대안 중 하나이다. 전형적인 디스크 방식은 디스크에 저장된 데이터를 대상으로 쿼리를 수행하는 것에 비해 인메모리 방식은 메모리상에 색인을 넣어 필요한 모든 정보를 메모리상의 색인을 통해 빠르게 검색할 수 있기 때문이다.
+- 단점이라면 매체가 휘발성이라는 것이다. 서버의 전원이 갑자기 꺼져버리면 안에 있는 자료들이 초고속으로 즉시 삭제된다. 
 - 그래서 보통은 로그인 세션 같은 서버가 꺼져서 날아가도 상관 없는 임시 데이터에 주로 쓰인다.
 - 속도 때문에 쓰는 것이기에 압축 따윈 쓰지 않으며, 데이터에 비해 `RAM` 용량이 넉넉하지 않을 경우 가상메모리를 쓰게 되어 역효과가 일어나기도 한다.
 
 #### 2. Business intelligence
-- 비즈니스 인텔리전스(BI)는 조직이 더 나은 의사결정을 내리고 정보를 기반으로 행동을 취하고 보다 효율적인 비즈니스 프로세스를 구현할 수 있게 해주는 역량을 의미한다.
-
-- BI 역량을 갖추면 다음과 같은 일들이 가능하다.
+- 비즈니스 인텔리전스는 조직이 더 나은 의사결정을 내리고 정보를 기반으로 행동을 취하고 보다 효율적인 비즈니스 프로세스를 구현할 수 있게 해주는 역량을 의미한다.
+- `BI` 역량을 갖추면 다음과 같은 일들이 가능하다.
 ~~~
 - 조직 전반의 최신 데이터 수집
-- 이해하기 쉬운 양식으로 데이터 표시(표, 그래프 등)
+- 이해하기 쉬운 양식으로 데이터 표시 (표, 그래프 등)
 - 조직 내 직원들에게 시의적절하게 데이터 전달
 ~~~
 
 ### 5. EC2 Instance Types – Storage Optimized
 - Great for storage-intensive tasks that require high, sequential read and write access to large data sets on local storage  
-→ 로컬 스토리지에서 대규모의 데이터셋에 액세스할 때 적합한 인스턴스이다. 이름은 `I`, `G` 또는 `H1`으로 시작한다. 애플리케이션에 대해 대기 시간이 짧은, 수만 단위의 무작위 `IOPS`(초당 I/O 작업 수)를 지원하도록 최적화되어 있다.
+→ 로컬 스토리지에서 대규모의 데이터셋에 액세스할 때 적합한 인스턴스이다. 이름은 `I`, `G` 또는 `H1`으로 시작한다. 애플리케이션에 대해 대기 시간이 짧은, 수만 단위의 무작위 `IOPS (초당 I/O 작업 수)`를 지원하도록 최적화되어 있다.
 
 - Use cases
 ~~~
 - High frequency online transaction processing (OLTP) systems
-→ 고주파 온라인 트랜잭션 처리인 OLTP
+→ 고주파 온라인 트랜잭션 처리인 OLTP 시스템
 
 - Relational & NoSQL databases
 → 관계형과 비관계형인 NoSQL 데이터베이스
 
 - Cache for in-memory databases (for example, Redis)
+→ 레디스 등 인메모리 데이터베이스
+
 - Data warehousing applications
+→ 데이터 웨어하우징 애플리케이션
+
 - Distributed file systems
+→ 분산 파일 시스템
 ~~~
 
 #### 1. OLTP
 - `OLTP, 온라인 트랜잭션 처리`는 온라인 뱅킹, 쇼핑, 주문 입력 또는 텍스트 메시지 전송 등 동시에 발생하는 다수의 트랜잭션을 실행하는 데이터 처리 유형이다.  
 → 이러한 트랜잭션은 전통적으로 경제 또는 재무 트랜잭션이라고 칭하며, 기업이 회계 또는 보고 목적으로 언제든 정보에 액세스할 수 있도록 기록 및 보호된다.
 
-#### 2. Data Warehouse
-- 데이터 웨어하우스는 보고 및 분석을 위해 데이터베이스 테이블, `Excel` 시트 등의 구조화된 데이터와 `XML` 파일, 웹 페이지 등의 반구조화된 데이터를 저장하는 중앙 집중식 레포지토리이다.
+#### 2. OLAP
+- `OLAP`는 보고서를 생성하고, 복잡한 데이터 분석을 수행하며, 데이터의 추세를 식별하는 데 사용된다.
+- `OLAP`의 기본적인 목적은 집계된 데이터를 분석하는 것이고 `OLTP`의 기본적인 목적은 데이터베이스 트랜잭션을 처리하는 것이다.
+
+#### 3. Data Warehouse
+- 데이터 웨어하우스는 보고 및 분석을 위해 데이터베이스 테이블, 엑셀 시트 등의 구조화된 데이터와 `XML` 파일, 웹 페이지 등의 반구조화된 데이터를 저장하는 중앙 집중식 레포지토리이다.
 - 많은 양의 정보를 저장할 수 있기 때문에 사용자가 데이터마이닝, 데이터 시각화 및 기타 형태의 `BI` 보고에 사용할 수 있는 풍부한 과거 데이터에 쉽게 액세스할 수 있도록 한다.
 
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
+- [OLAP과 OLTP의 차이점은 무엇인가요?](https://aws.amazon.com/ko/compare/the-difference-between-olap-and-oltp/)
 ---
