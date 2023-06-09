@@ -54,15 +54,16 @@
 - `ELB` 사용  
 → 고가용성을 제공하기 위해 선호되는 방법이다.
 
-- `Elastic IP` 주소 리디렉션  
-→ `Elastic IP` 주소를 사용하면 여러 가용 영역에 걸쳐 있는 인스턴스들을 지정할 수 있다. 실패를 감지하고 탄력적 `IP`를 다시 연결할 때 직접 작업이 필요하다.
+- 탄력적 `IP` 주소 리디렉션  
+→ 탄력적 `IP` 주소를 사용하면 여러 가용 영역에 걸쳐 있는 인스턴스들을 지정할 수 있다. 실패를 감지하고 탄력적 `IP`를 다시 연결할 때 직접 작업이 필요하다.
 
 - `ENI` 재할당  
 → 모든 `EC2` 인스턴스는 기본 `ENI`를 보유하며, 선택적으로 추가 `ENI`를 보유할 수 있다. 트래픽을 보조 `ENI` 로 보낸 다음 해당 보조 `ENI`를 다른 인스턴스로 이동시킬 수 있다. 이는 탄력적 `IP` 주소 재할당과 유사하다.
 
-- `ENI`는 `Elastic IPs`가 가지고 있는 문제들과 더불어 동일한 `AZ` 내에서만 다시 할당할 수 있다는 추가적 문제까지 있기 때문에 사용이 권장되지 않는다.
+- `ENI`는 탄력적 `IP`가 가지고 있는 문제들과 더불어 동일한 `AZ` 내에서만 다시 할당할 수 있다는 추가적 문제까지 있으므로 사용이 권장되지 않는다.
 
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
+- [AWS: Elastic IP vs ENI](https://stackoverflow.com/questions/36608349/aws-elastic-ip-vs-eni)
 ---
