@@ -85,7 +85,7 @@
 → 읽기와 쓰기 용량이 워크로드에 따라 자동적으로 확장된다.
 
 - No capacity planning needed
-→ 미리 용량 계획을 할 필요가 없으므로, RCU, WCU의 개념 자체가 없다.
+→ 미리 용량 계획을 할 필요가 없으므로 RCU, WCU의 개념 자체가 없다.
 
 - Pay for what you use, more expensive ($$$)
 → 정확히 사용한 만큼 비용을 지불한다. 모든 읽기와 쓰기에 대해 비용을 지불해야 한다.

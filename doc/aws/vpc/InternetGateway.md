@@ -24,9 +24,10 @@
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
 #### 1. 라우팅 테이블
-`IP` 네트워크를 통해 이동하는 데이터 패킷이 어디로 향하게 될지 결정하는 규칙이다. 주로 테이블 형태로 표시된다. 라우팅 테이블에는 패킷이 대상을 향한 최상의 경로를 따라 전달하는데 필요한 정보가 포함되어 있다.
+- `IP` 네트워크를 통해 이동하는 데이터 패킷이 어디로 향하게 될지 결정하는 규칙이다. 주로 테이블 형태로 표시된다. 라우팅 테이블에는 패킷이 대상을 향한 최상의 경로를 따라 전달하는데 필요한 정보가 포함되어 있다.
 
 ---
 #### ▶ Reference
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
+- [라우팅 테이블](https://ko.wikipedia.org/wiki/%EB%9D%BC%EC%9A%B0%ED%8C%85_%ED%85%8C%EC%9D%B4%EB%B8%94)
 ---

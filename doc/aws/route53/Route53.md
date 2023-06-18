@@ -495,7 +495,7 @@ DNS는 DNS 쿼리에만 응답하게 되고 클라이언트들은 이를 통해 
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
 
-### 5. Domain Registar vs. DNS Service
+### 5. Domain Registrar vs. DNS Service
 - You buy or register your domain name with a Domain Registrar typically by paying annual charges (e.g., GoDaddy, Amazon Registrar Inc., …)  
 → 도메인 이름 레지스트라를 통해 원하는 도메인 이름을 구매할 수 있다. 이에 대해서 매년 비용을 지불해야 한다.
 
