@@ -125,6 +125,7 @@ $ docker rm apache
 ~~~
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/1078cde8-887c-426e-beeb-b5dab4fbbfe9)
 
+
 ---
 #### ▶ Reference
 - [Docker docs](https://docs.docker.com/)
