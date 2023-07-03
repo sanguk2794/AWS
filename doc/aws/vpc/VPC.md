@@ -4,22 +4,28 @@
 → 새로 생성되는 `AWS` 계정은 모두 기본 `VPC`를 가지고 있고 이를 바로 사용할 수 있다.
 
 - New EC2 instances are launched into the default VPC if no subnet is specified  
-→ 새로 생성하는 `EC2` 인스턴스는 서브셋을 지정하지 않으면 기본 `VPC`에 실행된다.
+→ 새로 생성하는 `EC2` 인스턴스는 서브넷을 지정하지 않으면 기본 `VPC`에서 실행된다.
 
 - Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses  
 → 기본 `VPC`는 처음부터 인터넷에 연결되어 있다. 기본 `VPC` 내부에 `EC2` 인스턴스를 생성하면 이 인스턴스는 공용 `IPv4` 주소를 얻기 때문에 `EC2` 인스턴스를 생성하자마자 인터넷에 연결할 수 있다.
 
 - 프로덕션 계정이라면 기본 `VPC` 대신 `VPC`를 직접 설정하여 사용하는 것이 추천된다.
 
+- `IP` 주소 범위 선택, 서브넷 생성, 라우팅 테이블 및 네트워크 게이트웨이 구성 등 가상 네트워킹 환경을 완벽하게 제어할 수 있다.
+
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/9c7acf92-53dd-4cd9-94d4-489715743ce0)
 
-- `VPC`는 리전의 모든 가용 영역에 걸쳐 존재한다. `VPC`를 생성한 후 각 가용 영역에 하나 이상의 서브넷을 추가할 수 있다.
-- 각 서브넷은 전적으로 하나의 가용 영역 내에 있어야 하며 여러 영역에 걸쳐 있을 수 없다.
-
+- `VPC` 사용에 따르는 추가 요금은 없다. 단, `NAT` 게이트웨이, `IP` 주소 관리자, 트래픽 미러링, `Reachability Analyzer`, `Network Access Analyzer`와 같은 일부 `VPC` 구성 요소에 대해 요금이 부과된다.
 
 ### 2. VPC in AWS – IPv4
 - VPC = Virtual Private Cloud  
 → `VPC`는 `Virtual Private Cloud`의 약자이다.
+
+- `VPC`를 사용하면 논리적으로 격리된 가상 네트워크에서 `AWS` 리소스를 시작할 수 있다. 
+
+![img](https://github.com/sanguk2794/AWS/assets/97398071/ef4e0977-0ce7-405f-ba48-b5bc765d5108)
+
+출처 → [Amazon VPC란 무엇인가?](https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/what-is-amazon-vpc.html)
 
 - You can have multiple VPCs in an AWS region (max. 5 per region – soft limit)  
 → 단일 `AWS` 리전에 여러 `VPC`를 가질 수 있다. 기본적으로 리전당 최대 5개까지 가능하지만 이를 엄격하게 제한하지 않아서 더 늘릴 수 있다.
@@ -46,8 +52,11 @@
 - Your VPC CIDR should NOT overlap with your other networks (e.g., corporate)  
 → `VPC`의 `CIDR`가 다른 `VPC`나 네트워크 혹은 기업 네트워크의 `CIDR`와 겹치지 않도록 주의해야 한다. 함께 연결하려면 `CIDR`의 범위가 다른 네트워크의 `CIDR` 범위와 겹치지 않아야 하기 때문이다.
 
+- `VPC`는 리전의 모든 가용 영역에 걸쳐 존재한다. `VPC`를 생성한 후 각 가용 영역에 하나 이상의 서브넷을 추가할 수 있다.
+
 ### 3. VPC – Subnet (IPv4)
-- `Subnet, 서브네트워크`는 네트워크 내부의 네트워크이다.
+- `Subnet`는 네트워크 내부의 네트워크이다. 실제로는 `VPC`의 `IP` 주소 범위를 나타낸다.
+- 각 서브넷은 전적으로 하나의 가용 영역 내에 있어야 한다. 서브넷을 추가하면 `VPC`에 `AWS` 리소스를 배포할 수 있다.
 
 - AWS reserves 5 IP addresses (first 4 & last 1) in each subnet, These 5 IP addresses are not available for use and can’t be assigned to an EC2 instance  
 → 서브넷의 범위 내에서 처음 네 개와 마지막 한 개의 `IP` 주소는 `AWS`가 예약한다. 이 5개의 예약된 `IP` 주소는 사용할 수 없으며 `EC2` 인스턴스에 할당할 수도 없다.
@@ -82,5 +91,7 @@
 ---
 #### ▶ Reference
 - [라우팅 테이블 (Routing Table)](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=dreamxpeed&logNo=221671823623)
+- [Amazon VPC란 무엇인가?](https://docs.aws.amazon.com/ko_kr/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [Amazon Virtual Private Cloud 기능](https://aws.amazon.com/ko/vpc/features/)
 - [Ultimate AWS Certified Solutions Architect Associate SAA-C03](https://www.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 ---
