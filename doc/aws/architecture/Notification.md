@@ -10,7 +10,7 @@
 
 - `SQS FIFO` + `Lambda`
 ~~~
-- `FIFO`이므로 한 메시지를 처리하지 못 하면 차단이 발생하여 처리가 끝나지 않고 결국 전체 대기열 처리가 차단된다.
+- FIFO이므로 한 메시지를 처리하지 못 하면 차단이 발생하여 처리가 끝나지 않고 결국 전체 대기열 처리가 차단된다.
 - 다섯 번의 재시도 후 메세지에 중대한 문제가 있다고 판단하고 DLQ, 데드 레터 대기열로 보내도록 SQS를 설정할 수 있다.
 ~~~
 
@@ -24,9 +24,6 @@
 ![image](https://github.com/sanguk2794/AWS/assets/97398071/8c6e3f49-8e8e-426c-8b2f-7a5f0c87fd8c)
 
 출처 → [AWS Certified Solutions Architect Slides v10](https://courses.datacumulus.com/downloads/certified-solutions-architect-pn9/)
-
-- `S3` 버킷으로 업로드되는 객체를 처리하는 서버리스 애플리케이션으로 작업하고 있습니다. `S3` 버킷에 `S3` 이벤트를 구성해 객체가 업로드될 때마다 `Lambda` 함수가 호출되도록 만들었습니다. 프로세싱되지 않는 이벤트는 추후 처리를 위해 데드 레터 대기열(`DLQ`)로 전송시키려 합니다. 이런 경우, 다음 중 어떤 `AWS` 서비스를 선택해야 할까요?
-→ `Lambda`
 
 ### 2. Fan Out Pattern: deliver to multiple SQS
 - 팬아웃 패턴은 다중 `SQS` 대기열에 데이터를 전송하는 방식이다.
